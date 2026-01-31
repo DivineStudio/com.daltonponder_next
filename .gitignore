@@ -1,0 +1,80 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# ===================
+# Dependencies
+# ===================
+node_modules/
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# ===================
+# Next.js
+# ===================
+.next/
+out/
+build/
+
+# ===================
+# Testing
+# ===================
+coverage/
+
+# ===================
+# Environment & Secrets
+# ===================
+.env
+.env.*
+!.env.example
+*.pem
+
+# ===================
+# Debug Logs
+# ===================
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# ===================
+# OS Files
+# ===================
+.DS_Store
+Thumbs.db
+
+# ===================
+# IDE / Editor
+# ===================
+.idea/
+*.swp
+*.swo
+
+# ===================
+# Vercel
+# ===================
+.vercel
+
+# ===================
+# TypeScript
+# ===================
+*.tsbuildinfo
+
+# ===================
+# BMAD Framework
+# ===================
+# Ignore BMAD methodology (can be reinstalled)
+_bmad/
+
+# Track _bmad-output/ for approved artifacts
+# Only ignore work-in-progress subdirectory
+_bmad-output/wip/
+
+# ===================
+# Cursor/Agent
+# ===================
+.cursor/
+.agent/

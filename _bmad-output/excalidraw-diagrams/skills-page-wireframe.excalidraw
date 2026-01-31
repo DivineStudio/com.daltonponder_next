@@ -1,0 +1,1075 @@
+{
+    "type": "excalidraw",
+    "version": 2,
+    "source": "bmad-wireframe-workflow",
+    "elements": [
+        {
+            "id": "page-container",
+            "type": "rectangle",
+            "x": 0,
+            "y": 0,
+            "width": 1200,
+            "height": 1800,
+            "strokeColor": "#9e9e9e",
+            "backgroundColor": "#ffffff",
+            "fillStyle": "solid",
+            "strokeWidth": 2,
+            "roughness": 0,
+            "opacity": 100,
+            "groupIds": [],
+            "boundElements": []
+        },
+        {
+            "id": "hero-bg",
+            "type": "rectangle",
+            "x": 0,
+            "y": 80,
+            "width": 1200,
+            "height": 280,
+            "strokeColor": "transparent",
+            "backgroundColor": "#1a1a2e",
+            "fillStyle": "solid",
+            "strokeWidth": 0,
+            "roughness": 0,
+            "opacity": 100,
+            "groupIds": [
+                "hero-group"
+            ],
+            "boundElements": []
+        },
+        {
+            "id": "hero-gradient",
+            "type": "rectangle",
+            "x": 0,
+            "y": 280,
+            "width": 1200,
+            "height": 80,
+            "strokeColor": "transparent",
+            "backgroundColor": "#16213e",
+            "fillStyle": "solid",
+            "strokeWidth": 0,
+            "roughness": 0,
+            "opacity": 60,
+            "groupIds": [
+                "hero-group"
+            ],
+            "boundElements": []
+        },
+        {
+            "id": "hero-title",
+            "type": "text",
+            "x": 100,
+            "y": 140,
+            "width": 400,
+            "height": 50,
+            "text": "TECH STACK",
+            "fontSize": 48,
+            "fontFamily": 3,
+            "textAlign": "left",
+            "verticalAlign": "top",
+            "strokeColor": "#ffffff",
+            "backgroundColor": "transparent",
+            "fillStyle": "solid",
+            "roughness": 0,
+            "opacity": 100,
+            "groupIds": [
+                "hero-group"
+            ],
+            "boundElements": []
+        },
+        {
+            "id": "hero-subtitle",
+            "type": "text",
+            "x": 100,
+            "y": 200,
+            "width": 600,
+            "height": 30,
+            "text": "Technologies I've mastered over a decade of building software",
+            "fontSize": 18,
+            "fontFamily": 1,
+            "textAlign": "left",
+            "verticalAlign": "top",
+            "strokeColor": "#a0a0a0",
+            "backgroundColor": "transparent",
+            "fillStyle": "solid",
+            "roughness": 0,
+            "opacity": 100,
+            "groupIds": [
+                "hero-group"
+            ],
+            "boundElements": []
+        },
+        {
+            "id": "hero-accent-line",
+            "type": "line",
+            "x": 100,
+            "y": 250,
+            "width": 120,
+            "height": 0,
+            "strokeColor": "#e94560",
+            "backgroundColor": "transparent",
+            "fillStyle": "solid",
+            "strokeWidth": 4,
+            "roughness": 0,
+            "opacity": 100,
+            "points": [
+                [
+                    0,
+                    0
+                ],
+                [
+                    120,
+                    0
+                ]
+            ],
+            "groupIds": [
+                "hero-group"
+            ],
+            "boundElements": []
+        },
+        {
+            "id": "hero-code-decoration",
+            "type": "text",
+            "x": 800,
+            "y": 120,
+            "width": 300,
+            "height": 200,
+            "text": "{ }\n< />\n[ ]",
+            "fontSize": 72,
+            "fontFamily": 3,
+            "textAlign": "center",
+            "verticalAlign": "top",
+            "strokeColor": "#333355",
+            "backgroundColor": "transparent",
+            "fillStyle": "solid",
+            "roughness": 0,
+            "opacity": 40,
+            "groupIds": [
+                "hero-group"
+            ],
+            "boundElements": []
+        },
+        {
+            "id": "search-container",
+            "type": "rectangle",
+            "x": 100,
+            "y": 400,
+            "width": 1000,
+            "height": 60,
+            "strokeColor": "#e0e0e0",
+            "backgroundColor": "#f5f5f5",
+            "fillStyle": "solid",
+            "strokeWidth": 1,
+            "roughness": 0,
+            "opacity": 100,
+            "roundness": {
+                "type": 3,
+                "value": 8
+            },
+            "groupIds": [
+                "search-group"
+            ],
+            "boundElements": []
+        },
+        {
+            "id": "search-icon",
+            "type": "ellipse",
+            "x": 120,
+            "y": 415,
+            "width": 30,
+            "height": 30,
+            "strokeColor": "#9e9e9e",
+            "backgroundColor": "transparent",
+            "fillStyle": "solid",
+            "strokeWidth": 2,
+            "roughness": 0,
+            "opacity": 100,
+            "groupIds": [
+                "search-group"
+            ],
+            "boundElements": []
+        },
+        {
+            "id": "search-placeholder",
+            "type": "text",
+            "x": 170,
+            "y": 418,
+            "width": 200,
+            "height": 24,
+            "text": "Search skills...",
+            "fontSize": 16,
+            "fontFamily": 1,
+            "textAlign": "left",
+            "verticalAlign": "top",
+            "strokeColor": "#9e9e9e",
+            "backgroundColor": "transparent",
+            "fillStyle": "solid",
+            "roughness": 0,
+            "opacity": 100,
+            "groupIds": [
+                "search-group"
+            ],
+            "boundElements": []
+        },
+        {
+            "id": "filter-all",
+            "type": "rectangle",
+            "x": 100,
+            "y": 490,
+            "width": 60,
+            "height": 36,
+            "strokeColor": "#e94560",
+            "backgroundColor": "#e94560",
+            "fillStyle": "solid",
+            "strokeWidth": 1,
+            "roughness": 0,
+            "opacity": 100,
+            "roundness": {
+                "type": 3,
+                "value": 18
+            },
+            "groupIds": [
+                "filters-group"
+            ],
+            "boundElements": [
+                {
+                    "type": "text",
+                    "id": "filter-all-text"
+                }
+            ]
+        },
+        {
+            "id": "filter-all-text",
+            "type": "text",
+            "x": 118,
+            "y": 500,
+            "width": 24,
+            "height": 16,
+            "text": "All",
+            "fontSize": 14,
+            "fontFamily": 1,
+            "textAlign": "center",
+            "verticalAlign": "middle",
+            "strokeColor": "#ffffff",
+            "containerId": "filter-all",
+            "groupIds": [
+                "filters-group"
+            ],
+            "boundElements": []
+        },
+        {
+            "id": "filter-lang",
+            "type": "rectangle",
+            "x": 180,
+            "y": 490,
+            "width": 100,
+            "height": 36,
+            "strokeColor": "#e0e0e0",
+            "backgroundColor": "#f5f5f5",
+            "fillStyle": "solid",
+            "strokeWidth": 1,
+            "roughness": 0,
+            "opacity": 100,
+            "roundness": {
+                "type": 3,
+                "value": 18
+            },
+            "groupIds": [
+                "filters-group"
+            ],
+            "boundElements": [
+                {
+                    "type": "text",
+                    "id": "filter-lang-text"
+                }
+            ]
+        },
+        {
+            "id": "filter-lang-text",
+            "type": "text",
+            "x": 195,
+            "y": 500,
+            "width": 70,
+            "height": 16,
+            "text": "Languages",
+            "fontSize": 14,
+            "fontFamily": 1,
+            "textAlign": "center",
+            "verticalAlign": "middle",
+            "strokeColor": "#424242",
+            "containerId": "filter-lang",
+            "groupIds": [
+                "filters-group"
+            ],
+            "boundElements": []
+        },
+        {
+            "id": "filter-frontend",
+            "type": "rectangle",
+            "x": 300,
+            "y": 490,
+            "width": 90,
+            "height": 36,
+            "strokeColor": "#e0e0e0",
+            "backgroundColor": "#f5f5f5",
+            "fillStyle": "solid",
+            "strokeWidth": 1,
+            "roughness": 0,
+            "opacity": 100,
+            "roundness": {
+                "type": 3,
+                "value": 18
+            },
+            "groupIds": [
+                "filters-group"
+            ],
+            "boundElements": [
+                {
+                    "type": "text",
+                    "id": "filter-frontend-text"
+                }
+            ]
+        },
+        {
+            "id": "filter-frontend-text",
+            "type": "text",
+            "x": 318,
+            "y": 500,
+            "width": 54,
+            "height": 16,
+            "text": "Frontend",
+            "fontSize": 14,
+            "fontFamily": 1,
+            "textAlign": "center",
+            "verticalAlign": "middle",
+            "strokeColor": "#424242",
+            "containerId": "filter-frontend",
+            "groupIds": [
+                "filters-group"
+            ],
+            "boundElements": []
+        },
+        {
+            "id": "filter-backend",
+            "type": "rectangle",
+            "x": 410,
+            "y": 490,
+            "width": 85,
+            "height": 36,
+            "strokeColor": "#e0e0e0",
+            "backgroundColor": "#f5f5f5",
+            "fillStyle": "solid",
+            "strokeWidth": 1,
+            "roughness": 0,
+            "opacity": 100,
+            "roundness": {
+                "type": 3,
+                "value": 18
+            },
+            "groupIds": [
+                "filters-group"
+            ],
+            "boundElements": [
+                {
+                    "type": "text",
+                    "id": "filter-backend-text"
+                }
+            ]
+        },
+        {
+            "id": "filter-backend-text",
+            "type": "text",
+            "x": 425,
+            "y": 500,
+            "width": 55,
+            "height": 16,
+            "text": "Backend",
+            "fontSize": 14,
+            "fontFamily": 1,
+            "textAlign": "center",
+            "verticalAlign": "middle",
+            "strokeColor": "#424242",
+            "containerId": "filter-backend",
+            "groupIds": [
+                "filters-group"
+            ],
+            "boundElements": []
+        },
+        {
+            "id": "filter-cloud",
+            "type": "rectangle",
+            "x": 515,
+            "y": 490,
+            "width": 70,
+            "height": 36,
+            "strokeColor": "#e0e0e0",
+            "backgroundColor": "#f5f5f5",
+            "fillStyle": "solid",
+            "strokeWidth": 1,
+            "roughness": 0,
+            "opacity": 100,
+            "roundness": {
+                "type": 3,
+                "value": 18
+            },
+            "groupIds": [
+                "filters-group"
+            ],
+            "boundElements": [
+                {
+                    "type": "text",
+                    "id": "filter-cloud-text"
+                }
+            ]
+        },
+        {
+            "id": "filter-cloud-text",
+            "type": "text",
+            "x": 533,
+            "y": 500,
+            "width": 34,
+            "height": 16,
+            "text": "Cloud",
+            "fontSize": 14,
+            "fontFamily": 1,
+            "textAlign": "center",
+            "verticalAlign": "middle",
+            "strokeColor": "#424242",
+            "containerId": "filter-cloud",
+            "groupIds": [
+                "filters-group"
+            ],
+            "boundElements": []
+        },
+        {
+            "id": "filter-devops",
+            "type": "rectangle",
+            "x": 605,
+            "y": 490,
+            "width": 80,
+            "height": 36,
+            "strokeColor": "#e0e0e0",
+            "backgroundColor": "#f5f5f5",
+            "fillStyle": "solid",
+            "strokeWidth": 1,
+            "roughness": 0,
+            "opacity": 100,
+            "roundness": {
+                "type": 3,
+                "value": 18
+            },
+            "groupIds": [
+                "filters-group"
+            ],
+            "boundElements": []
+        },
+        {
+            "id": "filter-data",
+            "type": "rectangle",
+            "x": 705,
+            "y": 490,
+            "width": 60,
+            "height": 36,
+            "strokeColor": "#e0e0e0",
+            "backgroundColor": "#f5f5f5",
+            "fillStyle": "solid",
+            "strokeWidth": 1,
+            "roughness": 0,
+            "opacity": 100,
+            "roundness": {
+                "type": 3,
+                "value": 18
+            },
+            "groupIds": [
+                "filters-group"
+            ],
+            "boundElements": []
+        },
+        {
+            "id": "filter-security",
+            "type": "rectangle",
+            "x": 785,
+            "y": 490,
+            "width": 80,
+            "height": 36,
+            "strokeColor": "#e0e0e0",
+            "backgroundColor": "#f5f5f5",
+            "fillStyle": "solid",
+            "strokeWidth": 1,
+            "roughness": 0,
+            "opacity": 100,
+            "roundness": {
+                "type": 3,
+                "value": 18
+            },
+            "groupIds": [
+                "filters-group"
+            ],
+            "boundElements": []
+        },
+        {
+            "id": "skill-card-1",
+            "type": "rectangle",
+            "x": 100,
+            "y": 560,
+            "width": 260,
+            "height": 140,
+            "strokeColor": "#e0e0e0",
+            "backgroundColor": "#ffffff",
+            "fillStyle": "solid",
+            "strokeWidth": 1,
+            "roughness": 0,
+            "opacity": 100,
+            "roundness": {
+                "type": 3,
+                "value": 12
+            },
+            "groupIds": [
+                "card-1-group"
+            ],
+            "boundElements": []
+        },
+        {
+            "id": "skill-icon-1",
+            "type": "rectangle",
+            "x": 120,
+            "y": 580,
+            "width": 48,
+            "height": 48,
+            "strokeColor": "#9B4F96",
+            "backgroundColor": "#f3e5f5",
+            "fillStyle": "solid",
+            "strokeWidth": 2,
+            "roughness": 0,
+            "opacity": 100,
+            "roundness": {
+                "type": 3,
+                "value": 8
+            },
+            "groupIds": [
+                "card-1-group"
+            ],
+            "boundElements": []
+        },
+        {
+            "id": "skill-name-1",
+            "type": "text",
+            "x": 180,
+            "y": 585,
+            "width": 40,
+            "height": 24,
+            "text": "C#",
+            "fontSize": 20,
+            "fontFamily": 3,
+            "textAlign": "left",
+            "verticalAlign": "top",
+            "strokeColor": "#1e1e1e",
+            "groupIds": [
+                "card-1-group"
+            ],
+            "boundElements": []
+        },
+        {
+            "id": "skill-tag-1",
+            "type": "rectangle",
+            "x": 180,
+            "y": 612,
+            "width": 70,
+            "height": 20,
+            "strokeColor": "#e0e0e0",
+            "backgroundColor": "#f5f5f5",
+            "fillStyle": "solid",
+            "strokeWidth": 1,
+            "roughness": 0,
+            "opacity": 100,
+            "roundness": {
+                "type": 3,
+                "value": 10
+            },
+            "groupIds": [
+                "card-1-group"
+            ],
+            "boundElements": []
+        },
+        {
+            "id": "skill-bar-bg-1",
+            "type": "rectangle",
+            "x": 120,
+            "y": 650,
+            "width": 220,
+            "height": 12,
+            "strokeColor": "transparent",
+            "backgroundColor": "#e0e0e0",
+            "fillStyle": "solid",
+            "strokeWidth": 0,
+            "roughness": 0,
+            "opacity": 100,
+            "roundness": {
+                "type": 3,
+                "value": 6
+            },
+            "groupIds": [
+                "card-1-group"
+            ],
+            "boundElements": []
+        },
+        {
+            "id": "skill-bar-fill-1",
+            "type": "rectangle",
+            "x": 120,
+            "y": 650,
+            "width": 200,
+            "height": 12,
+            "strokeColor": "transparent",
+            "backgroundColor": "#e94560",
+            "fillStyle": "solid",
+            "strokeWidth": 0,
+            "roughness": 0,
+            "opacity": 100,
+            "roundness": {
+                "type": 3,
+                "value": 6
+            },
+            "groupIds": [
+                "card-1-group"
+            ],
+            "boundElements": []
+        },
+        {
+            "id": "skill-years-1",
+            "type": "text",
+            "x": 120,
+            "y": 670,
+            "width": 80,
+            "height": 16,
+            "text": "10+ years",
+            "fontSize": 12,
+            "fontFamily": 1,
+            "textAlign": "left",
+            "verticalAlign": "top",
+            "strokeColor": "#757575",
+            "groupIds": [
+                "card-1-group"
+            ],
+            "boundElements": []
+        },
+        {
+            "id": "skill-card-2",
+            "type": "rectangle",
+            "x": 380,
+            "y": 560,
+            "width": 260,
+            "height": 140,
+            "strokeColor": "#e0e0e0",
+            "backgroundColor": "#ffffff",
+            "fillStyle": "solid",
+            "strokeWidth": 1,
+            "roughness": 0,
+            "opacity": 100,
+            "roundness": {
+                "type": 3,
+                "value": 12
+            },
+            "groupIds": [
+                "card-2-group"
+            ],
+            "boundElements": []
+        },
+        {
+            "id": "skill-icon-2",
+            "type": "rectangle",
+            "x": 400,
+            "y": 580,
+            "width": 48,
+            "height": 48,
+            "strokeColor": "#F0DB4F",
+            "backgroundColor": "#fffde7",
+            "fillStyle": "solid",
+            "strokeWidth": 2,
+            "roughness": 0,
+            "opacity": 100,
+            "roundness": {
+                "type": 3,
+                "value": 8
+            },
+            "groupIds": [
+                "card-2-group"
+            ],
+            "boundElements": []
+        },
+        {
+            "id": "skill-name-2",
+            "type": "text",
+            "x": 460,
+            "y": 585,
+            "width": 100,
+            "height": 24,
+            "text": "JavaScript",
+            "fontSize": 20,
+            "fontFamily": 3,
+            "textAlign": "left",
+            "verticalAlign": "top",
+            "strokeColor": "#1e1e1e",
+            "groupIds": [
+                "card-2-group"
+            ],
+            "boundElements": []
+        },
+        {
+            "id": "skill-bar-bg-2",
+            "type": "rectangle",
+            "x": 400,
+            "y": 650,
+            "width": 220,
+            "height": 12,
+            "strokeColor": "transparent",
+            "backgroundColor": "#e0e0e0",
+            "fillStyle": "solid",
+            "strokeWidth": 0,
+            "roughness": 0,
+            "opacity": 100,
+            "roundness": {
+                "type": 3,
+                "value": 6
+            },
+            "groupIds": [
+                "card-2-group"
+            ],
+            "boundElements": []
+        },
+        {
+            "id": "skill-bar-fill-2",
+            "type": "rectangle",
+            "x": 400,
+            "y": 650,
+            "width": 180,
+            "height": 12,
+            "strokeColor": "transparent",
+            "backgroundColor": "#e94560",
+            "fillStyle": "solid",
+            "strokeWidth": 0,
+            "roughness": 0,
+            "opacity": 100,
+            "roundness": {
+                "type": 3,
+                "value": 6
+            },
+            "groupIds": [
+                "card-2-group"
+            ],
+            "boundElements": []
+        },
+        {
+            "id": "skill-years-2",
+            "type": "text",
+            "x": 400,
+            "y": 670,
+            "width": 80,
+            "height": 16,
+            "text": "8+ years",
+            "fontSize": 12,
+            "fontFamily": 1,
+            "textAlign": "left",
+            "verticalAlign": "top",
+            "strokeColor": "#757575",
+            "groupIds": [
+                "card-2-group"
+            ],
+            "boundElements": []
+        },
+        {
+            "id": "skill-card-3",
+            "type": "rectangle",
+            "x": 660,
+            "y": 560,
+            "width": 260,
+            "height": 140,
+            "strokeColor": "#e0e0e0",
+            "backgroundColor": "#ffffff",
+            "fillStyle": "solid",
+            "strokeWidth": 1,
+            "roughness": 0,
+            "opacity": 100,
+            "roundness": {
+                "type": 3,
+                "value": 12
+            },
+            "groupIds": [
+                "card-3-group"
+            ],
+            "boundElements": []
+        },
+        {
+            "id": "skill-icon-3",
+            "type": "rectangle",
+            "x": 680,
+            "y": 580,
+            "width": 48,
+            "height": 48,
+            "strokeColor": "#3178C6",
+            "backgroundColor": "#e3f2fd",
+            "fillStyle": "solid",
+            "strokeWidth": 2,
+            "roughness": 0,
+            "opacity": 100,
+            "roundness": {
+                "type": 3,
+                "value": 8
+            },
+            "groupIds": [
+                "card-3-group"
+            ],
+            "boundElements": []
+        },
+        {
+            "id": "skill-name-3",
+            "type": "text",
+            "x": 740,
+            "y": 585,
+            "width": 100,
+            "height": 24,
+            "text": "TypeScript",
+            "fontSize": 20,
+            "fontFamily": 3,
+            "textAlign": "left",
+            "verticalAlign": "top",
+            "strokeColor": "#1e1e1e",
+            "groupIds": [
+                "card-3-group"
+            ],
+            "boundElements": []
+        },
+        {
+            "id": "skill-bar-bg-3",
+            "type": "rectangle",
+            "x": 680,
+            "y": 650,
+            "width": 220,
+            "height": 12,
+            "strokeColor": "transparent",
+            "backgroundColor": "#e0e0e0",
+            "fillStyle": "solid",
+            "strokeWidth": 0,
+            "roughness": 0,
+            "opacity": 100,
+            "roundness": {
+                "type": 3,
+                "value": 6
+            },
+            "groupIds": [
+                "card-3-group"
+            ],
+            "boundElements": []
+        },
+        {
+            "id": "skill-bar-fill-3",
+            "type": "rectangle",
+            "x": 680,
+            "y": 650,
+            "width": 154,
+            "height": 12,
+            "strokeColor": "transparent",
+            "backgroundColor": "#e94560",
+            "fillStyle": "solid",
+            "strokeWidth": 0,
+            "roughness": 0,
+            "opacity": 100,
+            "roundness": {
+                "type": 3,
+                "value": 6
+            },
+            "groupIds": [
+                "card-3-group"
+            ],
+            "boundElements": []
+        },
+        {
+            "id": "skill-years-3",
+            "type": "text",
+            "x": 680,
+            "y": 670,
+            "width": 80,
+            "height": 16,
+            "text": "5+ years",
+            "fontSize": 12,
+            "fontFamily": 1,
+            "textAlign": "left",
+            "verticalAlign": "top",
+            "strokeColor": "#757575",
+            "groupIds": [
+                "card-3-group"
+            ],
+            "boundElements": []
+        },
+        {
+            "id": "skill-card-4",
+            "type": "rectangle",
+            "x": 100,
+            "y": 720,
+            "width": 260,
+            "height": 140,
+            "strokeColor": "#e0e0e0",
+            "backgroundColor": "#ffffff",
+            "fillStyle": "solid",
+            "strokeWidth": 1,
+            "roughness": 0,
+            "opacity": 100,
+            "roundness": {
+                "type": 3,
+                "value": 12
+            },
+            "groupIds": [
+                "card-4-group"
+            ],
+            "boundElements": []
+        },
+        {
+            "id": "skill-card-5",
+            "type": "rectangle",
+            "x": 380,
+            "y": 720,
+            "width": 260,
+            "height": 140,
+            "strokeColor": "#e0e0e0",
+            "backgroundColor": "#ffffff",
+            "fillStyle": "solid",
+            "strokeWidth": 1,
+            "roughness": 0,
+            "opacity": 100,
+            "roundness": {
+                "type": 3,
+                "value": 12
+            },
+            "groupIds": [
+                "card-5-group"
+            ],
+            "boundElements": []
+        },
+        {
+            "id": "skill-card-6",
+            "type": "rectangle",
+            "x": 660,
+            "y": 720,
+            "width": 260,
+            "height": 140,
+            "strokeColor": "#e0e0e0",
+            "backgroundColor": "#ffffff",
+            "fillStyle": "solid",
+            "strokeWidth": 1,
+            "roughness": 0,
+            "opacity": 100,
+            "roundness": {
+                "type": 3,
+                "value": 12
+            },
+            "groupIds": [
+                "card-6-group"
+            ],
+            "boundElements": []
+        },
+        {
+            "id": "stats-footer",
+            "type": "rectangle",
+            "x": 100,
+            "y": 900,
+            "width": 820,
+            "height": 40,
+            "strokeColor": "transparent",
+            "backgroundColor": "#f5f5f5",
+            "fillStyle": "solid",
+            "strokeWidth": 0,
+            "roughness": 0,
+            "opacity": 100,
+            "roundness": {
+                "type": 3,
+                "value": 8
+            },
+            "groupIds": [],
+            "boundElements": []
+        },
+        {
+            "id": "stats-text",
+            "type": "text",
+            "x": 120,
+            "y": 912,
+            "width": 400,
+            "height": 16,
+            "text": "Showing 24 skills across 8 categories • 10+ years experience",
+            "fontSize": 14,
+            "fontFamily": 1,
+            "textAlign": "left",
+            "verticalAlign": "top",
+            "strokeColor": "#757575",
+            "groupIds": [],
+            "boundElements": []
+        },
+        {
+            "id": "annotation-hero",
+            "type": "text",
+            "x": 1020,
+            "y": 180,
+            "width": 160,
+            "height": 60,
+            "text": "← Creative Hero\nDark bg + code\ndeco elements",
+            "fontSize": 12,
+            "fontFamily": 1,
+            "textAlign": "left",
+            "verticalAlign": "top",
+            "strokeColor": "#e94560",
+            "groupIds": [],
+            "boundElements": []
+        },
+        {
+            "id": "annotation-search",
+            "type": "text",
+            "x": 1020,
+            "y": 400,
+            "width": 160,
+            "height": 40,
+            "text": "← Real-time\nfuzzy search",
+            "fontSize": 12,
+            "fontFamily": 1,
+            "textAlign": "left",
+            "verticalAlign": "top",
+            "strokeColor": "#e94560",
+            "groupIds": [],
+            "boundElements": []
+        },
+        {
+            "id": "annotation-filters",
+            "type": "text",
+            "x": 1020,
+            "y": 490,
+            "width": 160,
+            "height": 40,
+            "text": "← Category pills\nHoriz scroll mobile",
+            "fontSize": 12,
+            "fontFamily": 1,
+            "textAlign": "left",
+            "verticalAlign": "top",
+            "strokeColor": "#e94560",
+            "groupIds": [],
+            "boundElements": []
+        },
+        {
+            "id": "annotation-cards",
+            "type": "text",
+            "x": 1020,
+            "y": 600,
+            "width": 160,
+            "height": 60,
+            "text": "← Skill cards\nIcon + name +\nprogress + years",
+            "fontSize": 12,
+            "fontFamily": 1,
+            "textAlign": "left",
+            "verticalAlign": "top",
+            "strokeColor": "#e94560",
+            "groupIds": [],
+            "boundElements": []
+        }
+    ],
+    "appState": {
+        "viewBackgroundColor": "#ffffff",
+        "gridSize": 20
+    }
+}
