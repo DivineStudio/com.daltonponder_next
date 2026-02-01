@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { IBM_Plex_Mono, IBM_Plex_Sans, IBM_Plex_Serif } from "next/font/google";
 import { ThemeProvider } from "next-themes";
+import { EasterEggOverlay } from "./components/ui/EasterEgg";
 import "./globals.css";
 
 const plexMono = IBM_Plex_Mono({
@@ -76,6 +77,7 @@ export default function RootLayout({
           Skip to main content
         </a>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+          <EasterEggOverlay />
           {children}
         </ThemeProvider>
       </body>

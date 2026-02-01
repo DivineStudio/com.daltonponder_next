@@ -17,6 +17,7 @@ const testimonials = [
         author: "Sarah Johnson",
         title: "VP Engineering",
         company: "TechCorp",
+        context: "6-month enterprise platform migration",
         featured: true,
     },
     {
@@ -26,6 +27,7 @@ const testimonials = [
         author: "Michael Chen",
         title: "CTO",
         company: "StartupXYZ",
+        context: "Full-stack development for MVP launch",
         featured: false,
     },
     {
@@ -35,6 +37,7 @@ const testimonials = [
         author: "Emily Rodriguez",
         title: "Project Manager",
         company: "SecureTech",
+        context: "Security audit and remediation project",
         featured: false,
     },
     {
@@ -44,6 +47,7 @@ const testimonials = [
         author: "David Kim",
         title: "Director of Engineering",
         company: "CloudFirst",
+        context: "Cloud architecture consulting",
         featured: false,
     },
 ];
@@ -152,6 +156,11 @@ export function TestimonialsSection({ summary = true }: TestimonialsSectionProps
                                         <p className="text-sm text-muted">
                                             {currentFeatured.title}, {currentFeatured.company}
                                         </p>
+                                        {currentFeatured.context && (
+                                            <p className="text-xs text-accent mt-1 font-mono">
+                                                📋 {currentFeatured.context}
+                                            </p>
+                                        )}
                                     </div>
                                 </div>
                             </motion.div>
@@ -173,6 +182,11 @@ export function TestimonialsSection({ summary = true }: TestimonialsSectionProps
                                 transition={{ delay: index * 0.1 }}
                                 className="bento-card"
                             >
+                                {testimonial.context && (
+                                    <p className="text-xs text-accent font-mono mb-2">
+                                        📋 {testimonial.context}
+                                    </p>
+                                )}
                                 <blockquote className="text-sm mb-4 italic">
                                     &ldquo;{testimonial.quote}&rdquo;
                                 </blockquote>

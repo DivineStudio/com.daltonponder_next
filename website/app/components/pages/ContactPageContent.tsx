@@ -259,6 +259,25 @@ export function ContactPageContent() {
                             </div>
                         </motion.div>
                     </div>
+
+                    {/* Signature Sign-Off */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="mt-16 text-center"
+                    >
+                        <div className="max-w-xl mx-auto">
+                            <p className="font-serif text-2xl md:text-3xl italic text-muted mb-4">
+                                &ldquo;Build it secure, ship it fast, make it last.&rdquo;
+                            </p>
+                            <div className="flex items-center justify-center gap-2 text-accent font-mono">
+                                <span className="w-8 h-px bg-accent" />
+                                <span>Dalton Ponder</span>
+                                <span className="w-8 h-px bg-accent" />
+                            </div>
+                        </div>
+                    </motion.div>
                 </div>
             </section>
         </>

@@ -3,6 +3,7 @@
 import { motion } from "motion/react";
 import { Icon } from "@iconify/react";
 import Link from "next/link";
+import { PhilosophyQuote } from "../ui/PhilosophyQuote";
 
 // Timeline eras data
 const eras = [
@@ -186,6 +187,9 @@ export function AboutPageContent() {
                             </div>
                         </motion.div>
                     </div>
+
+                    {/* Philosophy Quote */}
+                    <PhilosophyQuote className="mt-6 max-w-2xl mx-auto" />
                 </div>
             </section>
 
