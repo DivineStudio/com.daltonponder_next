@@ -35,52 +35,67 @@ The portfolio site currently reuses the same components (with `summary={true/fal
 
 ---
 
-### 2. About Page 🔲 NOT STARTED
+**Status**: Wireframing in progress
 
-**Concept**: "The Journey" – narrative arc experience
+**Design Decisions**:
+| Decision | Choice |
+|----------|--------|
+| Timeline Style | Abstract "Era-based" flow (e.g., "The Startup Years") |
+| Personal Content | Professional + Personal blend (mock data for now) |
+| Testimonials | Large single quotes (high impact) |
 
-**Proposed Features**:
-- Timeline experience (career milestones, education, key moments)
-- Dual-persona layout (Professional vs Personal columns)
-- Testimonials carousel (larger quotes, context)
+**Wireframe**: [about-page-wireframe.excalidraw](file:///c:/Repos/com.daltonponder_next/_bmad-output/excalidraw-diagrams/about-page-wireframe.excalidraw)
 
-**To Discuss**:
-- [ ] Timeline data structure (abstract vs real dates)
-- [ ] What to include in Professional vs Personal sections
-- [ ] Testimonial presentation style
+**Layout Structure**:
+1. Hero: "The Journey" narrative intro
+2. Dual-Column Bio: Professional vs. Personal highlights
+3. Abstract Timeline: Vertical eras with key milestones
+4. Testimonials: Large carousel with focus on impact
+5. Call to Action: Link to Contact page
 
 ---
 
-### 3. Credentials Page 🔲 NOT STARTED
+### 3. Credentials Page 🔄 WIREFRAMING
 
 **Concept**: "Proof of Excellence" – credibility showcase
 
-**Proposed Features**:
-- Education section (full degree details, institutions, focus areas)
-- Certification cards (logos, validity, skills verified)
-- Experience highlights (notable employers/projects)
+**Design Decisions**:
+| Decision | Choice |
+|----------|--------|
+| Work Experience | Resume-style list (Title, Company, Dates, Bullets) |
+| Certifications | Stylized CSS cards (no Credly images) |
+| Education | Degree + University + Notable Coursework only |
 
-**To Discuss**:
-- [ ] Education details to display
-- [ ] Certification badge styling
-- [ ] Whether to include work experience timeline
+**Wireframe**: [credentials-page-wireframe.excalidraw](file:///c:/Repos/com.daltonponder_next/_bmad-output/excalidraw-diagrams/credentials-page-wireframe.excalidraw)
+
+**Layout Structure**:
+1. Hero: "Proof of Excellence" with credentials summary stats
+2. Work Experience: Vertical timeline with role cards
+3. Education: Degree card with highlighted coursework tags
+4. Certifications: Grid of stylized badge cards
+5. CTA: Download resume / Contact
 
 ---
 
-### 4. Contact Page 🔲 NOT STARTED
+### 4. Contact Page 🔄 WIREFRAMING
 
 **Concept**: "Let's Build Something" – warm welcome mat
 
-**Proposed Features**:
-- Hero with personalized call-to-action
-- Availability indicator (open to: freelance/full-time/consulting)
-- Response time expectation
-- Multiple contact paths (form, email, calendar booking)
+**Design Decisions**:
+| Decision | Choice |
+|----------|--------|
+| Availability | Show open types (Freelance, Full-Time, Consulting) |
+| Contact Methods | Form + Direct Email link |
+| Response Time | Display expected response time |
 
-**To Discuss**:
-- [ ] Current availability to display
-- [ ] Calendar booking integration (if any)
-- [ ] Preferred contact hierarchy
+**Wireframe**: [contact-page-wireframe.excalidraw](file:///c:/Repos/com.daltonponder_next/_bmad-output/excalidraw-diagrams/contact-page-wireframe.excalidraw)
+
+**Layout Structure**:
+1. Hero: "Let's Build Something" with personalized CTA
+2. Availability Card: Open to types + response time
+3. Contact Form: Name, Email, Message fields
+4. Direct Email: Alternative contact path
+5. Social Links: GitHub, LinkedIn, etc.
 
 ---
 
@@ -88,10 +103,10 @@ The portfolio site currently reuses the same components (with `summary={true/fal
 
 | Page | Discuss | Decisions | Wireframe | Review | Implement |
 |------|:-------:|:---------:|:---------:|:------:|:---------:|
-| Skills | ✅ | ✅ | ✅ | 🔲 | 🔲 |
-| About | 🔲 | 🔲 | 🔲 | 🔲 | 🔲 |
-| Credentials | 🔲 | 🔲 | 🔲 | 🔲 | 🔲 |
-| Contact | 🔲 | 🔲 | 🔲 | 🔲 | 🔲 |
+| Skills | ✅ | ✅ | ✅ | ✅ | 🔲 |
+| About | ✅ | ✅ | ✅ | ✅ | 🔲 |
+| Credentials | ✅ | ✅ | ✅ | ✅ | 🔲 |
+| Contact | ✅ | ✅ | ✅ | ✅ | 🔲 |
 
 ---
 

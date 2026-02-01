@@ -1,19 +1,18 @@
----
-title: 'Professional Portfolio Website Migration to Next.js'
-slug: 'nextjs-portfolio-migration'
-created: '2026-01-30'
-status: 'complete'
-stepsCompleted: [1, 2, 3, 4, 5, 6]
-tech_stack: ['Next.js 14+', 'React 18+', 'TypeScript', 'Tailwind CSS', 'next-intl', 'next-themes', 'Motion for React', 'Iconify']
-files_to_modify: []
-code_patterns: ['App Router', 'Server Components', 'Client Components', 'CSS Variables', 'i18n routing', 'Bento Grid', 'Motion animations']
+title: 'Professional Portfolio Upgrade to Next.js 15 & React 19'
+slug: 'nextjs-15-upgrade'
+created: '2026-02-01'
+status: 'ready-for-dev'
+stepsCompleted: [1, 2, 3, 4]
+tech_stack: ['Next.js 15', 'React 19', 'TypeScript', 'Tailwind CSS', 'next-intl', 'next-themes', 'Motion for React', 'Iconify']
+files_to_modify: ['package.json', 'next.config.mjs', 'app/**/*']
+code_patterns: ['React 19 Actions', 'Async Request APIs', 'React Compiler', 'Server Components']
 test_patterns: []
 ---
 
-# Tech-Spec: Professional Portfolio Website Migration to Next.js
+# Tech-Spec: Professional Portfolio Upgrade to Next.js 15 & React 19
 
-**Created:** 2026-01-30  
-**Updated:** 2026-01-30 (Party Mode design decisions finalized)
+**Created:** 2026-02-01
+**Updated:** 2026-02-01
 
 ---
 
@@ -21,16 +20,15 @@ test_patterns: []
 
 ### Problem Statement
 
-Dalton needs a new professional portfolio website built with React/Next.js to replace the existing Nuxt.js site. The new site should maintain the same brand colors, bilingual functionality (English/Spanish), and content, but with a fresh, creative, and professional design.
+The current portfolio is built on Next.js 14 and React 18. To stay on the bleeding edge and leverage new performance features (React Compiler, Server Actions improvements), the user wants to update to Next.js 15 and React 19.
 
 ### Solution
 
-Build a completely new Next.js website with a sophisticated design system featuring:
-- Bento Grid layouts as the primary design pattern
-- IBM Plex font family (Mono/Sans/Serif) for a developer-focused aesthetic
-- Motion for React animations with a balanced, purposeful philosophy
-- Tabler Icons via Iconify for consistent iconography
-- Light/dark theme with Transparent → Solid navbar behavior
+Upgrade project dependencies to latest stable versions of Next.js 15 and React 19, including related libraries (next-themes, next-intl). Address all breaking changes:
+- Migration to Async Request APIs (headers, cookies, params, searchParams)
+- React 19 hydration error fixes and component compatibility
+- Caching behavior updates (GET requests no longer cached by default)
+- TypeScript error resolution for new typings
 
 ---
 
@@ -396,18 +394,18 @@ app/
 ```json
 {
   "dependencies": {
-    "next": "14.x",
-    "react": "18.x",
-    "react-dom": "18.x",
-    "next-intl": "^3.x",
-    "next-themes": "^0.x",
-    "motion": "^11.x",
-    "@iconify/react": "^5.x",
+    "next": "15.x",
+    "react": "19.x",
+    "react-dom": "19.x",
+    "next-intl": "latest",
+    "next-themes": "latest",
+    "motion": "latest",
+    "@iconify/react": "latest",
     "tailwindcss": "^3.4.x"
   },
   "devDependencies": {
     "typescript": "^5.x",
-    "@types/react": "^18.x",
+    "@types/react": "19.x",
     "@types/node": "^20.x"
   }
 }
@@ -441,48 +439,30 @@ const plexSerif = IBM_Plex_Serif({
 
 ## Implementation Phases
 
-### Phase 1: Project Setup
-- [x] Initialize Next.js with TypeScript, Tailwind, App Router
-- [x] Configure IBM Plex fonts via `next/font`
-- [x] Set up CSS variables for colors and type scale
-- [x] Configure `next-themes` for light/dark mode
-- [x] Configure `next-intl` for i18n
-- [x] Install Motion for React and Iconify
+### Phase 1: Dependency Updates
+- [ ] Stop running servers
+- [ ] Update `package.json` to React 19 / Next 15 / related deps
+- [ ] Run `npm install` (using `--force` or `--legacy-peer-deps` only if strictly necessary, prefer resolving)
+- [ ] Verify `next.config.mjs` compatibility
 
-### Phase 2: UX Design Review
-- [x] UX Designer creates wireframes based on this spec
-- [x] User reviews and approves designs
-- [x] Finalize any micro-adjustments
+### Phase 2: React 19 Migration
+- [ ] Check for removed APIs (propTypes, defaultProps in function components)
+- [ ] Verify Client/Server component directives
+- [ ] Fix any hydration mismatches caused by new React 19 rendering logic
 
-### Phase 3: Core Components
-- [x] BentoGrid reusable component
-- [x] Marquee component (CSS animation)
-- [x] Navbar with Transparent → Solid behavior
-- [x] ThemeToggler component
-- [x] LanguageToggler component
-- [x] Footer component
+### Phase 3: Next.js 15 Breaking Changes
+- [ ] **Async Request APIs**: Update all `params`, `searchParams`, `headers()`, `cookies()` usages to be `await`ed.
+    - Check Layouts (`params`)
+    - Check Pages (`params`, `searchParams`)
+    - Check API routes
+- [ ] **Caching**: Verify `fetch` behavior (default is now `no-store`). Add `cache: 'force-cache'` where static generation is required.
+- [ ] **Route Handlers**: Verify `GET` handlers caching behavior.
 
-### Phase 4: Section Components
-- [x] HeroSection (Bento)
-- [x] CredentialsSection (Bento, summary/full props)
-- [x] SkillsSection (Bento + Marquee)
-- [x] TestimonialsSection (Spotlight + Grid)
-- [x] ProAboutSection (Accent Break)
-- [x] PersonalAboutSection (Bento)
-- [x] ContactSection (Bento + Form)
-
-### Phase 5: Pages & Routing
-- [x] Home page assembly
-- [x] About page
-- [x] Skills page
-- [x] Credentials page
-- [x] Contact page
-
-### Phase 6: Polish
-- [x] SEO meta tags (enhanced with Twitter cards, metadataBase, robots)
-- [x] Accessibility audit (visual inspection passed)
-- [x] Performance optimization (production build validated)
-- [x] Cross-browser testing (manual verification recommended)
+### Phase 4: Third-Party Libs & Polish
+- [ ] Update `next-intl` (breaking changes in navigation/middleware often occur with Next updates)
+- [ ] Update `next-themes` (ensure ThemeProvider is Client Component)
+- [ ] Run full build `npm run build`
+- [ ] Verify start `npm run start`
 
 ---
 
@@ -531,9 +511,66 @@ All content should be migrated from the existing `DivineStudio/com.daltonponder_
 
 ---
 
+## UX Wireframes (Completed)
+
+> [!NOTE]
+> All 4 detail page wireframes have been designed and approved. See [ux-design-variants-plan.md](file:///c:/Repos/com.daltonponder_next/_bmad-output/planning-artifacts/ux-design-variants-plan.md) for full design decisions.
+
+### Skills Page
+**Wireframe:** [skills-page-wireframe.excalidraw](file:///c:/Repos/com.daltonponder_next/_bmad-output/excalidraw-diagrams/skills-page-wireframe.excalidraw)
+
+| Section | Description |
+|---------|-------------|
+| Hero | "Developer Console" aesthetic, dark bg, code decoration |
+| Search/Filter | Search bar + category filter buttons |
+| Skills Grid | 3-column card grid with hover micro-interactions |
+| CTA | Link to Credentials page |
+
+---
+
+### About Page
+**Wireframe:** [about-page-wireframe.excalidraw](file:///c:/Repos/com.daltonponder_next/_bmad-output/excalidraw-diagrams/about-page-wireframe.excalidraw)
+
+| Section | Description |
+|---------|-------------|
+| Hero | Dark hero with avatar, narrative subtitle |
+| Bio Cards | Dual-column: Professional + Personal |
+| Timeline | Abstract "Era-based" flow (Startup Years, Enterprise Scale, Craft Era, Now) |
+| Testimonials | Large single-quote spotlight with carousel |
+| CTA | Contact page link |
+
+---
+
+### Credentials Page
+**Wireframe:** [credentials-page-wireframe.excalidraw](file:///c:/Repos/com.daltonponder_next/_bmad-output/excalidraw-diagrams/credentials-page-wireframe.excalidraw)
+
+| Section | Description |
+|---------|-------------|
+| Hero | "Proof of Excellence" + summary stats (Years Exp, Certs, Degree) |
+| Work Experience | Vertical timeline, resume-style cards (Title, Company, Dates, Bullets) |
+| Education | Degree card with notable coursework tags |
+| Certifications | 3-column grid of stylized CSS cards |
+| CTA | Download CV + Contact buttons |
+
+---
+
+### Contact Page
+**Wireframe:** [contact-page-wireframe.excalidraw](file:///c:/Repos/com.daltonponder_next/_bmad-output/excalidraw-diagrams/contact-page-wireframe.excalidraw)
+
+| Section | Description |
+|---------|-------------|
+| Hero | "Let's Build Something" with availability card |
+| Availability | Open to: Freelance / Full-Time / Consulting tags |
+| Response Time | Green indicator "Usually responds within 24 hours" |
+| Contact Form | Name, Email, Message + CTA button |
+| Direct Email | Alternative contact path card |
+| Social Links | GitHub, LinkedIn, X icons |
+
+---
+
 ## Next Steps
 
-1. **UX Designer Agent** → Create wireframes based on this spec
-2. **User Review** → Approve wireframes
-3. **Quick Dev Workflow** → Implement the site
+1. ~~**UX Designer Agent** → Create wireframes based on this spec~~ ✅
+2. ~~**User Review** → Approve wireframes~~ ✅
+3. **Quick Flow Solo Dev** → Implement the site
 4. **Deploy** → Launch!
