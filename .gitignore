@@ -66,8 +66,6 @@ Thumbs.db
 # ===================
 # BMAD Framework
 # ===================
-# Ignore BMAD methodology (can be reinstalled)
-_bmad/
 
 # Track _bmad-output/ for approved artifacts
 # Only ignore work-in-progress subdirectory
