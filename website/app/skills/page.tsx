@@ -1,6 +1,6 @@
 import { Navbar } from "../components/layout/Navbar";
 import { Footer } from "../components/layout/Footer";
-import { SkillsSection } from "../components/sections/SkillsSection";
+import { SkillsPageContent } from "../components/pages/SkillsPageContent";
 
 export const metadata = {
     title: "Skills | Dalton Ponder",
@@ -12,8 +12,8 @@ export default function SkillsPage() {
     return (
         <>
             <Navbar />
-            <main id="main-content" className="pt-20">
-                <SkillsSection summary={false} />
+            <main id="main-content">
+                <SkillsPageContent />
             </main>
             <Footer />
         </>

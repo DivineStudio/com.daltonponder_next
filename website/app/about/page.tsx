@@ -1,8 +1,6 @@
 import { Navbar } from "../components/layout/Navbar";
 import { Footer } from "../components/layout/Footer";
-import { ProAboutSection } from "../components/sections/ProAboutSection";
-import { PersonalAboutSection } from "../components/sections/PersonalAboutSection";
-import { TestimonialsSection } from "../components/sections/TestimonialsSection";
+import { AboutPageContent } from "../components/pages/AboutPageContent";
 
 export const metadata = {
     title: "About | Dalton Ponder",
@@ -14,12 +12,11 @@ export default function AboutPage() {
     return (
         <>
             <Navbar />
-            <main id="main-content" className="pt-20">
-                <ProAboutSection summary={false} />
-                <PersonalAboutSection summary={false} />
-                <TestimonialsSection summary={false} />
+            <main id="main-content">
+                <AboutPageContent />
             </main>
             <Footer />
         </>
     );
 }
+

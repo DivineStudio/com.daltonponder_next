@@ -21,7 +21,7 @@ export function Navbar() {
 
     useEffect(() => {
         const handleScroll = () => {
-            setIsScrolled(window.scrollY > 100);
+            setIsScrolled(window.scrollY > 20);
         };
 
         window.addEventListener("scroll", handleScroll);
@@ -84,6 +84,7 @@ export function Navbar() {
                     </button>
                 </nav>
             </motion.header>
+
 
             {/* Mobile Menu Overlay */}
             <AnimatePresence>

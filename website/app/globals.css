@@ -25,6 +25,12 @@
   --background: var(--color-base-100);
   --foreground: var(--color-base-content);
 
+  /* Hero Colors */
+  --color-hero-bg: var(--color-secondary);
+  --color-hero-text: var(--color-primary);
+  --color-hero-muted: var(--color-base-muted);
+  --color-hero-accent: var(--color-accent);
+
   /* Component Colors */
   --card-bg: #ffffff;
   --card-border: #e0e0e0;
@@ -48,6 +54,12 @@
 
   --background: var(--color-base-100);
   --foreground: var(--color-base-content);
+
+  /* Hero Colors - Dark Mode */
+  --color-hero-bg: #1a1a2e;
+  --color-hero-text: #ffffff;
+  --color-hero-muted: #a0a0a0;
+  --color-hero-accent: #e94560;
 
   --card-bg: oklch(28% 0.016 252.42);
   --card-border: oklch(35% 0.016 252.42);
@@ -90,6 +102,12 @@
   --color-muted: var(--color-base-muted);
   --color-card: var(--card-bg);
   --color-card-border: var(--card-border);
+
+  /* Hero colors - these are theme-aware via CSS variable inheritance */
+  --color-hero-bg: var(--color-hero-bg);
+  --color-hero-text: var(--color-hero-text);
+  --color-hero-muted: var(--color-hero-muted);
+  --color-hero-accent: var(--color-hero-accent);
 
   --font-sans: var(--font-plex-sans);
   --font-mono: var(--font-plex-mono);
