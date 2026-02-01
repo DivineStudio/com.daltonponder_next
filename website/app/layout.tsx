@@ -75,7 +75,7 @@ export default function RootLayout({
         >
           Skip to main content
         </a>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
           {children}
         </ThemeProvider>
       </body>

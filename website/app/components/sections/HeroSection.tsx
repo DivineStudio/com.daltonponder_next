@@ -4,6 +4,7 @@ import { motion } from "motion/react";
 import { Icon } from "@iconify/react";
 import Link from "next/link";
 import { BentoCard, BentoGrid } from "../ui/BentoGrid";
+import { TerminalTyping } from "../ui/TerminalTyping";
 
 const skills = [
     {
@@ -32,6 +33,12 @@ const quickLinks = [
     { href: "https://github.com/daltonponder", label: "GitHub", icon: "tabler:brand-github" },
 ];
 
+const terminalLines = [
+    'dalton.init("fullstack", "security")',
+    "Loading expertise... ████████ 100%",
+    "Ready to build.",
+];
+
 export function HeroSection() {
     return (
         <section className="section min-h-screen flex items-center pt-24 md:pt-32" aria-labelledby="hero-heading">
@@ -40,9 +47,10 @@ export function HeroSection() {
                     {/* Main Intro Card - 2 cols, 2 rows */}
                     <BentoCard colSpan={2} rowSpan={2} delay={0} className="flex flex-col justify-center">
                         <p className="text-muted text-lg mb-2">Hi, I&apos;m</p>
-                        <h1 id="hero-heading" className="font-mono text-4xl md:text-5xl lg:text-6xl font-bold text-primary mb-6">
+                        <h1 id="hero-heading" className="font-mono text-4xl md:text-5xl lg:text-6xl font-bold text-primary mb-4">
                             DALTON PONDER
                         </h1>
+                        <TerminalTyping lines={terminalLines} className="mb-6" />
                         <p className="text-lg md:text-xl leading-relaxed mb-8 max-w-lg">
                             Full-stack developer and cybersecurity expert crafting secure,
                             scalable solutions.

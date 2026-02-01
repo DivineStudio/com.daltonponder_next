@@ -288,6 +288,22 @@ body {
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
+/* Navbar link colors - ensure sufficient contrast in light mode */
+.navbar-transparent a,
+.navbar-solid a {
+  color: var(--foreground);
+}
+
+:root .navbar-transparent a,
+:root .navbar-solid a {
+  color: #1a1a1a;
+}
+
+.dark .navbar-transparent a,
+.dark .navbar-solid a {
+  color: var(--foreground);
+}
+
 /* -----------------------------------------------------------------------------
    Section Backgrounds
    ----------------------------------------------------------------------------- */
@@ -357,4 +373,16 @@ body {
     padding-top: 6rem;
     padding-bottom: 6rem;
   }
+}
+
+/* -----------------------------------------------------------------------------
+   3D Flip Card Utilities
+   ----------------------------------------------------------------------------- */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.backface-hidden {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
