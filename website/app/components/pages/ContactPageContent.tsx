@@ -1,38 +1,40 @@
 "use client";
 import { useTranslations } from "next-intl";
-
 import { useState } from "react";
 import { motion } from "motion/react";
 import { Icon } from "@iconify/react";
+import { useForm, ValidationError } from "@formspree/react";
 
 export function ContactPageContent() {
     const t = useTranslations("Contact");
     const tHome = useTranslations("Home.ContactSection");
     const tNav = useTranslations("Navigation");
 
-    const availabilityOptions = t.raw("Availability.Options");
+    // Availability status defined in code (logic), labels from translations
+    const availabilityStatus = [
+        { key: "Freelance", available: true },
+        { key: "Full-Time", available: false },
+        { key: "Consulting", available: true },
+    ];
 
     // Social links using i18n
     const socialLinks = [
-        { name: t("Social.GitHub"), icon: "tabler:brand-github", url: "https://github.com" },
-        { name: t("Social.LinkedIn"), icon: "tabler:brand-linkedin", url: "https://linkedin.com" },
-        { name: t("Social.Twitter"), icon: "tabler:brand-x", url: "https://twitter.com" },
+        { name: t("Social.GitHub"), icon: "tabler:brand-github", url: "https://github.com/DivineStudio" },
+        { name: t("Social.LinkedIn"), icon: "tabler:brand-linkedin", url: "https://www.linkedin.com/in/dalton-ponder-99a96a131" },
     ];
+
+    // Formspree hook
+    const [state, handleSubmit, reset] = useForm(process.env.NEXT_PUBLIC_FORMSPREE_ID || "");
+
     const [formData, setFormData] = useState({
         name: "",
         email: "",
         message: "",
     });
-    const [isSubmitting, setIsSubmitting] = useState(false);
-    const [submitted, setSubmitted] = useState(false);
 
-    const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();
-        setIsSubmitting(true);
-        // Simulate form submission
-        await new Promise((resolve) => setTimeout(resolve, 1000));
-        setIsSubmitting(false);
-        setSubmitted(true);
+    const handleReset = () => {
+        reset();
+        setFormData({ name: "", email: "", message: "" });
     };
 
     return (
@@ -69,9 +71,9 @@ export function ContactPageContent() {
                         >
                             <p className="text-[var(--color-hero-muted)] text-sm mb-3">{t("Availability.Header")}</p>
                             <div className="flex flex-wrap gap-2">
-                                {availabilityOptions.map((option: { label: string; available: boolean }) => (
+                                {availabilityStatus.map((option) => (
                                     <span
-                                        key={option.label}
+                                        key={option.key}
                                         className={`px-3 py-1 rounded-full text-sm font-medium ${option.available
                                             ? "bg-green-500/20 text-green-700 dark:text-green-400"
                                             : "bg-[var(--color-primary)]/20 text-[var(--color-primary)]"
@@ -80,7 +82,7 @@ export function ContactPageContent() {
                                         {option.available && (
                                             <span className="inline-block w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse" />
                                         )}
-                                        {option.label}
+                                        {t(`Availability.Options.${option.key}`)}
                                     </span>
                                 ))}
                             </div>
@@ -110,7 +112,7 @@ export function ContactPageContent() {
                                 {tHome("Main.Header")}
                             </h2>
 
-                            {submitted ? (
+                            {state.succeeded ? (
                                 <motion.div
                                     initial={{ opacity: 0, scale: 0.9 }}
                                     animate={{ opacity: 1, scale: 1 }}
@@ -120,7 +122,13 @@ export function ContactPageContent() {
                                         <Icon icon="tabler:check" width={32} height={32} className="text-green-500" />
                                     </div>
                                     <h3 className="font-mono text-xl font-semibold mb-2">{tHome("Form.SuccessHeader")}</h3>
-                                    <p className="text-muted">{tHome("Form.SuccessMessage")}</p>
+                                    <p className="text-muted mb-6">{tHome("Form.SuccessMessage")}</p>
+                                    <button
+                                        onClick={handleReset}
+                                        className="btn-secondary text-sm"
+                                    >
+                                        Send Another Message
+                                    </button>
                                 </motion.div>
                             ) : (
                                 <form onSubmit={handleSubmit} className="space-y-6">
@@ -131,12 +139,14 @@ export function ContactPageContent() {
                                         <input
                                             type="text"
                                             id="name"
+                                            name="name"
                                             required
                                             value={formData.name}
                                             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                                             className="w-full px-4 py-3 rounded-xl bg-[var(--card-bg)] border border-[var(--card-border)] focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] transition-all"
                                             placeholder={t("Form.NamePlaceholder")}
                                         />
+                                        <ValidationError prefix="Name" field="name" errors={state.errors} />
                                     </div>
 
                                     <div>
@@ -146,12 +156,14 @@ export function ContactPageContent() {
                                         <input
                                             type="email"
                                             id="email"
+                                            name="email"
                                             required
                                             value={formData.email}
                                             onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                                             className="w-full px-4 py-3 rounded-xl bg-[var(--card-bg)] border border-[var(--card-border)] focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] transition-all"
                                             placeholder={t("Form.EmailPlaceholder")}
                                         />
+                                        <ValidationError prefix="Email" field="email" errors={state.errors} />
                                     </div>
 
                                     <div>
@@ -160,6 +172,7 @@ export function ContactPageContent() {
                                         </label>
                                         <textarea
                                             id="message"
+                                            name="message"
                                             required
                                             rows={5}
                                             value={formData.message}
@@ -167,14 +180,15 @@ export function ContactPageContent() {
                                             className="w-full px-4 py-3 rounded-xl bg-[var(--card-bg)] border border-[var(--card-border)] focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] transition-all resize-none"
                                             placeholder={t("Form.MessagePlaceholder")}
                                         />
+                                        <ValidationError prefix="Message" field="message" errors={state.errors} />
                                     </div>
 
                                     <button
                                         type="submit"
-                                        disabled={isSubmitting}
-                                        className="w-full btn-primary flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                                        disabled={state.submitting}
+                                        className="w-full btn-primary flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
                                     >
-                                        {isSubmitting ? (
+                                        {state.submitting ? (
                                             <>
                                                 <Icon icon="tabler:loader-2" width={20} height={20} className="animate-spin" />
                                                 {tHome("Form.Sending")}

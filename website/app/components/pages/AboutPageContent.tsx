@@ -6,6 +6,7 @@ import { Icon } from "@iconify/react";
 import Link from "next/link";
 import Image from "next/image";
 import { PhilosophyQuote } from "../ui/PhilosophyQuote";
+import { Carousel } from "../ui/Carousel";
 
 export function AboutPageContent() {
     const t = useTranslations("Home.ProAboutSection");
@@ -99,7 +100,8 @@ export function AboutPageContent() {
                             className="bento-card overflow-hidden"
                         >
                             <div className="bg-[#1a1a2e] -mx-6 -mt-6 px-6 py-4 mb-6">
-                                <h3 className="font-mono text-lg font-semibold text-white">
+                                <h3 className="font-mono text-lg font-semibold text-white flex items-center gap-2">
+                                    <Icon icon="tabler:briefcase" width={20} height={20} />
                                     {tAb("Bio.Professional.Title")}
                                 </h3>
                             </div>
@@ -126,7 +128,8 @@ export function AboutPageContent() {
                             className="bento-card overflow-hidden"
                         >
                             <div className="bg-[var(--color-primary)] -mx-6 -mt-6 px-6 py-4 mb-6">
-                                <h3 className="font-mono text-lg font-semibold text-white">
+                                <h3 className="font-mono text-lg font-semibold text-white flex items-center gap-2">
+                                    <Icon icon="tabler:target" width={20} height={20} />
                                     {tAb("Bio.Personal.Title")}
                                 </h3>
                             </div>
@@ -172,7 +175,7 @@ export function AboutPageContent() {
                         <div className="absolute left-1/2 top-0 bottom-0 w-1 bg-[var(--card-border)] -translate-x-1/2 hidden md:block" />
 
                         <div className="space-y-8 md:space-y-0">
-                            {eras.map((era: { title: string; emoji: string; description: string; side: string; current?: boolean }, index: number) => (
+                            {eras.map((era: { title: string; icon: string; description: string; side: string; current?: boolean }, index: number) => (
                                 <motion.div
                                     key={era.title}
                                     initial={{ opacity: 0, x: era.side === "left" ? -30 : 30 }}
@@ -189,9 +192,12 @@ export function AboutPageContent() {
                                     />
 
                                     <div className={`bento-card ${era.current ? "border-[var(--color-primary)] border-2" : ""}`}>
-                                        <h3 className={`font-mono text-xl font-semibold mb-2 ${era.current ? "text-[var(--color-primary)]" : ""}`}>
-                                            {era.emoji} {era.title}
-                                        </h3>
+                                        <div className="flex items-center gap-2 mb-2">
+                                            <Icon icon={era.icon} width={24} height={24} className={era.current ? "text-[var(--color-primary)]" : "text-muted"} />
+                                            <h3 className={`font-mono text-xl font-semibold ${era.current ? "text-[var(--color-primary)]" : ""}`}>
+                                                {era.title}
+                                            </h3>
+                                        </div>
                                         <p className="text-muted">{era.description}</p>
                                     </div>
                                 </motion.div>
@@ -238,19 +244,20 @@ export function AboutPageContent() {
                     </motion.div>
 
                     {/* Other Testimonials */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <Carousel
+                        autoplayDelay={5000}
+                        options={{ loop: true, align: "start", dragFree: false }}
+                        className="-mx-4 md:mx-0 px-4 md:px-0"
+                        slideClassName="w-full md:w-1/2 lg:w-1/2 pr-4"
+                    >
                         {testimonials.slice(1).map((testimonial: { quote: string; author: string; role: string; avatar: string }, index: number) => (
-                            <motion.div
+                            <div
                                 key={testimonial.author}
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: index * 0.1 }}
-                                className="bento-card"
+                                className="bento-card h-full"
                             >
-                                <p className="text-muted italic mb-4">&ldquo;{testimonial.quote}&rdquo;</p>
-                                <div className="flex items-center gap-3">
-                                    <div className="w-10 h-10 rounded-full bg-[var(--color-base-200)] flex items-center justify-center font-mono text-sm">
+                                <p className="text-muted italic mb-4 line-clamp-4">&ldquo;{testimonial.quote}&rdquo;</p>
+                                <div className="flex items-center gap-3 mt-auto">
+                                    <div className="w-10 h-10 rounded-full bg-[var(--color-base-200)] flex items-center justify-center font-mono text-sm shrink-0">
                                         {testimonial.avatar}
                                     </div>
                                     <div>
@@ -258,9 +265,9 @@ export function AboutPageContent() {
                                         <p className="text-xs text-muted">{testimonial.role}</p>
                                     </div>
                                 </div>
-                            </motion.div>
+                            </div>
                         ))}
-                    </div>
+                    </Carousel>
                 </div>
             </section>
 

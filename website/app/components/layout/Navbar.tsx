@@ -27,6 +27,7 @@ export function Navbar() {
             setIsScrolled(window.scrollY > 20);
         };
 
+        handleScroll();
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
@@ -100,6 +101,11 @@ export function Navbar() {
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         transition={{ duration: 0.2 }}
+                        onAnimationComplete={() => {
+                            // Simple focus management - Focus the first link in the mobile menu
+                            const firstMenuLink = document.querySelector('[role="dialog"] a') as HTMLElement;
+                            if (firstMenuLink) firstMenuLink.focus();
+                        }}
                     >
                         <div className="flex flex-col items-center justify-center h-full gap-8 pt-20">
                             <ul className="flex flex-col items-center gap-6">

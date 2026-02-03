@@ -15,17 +15,18 @@ export function Footer() {
 
     const socialLinks = [
         {
-            href: "https://linkedin.com/in/daltonponder",
+            href: "https://www.linkedin.com/in/dalton-ponder-99a96a131",
             icon: "tabler:brand-linkedin",
             label: tSocial("LinkedIn"),
         },
         {
-            href: "https://github.com/daltonponder",
+            href: "https://github.com/DivineStudio",
             icon: "tabler:brand-github",
             label: tSocial("GitHub"),
         },
     ];
     const footerLinks = [
+        { href: "/", label: tNav("Home") },
         { href: "/about", label: tNav("About") },
         { href: "/skills", label: tNav("Skills") },
         { href: "/credentials", label: tNav("Credentials") },
@@ -52,7 +53,6 @@ export function Footer() {
 
                     {/* Quick Links */}
                     <div className="space-y-4">
-                        <p className="font-mono font-semibold">{tNav("Home")}</p>
                         <ul className="space-y-2">
                             {footerLinks.map((link) => (
                                 <li key={link.href}>

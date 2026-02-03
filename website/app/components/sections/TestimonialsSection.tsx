@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "motion/react";
 import { useState, useEffect } from "react";
 import { Icon } from "@iconify/react";
 import Link from "next/link";
+import { Carousel } from "../ui/Carousel";
 
 interface TestimonialsSectionProps {
     summary?: boolean;
@@ -44,7 +45,6 @@ function TypewriterText({ text }: { text: string }) {
 
 export function TestimonialsSection({ summary = true }: TestimonialsSectionProps) {
     const t = useTranslations("Home.TestimonialsSection");
-    const [featuredIndex, setFeaturedIndex] = useState(0);
 
     const testimonials = t.raw("Items") as Array<{
         Quote: string;
@@ -62,22 +62,9 @@ export function TestimonialsSection({ summary = true }: TestimonialsSectionProps
         title: t.Role,
         company: t.Company,
         context: t.Context,
-        featured: idx === 0, // Fallback logic
     }));
 
-    const featuredTestimonials = formattedTestimonials.filter((t) => t.featured || !summary);
     const displayTestimonials = summary ? formattedTestimonials.slice(0, 4) : formattedTestimonials;
-
-    // Auto-rotate featured testimonial
-    useEffect(() => {
-        if (!summary) return;
-        const interval = setInterval(() => {
-            setFeaturedIndex((prev) => (prev + 1) % featuredTestimonials.length);
-        }, 8000);
-        return () => clearInterval(interval);
-    }, [summary, featuredTestimonials.length]);
-
-    const currentFeatured = featuredTestimonials[featuredIndex] || testimonials[0];
 
     return (
         <section className="section" aria-labelledby="testimonials-heading">
@@ -96,86 +83,60 @@ export function TestimonialsSection({ summary = true }: TestimonialsSectionProps
                     </p>
                 </motion.div>
 
-                {/* Featured Quote */}
+                {/* Featured Quote Carousel */}
                 <motion.div
                     initial={{ opacity: 0, scale: 0.95 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
-                    className="bento-card bg-[var(--color-secondary)] mb-8 relative overflow-hidden"
+                    className="bento-card bg-[var(--color-secondary)] mb-8 relative overflow-hidden p-0"
                 >
                     <motion.span
                         initial={{ rotate: -10, scale: 0 }}
                         whileInView={{ rotate: 0, scale: 1 }}
                         viewport={{ once: true }}
                         transition={{ type: "spring", stiffness: 200 }}
-                        className="absolute top-4 left-4 text-6xl text-primary opacity-30 font-serif"
+                        className="absolute top-8 left-8 text-[var(--color-primary)] opacity-30 z-0"
                     >
-                        ❝
+                        <Icon icon="tabler:quote" width={80} height={80} />
                     </motion.span>
 
-                    <div className="relative z-10 py-8 px-4 md:px-8">
-                        <AnimatePresence mode="wait">
-                            <motion.div
-                                key={currentFeatured.id}
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                exit={{ opacity: 0, y: -20 }}
-                                transition={{ duration: 0.3 }}
-                            >
-                                <blockquote className="font-serif text-xl md:text-2xl leading-relaxed mb-6 italic">
-                                    <TypewriterText text={currentFeatured.quote} />
-                                </blockquote>
+                    <div className="relative z-10">
+                        <Carousel
+                            autoplay={true}
+                            autoplayDelay={8000}
+                            options={{ loop: true, align: "start", dragFree: false }}
+                            showDots={true}
+                            className="w-full"
+                            slideClassName="w-full"
+                        >
+                            {displayTestimonials.map((testimonial) => (
+                                <div key={testimonial.id} className="py-8 px-4 md:px-8 w-full">
+                                    <blockquote className="font-serif text-xl md:text-2xl leading-relaxed mb-6 italic">
+                                        <TypewriterText text={testimonial.quote} />
+                                    </blockquote>
 
-                                <div className="flex items-center gap-4">
-                                    <div className="w-12 h-12 rounded-full bg-[var(--color-primary)] flex items-center justify-center">
-                                        <Icon icon="tabler:user" width={24} height={24} className="text-white" />
-                                    </div>
-                                    <div>
-                                        <p className="font-semibold">{currentFeatured.author}</p>
-                                        <p className="text-sm text-muted">
-                                            {currentFeatured.title}, {currentFeatured.company}
-                                        </p>
-                                        {currentFeatured.context && (
-                                            <p className="text-xs text-accent mt-1 font-mono">
-                                                📋 {currentFeatured.context}
+                                    <div className="flex items-center gap-4">
+                                        <div className="w-12 h-12 rounded-full bg-[var(--color-primary)] flex items-center justify-center shrink-0">
+                                            <Icon icon="tabler:user" width={24} height={24} className="text-white" />
+                                        </div>
+                                        <div>
+                                            <p className="font-semibold">{testimonial.author}</p>
+                                            <p className="text-sm text-muted">
+                                                {testimonial.title}, {testimonial.company}
                                             </p>
-                                        )}
+                                            {testimonial.context && (
+                                                <div className="flex items-center gap-1 text-xs text-accent mt-1 font-mono">
+                                                    <Icon icon="tabler:clipboard-text" width={14} height={14} />
+                                                    {testimonial.context}
+                                                </div>
+                                            )}
+                                        </div>
                                     </div>
                                 </div>
-                            </motion.div>
-                        </AnimatePresence>
+                            ))}
+                        </Carousel>
                     </div>
                 </motion.div>
-
-                {/* Supporting Quotes Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    {displayTestimonials
-                        .filter((t) => t.id !== currentFeatured.id)
-                        .slice(0, 3)
-                        .map((testimonial, index) => (
-                            <motion.div
-                                key={testimonial.id}
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: index * 0.1 }}
-                                className="bento-card"
-                            >
-                                {testimonial.context && (
-                                    <p className="text-xs text-accent font-mono mb-2">
-                                        📋 {testimonial.context}
-                                    </p>
-                                )}
-                                <blockquote className="text-sm mb-4 italic">
-                                    &ldquo;{testimonial.quote}&rdquo;
-                                </blockquote>
-                                <p className="text-sm font-medium">— {testimonial.author}</p>
-                                <p className="text-xs text-muted">
-                                    {testimonial.title}, {testimonial.company}
-                                </p>
-                            </motion.div>
-                        ))}
-                </div>
 
                 {summary && (
                     <motion.div

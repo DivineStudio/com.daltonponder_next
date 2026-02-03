@@ -40,12 +40,12 @@ export function CredentialsPageContent() {
                         {/* Stats Cards */}
                         <div className="flex gap-4">
                             {[
-                                { value: "10+", label: "Years Exp" },
-                                { value: "5", label: "Certs" },
-                                { value: "MS", label: "Degree" },
+                                { value: "10+", id: "Years Exp" },
+                                { value: "5", id: "Certs" },
+                                { value: "MS", id: "Degree" },
                             ].map((stat, index) => (
                                 <motion.div
-                                    key={stat.label}
+                                    key={stat.id}
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ delay: 0.2 + index * 0.1 }}
@@ -54,7 +54,7 @@ export function CredentialsPageContent() {
                                     <div className="font-mono text-3xl font-bold text-[var(--color-hero-accent)]">
                                         {stat.value}
                                     </div>
-                                    <div className="text-[var(--color-hero-muted)] text-sm">{t(`Stats.${stat.label}`)}</div>
+                                    <div className="text-[var(--color-hero-muted)] text-sm">{t(`Stats.${stat.id}`)}</div>
                                 </motion.div>
                             ))}
                         </div>
@@ -226,13 +226,6 @@ export function CredentialsPageContent() {
                         viewport={{ once: true }}
                         className="space-x-4"
                     >
-                        <Link
-                            href="#"
-                            className="inline-flex items-center gap-2 btn-outline"
-                        >
-                            <Icon icon="tabler:download" width={20} height={20} />
-                            {t("CTA.Download")}
-                        </Link>
                         <Link
                             href="/contact"
                             className="inline-flex items-center gap-2 btn-primary"

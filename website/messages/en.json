@@ -23,7 +23,7 @@
             "Name": "DALTON PONDER",
             "Terminal": {
                 "Line1": "Dalton.Init(\"Fullstack\", \"Security\", \"AI\")",
-                "Line2": "Loading expertise... ████████ 100%",
+                "Line2": "Loading expertise... \u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588 100%",
                 "Line3": "Ready to build."
             },
             "Description": "Full-stack developer and cybersecurity expert crafting secure, scalable solutions.",
@@ -32,7 +32,7 @@
                 "FullStack": "Full-Stack Development",
                 "Security": "Cybersecurity Expert",
                 "Cloud": "Cloud Architecture & DevOps",
-                "CloudDetails": "AWS • Azure • Docker • Kubernetes",
+                "CloudDetails": "AWS \u2022 Azure \u2022 Docker \u2022 Kubernetes",
                 "AI": "AI Integration",
                 "DevOps": "DevOps Engineering"
             },
@@ -40,7 +40,7 @@
             "Location": {
                 "Line1": "Based in Missouri, USA",
                 "Line2": "Available for remote work worldwide",
-                "Line3": "🇺🇸 English • 🇪🇸 Español"
+                "Line3": "English \u2022 Espa\u00f1ol"
             }
         },
         "ProAboutSection": {
@@ -81,7 +81,7 @@
             },
             "Quote": {
                 "Text": "The impediment to action advances action. What stands in the way becomes the way.",
-                "Author": "— Marcus Aurelius"
+                "Author": "\u2014 Marcus Aurelius"
             }
         },
         "ContactSection": {
@@ -349,6 +349,328 @@
                     "category": "Security",
                     "years": 3,
                     "proficiency": 80
+                },
+                {
+                    "name": "CSS",
+                    "icon": "tabler:circle-check",
+                    "category": "Languages",
+                    "years": 1,
+                    "proficiency": 50
+                },
+                {
+                    "name": "HTML",
+                    "icon": "tabler:circle-check",
+                    "category": "Languages",
+                    "years": 1,
+                    "proficiency": 50
+                },
+                {
+                    "name": "jQuery",
+                    "icon": "tabler:circle-check",
+                    "category": "Languages",
+                    "years": 1,
+                    "proficiency": 50
+                },
+                {
+                    "name": "SCSS",
+                    "icon": "tabler:circle-check",
+                    "category": "Languages",
+                    "years": 1,
+                    "proficiency": 50
+                },
+                {
+                    "name": "ASP.NET Core MVC",
+                    "icon": "tabler:circle-check",
+                    "category": "Frontend",
+                    "years": 1,
+                    "proficiency": 50
+                },
+                {
+                    "name": "ASP.NET Razor Pages",
+                    "icon": "tabler:circle-check",
+                    "category": "Frontend",
+                    "years": 1,
+                    "proficiency": 50
+                },
+                {
+                    "name": "Blazor Server",
+                    "icon": "tabler:circle-check",
+                    "category": "Frontend",
+                    "years": 1,
+                    "proficiency": 50
+                },
+                {
+                    "name": "Blazor WebAssembly",
+                    "icon": "tabler:circle-check",
+                    "category": "Frontend",
+                    "years": 1,
+                    "proficiency": 50
+                },
+                {
+                    "name": ".NET MAUI",
+                    "icon": "tabler:circle-check",
+                    "category": "Frontend",
+                    "years": 1,
+                    "proficiency": 50
+                },
+                {
+                    "name": "Nuxt.js",
+                    "icon": "tabler:circle-check",
+                    "category": "Frontend",
+                    "years": 1,
+                    "proficiency": 50
+                },
+                {
+                    "name": "WPF",
+                    "icon": "tabler:circle-check",
+                    "category": "Frontend",
+                    "years": 1,
+                    "proficiency": 50
+                },
+                {
+                    "name": "Xamarin.Forms",
+                    "icon": "tabler:circle-check",
+                    "category": "Frontend",
+                    "years": 1,
+                    "proficiency": 50
+                },
+                {
+                    "name": "Azure DevOps",
+                    "icon": "tabler:circle-check",
+                    "category": "DevOps",
+                    "years": 1,
+                    "proficiency": 50
+                },
+                {
+                    "name": "GitHub",
+                    "icon": "tabler:circle-check",
+                    "category": "DevOps",
+                    "years": 1,
+                    "proficiency": 50
+                },
+                {
+                    "name": "Azure Pipelines",
+                    "icon": "tabler:circle-check",
+                    "category": "DevOps",
+                    "years": 1,
+                    "proficiency": 50
+                },
+                {
+                    "name": "Bitbucket",
+                    "icon": "tabler:circle-check",
+                    "category": "DevOps",
+                    "years": 1,
+                    "proficiency": 50
+                },
+                {
+                    "name": "Git",
+                    "icon": "tabler:circle-check",
+                    "category": "DevOps",
+                    "years": 1,
+                    "proficiency": 50
+                },
+                {
+                    "name": "Microsoft SQL Server",
+                    "icon": "tabler:circle-check",
+                    "category": "DevOps",
+                    "years": 1,
+                    "proficiency": 50
+                },
+                {
+                    "name": "SSMS",
+                    "icon": "tabler:circle-check",
+                    "category": "DevOps",
+                    "years": 1,
+                    "proficiency": 50
+                },
+                {
+                    "name": "VSIX",
+                    "icon": "tabler:circle-check",
+                    "category": "DevOps",
+                    "years": 1,
+                    "proficiency": 50
+                },
+                {
+                    "name": "Visual Studio",
+                    "icon": "tabler:circle-check",
+                    "category": "DevOps",
+                    "years": 1,
+                    "proficiency": 50
+                },
+                {
+                    "name": "Sitefinity",
+                    "icon": "tabler:circle-check",
+                    "category": "Backend",
+                    "years": 1,
+                    "proficiency": 50
+                },
+                {
+                    "name": "Umbraco",
+                    "icon": "tabler:circle-check",
+                    "category": "Backend",
+                    "years": 1,
+                    "proficiency": 50
+                },
+                {
+                    "name": "Agile",
+                    "icon": "tabler:circle-check",
+                    "category": "Practices",
+                    "years": 1,
+                    "proficiency": 50
+                },
+                {
+                    "name": "CI/CD",
+                    "icon": "tabler:circle-check",
+                    "category": "Practices",
+                    "years": 1,
+                    "proficiency": 50
+                },
+                {
+                    "name": "DRY",
+                    "icon": "tabler:circle-check",
+                    "category": "Practices",
+                    "years": 1,
+                    "proficiency": 50
+                },
+                {
+                    "name": "Onion Architecture",
+                    "icon": "tabler:circle-check",
+                    "category": "Practices",
+                    "years": 1,
+                    "proficiency": 50
+                },
+                {
+                    "name": "Pair Programming",
+                    "icon": "tabler:circle-check",
+                    "category": "Practices",
+                    "years": 1,
+                    "proficiency": 50
+                },
+                {
+                    "name": "RESTful APIs",
+                    "icon": "tabler:circle-check",
+                    "category": "Practices",
+                    "years": 1,
+                    "proficiency": 50
+                },
+                {
+                    "name": "SDLC",
+                    "icon": "tabler:circle-check",
+                    "category": "Practices",
+                    "years": 1,
+                    "proficiency": 50
+                },
+                {
+                    "name": "SOLID",
+                    "icon": "tabler:circle-check",
+                    "category": "Practices",
+                    "years": 1,
+                    "proficiency": 50
+                },
+                {
+                    "name": "TDD",
+                    "icon": "tabler:circle-check",
+                    "category": "Practices",
+                    "years": 1,
+                    "proficiency": 50
+                },
+                {
+                    "name": "IIS",
+                    "icon": "tabler:circle-check",
+                    "category": "DevOps",
+                    "years": 1,
+                    "proficiency": 50
+                },
+                {
+                    "name": "Windows 10",
+                    "icon": "tabler:circle-check",
+                    "category": "DevOps",
+                    "years": 1,
+                    "proficiency": 50
+                },
+                {
+                    "name": "Windows 11",
+                    "icon": "tabler:circle-check",
+                    "category": "DevOps",
+                    "years": 1,
+                    "proficiency": 50
+                },
+                {
+                    "name": "Communication",
+                    "icon": "tabler:circle-check",
+                    "category": "Soft Skills",
+                    "years": 1,
+                    "proficiency": 50
+                },
+                {
+                    "name": "Customer Support",
+                    "icon": "tabler:circle-check",
+                    "category": "Soft Skills",
+                    "years": 1,
+                    "proficiency": 50
+                },
+                {
+                    "name": "Detail-Oriented",
+                    "icon": "tabler:circle-check",
+                    "category": "Soft Skills",
+                    "years": 1,
+                    "proficiency": 50
+                },
+                {
+                    "name": "Fast Learner",
+                    "icon": "tabler:circle-check",
+                    "category": "Soft Skills",
+                    "years": 1,
+                    "proficiency": 50
+                },
+                {
+                    "name": "Problem Solving",
+                    "icon": "tabler:circle-check",
+                    "category": "Soft Skills",
+                    "years": 1,
+                    "proficiency": 50
+                },
+                {
+                    "name": "Self-Motivated",
+                    "icon": "tabler:circle-check",
+                    "category": "Soft Skills",
+                    "years": 1,
+                    "proficiency": 50
+                },
+                {
+                    "name": "Team Collaboration",
+                    "icon": "tabler:circle-check",
+                    "category": "Soft Skills",
+                    "years": 1,
+                    "proficiency": 50
+                },
+                {
+                    "name": "Technical Support",
+                    "icon": "tabler:circle-check",
+                    "category": "Soft Skills",
+                    "years": 1,
+                    "proficiency": 50
+                },
+                {
+                    "name": "Certified Ethical Hacker (CEH)",
+                    "icon": "tabler:circle-check",
+                    "category": "Other",
+                    "years": 1,
+                    "proficiency": 50
+                },
+                {
+                    "name": "Certified Sitefinity Developer",
+                    "icon": "tabler:circle-check",
+                    "category": "Other",
+                    "years": 1,
+                    "proficiency": 50
+                },
+                {
+                    "name": "Certified Sitefinity .NET Core Developer",
+                    "icon": "tabler:circle-check",
+                    "category": "Other",
+                    "years": 1,
+                    "proficiency": 50
                 }
             ]
         },
@@ -383,12 +705,12 @@
     "About": {
         "Hero": {
             "Header": "THE JOURNEY",
-            "SubLine1": "From curious tinkerer to full-stack architect —",
+            "SubLine1": "From curious tinkerer to full-stack architect \u2014",
             "SubLine2": "a decade of building what matters"
         },
         "Bio": {
             "Professional": {
-                "Title": "💼 PROFESSIONAL",
+                "Title": "PROFESSIONAL",
                 "Intro": "Senior Full Stack Developer with 10+ years building scalable web applications.",
                 "Points": [
                     "Specialized in React, Next.js, .NET",
@@ -398,7 +720,7 @@
                 ]
             },
             "Personal": {
-                "Title": "🎯 PERSONAL",
+                "Title": "PERSONAL",
                 "Intro": "Beyond the code, I'm driven by curiosity and a love for creative problem-solving.",
                 "Points": [
                     "Family time is my greatest joy",
@@ -419,20 +741,20 @@
             "Items": [
                 {
                     "title": "Senior Solutions Architect",
-                    "emoji": "🏗️",
+                    "icon": "tabler:building-skyscraper",
                     "description": "Leading enterprise architecture and security initiatives.",
                     "side": "left",
                     "current": true
                 },
                 {
                     "title": "Full Stack Lead",
-                    "emoji": "⚡",
+                    "icon": "tabler:server-bolt",
                     "description": "Driving development of scalable cloud-native applications.",
                     "side": "right"
                 },
                 {
                     "title": "Software Engineer",
-                    "emoji": "💻",
+                    "icon": "tabler:code",
                     "description": "Building foundational expertise in .NET and web technologies.",
                     "side": "left"
                 }
@@ -531,20 +853,11 @@
         },
         "Availability": {
             "Header": "Current Status",
-            "Options": [
-                {
-                    "label": "Freelance",
-                    "available": true
-                },
-                {
-                    "label": "Full-Time",
-                    "available": false
-                },
-                {
-                    "label": "Consulting",
-                    "available": true
-                }
-            ],
+            "Options": {
+                "Freelance": "Freelance",
+                "Full-Time": "Full-Time",
+                "Consulting": "Consulting"
+            },
             "ResponseTime": "Response time: < 24 hours"
         },
         "Direct": {
@@ -575,7 +888,7 @@
         "SignatureName": "Dalton Ponder"
     },
     "Footer": {
-        "Copyright": "© {year} Dalton Ponder. All rights reserved.",
+        "Copyright": "\u00a9 {year} Dalton Ponder. All rights reserved.",
         "Links": {
             "Privacy": "Privacy Policy",
             "Terms": "Terms of Service"

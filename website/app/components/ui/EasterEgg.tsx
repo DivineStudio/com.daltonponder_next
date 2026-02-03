@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "motion/react";
+import { Icon } from "@iconify/react";
 
 const KONAMI_CODE = [
     "ArrowUp",
@@ -70,9 +71,9 @@ export function EasterEggOverlay() {
                                 rotate: [0, 10, -10, 0],
                             }}
                             transition={{ repeat: Infinity, duration: 2 }}
-                            className="text-8xl mb-6"
+                            className="text-8xl mb-6 text-accent flex justify-center"
                         >
-                            🎮
+                            <Icon icon="tabler:device-gamepad-2" width={96} height={96} />
                         </motion.div>
                         <h2 className="font-mono text-3xl md:text-4xl font-bold text-white mb-4">
                             ACHIEVEMENT UNLOCKED!
@@ -115,9 +116,13 @@ export function EasterEggOverlay() {
                                 delay: Math.random() * 0.5,
                                 ease: "easeOut",
                             }}
-                            className="fixed text-2xl pointer-events-none"
+                            className="fixed text-2xl pointer-events-none text-accent"
                         >
-                            {["⭐", "🎮", "💻", "🚀", "✨"][Math.floor(Math.random() * 5)]}
+                            <Icon
+                                icon={["tabler:star", "tabler:device-gamepad-2", "tabler:device-laptop", "tabler:rocket", "tabler:sparkles"][Math.floor(Math.random() * 5)]}
+                                width={24}
+                                height={24}
+                            />
                         </motion.div>
                     ))}
                 </motion.div>

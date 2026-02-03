@@ -9,7 +9,7 @@ import Link from "next/link";
 // Full skills data with categories, years, and proficiency
 
 
-const categories = ["All", "Languages", "Frontend", "Backend", "Cloud", "DevOps", "Data", "Security"];
+const categories = ["All", "Languages", "Frontend", "Backend", "Cloud", "DevOps", "Data", "Security", "Practices", "Soft Skills"];
 
 interface Skill {
     name: string;

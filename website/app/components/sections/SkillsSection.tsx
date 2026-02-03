@@ -7,6 +7,15 @@ import Link from "next/link";
 import { BentoCard, BentoGrid } from "../ui/BentoGrid";
 import { Marquee, MarqueeItem } from "../ui/Marquee";
 
+function SkillBadge({ skill }: { skill: { name: string; icon: string } }) {
+    return (
+        <div className="flex items-center gap-2 px-4 py-2 rounded-lg bg-[var(--card-bg)] border border-[var(--card-border)] transition-transform hover:scale-105 whitespace-nowrap">
+            <Icon icon={skill.icon} width={24} height={24} />
+            <span className="font-mono text-sm">{skill.name}</span>
+        </div>
+    );
+}
+
 interface SkillsSectionProps {
     summary?: boolean;
 }
@@ -86,29 +95,33 @@ export function SkillsSection({ summary = true }: SkillsSectionProps) {
                     ))}
                 </BentoGrid>
 
-                {/* Secondary Skills - Marquee */}
+                {/* Secondary Skills - Carousel */}
                 <motion.div
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}
-                    className="space-y-4"
+                    className="space-y-8"
                 >
                     <p className="text-muted">And many more...</p>
 
-                    <Marquee direction="left" speed="normal">
+                    <Marquee speed="normal" pauseOnHover={true}>
                         {secondarySkillsRow1.map((skill) => (
                             <MarqueeItem key={skill.name}>
-                                <Icon icon={skill.icon} width={24} height={24} />
-                                <span className="font-mono text-sm">{skill.name}</span>
+                                <div className="flex items-center gap-2">
+                                    <Icon icon={skill.icon} width={24} height={24} />
+                                    <span className="font-mono text-sm">{skill.name}</span>
+                                </div>
                             </MarqueeItem>
                         ))}
                     </Marquee>
 
-                    <Marquee direction="right" speed="normal">
+                    <Marquee direction="right" speed="slow" pauseOnHover={true}>
                         {secondarySkillsRow2.map((skill) => (
                             <MarqueeItem key={skill.name}>
-                                <Icon icon={skill.icon} width={24} height={24} />
-                                <span className="font-mono text-sm">{skill.name}</span>
+                                <div className="flex items-center gap-2">
+                                    <Icon icon={skill.icon} width={24} height={24} />
+                                    <span className="font-mono text-sm">{skill.name}</span>
+                                </div>
                             </MarqueeItem>
                         ))}
                     </Marquee>
