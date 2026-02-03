@@ -440,29 +440,35 @@ const plexSerif = IBM_Plex_Serif({
 ## Implementation Phases
 
 ### Phase 1: Dependency Updates
-- [ ] Stop running servers
-- [ ] Update `package.json` to React 19 / Next 15 / related deps
-- [ ] Run `npm install` (using `--force` or `--legacy-peer-deps` only if strictly necessary, prefer resolving)
-- [ ] Verify `next.config.mjs` compatibility
+- [x] Stop running servers
+- [x] Update `package.json` to React 19 / Next 15 / related deps
+- [x] Run `npm install` (using `--force` or `--legacy-peer-deps` only if strictly necessary, prefer resolving)
+- [x] Verify `next.config.mjs` compatibility
 
 ### Phase 2: React 19 Migration
-- [ ] Check for removed APIs (propTypes, defaultProps in function components)
-- [ ] Verify Client/Server component directives
-- [ ] Fix any hydration mismatches caused by new React 19 rendering logic
+- [x] Check for removed APIs (propTypes, defaultProps in function components)
+- [x] Verify Client/Server component directives
+- [x] Fix any hydration mismatches caused by new React 19 rendering logic
 
 ### Phase 3: Next.js 15 Breaking Changes
-- [ ] **Async Request APIs**: Update all `params`, `searchParams`, `headers()`, `cookies()` usages to be `await`ed.
+- [x] **Async Request APIs**: Update all `params`, `searchParams`, `headers()`, `cookies()` usages to be `await`ed.
     - Check Layouts (`params`)
     - Check Pages (`params`, `searchParams`)
     - Check API routes
-- [ ] **Caching**: Verify `fetch` behavior (default is now `no-store`). Add `cache: 'force-cache'` where static generation is required.
-- [ ] **Route Handlers**: Verify `GET` handlers caching behavior.
+- [x] **Caching**: Verify `fetch` behavior (default is now `no-store`). Add `cache: 'force-cache'` where static generation is required.
+- [x] **Route Handlers**: Verify `GET` handlers caching behavior.
 
 ### Phase 4: Third-Party Libs & Polish
-- [ ] Update `next-intl` (breaking changes in navigation/middleware often occur with Next updates)
-- [ ] Update `next-themes` (ensure ThemeProvider is Client Component)
-- [ ] Run full build `npm run build`
-- [ ] Verify start `npm run start`
+- [x] Update `next-intl` (breaking changes in navigation/middleware often occur with Next updates)
+- [x] Update `next-themes` (ensure ThemeProvider is Client Component)
+- [x] Run full build `npm run build`
+- [x] Verify start `npm run start`
+
+### Phase 5: Content Population & i18n Feature Flag
+- [ ] **Feature Flag i18n**: Disable `next-intl` routing/middleware (restrict to 'en' only, disable locale switching) while preserving implementation for future use.
+- [ ] **Data Retrieval**: Retrieve legacy content from `DivineStudio/com.daltonponder_nuxt`, specifically `i18n/locales/en.json` (using available tools/GitHub).
+- [ ] **Content Mapping**: Auto-map legacy content keys to new site components where structure permits.
+- [ ] **Documentation**: Create `content-mapping-report.md` documenting the source-to-destination mapping of migrated content.
 
 ---
 
@@ -473,8 +479,7 @@ const plexSerif = IBM_Plex_Serif({
 All content should be migrated from the existing `DivineStudio/com.daltonponder_nuxt` repository:
 - Translation files: `i18n/locales/en.json` and `es.json`
 - Logo: `DP_FullLogo_250x84.webp`
-- Testimonial images
-- Skill icons
+- Skill icons (but always try to first use icons from Iconify where possible)
 
 ### Contact Form Subjects
 1. Freelance Project Inquiry
@@ -516,27 +521,28 @@ All content should be migrated from the existing `DivineStudio/com.daltonponder_
 > [!NOTE]
 > All 4 detail page wireframes have been designed and approved. See [ux-design-variants-plan.md](file:///c:/Repos/com.daltonponder_next/_bmad-output/planning-artifacts/ux-design-variants-plan.md) for full design decisions.
 
-### Skills Page
+### Skills Page (Implemented)
 **Wireframe:** [skills-page-wireframe.excalidraw](file:///c:/Repos/com.daltonponder_next/_bmad-output/excalidraw-diagrams/skills-page-wireframe.excalidraw)
 
 | Section | Description |
 |---------|-------------|
 | Hero | "Developer Console" aesthetic, dark bg, code decoration |
 | Search/Filter | Search bar + category filter buttons |
-| Skills Grid | 3-column card grid with hover micro-interactions |
+| Skills Grid | 3-column card grid with **flip card interaction** (stats on back) |
 | CTA | Link to Credentials page |
 
 ---
 
-### About Page
+### About Page (Implemented)
 **Wireframe:** [about-page-wireframe.excalidraw](file:///c:/Repos/com.daltonponder_next/_bmad-output/excalidraw-diagrams/about-page-wireframe.excalidraw)
 
 | Section | Description |
 |---------|-------------|
 | Hero | Dark hero with avatar, narrative subtitle |
 | Bio Cards | Dual-column: Professional + Personal |
-| Timeline | Abstract "Era-based" flow (Startup Years, Enterprise Scale, Craft Era, Now) |
+| Timeline | "My Eras" flow with emojis and center line (Startup, Enterprise, Craft, Now) |
 | Testimonials | Large single-quote spotlight with carousel |
+| Philosophy | Philosophy Quote component integrated |
 | CTA | Contact page link |
 
 ---
@@ -554,7 +560,7 @@ All content should be migrated from the existing `DivineStudio/com.daltonponder_
 
 ---
 
-### Contact Page
+### Contact Page (Implemented)
 **Wireframe:** [contact-page-wireframe.excalidraw](file:///c:/Repos/com.daltonponder_next/_bmad-output/excalidraw-diagrams/contact-page-wireframe.excalidraw)
 
 | Section | Description |
@@ -564,7 +570,8 @@ All content should be migrated from the existing `DivineStudio/com.daltonponder_
 | Response Time | Green indicator "Usually responds within 24 hours" |
 | Contact Form | Name, Email, Message + CTA button |
 | Direct Email | Alternative contact path card |
-| Social Links | GitHub, LinkedIn, X icons |
+| Social Links | GitHub, LinkedIn, Twitter icons |
+| Sign-Off | Signature: "Build it secure, ship it fast, make it last." |
 
 ---
 
@@ -572,5 +579,6 @@ All content should be migrated from the existing `DivineStudio/com.daltonponder_
 
 1. ~~**UX Designer Agent** → Create wireframes based on this spec~~ ✅
 2. ~~**User Review** → Approve wireframes~~ ✅
-3. **Quick Flow Solo Dev** → Implement the site
-4. **Deploy** → Launch!
+3. ~~**Quick Flow Solo Dev** → Implement the site~~ ✅
+4. **Content Migration** → Populate from legacy site & disable i18n
+5. **Deploy** → Launch!
