@@ -1,6 +1,6 @@
-# Dalton Ponder | Full-Stack Developer & Cybersecurity Expert
+# Dalton Ponder | Full-Stack Developer
 
-Professional portfolio of Dalton Ponder - Full-stack developer and cybersecurity expert crafting secure, scalable solutions.
+Professional portfolio of Dalton Ponder - Full-stack developer crafting secure, scalable solutions.
 
 ## Overview
 
