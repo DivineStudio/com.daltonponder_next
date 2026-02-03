@@ -1,7 +1,7 @@
 title: 'Professional Portfolio Upgrade to Next.js 15 & React 19'
 slug: 'nextjs-15-upgrade'
 created: '2026-02-01'
-status: 'ready-for-dev'
+status: 'completed'
 stepsCompleted: [1, 2, 3, 4, 5]
 tech_stack: ['Next.js 15', 'React 19', 'TypeScript', 'Tailwind CSS', 'next-intl', 'next-themes', 'Motion for React', 'Iconify']
 files_to_modify: ['package.json', 'next.config.mjs', 'app/**/*']

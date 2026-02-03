@@ -2,7 +2,7 @@
 title: 'Content Integration & Migration'
 slug: 'content-integration'
 created: '2026-02-02'
-status: 'ready-for-dev'
+status: 'completed'
 stepsCompleted: [1, 2, 3, 4]
 tech_stack: ['Next.js 15', 'React 19', 'next-intl', 'Motion for React']
 files_to_modify: ['website/messages/en.json', 'website/app/components/layout/*', 'website/app/components/sections/*', 'website/app/components/pages/*', 'website/app/[locale]/**/*']
