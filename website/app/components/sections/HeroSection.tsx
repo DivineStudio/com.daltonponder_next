@@ -10,6 +10,8 @@ import { useTranslations } from "next-intl";
 
 export function HeroSection() {
     const t = useTranslations("Home.Hero");
+    const tSocial = useTranslations("Contact.Social");
+    const tNav = useTranslations("Navigation");
 
     const skills = [
         {
@@ -46,8 +48,8 @@ export function HeroSection() {
     ];
 
     const quickLinks = [
-        { href: "https://linkedin.com/in/daltonponder", label: "LinkedIn", icon: "tabler:brand-linkedin" },
-        { href: "https://github.com/daltonponder", label: "GitHub", icon: "tabler:brand-github" },
+        { href: "https://linkedin.com/in/daltonponder", label: tSocial("LinkedIn"), icon: "tabler:brand-linkedin" },
+        { href: "https://github.com/daltonponder", label: tSocial("GitHub"), icon: "tabler:brand-github" },
     ];
 
     const terminalLines = [
@@ -128,7 +130,7 @@ export function HeroSection() {
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="btn-outline text-sm flex items-center gap-2"
-                                    aria-label={`${link.label} (opens in new tab)`}
+                                    aria-label={`${link.label} ${tNav("Aria.OpensNewTab")}`}
                                 >
                                     <Icon icon={link.icon} width={16} height={16} />
                                     {link.label}

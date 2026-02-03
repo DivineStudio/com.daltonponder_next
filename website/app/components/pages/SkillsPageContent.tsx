@@ -22,9 +22,15 @@ interface Skill {
 interface SkillCardProps {
     skill: Skill;
     index: number;
+    cardTranslations: {
+        yearsPlus: string;
+        yearsExperience: string;
+        proficiency: string;
+        hoverToFlip: string;
+    };
 }
 
-function SkillCard({ skill, index }: SkillCardProps) {
+function SkillCard({ skill, index, cardTranslations }: SkillCardProps) {
     const [isFlipped, setIsFlipped] = useState(false);
 
     return (
@@ -80,14 +86,14 @@ function SkillCard({ skill, index }: SkillCardProps) {
                     </div>
 
                     <div className="flex justify-between text-sm text-muted">
-                        <span>{skill.years}+ years</span>
+                        <span>{skill.years}{cardTranslations.yearsPlus}</span>
                         <span className="font-mono">{skill.proficiency}%</span>
                     </div>
 
                     {/* Flip hint */}
                     <div className="absolute bottom-2 right-2 text-xs text-muted opacity-50 flex items-center gap-1">
                         <Icon icon="tabler:rotate-3d" width={12} height={12} />
-                        hover to flip
+                        {cardTranslations.hoverToFlip}
                     </div>
                 </div>
 
@@ -99,9 +105,9 @@ function SkillCard({ skill, index }: SkillCardProps) {
                     <Icon icon={skill.icon} width={48} height={48} className="mb-3 opacity-90" />
                     <h3 className="font-mono font-bold text-2xl mb-1">{skill.name}</h3>
                     <p className="text-4xl font-bold font-mono mb-1">{skill.years}+</p>
-                    <p className="text-sm opacity-80">years of experience</p>
+                    <p className="text-sm opacity-80">{cardTranslations.yearsExperience}</p>
                     <div className="mt-3 px-3 py-1 rounded-full bg-white/20 text-xs font-mono">
-                        {skill.proficiency}% proficiency
+                        {skill.proficiency}% {cardTranslations.proficiency}
                     </div>
                 </div>
             </motion.div>
@@ -115,6 +121,13 @@ export function SkillsPageContent() {
     const allSkills = t.raw("List") as Skill[];
     const [searchQuery, setSearchQuery] = useState("");
     const [activeCategory, setActiveCategory] = useState("All");
+
+    const cardTranslations = {
+        yearsPlus: t("Card.YearsPlus"),
+        yearsExperience: t("Card.YearsExperience"),
+        proficiency: t("Card.Proficiency"),
+        hoverToFlip: t("Card.HoverToFlip"),
+    };
 
     const filteredSkills = useMemo(() => {
         return allSkills.filter((skill) => {
@@ -145,7 +158,7 @@ export function SkillsPageContent() {
                             {t("Header")}
                         </h1>
                         <p className="text-[var(--color-hero-muted)] text-lg md:text-xl max-w-xl mb-6">
-                            {t("Header")}
+                            {t("SubHeader")}
                         </p>
                         <motion.div
                             initial={{ scaleX: 0 }}
@@ -179,7 +192,7 @@ export function SkillsPageContent() {
                             />
                             <input
                                 type="text"
-                                placeholder="Search skills..."
+                                placeholder={t("Search.Placeholder")}
                                 value={searchQuery}
                                 onChange={(e) => setSearchQuery(e.target.value)}
                                 className="w-full pl-12 pr-4 py-4 rounded-xl bg-[var(--card-bg)] border border-[var(--card-border)] text-lg focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] transition-all"
@@ -224,7 +237,7 @@ export function SkillsPageContent() {
                                 className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
                             >
                                 {filteredSkills.map((skill, index) => (
-                                    <SkillCard key={skill.name} skill={skill} index={index} />
+                                    <SkillCard key={skill.name} skill={skill} index={index} cardTranslations={cardTranslations} />
                                 ))}
                             </motion.div>
                         ) : (
@@ -234,7 +247,7 @@ export function SkillsPageContent() {
                                 className="text-center py-16"
                             >
                                 <Icon icon="tabler:search-off" width={48} height={48} className="mx-auto mb-4 text-muted" />
-                                <p className="text-lg text-muted">No skills found matching your search.</p>
+                                <p className="text-lg text-muted">{t("Search.NoResults")}</p>
                                 <button
                                     onClick={() => {
                                         setSearchQuery("");
@@ -242,7 +255,7 @@ export function SkillsPageContent() {
                                     }}
                                     className="mt-4 text-accent hover:underline"
                                 >
-                                    Clear filters
+                                    {t("Search.ClearFilters")}
                                 </button>
                             </motion.div>
                         )}
@@ -255,7 +268,7 @@ export function SkillsPageContent() {
                         transition={{ delay: 0.6 }}
                         className="mt-8 text-center text-muted"
                     >
-                        Showing {filteredSkills.length} of {allSkills.length} skills
+                        {t("Search.Showing", { count: filteredSkills.length, total: allSkills.length })}
                     </motion.div>
 
                     {/* CTA */}

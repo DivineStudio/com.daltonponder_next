@@ -4,7 +4,12 @@
         "About": "About",
         "Skills": "Skills",
         "Credentials": "Credentials",
-        "Contact": "Contact"
+        "Contact": "Contact",
+        "Aria": {
+            "ToggleMobileMenu": "Toggle mobile menu",
+            "NavigationMenu": "Navigation menu",
+            "OpensNewTab": "(opens in new tab)"
+        }
     },
     "Image": {
         "DaltonPonderLogoAlt": "Dalton Ponder Logo"
@@ -128,6 +133,19 @@
         },
         "SkillsSection": {
             "Header": "Tech Stack and Skills",
+            "SubHeader": "A comprehensive view of my technical expertise.",
+            "Search": {
+                "Placeholder": "Search skills...",
+                "NoResults": "No skills found matching your search.",
+                "ClearFilters": "Clear filters",
+                "Showing": "Showing {count} of {total} skills"
+            },
+            "Card": {
+                "YearsPlus": "+ years",
+                "YearsExperience": "years of experience",
+                "Proficiency": "proficiency",
+                "HoverToFlip": "hover to flip"
+            },
             "List": [
                 {
                     "name": "C#",
@@ -363,27 +381,71 @@
         }
     },
     "About": {
-        "Eras": [
-            {
-                "title": "Senior Solutions Architect",
-                "emoji": "🏗️",
-                "description": "Leading enterprise architecture and security initiatives.",
-                "side": "left",
-                "current": true
+        "Hero": {
+            "Header": "THE JOURNEY",
+            "SubLine1": "From curious tinkerer to full-stack architect —",
+            "SubLine2": "a decade of building what matters"
+        },
+        "Bio": {
+            "Professional": {
+                "Title": "💼 PROFESSIONAL",
+                "Intro": "Senior Full Stack Developer with 10+ years building scalable web applications.",
+                "Points": [
+                    "Specialized in React, Next.js, .NET",
+                    "System architecture & cloud solutions",
+                    "Team leadership & mentorship",
+                    "Performance optimization expert"
+                ]
             },
-            {
-                "title": "Full Stack Lead",
-                "emoji": "⚡",
-                "description": "Driving development of scalable cloud-native applications.",
-                "side": "right"
-            },
-            {
-                "title": "Software Engineer",
-                "emoji": "💻",
-                "description": "Building foundational expertise in .NET and web technologies.",
-                "side": "left"
+            "Personal": {
+                "Title": "🎯 PERSONAL",
+                "Intro": "Beyond the code, I'm driven by curiosity and a love for creative problem-solving.",
+                "Points": [
+                    "Family time is my greatest joy",
+                    "Music offers daily solace",
+                    "Stoic philosophy guides my approach",
+                    "Learning Spanish fluently"
+                ],
+                "Icons": [
+                    "tabler:users",
+                    "tabler:music",
+                    "tabler:brain",
+                    "tabler:language"
+                ]
             }
-        ]
+        },
+        "Eras": {
+            "Header": "My Eras",
+            "Items": [
+                {
+                    "title": "Senior Solutions Architect",
+                    "emoji": "🏗️",
+                    "description": "Leading enterprise architecture and security initiatives.",
+                    "side": "left",
+                    "current": true
+                },
+                {
+                    "title": "Full Stack Lead",
+                    "emoji": "⚡",
+                    "description": "Driving development of scalable cloud-native applications.",
+                    "side": "right"
+                },
+                {
+                    "title": "Software Engineer",
+                    "emoji": "💻",
+                    "description": "Building foundational expertise in .NET and web technologies.",
+                    "side": "left"
+                }
+            ]
+        },
+        "Testimonials": {
+            "Header": "What People Say"
+        },
+        "CTA": {
+            "Header": "Let's Connect",
+            "SubText": "Have a project in mind? I'd love to hear about it.",
+            "Button": "Get In Touch"
+        }
     },
     "Credentials": {
         "Hero": {
@@ -492,11 +554,25 @@
             "LocationHeader": "Location",
             "LocationDetail": "Available Worldwide"
         },
+        "Form": {
+            "NameLabel": "Your Name",
+            "NamePlaceholder": "John Doe",
+            "EmailLabel": "Email Address",
+            "EmailPlaceholder": "john@example.com",
+            "MessageLabel": "Message",
+            "MessagePlaceholder": "Tell me about your project..."
+        },
+        "Social": {
+            "GitHub": "GitHub",
+            "LinkedIn": "LinkedIn",
+            "Twitter": "Twitter"
+        },
         "Email": "hello@daltonponder.com",
         "Location": {
             "Country": "Missouri, USA"
         },
-        "Signature": "Because every local business deserves a great website."
+        "Signature": "Because every local business deserves a great website.",
+        "SignatureName": "Dalton Ponder"
     },
     "Footer": {
         "Copyright": "© {year} Dalton Ponder. All rights reserved.",
@@ -504,7 +580,8 @@
             "Privacy": "Privacy Policy",
             "Terms": "Terms of Service"
         },
-        "Tagline": "Built with passion in Missouri."
+        "Tagline": "Built with passion in Missouri.",
+        "Connect": "Connect"
     },
     "Metadata": {
         "Home": {

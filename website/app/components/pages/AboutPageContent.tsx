@@ -14,7 +14,7 @@ export function AboutPageContent() {
     const tNav = useTranslations("Navigation");
 
     // Timeline eras data from JSON
-    const eras = tAb.raw("Eras");
+    const eras = tAb.raw("Eras.Items");
 
     // Testimonials data from JSON (Shared with Home)
     const tHomeTestimonials = useTranslations("Home.TestimonialsSection");
@@ -41,11 +41,11 @@ export function AboutPageContent() {
                             className="flex-1"
                         >
                             <h1 className="font-mono text-4xl md:text-5xl lg:text-6xl font-bold text-[var(--color-hero-text)] mb-4">
-                                THE JOURNEY
+                                {tAb("Hero.Header")}
                             </h1>
                             <p className="text-[var(--color-hero-muted)] text-lg md:text-xl max-w-xl mb-6">
-                                From curious tinkerer to full-stack architect —<br />
-                                a decade of building what matters
+                                {tAb("Hero.SubLine1")}<br />
+                                {tAb("Hero.SubLine2")}
                             </p>
                             <motion.div
                                 initial={{ scaleX: 0 }}
@@ -100,30 +100,20 @@ export function AboutPageContent() {
                         >
                             <div className="bg-[#1a1a2e] -mx-6 -mt-6 px-6 py-4 mb-6">
                                 <h3 className="font-mono text-lg font-semibold text-white">
-                                    💼 PROFESSIONAL
+                                    {tAb("Bio.Professional.Title")}
                                 </h3>
                             </div>
                             <div className="text-[var(--foreground)] space-y-4">
                                 <p>
-                                    Senior Full Stack Developer with 10+ years building scalable web applications.
+                                    {tAb("Bio.Professional.Intro")}
                                 </p>
                                 <ul className="space-y-2 text-muted">
-                                    <li className="flex items-center gap-2">
-                                        <Icon icon="tabler:check" className="text-accent" width={18} />
-                                        Specialized in React, Next.js, .NET
-                                    </li>
-                                    <li className="flex items-center gap-2">
-                                        <Icon icon="tabler:check" className="text-accent" width={18} />
-                                        System architecture & cloud solutions
-                                    </li>
-                                    <li className="flex items-center gap-2">
-                                        <Icon icon="tabler:check" className="text-accent" width={18} />
-                                        Team leadership & mentorship
-                                    </li>
-                                    <li className="flex items-center gap-2">
-                                        <Icon icon="tabler:check" className="text-accent" width={18} />
-                                        Performance optimization expert
-                                    </li>
+                                    {(tAb.raw("Bio.Professional.Points") as string[]).map((point, idx) => (
+                                        <li key={idx} className="flex items-center gap-2">
+                                            <Icon icon="tabler:check" className="text-accent" width={18} />
+                                            {point}
+                                        </li>
+                                    ))}
                                 </ul>
                             </div>
                         </motion.div>
@@ -137,30 +127,23 @@ export function AboutPageContent() {
                         >
                             <div className="bg-[var(--color-primary)] -mx-6 -mt-6 px-6 py-4 mb-6">
                                 <h3 className="font-mono text-lg font-semibold text-white">
-                                    🎯 PERSONAL
+                                    {tAb("Bio.Personal.Title")}
                                 </h3>
                             </div>
                             <div className="text-[var(--foreground)] space-y-4">
                                 <p>
-                                    Beyond the code, I&apos;m driven by curiosity and a love for creative problem-solving.
+                                    {tAb("Bio.Personal.Intro")}
                                 </p>
                                 <ul className="space-y-2 text-muted">
-                                    <li className="flex items-center gap-2">
-                                        <Icon icon="tabler:users" className="text-accent" width={18} />
-                                        Family time is my greatest joy
-                                    </li>
-                                    <li className="flex items-center gap-2">
-                                        <Icon icon="tabler:music" className="text-accent" width={18} />
-                                        Music offers daily solace
-                                    </li>
-                                    <li className="flex items-center gap-2">
-                                        <Icon icon="tabler:brain" className="text-accent" width={18} />
-                                        Stoic philosophy guides my approach
-                                    </li>
-                                    <li className="flex items-center gap-2">
-                                        <Icon icon="tabler:language" className="text-accent" width={18} />
-                                        Learning Spanish fluently
-                                    </li>
+                                    {(tAb.raw("Bio.Personal.Points") as string[]).map((point, idx) => {
+                                        const icons = tAb.raw("Bio.Personal.Icons") as string[];
+                                        return (
+                                            <li key={idx} className="flex items-center gap-2">
+                                                <Icon icon={icons[idx]} className="text-accent" width={18} />
+                                                {point}
+                                            </li>
+                                        );
+                                    })}
                                 </ul>
                             </div>
                         </motion.div>
@@ -180,7 +163,7 @@ export function AboutPageContent() {
                         viewport={{ once: true }}
                         className="font-mono text-2xl md:text-3xl font-bold mb-12"
                     >
-                        My Eras
+                        {tAb("Eras.Header")}
                     </motion.h2>
 
                     {/* Timeline */}
@@ -227,7 +210,7 @@ export function AboutPageContent() {
                         viewport={{ once: true }}
                         className="font-mono text-2xl md:text-3xl font-bold mb-12"
                     >
-                        What People Say
+                        {tAb("Testimonials.Header")}
                     </motion.h2>
 
                     {/* Featured Testimonial */}
@@ -290,16 +273,16 @@ export function AboutPageContent() {
                         viewport={{ once: true }}
                     >
                         <h2 className="font-mono text-2xl md:text-3xl font-bold mb-4">
-                            {tNav("Contact")}
+                            {tAb("CTA.Header")}
                         </h2>
                         <p className="text-muted mb-8 max-w-xl mx-auto">
-                            Have a project in mind? I&apos;d love to hear about it.
+                            {tAb("CTA.SubText")}
                         </p>
                         <Link
                             href="/contact"
                             className="inline-flex items-center gap-2 btn-primary"
                         >
-                            Get In Touch
+                            {tAb("CTA.Button")}
                             <Icon icon="tabler:arrow-right" width={20} height={20} />
                         </Link>
                     </motion.div>

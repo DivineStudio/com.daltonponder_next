@@ -12,11 +12,11 @@ export function ContactPageContent() {
 
     const availabilityOptions = t.raw("Availability.Options");
 
-    // Social links (reusing logic or hardcoded if specific)
+    // Social links using i18n
     const socialLinks = [
-        { name: "GitHub", icon: "tabler:brand-github", url: "https://github.com" },
-        { name: "LinkedIn", icon: "tabler:brand-linkedin", url: "https://linkedin.com" },
-        { name: "Twitter", icon: "tabler:brand-x", url: "https://twitter.com" },
+        { name: t("Social.GitHub"), icon: "tabler:brand-github", url: "https://github.com" },
+        { name: t("Social.LinkedIn"), icon: "tabler:brand-linkedin", url: "https://linkedin.com" },
+        { name: t("Social.Twitter"), icon: "tabler:brand-x", url: "https://twitter.com" },
     ];
     const [formData, setFormData] = useState({
         name: "",
@@ -126,7 +126,7 @@ export function ContactPageContent() {
                                 <form onSubmit={handleSubmit} className="space-y-6">
                                     <div>
                                         <label htmlFor="name" className="block text-sm font-medium mb-2">
-                                            Your Name
+                                            {t("Form.NameLabel")}
                                         </label>
                                         <input
                                             type="text"
@@ -135,13 +135,13 @@ export function ContactPageContent() {
                                             value={formData.name}
                                             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                                             className="w-full px-4 py-3 rounded-xl bg-[var(--card-bg)] border border-[var(--card-border)] focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] transition-all"
-                                            placeholder="John Doe" // Could also translate
+                                            placeholder={t("Form.NamePlaceholder")}
                                         />
                                     </div>
 
                                     <div>
                                         <label htmlFor="email" className="block text-sm font-medium mb-2">
-                                            Email Address
+                                            {t("Form.EmailLabel")}
                                         </label>
                                         <input
                                             type="email"
@@ -150,13 +150,13 @@ export function ContactPageContent() {
                                             value={formData.email}
                                             onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                                             className="w-full px-4 py-3 rounded-xl bg-[var(--card-bg)] border border-[var(--card-border)] focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] transition-all"
-                                            placeholder="john@example.com"
+                                            placeholder={t("Form.EmailPlaceholder")}
                                         />
                                     </div>
 
                                     <div>
                                         <label htmlFor="message" className="block text-sm font-medium mb-2">
-                                            Message
+                                            {t("Form.MessageLabel")}
                                         </label>
                                         <textarea
                                             id="message"
@@ -165,7 +165,7 @@ export function ContactPageContent() {
                                             value={formData.message}
                                             onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                                             className="w-full px-4 py-3 rounded-xl bg-[var(--card-bg)] border border-[var(--card-border)] focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] transition-all resize-none"
-                                            placeholder="Tell me about your project..."
+                                            placeholder={t("Form.MessagePlaceholder")}
                                         />
                                     </div>
 
@@ -272,7 +272,7 @@ export function ContactPageContent() {
                             </p>
                             <div className="flex items-center justify-center gap-2 text-accent font-mono">
                                 <span className="w-8 h-px bg-accent" />
-                                <span>Dalton Ponder</span>
+                                <span>{t("SignatureName")}</span>
                                 <span className="w-8 h-px bg-accent" />
                             </div>
                         </div>

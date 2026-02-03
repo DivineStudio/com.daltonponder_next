@@ -75,7 +75,7 @@ export function Navbar() {
                     <button
                         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                         className="md:hidden w-10 h-10 flex items-center justify-center rounded-lg hover:bg-[var(--card-bg)] transition-colors"
-                        aria-label="Toggle mobile menu"
+                        aria-label={t("Aria.ToggleMobileMenu")}
                         aria-expanded={isMobileMenuOpen}
                     >
                         <Icon
@@ -95,7 +95,7 @@ export function Navbar() {
                         className="fixed inset-0 z-40 bg-[var(--background)] md:hidden"
                         role="dialog"
                         aria-modal="true"
-                        aria-label="Navigation menu"
+                        aria-label={t("Aria.NavigationMenu")}
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
