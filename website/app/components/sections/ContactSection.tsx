@@ -4,23 +4,24 @@ import { motion } from "motion/react";
 import { useState } from "react";
 import { Icon } from "@iconify/react";
 import { BentoCard, BentoGrid } from "../ui/BentoGrid";
+import { useTranslations } from "next-intl";
 
 interface ContactSectionProps {
     summary?: boolean;
 }
 
-const contactSubjects = [
-    "Freelance Project Inquiry",
-    "Full-Time Employment Opportunity",
-    "Part-Time or Contract Work",
-    "Startup or Partnership Opportunity",
-    "Technical Consultation Request",
-    "Website or App Maintenance Request",
-    "Speaking or Event Engagement",
-    "Collaboration on Open Source or Side Project",
-    "Media or Interview Request",
-    "General Networking / Connect",
-    "Other (please specify in your message)",
+const contactSubjectKeys = [
+    "Freelance",
+    "FullTime",
+    "PartTime",
+    "Startup",
+    "Consultation",
+    "Maintenance",
+    "Speaking",
+    "Collaboration",
+    "Media",
+    "Networking",
+    "Other",
 ];
 
 const socialLinks = [
@@ -29,6 +30,7 @@ const socialLinks = [
 ];
 
 export function ContactSection({ summary = true }: ContactSectionProps) {
+    const t = useTranslations("Home.ContactSection");
     const [formState, setFormState] = useState({
         name: "",
         email: "",
@@ -82,10 +84,10 @@ export function ContactSection({ summary = true }: ContactSectionProps) {
                         className="text-center max-w-2xl mx-auto"
                     >
                         <h2 id="contact-heading-summary" className="font-mono text-3xl md:text-4xl font-bold text-primary mb-4">
-                            LET&apos;S CONNECT
+                            {t("Summary.Header")}
                         </h2>
                         <p className="text-muted text-lg mb-8">
-                            Have a project in mind or just want to chat? I&apos;d love to hear from you.
+                            {t("Summary.SubHeader")}
                         </p>
                         <motion.a
                             href="/contact"
@@ -94,7 +96,7 @@ export function ContactSection({ summary = true }: ContactSectionProps) {
                             whileTap={{ scale: 0.95 }}
                         >
                             <Icon icon="tabler:mail" width={20} height={20} />
-                            Get in Touch
+                            {t("Summary.CTA")}
                         </motion.a>
                     </motion.div>
                 </div>
@@ -112,10 +114,10 @@ export function ContactSection({ summary = true }: ContactSectionProps) {
                     className="mb-8"
                 >
                     <h2 id="contact-heading" className="font-mono text-3xl md:text-4xl font-bold text-primary mb-4">
-                        REACH OUT
+                        {t("Main.Header")}
                     </h2>
                     <p className="text-muted text-lg max-w-2xl">
-                        I&apos;m always interested in new projects and opportunities.
+                        {t("Main.SubHeader")}
                     </p>
                 </motion.div>
 
@@ -131,11 +133,10 @@ export function ContactSection({ summary = true }: ContactSectionProps) {
                                     className="text-primary mb-4"
                                 />
                                 <h3 className="font-mono text-lg font-semibold mb-2">
-                                    Get in Touch
+                                    {t("Card.Header")}
                                 </h3>
                                 <p className="text-sm text-muted mb-6">
-                                    I&apos;m always interested in new projects, collaborations, or
-                                    just having a chat about technology.
+                                    {t("Card.Description")}
                                 </p>
                             </div>
                             <div className="flex flex-wrap gap-3">
@@ -172,10 +173,10 @@ export function ContactSection({ summary = true }: ContactSectionProps) {
                                     <Icon icon="tabler:check" width={32} height={32} className="text-green-600" />
                                 </motion.div>
                                 <h3 className="font-mono text-xl font-semibold mb-2">
-                                    Message Sent!
+                                    {t("Form.SuccessHeader")}
                                 </h3>
                                 <p className="text-muted">
-                                    Thank you for reaching out. I&apos;ll get back to you soon.
+                                    {t("Form.SuccessMessage")}
                                 </p>
                             </motion.div>
                         ) : (
@@ -183,7 +184,7 @@ export function ContactSection({ summary = true }: ContactSectionProps) {
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     <div>
                                         <label htmlFor="name" className="block text-sm font-medium mb-1">
-                                            Name
+                                            {t("Form.Name")}
                                         </label>
                                         <input
                                             type="text"
@@ -197,7 +198,7 @@ export function ContactSection({ summary = true }: ContactSectionProps) {
                                     </div>
                                     <div>
                                         <label htmlFor="email" className="block text-sm font-medium mb-1">
-                                            Email
+                                            {t("Form.Email")}
                                         </label>
                                         <input
                                             type="email"
@@ -213,7 +214,7 @@ export function ContactSection({ summary = true }: ContactSectionProps) {
 
                                 <div>
                                     <label htmlFor="subject" className="block text-sm font-medium mb-1">
-                                        Subject
+                                        {t("Form.Subject")}
                                     </label>
                                     <select
                                         id="subject"
@@ -223,10 +224,10 @@ export function ContactSection({ summary = true }: ContactSectionProps) {
                                         required
                                         className="w-full px-4 py-2 rounded-lg border border-[var(--card-border)] bg-[var(--background)] focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] transition-all"
                                     >
-                                        <option value="">Select a subject...</option>
-                                        {contactSubjects.map((subject) => (
-                                            <option key={subject} value={subject}>
-                                                {subject}
+                                        <option value="">{t("Form.SelectSubject")}</option>
+                                        {contactSubjectKeys.map((key) => (
+                                            <option key={key} value={t(`Form.Subjects.${key}`)}>
+                                                {t(`Form.Subjects.${key}`)}
                                             </option>
                                         ))}
                                     </select>
@@ -234,7 +235,7 @@ export function ContactSection({ summary = true }: ContactSectionProps) {
 
                                 <div>
                                     <label htmlFor="message" className="block text-sm font-medium mb-1">
-                                        Message
+                                        {t("Form.Message")}
                                     </label>
                                     <textarea
                                         id="message"
@@ -257,12 +258,12 @@ export function ContactSection({ summary = true }: ContactSectionProps) {
                                     {isSubmitting ? (
                                         <>
                                             <Icon icon="tabler:loader-2" width={20} height={20} className="animate-spin" />
-                                            Sending...
+                                            {t("Form.Sending")}
                                         </>
                                     ) : (
                                         <>
                                             <Icon icon="tabler:send" width={20} height={20} />
-                                            Send Message
+                                            {t("Form.Send")}
                                         </>
                                     )}
                                 </motion.button>

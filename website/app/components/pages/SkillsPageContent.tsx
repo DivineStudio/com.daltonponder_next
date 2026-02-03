@@ -1,4 +1,5 @@
 "use client";
+import { useTranslations } from "next-intl";
 
 import { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "motion/react";
@@ -6,55 +7,20 @@ import { Icon } from "@iconify/react";
 import Link from "next/link";
 
 // Full skills data with categories, years, and proficiency
-const allSkills = [
-    // Languages
-    { name: "C#", icon: "devicon:csharp", category: "Languages", years: 10, proficiency: 95 },
-    { name: "JavaScript", icon: "devicon:javascript", category: "Languages", years: 8, proficiency: 90 },
-    { name: "TypeScript", icon: "devicon:typescript", category: "Languages", years: 6, proficiency: 92 },
-    { name: "Python", icon: "devicon:python", category: "Languages", years: 5, proficiency: 75 },
-    { name: "SQL", icon: "tabler:database", category: "Languages", years: 10, proficiency: 88 },
-    { name: "HTML/CSS", icon: "devicon:html5", category: "Languages", years: 10, proficiency: 95 },
 
-    // Frontend
-    { name: "React", icon: "devicon:react", category: "Frontend", years: 6, proficiency: 92 },
-    { name: "Next.js", icon: "devicon:nextjs", category: "Frontend", years: 4, proficiency: 90 },
-    { name: "Vue.js", icon: "devicon:vuejs", category: "Frontend", years: 3, proficiency: 70 },
-    { name: "Tailwind CSS", icon: "devicon:tailwindcss", category: "Frontend", years: 4, proficiency: 88 },
-    { name: "Framer Motion", icon: "tabler:brand-framer-motion", category: "Frontend", years: 2, proficiency: 80 },
-
-    // Backend
-    { name: ".NET", icon: "devicon:dotnetcore", category: "Backend", years: 10, proficiency: 95 },
-    { name: "Node.js", icon: "devicon:nodejs", category: "Backend", years: 6, proficiency: 85 },
-    { name: "Express", icon: "devicon:express", category: "Backend", years: 5, proficiency: 82 },
-    { name: "GraphQL", icon: "devicon:graphql", category: "Backend", years: 3, proficiency: 75 },
-
-    // Cloud
-    { name: "AWS", icon: "devicon:amazonwebservices-wordmark", category: "Cloud", years: 5, proficiency: 80 },
-    { name: "Azure", icon: "devicon:azure", category: "Cloud", years: 6, proficiency: 85 },
-    { name: "GCP", icon: "devicon:googlecloud", category: "Cloud", years: 2, proficiency: 60 },
-
-    // DevOps
-    { name: "Docker", icon: "devicon:docker", category: "DevOps", years: 5, proficiency: 85 },
-    { name: "Kubernetes", icon: "devicon:kubernetes", category: "DevOps", years: 3, proficiency: 70 },
-    { name: "GitHub Actions", icon: "devicon:githubactions", category: "DevOps", years: 4, proficiency: 85 },
-    { name: "Terraform", icon: "devicon:terraform", category: "DevOps", years: 2, proficiency: 65 },
-
-    // Data
-    { name: "PostgreSQL", icon: "devicon:postgresql", category: "Data", years: 7, proficiency: 88 },
-    { name: "MongoDB", icon: "devicon:mongodb", category: "Data", years: 4, proficiency: 75 },
-    { name: "Redis", icon: "devicon:redis", category: "Data", years: 4, proficiency: 78 },
-    { name: "SQL Server", icon: "devicon:microsoftsqlserver", category: "Data", years: 10, proficiency: 90 },
-
-    // Security
-    { name: "OWASP", icon: "tabler:shield-check", category: "Security", years: 5, proficiency: 85 },
-    { name: "Penetration Testing", icon: "tabler:bug", category: "Security", years: 4, proficiency: 75 },
-    { name: "Security+", icon: "tabler:certificate", category: "Security", years: 3, proficiency: 80 },
-];
 
 const categories = ["All", "Languages", "Frontend", "Backend", "Cloud", "DevOps", "Data", "Security"];
 
+interface Skill {
+    name: string;
+    icon: string;
+    category: string;
+    years: number;
+    proficiency: number;
+}
+
 interface SkillCardProps {
-    skill: typeof allSkills[0];
+    skill: Skill;
     index: number;
 }
 
@@ -144,6 +110,9 @@ function SkillCard({ skill, index }: SkillCardProps) {
 }
 
 export function SkillsPageContent() {
+    const t = useTranslations("Home.SkillsSection");
+    const tNav = useTranslations("Navigation");
+    const allSkills = t.raw("List") as Skill[];
     const [searchQuery, setSearchQuery] = useState("");
     const [activeCategory, setActiveCategory] = useState("All");
 
@@ -173,10 +142,10 @@ export function SkillsPageContent() {
                         transition={{ duration: 0.6 }}
                     >
                         <h1 className="font-mono text-4xl md:text-5xl lg:text-6xl font-bold text-[var(--color-hero-text)] mb-4">
-                            TECH STACK
+                            {t("Header")}
                         </h1>
                         <p className="text-[var(--color-hero-muted)] text-lg md:text-xl max-w-xl mb-6">
-                            Technologies I&apos;ve mastered over a decade of building software
+                            {t("Header")}
                         </p>
                         <motion.div
                             initial={{ scaleX: 0 }}
@@ -238,7 +207,7 @@ export function SkillsPageContent() {
                                 key={category}
                                 onClick={() => setActiveCategory(category)}
                                 className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${activeCategory === category
-                                    ? "bg-[#e94560] text-white"
+                                    ? "bg-[var(--color-primary)] text-white"
                                     : "bg-[var(--color-base-200)] text-muted hover:bg-[var(--color-base-200)] hover:text-foreground"
                                     }`}
                             >
@@ -300,7 +269,7 @@ export function SkillsPageContent() {
                             href="/credentials"
                             className="inline-flex items-center gap-2 btn-primary"
                         >
-                            View My Credentials
+                            {tNav("Credentials")}
                             <Icon icon="tabler:arrow-right" width={20} height={20} />
                         </Link>
                     </motion.div>

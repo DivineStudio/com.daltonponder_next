@@ -1,23 +1,26 @@
 "use client";
+import { useTranslations } from "next-intl";
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Icon } from "@iconify/react";
 import Link from "next/link";
 import { ThemeToggler } from "../ui/ThemeToggler";
-import { LanguageToggler } from "../ui/LanguageToggler";
-
-const navLinks = [
-    { href: "/", label: "Home" },
-    { href: "/about", label: "About" },
-    { href: "/skills", label: "Skills" },
-    { href: "/credentials", label: "Credentials" },
-    { href: "/contact", label: "Contact" },
-];
+// import { LanguageToggler } from "../ui/LanguageToggler";
 
 export function Navbar() {
+    const t = useTranslations("Navigation");
+    const tImg = useTranslations("Image");
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+    const navLinks = [
+        { href: "/", label: t("Home") },
+        { href: "/about", label: t("About") },
+        { href: "/skills", label: t("Skills") },
+        { href: "/credentials", label: t("Credentials") },
+        { href: "/contact", label: t("Contact") },
+    ];
 
     useEffect(() => {
         const handleScroll = () => {
@@ -40,12 +43,11 @@ export function Navbar() {
                 <nav className="container flex items-center justify-between h-16 md:h-20">
                     {/* Logo */}
                     <Link href="/" className="flex items-center gap-2">
-                        <span className="font-mono text-xl font-bold text-primary">
-                            DP
-                        </span>
-                        <span className="hidden sm:inline font-mono text-sm text-muted">
-                            Dalton Ponder
-                        </span>
+                        <img
+                            src="/logos/DP Logo.svg"
+                            alt={tImg("DaltonPonderLogoAlt")}
+                            className="h-8 md:h-10 w-auto object-contain"
+                        />
                     </Link>
 
                     {/* Desktop Navigation */}
@@ -65,7 +67,7 @@ export function Navbar() {
 
                         <div className="flex items-center gap-3">
                             <ThemeToggler />
-                            <LanguageToggler />
+                            {/* <LanguageToggler /> */}
                         </div>
                     </div>
 
@@ -122,7 +124,7 @@ export function Navbar() {
 
                             <div className="flex items-center gap-4 mt-8">
                                 <ThemeToggler />
-                                <LanguageToggler />
+                                {/* <LanguageToggler /> */}
                             </div>
                         </div>
                     </motion.div>

@@ -3,41 +3,44 @@
 import { motion } from "motion/react";
 import { Icon } from "@iconify/react";
 import { BentoCard, BentoGrid } from "../ui/BentoGrid";
+import { useTranslations } from "next-intl";
 
 interface PersonalAboutSectionProps {
     summary?: boolean;
 }
 
-const interests = [
-    {
-        category: "What Drives Me",
-        items: [
-            { icon: "tabler:users", label: "Family", description: "Time with family is my greatest joy" },
-            { icon: "tabler:music", label: "Music", description: "Music offers daily solace" },
-            { icon: "tabler:book", label: "Reading", description: "Continuous learning through books" },
-        ],
-    },
-    {
-        category: "How I Lead",
-        items: [
-            {
-                icon: "tabler:brain",
-                label: "Stoic Principles",
-                description: "I draw on Stoic philosophy for leadership and decision-making",
-            },
-        ],
-    },
-    {
-        category: "Beyond Work",
-        items: [
-            { icon: "tabler:language", label: "Spanish", description: "Bilingual in English and Spanish" },
-            { icon: "tabler:device-gamepad-2", label: "Gaming", description: "Strategy and RPG enthusiast" },
-            { icon: "tabler:boxing-glove", label: "Boxing", description: "Staying fit through boxing" },
-        ],
-    },
-];
-
 export function PersonalAboutSection({ summary = true }: PersonalAboutSectionProps) {
+    const t = useTranslations("Home.PersonalAboutSection");
+
+    const interests = [
+        {
+            category: t("Interests.Drives.Category"),
+            items: [
+                { icon: "tabler:users", label: t("Interests.Drives.Family"), description: t("Interests.Drives.FamilyDesc") },
+                { icon: "tabler:music", label: t("Interests.Drives.Music"), description: t("Interests.Drives.MusicDesc") },
+                { icon: "tabler:book", label: t("Interests.Drives.Reading"), description: t("Interests.Drives.ReadingDesc") },
+            ],
+        },
+        {
+            category: t("Interests.Lead.Category"),
+            items: [
+                {
+                    icon: "tabler:brain",
+                    label: t("Interests.Lead.Stoic"),
+                    description: t("Interests.Lead.StoicDesc"),
+                },
+            ],
+        },
+        {
+            category: t("Interests.Beyond.Category"),
+            items: [
+                { icon: "tabler:language", label: t("Interests.Beyond.Spanish"), description: t("Interests.Beyond.SpanishDesc") },
+                { icon: "tabler:device-gamepad-2", label: t("Interests.Beyond.Gaming"), description: t("Interests.Beyond.GamingDesc") },
+                { icon: "tabler:boxing-glove", label: t("Interests.Beyond.Boxing"), description: t("Interests.Beyond.BoxingDesc") },
+            ],
+        },
+    ];
+
     const displayInterests = summary ? interests.slice(0, 2) : interests;
 
     return (
@@ -50,10 +53,10 @@ export function PersonalAboutSection({ summary = true }: PersonalAboutSectionPro
                     className="mb-8"
                 >
                     <h2 className="font-mono text-3xl md:text-4xl font-bold text-primary mb-4">
-                        BEYOND THE CODE
+                        {t("Header")}
                     </h2>
                     <p className="text-muted text-lg max-w-2xl">
-                        A glimpse into who I am outside of work.
+                        {t("SubHeader")}
                     </p>
                 </motion.div>
 
@@ -99,10 +102,9 @@ export function PersonalAboutSection({ summary = true }: PersonalAboutSectionPro
                                 className="text-primary mb-4"
                             />
                             <blockquote className="font-serif text-lg italic mb-4">
-                                &ldquo;The impediment to action advances action. What stands in
-                                the way becomes the way.&rdquo;
+                                &ldquo;{t("Quote.Text")}&rdquo;
                             </blockquote>
-                            <p className="text-sm text-muted">— Marcus Aurelius</p>
+                            <p className="text-sm text-muted">{t("Quote.Author")}</p>
                         </div>
                     </BentoCard>
                 </BentoGrid>

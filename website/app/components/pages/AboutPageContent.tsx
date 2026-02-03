@@ -1,62 +1,33 @@
 "use client";
+import { useTranslations } from "next-intl";
 
 import { motion } from "motion/react";
 import { Icon } from "@iconify/react";
 import Link from "next/link";
+import Image from "next/image";
 import { PhilosophyQuote } from "../ui/PhilosophyQuote";
 
-// Timeline eras data
-const eras = [
-    {
-        title: "The Startup Years",
-        emoji: "🚀",
-        description: "Fast-paced product development, wearing many hats, building MVPs that shipped weekly.",
-        side: "left",
-    },
-    {
-        title: "Enterprise Scale",
-        emoji: "🏢",
-        description: "Architecture patterns, team leadership, scaling systems to millions of users.",
-        side: "right",
-    },
-    {
-        title: "The Craft Era",
-        emoji: "🔧",
-        description: "Deep expertise, elegant solutions, mentoring the next generation.",
-        side: "left",
-    },
-    {
-        title: "Now & Next",
-        emoji: "✨",
-        description: "AI-assisted development, open to new challenges and meaningful projects.",
-        side: "right",
-        current: true,
-    },
-];
-
-// Testimonials data
-const testimonials = [
-    {
-        quote: "Dalton is one of the most versatile developers I've worked with. His ability to understand business requirements and translate them into elegant technical solutions is remarkable.",
-        author: "Sarah Johnson",
-        role: "VP Engineering, TechCorp",
-        avatar: "SJ",
-    },
-    {
-        quote: "Working with Dalton was transformative for our team. He not only delivered exceptional code but also elevated our entire development process.",
-        author: "Michael Chen",
-        role: "CTO, StartupXYZ",
-        avatar: "MC",
-    },
-    {
-        quote: "Dalton brings a rare combination of technical depth and communication skills. He made complex security concepts accessible to our entire organization.",
-        author: "Emily Rodriguez",
-        role: "Director of Product, SecureTech",
-        avatar: "ER",
-    },
-];
-
 export function AboutPageContent() {
+    const t = useTranslations("Home.ProAboutSection");
+    const tp = useTranslations("Home.PersonalAboutSection");
+    const tAb = useTranslations("About");
+    const tNav = useTranslations("Navigation");
+
+    // Timeline eras data from JSON
+    const eras = tAb.raw("Eras");
+
+    // Testimonials data from JSON (Shared with Home)
+    const tHomeTestimonials = useTranslations("Home.TestimonialsSection");
+    const rawTestimonials = tHomeTestimonials.raw("Items");
+    const testimonials = Array.isArray(rawTestimonials)
+        ? rawTestimonials.map((t: any) => ({
+            quote: t.Quote,
+            author: t.Author,
+            role: t.Role,
+            company: t.Company,
+            avatar: t.avatar
+        }))
+        : [];
     return (
         <>
             {/* Hero Section - Theme Aware */}
@@ -89,9 +60,16 @@ export function AboutPageContent() {
                             initial={{ opacity: 0, scale: 0.8 }}
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{ duration: 0.6, delay: 0.2 }}
-                            className="w-44 h-44 rounded-full bg-[var(--card-bg)] border-4 border-[var(--color-hero-accent)] flex items-center justify-center"
+                            className="w-44 h-44 rounded-full bg-[var(--card-bg)] border-4 border-[var(--color-hero-accent)] flex items-center justify-center overflow-hidden"
                         >
-                            <span className="text-[var(--color-hero-muted)] text-lg font-medium">AVATAR</span>
+                            <Image
+                                src="/DaltonPonderPortrait.webp"
+                                alt="Dalton Ponder"
+                                width={176}
+                                height={176}
+                                className="w-full h-full object-cover"
+                                priority
+                            />
                         </motion.div>
                     </div>
                 </div>
@@ -109,7 +87,7 @@ export function AboutPageContent() {
                         viewport={{ once: true }}
                         className="font-mono text-2xl md:text-3xl font-bold mb-8"
                     >
-                        Who I Am
+                        {tp("Header")}
                     </motion.h2>
 
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
@@ -157,7 +135,7 @@ export function AboutPageContent() {
                             viewport={{ once: true }}
                             className="bento-card overflow-hidden"
                         >
-                            <div className="bg-[#e94560] -mx-6 -mt-6 px-6 py-4 mb-6">
+                            <div className="bg-[var(--color-primary)] -mx-6 -mt-6 px-6 py-4 mb-6">
                                 <h3 className="font-mono text-lg font-semibold text-white">
                                     🎯 PERSONAL
                                 </h3>
@@ -211,7 +189,7 @@ export function AboutPageContent() {
                         <div className="absolute left-1/2 top-0 bottom-0 w-1 bg-[var(--card-border)] -translate-x-1/2 hidden md:block" />
 
                         <div className="space-y-8 md:space-y-0">
-                            {eras.map((era, index) => (
+                            {eras.map((era: { title: string; emoji: string; description: string; side: string; current?: boolean }, index: number) => (
                                 <motion.div
                                     key={era.title}
                                     initial={{ opacity: 0, x: era.side === "left" ? -30 : 30 }}
@@ -223,12 +201,12 @@ export function AboutPageContent() {
                                 >
                                     {/* Dot */}
                                     <div
-                                        className={`hidden md:block absolute top-6 w-6 h-6 rounded-full bg-[#e94560] border-4 ${era.current ? "border-white" : "border-[#e94560]"
+                                        className={`hidden md:block absolute top-6 w-6 h-6 rounded-full bg-[var(--color-primary)] border-4 ${era.current ? "border-white" : "border-[var(--color-primary)]"
                                             } ${era.side === "left" ? "-right-3 translate-x-1/2" : "-left-3 -translate-x-1/2"}`}
                                     />
 
-                                    <div className={`bento-card ${era.current ? "border-[#e94560] border-2 bg-[#fef0f3] dark:bg-[#3a2a3e]" : ""}`}>
-                                        <h3 className={`font-mono text-xl font-semibold mb-2 ${era.current ? "text-[#e94560]" : ""}`}>
+                                    <div className={`bento-card ${era.current ? "border-[var(--color-primary)] border-2" : ""}`}>
+                                        <h3 className={`font-mono text-xl font-semibold mb-2 ${era.current ? "text-[var(--color-primary)]" : ""}`}>
                                             {era.emoji} {era.title}
                                         </h3>
                                         <p className="text-muted">{era.description}</p>
@@ -259,7 +237,7 @@ export function AboutPageContent() {
                         viewport={{ once: true }}
                         className="bento-card max-w-4xl mx-auto mb-8"
                     >
-                        <div className="text-6xl md:text-8xl font-serif text-[#e94560] opacity-30 leading-none mb-4">
+                        <div className="text-6xl md:text-8xl font-serif text-[var(--color-primary)] opacity-30 leading-none mb-4">
                             &ldquo;
                         </div>
                         <blockquote className="text-xl md:text-2xl font-serif mb-6 -mt-8">
@@ -278,7 +256,7 @@ export function AboutPageContent() {
 
                     {/* Other Testimonials */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        {testimonials.slice(1).map((testimonial, index) => (
+                        {testimonials.slice(1).map((testimonial: { quote: string; author: string; role: string; avatar: string }, index: number) => (
                             <motion.div
                                 key={testimonial.author}
                                 initial={{ opacity: 0, y: 20 }}
@@ -312,7 +290,7 @@ export function AboutPageContent() {
                         viewport={{ once: true }}
                     >
                         <h2 className="font-mono text-2xl md:text-3xl font-bold mb-4">
-                            Let&apos;s Work Together
+                            {tNav("Contact")}
                         </h2>
                         <p className="text-muted mb-8 max-w-xl mx-auto">
                             Have a project in mind? I&apos;d love to hear about it.

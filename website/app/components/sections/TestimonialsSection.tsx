@@ -1,4 +1,5 @@
 "use client";
+import { useTranslations } from "next-intl";
 
 import { motion, AnimatePresence } from "motion/react";
 import { useState, useEffect } from "react";
@@ -8,49 +9,6 @@ import Link from "next/link";
 interface TestimonialsSectionProps {
     summary?: boolean;
 }
-
-const testimonials = [
-    {
-        id: 1,
-        quote:
-            "Dalton is an exceptional developer who consistently delivers high-quality work. His attention to detail and problem-solving skills are outstanding.",
-        author: "Sarah Johnson",
-        title: "VP Engineering",
-        company: "TechCorp",
-        context: "6-month enterprise platform migration",
-        featured: true,
-    },
-    {
-        id: 2,
-        quote:
-            "Working with Dalton was a pleasure. He brought innovative solutions to complex challenges.",
-        author: "Michael Chen",
-        title: "CTO",
-        company: "StartupXYZ",
-        context: "Full-stack development for MVP launch",
-        featured: false,
-    },
-    {
-        id: 3,
-        quote:
-            "Dalton's expertise in both development and security made him invaluable to our team.",
-        author: "Emily Rodriguez",
-        title: "Project Manager",
-        company: "SecureTech",
-        context: "Security audit and remediation project",
-        featured: false,
-    },
-    {
-        id: 4,
-        quote:
-            "A true professional who goes above and beyond. Highly recommended!",
-        author: "David Kim",
-        title: "Director of Engineering",
-        company: "CloudFirst",
-        context: "Cloud architecture consulting",
-        featured: false,
-    },
-];
 
 function TypewriterText({ text }: { text: string }) {
     const [displayedText, setDisplayedText] = useState("");
@@ -85,9 +43,30 @@ function TypewriterText({ text }: { text: string }) {
 }
 
 export function TestimonialsSection({ summary = true }: TestimonialsSectionProps) {
+    const t = useTranslations("Home.TestimonialsSection");
     const [featuredIndex, setFeaturedIndex] = useState(0);
-    const featuredTestimonials = testimonials.filter((t) => t.featured || !summary);
-    const displayTestimonials = summary ? testimonials.slice(0, 4) : testimonials;
+
+    const testimonials = t.raw("Items") as Array<{
+        Quote: string;
+        Author: string;
+        Role: string;
+        Company: string;
+        Context?: string;
+    }>;
+
+    // Map to internal format if needed, though we can use them directly
+    const formattedTestimonials = testimonials.map((t, idx) => ({
+        id: idx,
+        quote: t.Quote,
+        author: t.Author,
+        title: t.Role,
+        company: t.Company,
+        context: t.Context,
+        featured: idx === 0, // Fallback logic
+    }));
+
+    const featuredTestimonials = formattedTestimonials.filter((t) => t.featured || !summary);
+    const displayTestimonials = summary ? formattedTestimonials.slice(0, 4) : formattedTestimonials;
 
     // Auto-rotate featured testimonial
     useEffect(() => {
@@ -110,10 +89,10 @@ export function TestimonialsSection({ summary = true }: TestimonialsSectionProps
                     className="mb-8"
                 >
                     <h2 id="testimonials-heading" className="font-mono text-3xl md:text-4xl font-bold text-primary mb-4">
-                        TESTIMONIALS
+                        {t("Header")}
                     </h2>
                     <p className="text-muted text-lg max-w-2xl">
-                        What colleagues and clients say about working with me.
+                        {t("Header")}
                     </p>
                 </motion.div>
 

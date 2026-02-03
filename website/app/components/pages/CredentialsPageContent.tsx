@@ -1,87 +1,17 @@
 "use client";
+import { useTranslations } from "next-intl";
 
 import { motion } from "motion/react";
 import { Icon } from "@iconify/react";
 import Link from "next/link";
 
-// Work experience data
-const workExperience = [
-    {
-        title: "Senior Full Stack Developer",
-        company: "TechCorp Inc.",
-        dates: "2020 - Present",
-        current: true,
-        bullets: [
-            "Led architecture of microservices platform serving 1M+ users",
-            "Mentored team of 5 junior developers",
-            "Reduced deployment time by 60% through CI/CD optimization",
-        ],
-    },
-    {
-        title: "Software Engineer",
-        company: "StartupXYZ",
-        dates: "2017 - 2020",
-        current: false,
-        bullets: [
-            "Built MVP from scratch, growing to 50K active users",
-            "Implemented CI/CD pipeline reducing deploy time by 80%",
-        ],
-    },
-    {
-        title: "Junior Developer",
-        company: "Agency Co.",
-        dates: "2014 - 2017",
-        current: false,
-        bullets: [
-            "Developed client-facing web applications",
-            "Collaborated with design team on UX improvements",
-        ],
-    },
-];
-
-// Certifications
-const certifications = [
-    {
-        name: "CompTIA Security+",
-        issuer: "CompTIA",
-        year: "2023",
-        icon: "tabler:shield-check",
-    },
-    {
-        name: "AWS Solutions Architect",
-        issuer: "Amazon Web Services",
-        year: "2022",
-        icon: "tabler:cloud",
-    },
-    {
-        name: "Azure Developer Associate",
-        issuer: "Microsoft",
-        year: "2021",
-        icon: "tabler:brand-azure",
-    },
-    {
-        name: "Certified Kubernetes Admin",
-        issuer: "CNCF",
-        year: "2022",
-        icon: "tabler:box",
-    },
-    {
-        name: "Scrum Master Certified",
-        issuer: "Scrum Alliance",
-        year: "2020",
-        icon: "tabler:refresh",
-    },
-];
-
-// Education
-const education = {
-    degree: "Master of Science in Computer Science",
-    university: "State University",
-    year: "2014",
-    coursework: ["Distributed Systems", "Machine Learning", "Cybersecurity", "Cloud Computing"],
-};
-
 export function CredentialsPageContent() {
+    const t = useTranslations("Credentials");
+    const tNav = useTranslations("Navigation");
+
+    const workExperience = t.raw("WorkExperience.List");
+    const certifications = t.raw("Certifications.List");
+    const education = t.raw("Education");
     return (
         <>
             {/* Hero Section - Theme Aware */}
@@ -94,10 +24,10 @@ export function CredentialsPageContent() {
                             transition={{ duration: 0.6 }}
                         >
                             <h1 className="font-mono text-4xl md:text-5xl lg:text-6xl font-bold text-[var(--color-hero-text)] mb-4">
-                                PROOF OF EXCELLENCE
+                                {t("Hero.Header")}
                             </h1>
                             <p className="text-[var(--color-hero-muted)] text-lg md:text-xl max-w-xl mb-6">
-                                Education, certifications, and career milestones
+                                {t("Hero.SubHeader")}
                             </p>
                             <motion.div
                                 initial={{ scaleX: 0 }}
@@ -124,7 +54,7 @@ export function CredentialsPageContent() {
                                     <div className="font-mono text-3xl font-bold text-[var(--color-hero-accent)]">
                                         {stat.value}
                                     </div>
-                                    <div className="text-[var(--color-hero-muted)] text-sm">{stat.label}</div>
+                                    <div className="text-[var(--color-hero-muted)] text-sm">{t(`Stats.${stat.label}`)}</div>
                                 </motion.div>
                             ))}
                         </div>
@@ -144,7 +74,7 @@ export function CredentialsPageContent() {
                         viewport={{ once: true }}
                         className="font-mono text-2xl md:text-3xl font-bold mb-8"
                     >
-                        Work Experience
+                        {t("WorkExperience.Header")}
                     </motion.h2>
 
                     {/* Timeline */}
@@ -153,7 +83,7 @@ export function CredentialsPageContent() {
                         <div className="absolute left-3 top-0 bottom-0 w-1 bg-[var(--card-border)]" />
 
                         <div className="space-y-6">
-                            {workExperience.map((job, index) => (
+                            {workExperience.map((job: { title: string; company: string; dates: string; current: boolean; bullets: string[] }, index: number) => (
                                 <motion.div
                                     key={job.title + job.company}
                                     initial={{ opacity: 0, x: 20 }}
@@ -165,7 +95,7 @@ export function CredentialsPageContent() {
                                     {/* Dot */}
                                     <div
                                         className={`absolute left-0 top-6 w-7 h-7 rounded-full ${job.current
-                                            ? "bg-[#e94560] border-2 border-[#e94560]"
+                                            ? "bg-[var(--color-primary)] border-2 border-[var(--color-primary)]"
                                             : "bg-[var(--color-base-200)] border-2 border-[var(--card-border)]"
                                             } flex items-center justify-center`}
                                     >
@@ -180,14 +110,14 @@ export function CredentialsPageContent() {
                                                 <h3 className={`font-mono text-xl font-semibold ${job.current ? "" : "text-muted"}`}>
                                                     {job.title}
                                                 </h3>
-                                                <p className="text-[#e94560] font-medium">
+                                                <p className="text-[var(--color-primary)] font-medium">
                                                     {job.company}
                                                 </p>
                                             </div>
                                             <span className="text-muted text-sm">{job.dates}</span>
                                         </div>
                                         <ul className="space-y-1 text-muted text-sm">
-                                            {job.bullets.map((bullet, i) => (
+                                            {job.bullets.map((bullet: string, i: number) => (
                                                 <li key={i} className="flex items-start gap-2">
                                                     <span className="mt-1.5">•</span>
                                                     {bullet}
@@ -211,7 +141,7 @@ export function CredentialsPageContent() {
                         viewport={{ once: true }}
                         className="font-mono text-2xl md:text-3xl font-bold mb-8"
                     >
-                        Education
+                        {t("Education.Header") || "Education"}
                     </motion.h2>
 
                     <motion.div
@@ -226,12 +156,12 @@ export function CredentialsPageContent() {
                             </div>
                             <div>
                                 <h3 className="font-mono text-xl font-semibold mb-1">
-                                    {education.degree}
+                                    {education.Degree}
                                 </h3>
-                                <p className="text-[#e94560] font-medium mb-2">{education.university}</p>
-                                <p className="text-muted text-sm mb-4">Graduated {education.year}</p>
+                                <p className="text-[var(--color-primary)] font-medium mb-2">{education.University}</p>
+                                <p className="text-muted text-sm mb-4">Graduated {education.Year}</p>
                                 <div className="flex flex-wrap gap-2">
-                                    {education.coursework.map((course) => (
+                                    {education.Coursework.map((course: string) => (
                                         <span
                                             key={course}
                                             className="px-3 py-1 rounded-full bg-[var(--color-base-200)] text-sm text-muted"
@@ -255,11 +185,11 @@ export function CredentialsPageContent() {
                         viewport={{ once: true }}
                         className="font-mono text-2xl md:text-3xl font-bold mb-8"
                     >
-                        Certifications
+                        {t("Certifications.Header") || "Certifications"}
                     </motion.h2>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {certifications.map((cert, index) => (
+                        {certifications.map((cert: { name: string; issuer: string; year: string; icon: string }, index: number) => (
                             <motion.div
                                 key={cert.name}
                                 initial={{ opacity: 0, y: 20 }}
@@ -271,7 +201,7 @@ export function CredentialsPageContent() {
                                 <div className="flex items-start gap-4">
                                     <motion.div
                                         whileHover={{ scale: 1.1, rotate: 5 }}
-                                        className="w-12 h-12 rounded-lg bg-[#e94560] flex items-center justify-center shrink-0"
+                                        className="w-12 h-12 rounded-lg bg-[var(--color-primary)] flex items-center justify-center shrink-0"
                                     >
                                         <Icon icon={cert.icon} width={24} height={24} className="text-white" />
                                     </motion.div>
@@ -301,13 +231,13 @@ export function CredentialsPageContent() {
                             className="inline-flex items-center gap-2 btn-outline"
                         >
                             <Icon icon="tabler:download" width={20} height={20} />
-                            Download Resume
+                            {t("CTA.Download")}
                         </Link>
                         <Link
                             href="/contact"
                             className="inline-flex items-center gap-2 btn-primary"
                         >
-                            Get In Touch
+                            {t("CTA.Contact")}
                             <Icon icon="tabler:arrow-right" width={20} height={20} />
                         </Link>
                     </motion.div>

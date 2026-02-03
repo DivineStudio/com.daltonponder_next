@@ -3,12 +3,15 @@
 import { motion } from "motion/react";
 import { Icon } from "@iconify/react";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 
 interface ProAboutSectionProps {
     summary?: boolean;
 }
 
 export function ProAboutSection({ summary = true }: ProAboutSectionProps) {
+    const t = useTranslations("Home.ProAboutSection");
+
     return (
         <section className="section p-0 overflow-hidden">
             {/* Maroon Accent Break */}
@@ -27,10 +30,10 @@ export function ProAboutSection({ summary = true }: ProAboutSectionProps) {
                         transition={{ delay: 0.3 }}
                         className="font-mono text-2xl md:text-4xl lg:text-5xl font-bold text-white leading-tight"
                     >
-                        I BUILD SECURE, SCALABLE SOFTWARE
+                        {t("HeaderLine1")}
                         <br />
                         <span className="text-[var(--color-secondary)]">
-                            THAT SOLVES REAL PROBLEMS.
+                            {t("HeaderLine2")}
                         </span>
                     </motion.h2>
                 </div>
@@ -46,11 +49,7 @@ export function ProAboutSection({ summary = true }: ProAboutSectionProps) {
             >
                 <div className="max-w-3xl mx-auto text-center">
                     <p className="text-lg md:text-xl leading-relaxed mb-8">
-                        With over a decade of experience in software development and
-                        cybersecurity, I specialize in building robust applications that
-                        prioritize security without compromising on user experience. From
-                        enterprise solutions to startup MVPs, I bring a methodical approach
-                        to solving complex technical challenges.
+                        {t("Paragraph")}
                     </p>
 
                     <div className="flex flex-wrap items-center justify-center gap-4">
@@ -61,7 +60,7 @@ export function ProAboutSection({ summary = true }: ProAboutSectionProps) {
                             className="btn-outline flex items-center gap-2"
                         >
                             <Icon icon="tabler:brand-linkedin" width={20} height={20} />
-                            LinkedIn
+                            {t("LinkedIn")}
                         </a>
                         <a
                             href="https://github.com/daltonponder"
@@ -70,7 +69,7 @@ export function ProAboutSection({ summary = true }: ProAboutSectionProps) {
                             className="btn-outline flex items-center gap-2"
                         >
                             <Icon icon="tabler:brand-github" width={20} height={20} />
-                            GitHub
+                            {t("GitHub")}
                         </a>
                     </div>
 
@@ -86,7 +85,7 @@ export function ProAboutSection({ summary = true }: ProAboutSectionProps) {
                                 href="/about"
                                 className="inline-flex items-center gap-2 text-accent hover:underline font-medium"
                             >
-                                Learn More About Me
+                                {t("LearnMore")}
                                 <Icon icon="tabler:arrow-right" width={16} height={16} />
                             </Link>
                         </motion.div>

@@ -1,24 +1,23 @@
 "use client";
+import { useTranslations } from "next-intl";
 
 import { useState } from "react";
 import { motion } from "motion/react";
 import { Icon } from "@iconify/react";
 
-// Availability options
-const availabilityOptions = [
-    { label: "Freelance", available: true },
-    { label: "Full-Time", available: true },
-    { label: "Consulting", available: true },
-];
-
-// Social links
-const socialLinks = [
-    { name: "GitHub", icon: "tabler:brand-github", url: "https://github.com" },
-    { name: "LinkedIn", icon: "tabler:brand-linkedin", url: "https://linkedin.com" },
-    { name: "Twitter", icon: "tabler:brand-x", url: "https://twitter.com" },
-];
-
 export function ContactPageContent() {
+    const t = useTranslations("Contact");
+    const tHome = useTranslations("Home.ContactSection");
+    const tNav = useTranslations("Navigation");
+
+    const availabilityOptions = t.raw("Availability.Options");
+
+    // Social links (reusing logic or hardcoded if specific)
+    const socialLinks = [
+        { name: "GitHub", icon: "tabler:brand-github", url: "https://github.com" },
+        { name: "LinkedIn", icon: "tabler:brand-linkedin", url: "https://linkedin.com" },
+        { name: "Twitter", icon: "tabler:brand-x", url: "https://twitter.com" },
+    ];
     const [formData, setFormData] = useState({
         name: "",
         email: "",
@@ -48,10 +47,10 @@ export function ContactPageContent() {
                             transition={{ duration: 0.6 }}
                         >
                             <h1 className="font-mono text-4xl md:text-5xl lg:text-6xl font-bold text-[var(--color-hero-text)] mb-4">
-                                LET&apos;S BUILD SOMETHING
+                                {t("Hero.Header")}
                             </h1>
                             <p className="text-[var(--color-hero-muted)] text-lg md:text-xl max-w-xl mb-6">
-                                Have a project in mind? I&apos;d love to hear about it.
+                                {t("Hero.SubHeader")}
                             </p>
                             <motion.div
                                 initial={{ scaleX: 0 }}
@@ -68,14 +67,14 @@ export function ContactPageContent() {
                             transition={{ delay: 0.3 }}
                             className="bg-[var(--card-bg)] border border-[var(--card-border)] rounded-xl px-6 py-4"
                         >
-                            <p className="text-[var(--color-hero-muted)] text-sm mb-3">Currently available for:</p>
+                            <p className="text-[var(--color-hero-muted)] text-sm mb-3">{t("Availability.Header")}</p>
                             <div className="flex flex-wrap gap-2">
-                                {availabilityOptions.map((option) => (
+                                {availabilityOptions.map((option: { label: string; available: boolean }) => (
                                     <span
                                         key={option.label}
                                         className={`px-3 py-1 rounded-full text-sm font-medium ${option.available
                                             ? "bg-green-500/20 text-green-700 dark:text-green-400"
-                                            : "bg-red-500/20 text-red-700 dark:text-red-400"
+                                            : "bg-[var(--color-primary)]/20 text-[var(--color-primary)]"
                                             }`}
                                     >
                                         {option.available && (
@@ -87,18 +86,18 @@ export function ContactPageContent() {
                             </div>
                             <div className="mt-4 flex items-center gap-2 text-[var(--color-hero-muted)] text-sm">
                                 <Icon icon="tabler:clock" width={16} height={16} />
-                                <span>Typical response: &lt; 24 hours</span>
+                                <span>{t("Availability.ResponseTime")}</span>
                             </div>
                         </motion.div>
                     </div>
-                </div>
+                </div >
 
                 {/* Gradient fade */}
-                <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-[var(--background)] to-transparent" />
-            </section>
+                < div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-[var(--background)] to-transparent" />
+            </section >
 
             {/* Contact Section */}
-            <section className="section">
+            < section className="section" >
                 <div className="container">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
                         {/* Contact Form */}
@@ -108,7 +107,7 @@ export function ContactPageContent() {
                             viewport={{ once: true }}
                         >
                             <h2 className="font-mono text-2xl md:text-3xl font-bold mb-8">
-                                Send a Message
+                                {tHome("Main.Header")}
                             </h2>
 
                             {submitted ? (
@@ -120,8 +119,8 @@ export function ContactPageContent() {
                                     <div className="w-16 h-16 rounded-full bg-green-500/20 flex items-center justify-center mx-auto mb-4">
                                         <Icon icon="tabler:check" width={32} height={32} className="text-green-500" />
                                     </div>
-                                    <h3 className="font-mono text-xl font-semibold mb-2">Message Sent!</h3>
-                                    <p className="text-muted">Thanks for reaching out. I&apos;ll get back to you soon.</p>
+                                    <h3 className="font-mono text-xl font-semibold mb-2">{tHome("Form.SuccessHeader")}</h3>
+                                    <p className="text-muted">{tHome("Form.SuccessMessage")}</p>
                                 </motion.div>
                             ) : (
                                 <form onSubmit={handleSubmit} className="space-y-6">
@@ -136,7 +135,7 @@ export function ContactPageContent() {
                                             value={formData.name}
                                             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                                             className="w-full px-4 py-3 rounded-xl bg-[var(--card-bg)] border border-[var(--card-border)] focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] transition-all"
-                                            placeholder="John Doe"
+                                            placeholder="John Doe" // Could also translate
                                         />
                                     </div>
 
@@ -178,11 +177,11 @@ export function ContactPageContent() {
                                         {isSubmitting ? (
                                             <>
                                                 <Icon icon="tabler:loader-2" width={20} height={20} className="animate-spin" />
-                                                Sending...
+                                                {tHome("Form.Sending")}
                                             </>
                                         ) : (
                                             <>
-                                                Send Message
+                                                {tHome("Form.Send")}
                                                 <Icon icon="tabler:send" width={20} height={20} />
                                             </>
                                         )}
@@ -201,20 +200,20 @@ export function ContactPageContent() {
                             {/* Direct Email Card */}
                             <div className="bento-card">
                                 <h3 className="font-mono text-lg font-semibold mb-4">
-                                    Prefer email?
+                                    {t("Direct.EmailHeader")}
                                 </h3>
                                 <a
                                     href="mailto:hello@daltonponder.com"
                                     className="flex items-center gap-4 group"
                                 >
-                                    <div className="w-14 h-14 rounded-xl bg-[#e94560] flex items-center justify-center group-hover:scale-105 transition-transform">
+                                    <div className="w-14 h-14 rounded-xl bg-[var(--color-primary)] flex items-center justify-center group-hover:scale-105 transition-transform">
                                         <Icon icon="tabler:mail" width={28} height={28} className="text-white" />
                                     </div>
                                     <div>
                                         <p className="font-mono font-semibold group-hover:text-accent transition-colors">
-                                            hello@daltonponder.com
+                                            {t("Email")}
                                         </p>
-                                        <p className="text-sm text-muted">Click to open email client</p>
+                                        <p className="text-sm text-muted">{t("Direct.EmailDetail")}</p>
                                     </div>
                                 </a>
                             </div>
@@ -222,7 +221,7 @@ export function ContactPageContent() {
                             {/* Social Links */}
                             <div className="bento-card">
                                 <h3 className="font-mono text-lg font-semibold mb-4">
-                                    Find me online
+                                    {t("Direct.SocialHeader")}
                                 </h3>
                                 <div className="flex gap-4">
                                     {socialLinks.map((link) => (
@@ -233,7 +232,7 @@ export function ContactPageContent() {
                                             rel="noopener noreferrer"
                                             whileHover={{ scale: 1.1, y: -2 }}
                                             whileTap={{ scale: 0.95 }}
-                                            className="w-14 h-14 rounded-xl bg-[var(--color-base-200)] flex items-center justify-center hover:bg-[#e94560] hover:text-white transition-colors"
+                                            className="w-14 h-14 rounded-xl bg-[var(--color-base-200)] flex items-center justify-center hover:bg-[var(--color-primary)] hover:text-white transition-colors"
                                             title={link.name}
                                         >
                                             <Icon icon={link.icon} width={28} height={28} />
@@ -245,15 +244,15 @@ export function ContactPageContent() {
                             {/* Location */}
                             <div className="bento-card">
                                 <h3 className="font-mono text-lg font-semibold mb-4">
-                                    Location
+                                    {t("Direct.LocationHeader")}
                                 </h3>
                                 <div className="flex items-center gap-4">
                                     <div className="w-14 h-14 rounded-xl bg-[var(--color-base-200)] flex items-center justify-center">
                                         <Icon icon="tabler:map-pin" width={28} height={28} className="text-accent" />
                                     </div>
                                     <div>
-                                        <p className="font-mono font-semibold">United States</p>
-                                        <p className="text-sm text-muted">Available for remote work worldwide</p>
+                                        <p className="font-mono font-semibold">{t("Location.Country")}</p>
+                                        <p className="text-sm text-muted">{t("Direct.LocationDetail")}</p>
                                     </div>
                                 </div>
                             </div>
@@ -269,7 +268,7 @@ export function ContactPageContent() {
                     >
                         <div className="max-w-xl mx-auto">
                             <p className="font-serif text-2xl md:text-3xl italic text-muted mb-4">
-                                &ldquo;Build it secure, ship it fast, make it last.&rdquo;
+                                &ldquo;{t("Signature")}&rdquo;
                             </p>
                             <div className="flex items-center justify-center gap-2 text-accent font-mono">
                                 <span className="w-8 h-px bg-accent" />
@@ -279,7 +278,7 @@ export function ContactPageContent() {
                         </div>
                     </motion.div>
                 </div>
-            </section>
+            </section >
         </>
     );
 }

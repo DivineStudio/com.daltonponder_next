@@ -1,4 +1,5 @@
 "use client";
+import { useTranslations } from "next-intl";
 
 import { Icon } from "@iconify/react";
 import Link from "next/link";
@@ -16,15 +17,18 @@ const socialLinks = [
     },
 ];
 
-const footerLinks = [
-    { href: "/about", label: "About" },
-    { href: "/skills", label: "Skills" },
-    { href: "/credentials", label: "Credentials" },
-    { href: "/contact", label: "Contact" },
-];
-
 export function Footer() {
+    const t = useTranslations("Footer");
+    const tNav = useTranslations("Navigation");
+    const tImg = useTranslations("Image");
     const currentYear = new Date().getFullYear();
+
+    const footerLinks = [
+        { href: "/about", label: tNav("About") },
+        { href: "/skills", label: tNav("Skills") },
+        { href: "/credentials", label: tNav("Credentials") },
+        { href: "/contact", label: tNav("Contact") },
+    ];
 
     return (
         <footer className="border-t border-[var(--card-border)] bg-[var(--card-bg)]">
@@ -33,19 +37,20 @@ export function Footer() {
                     {/* Brand */}
                     <div className="space-y-4">
                         <Link href="/" className="flex items-center gap-2">
-                            <span className="font-mono text-2xl font-bold text-primary">
-                                DP
-                            </span>
+                            <img
+                                src="/logos/DP Logo.svg"
+                                alt={tImg("DaltonPonderLogoAlt")}
+                                className="h-10 w-auto object-contain"
+                            />
                         </Link>
                         <p className="text-sm text-muted max-w-xs">
-                            Full-stack developer and cybersecurity expert crafting secure,
-                            scalable solutions.
+                            {t("Tagline")}
                         </p>
                     </div>
 
                     {/* Quick Links */}
                     <div className="space-y-4">
-                        <p className="font-mono font-semibold">Quick Links</p>
+                        <p className="font-mono font-semibold">{tNav("Home")}</p>
                         <ul className="space-y-2">
                             {footerLinks.map((link) => (
                                 <li key={link.href}>
@@ -83,7 +88,7 @@ export function Footer() {
                 {/* Copyright */}
                 <div className="mt-12 pt-8 border-t border-[var(--card-border)]">
                     <p className="text-sm text-center text-muted">
-                        © {currentYear} Dalton Ponder. All rights reserved.
+                        {t("Copyright", { year: currentYear.toString() })}
                     </p>
                 </div>
             </div>

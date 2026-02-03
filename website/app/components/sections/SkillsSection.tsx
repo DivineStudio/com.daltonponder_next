@@ -1,4 +1,5 @@
 "use client";
+import { useTranslations } from "next-intl";
 
 import { motion } from "motion/react";
 import { Icon } from "@iconify/react";
@@ -40,6 +41,7 @@ const secondarySkillsRow2 = [
 ];
 
 export function SkillsSection({ summary = true }: SkillsSectionProps) {
+    const t = useTranslations("Home.SkillsSection");
     return (
         <section className="section bg-[var(--color-base-200)]" aria-labelledby="skills-heading">
             <div className="container">
@@ -50,10 +52,10 @@ export function SkillsSection({ summary = true }: SkillsSectionProps) {
                     className="mb-8"
                 >
                     <h2 id="skills-heading" className="font-mono text-3xl md:text-4xl font-bold text-primary mb-4">
-                        SKILLS
+                        {t("Header")}
                     </h2>
                     <p className="text-muted text-lg max-w-2xl">
-                        Technologies and tools I work with daily.
+                        {t("Header")}
                     </p>
                 </motion.div>
 

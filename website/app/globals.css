@@ -9,7 +9,7 @@
    ----------------------------------------------------------------------------- */
 :root {
   /* Brand Colors */
-  --color-primary: #7A1C1C;
+  --color-primary: #7B2D26;
   --color-secondary: #F3E6C1;
   --color-secondary-dark: #E3D7B2;
   --color-accent: #40798C;
@@ -42,8 +42,8 @@
    Color Palette - Dark Mode
    ----------------------------------------------------------------------------- */
 .dark {
-  --color-primary: #C45454;
-  /* Lighter red for better dark mode contrast (4.5:1+ ratio) */
+  --color-primary: #7B2D26;
+  /* Updated to match brand color */
   --color-secondary: #E3D7B2;
   --color-accent: #5DA3A8;
 
@@ -59,7 +59,7 @@
   --color-hero-bg: #1a1a2e;
   --color-hero-text: #ffffff;
   --color-hero-muted: #a0a0a0;
-  --color-hero-accent: #e94560;
+  --color-hero-accent: var(--color-primary);
 
   --card-bg: oklch(28% 0.016 252.42);
   --card-border: oklch(35% 0.016 252.42);

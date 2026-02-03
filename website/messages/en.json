@@ -1,0 +1,531 @@
+{
+    "Navigation": {
+        "Home": "Home",
+        "About": "About",
+        "Skills": "Skills",
+        "Credentials": "Credentials",
+        "Contact": "Contact"
+    },
+    "Image": {
+        "DaltonPonderLogoAlt": "Dalton Ponder Logo"
+    },
+    "Navbar": {
+        "Language": "English"
+    },
+    "Home": {
+        "Hero": {
+            "Greeting": "Hi, I'm",
+            "Name": "DALTON PONDER",
+            "Terminal": {
+                "Line1": "Dalton.Init(\"Fullstack\", \"Security\", \"AI\")",
+                "Line2": "Loading expertise... ████████ 100%",
+                "Line3": "Ready to build."
+            },
+            "Description": "Full-stack developer and cybersecurity expert crafting secure, scalable solutions.",
+            "CTA": "Get in Touch",
+            "Skills": {
+                "FullStack": "Full-Stack Development",
+                "Security": "Cybersecurity Expert",
+                "Cloud": "Cloud Architecture & DevOps",
+                "CloudDetails": "AWS • Azure • Docker • Kubernetes",
+                "AI": "AI Integration",
+                "DevOps": "DevOps Engineering"
+            },
+            "QuickLinks": "Quick Links",
+            "Location": {
+                "Line1": "Based in Missouri, USA",
+                "Line2": "Available for remote work worldwide",
+                "Line3": "🇺🇸 English • 🇪🇸 Español"
+            }
+        },
+        "ProAboutSection": {
+            "HeaderLine1": "I BUILD SECURE, SCALABLE SOFTWARE",
+            "HeaderLine2": "THAT SOLVES REAL PROBLEMS.",
+            "Paragraph": "With over a decade of experience in software development and cybersecurity, I specialize in building robust applications that prioritize security without compromising on user experience. From enterprise solutions to startup MVPs, I bring a methodical approach to solving complex technical challenges.",
+            "LinkedIn": "LinkedIn",
+            "GitHub": "GitHub",
+            "LearnMore": "Learn More About Me"
+        },
+        "PersonalAboutSection": {
+            "Header": "BEYOND THE CODE",
+            "SubHeader": "A glimpse into who I am outside of work.",
+            "Interests": {
+                "Drives": {
+                    "Category": "What Drives Me",
+                    "Family": "Family",
+                    "FamilyDesc": "Time with family is my greatest joy",
+                    "Music": "Music",
+                    "MusicDesc": "Music offers daily solace",
+                    "Reading": "Reading",
+                    "ReadingDesc": "Continuous learning through books"
+                },
+                "Lead": {
+                    "Category": "How I Lead",
+                    "Stoic": "Stoic Principles",
+                    "StoicDesc": "I draw on Stoic philosophy for leadership and decision-making"
+                },
+                "Beyond": {
+                    "Category": "Beyond Work",
+                    "Spanish": "Spanish",
+                    "SpanishDesc": "Bilingual in English and Spanish",
+                    "Gaming": "Gaming",
+                    "GamingDesc": "Strategy and RPG enthusiast",
+                    "Boxing": "Boxing",
+                    "BoxingDesc": "Staying fit through boxing"
+                }
+            },
+            "Quote": {
+                "Text": "The impediment to action advances action. What stands in the way becomes the way.",
+                "Author": "— Marcus Aurelius"
+            }
+        },
+        "ContactSection": {
+            "Summary": {
+                "Header": "LET'S CONNECT",
+                "SubHeader": "Have a project in mind or just want to chat? I'd love to hear from you.",
+                "CTA": "Get in Touch"
+            },
+            "Main": {
+                "Header": "REACH OUT",
+                "SubHeader": "I'm always interested in new projects and opportunities."
+            },
+            "Card": {
+                "Header": "Get in Touch",
+                "Description": "I'm always interested in new projects, collaborations, or just having a chat about technology."
+            },
+            "Form": {
+                "Name": "Name",
+                "Email": "Email",
+                "Subject": "Subject",
+                "SelectSubject": "Select a subject...",
+                "Message": "Message",
+                "Send": "Send Message",
+                "Sending": "Sending...",
+                "SuccessHeader": "Message Sent!",
+                "SuccessMessage": "Thank you for reaching out. I'll get back to you soon.",
+                "Subjects": {
+                    "Freelance": "Freelance Project Inquiry",
+                    "FullTime": "Full-Time Employment Opportunity",
+                    "PartTime": "Part-Time or Contract Work",
+                    "Startup": "Startup or Partnership Opportunity",
+                    "Consultation": "Technical Consultation Request",
+                    "Maintenance": "Website or App Maintenance Request",
+                    "Speaking": "Speaking or Event Engagement",
+                    "Collaboration": "Collaboration on Open Source or Side Project",
+                    "Media": "Media or Interview Request",
+                    "Networking": "General Networking / Connect",
+                    "Other": "Other (please specify in your message)"
+                }
+            }
+        },
+        "EdCertSection": {
+            "Header": "Education and Certifications",
+            "EducationHeader": "Education",
+            "CertificationsHeader": "Certifications",
+            "Graduated": "Graduated",
+            "Expected": "Expected",
+            "Expires": "Expires"
+        },
+        "SkillsSection": {
+            "Header": "Tech Stack and Skills",
+            "List": [
+                {
+                    "name": "C#",
+                    "icon": "devicon:csharp",
+                    "category": "Languages",
+                    "years": 10,
+                    "proficiency": 95
+                },
+                {
+                    "name": "JavaScript",
+                    "icon": "devicon:javascript",
+                    "category": "Languages",
+                    "years": 8,
+                    "proficiency": 90
+                },
+                {
+                    "name": "TypeScript",
+                    "icon": "devicon:typescript",
+                    "category": "Languages",
+                    "years": 6,
+                    "proficiency": 92
+                },
+                {
+                    "name": "Python",
+                    "icon": "devicon:python",
+                    "category": "Languages",
+                    "years": 5,
+                    "proficiency": 75
+                },
+                {
+                    "name": "SQL",
+                    "icon": "tabler:database",
+                    "category": "Languages",
+                    "years": 10,
+                    "proficiency": 88
+                },
+                {
+                    "name": "HTML/CSS",
+                    "icon": "devicon:html5",
+                    "category": "Languages",
+                    "years": 10,
+                    "proficiency": 95
+                },
+                {
+                    "name": "React",
+                    "icon": "devicon:react",
+                    "category": "Frontend",
+                    "years": 6,
+                    "proficiency": 92
+                },
+                {
+                    "name": "Next.js",
+                    "icon": "devicon:nextjs",
+                    "category": "Frontend",
+                    "years": 4,
+                    "proficiency": 90
+                },
+                {
+                    "name": "Vue.js",
+                    "icon": "devicon:vuejs",
+                    "category": "Frontend",
+                    "years": 3,
+                    "proficiency": 70
+                },
+                {
+                    "name": "Tailwind CSS",
+                    "icon": "devicon:tailwindcss",
+                    "category": "Frontend",
+                    "years": 4,
+                    "proficiency": 88
+                },
+                {
+                    "name": "Framer Motion",
+                    "icon": "tabler:brand-framer-motion",
+                    "category": "Frontend",
+                    "years": 2,
+                    "proficiency": 80
+                },
+                {
+                    "name": ".NET",
+                    "icon": "devicon:dotnetcore",
+                    "category": "Backend",
+                    "years": 10,
+                    "proficiency": 95
+                },
+                {
+                    "name": "Node.js",
+                    "icon": "devicon:nodejs",
+                    "category": "Backend",
+                    "years": 6,
+                    "proficiency": 85
+                },
+                {
+                    "name": "Express",
+                    "icon": "devicon:express",
+                    "category": "Backend",
+                    "years": 5,
+                    "proficiency": 82
+                },
+                {
+                    "name": "GraphQL",
+                    "icon": "devicon:graphql",
+                    "category": "Backend",
+                    "years": 3,
+                    "proficiency": 75
+                },
+                {
+                    "name": "AWS",
+                    "icon": "devicon:amazonwebservices-wordmark",
+                    "category": "Cloud",
+                    "years": 5,
+                    "proficiency": 80
+                },
+                {
+                    "name": "Azure",
+                    "icon": "devicon:azure",
+                    "category": "Cloud",
+                    "years": 6,
+                    "proficiency": 85
+                },
+                {
+                    "name": "GCP",
+                    "icon": "devicon:googlecloud",
+                    "category": "Cloud",
+                    "years": 2,
+                    "proficiency": 60
+                },
+                {
+                    "name": "Docker",
+                    "icon": "devicon:docker",
+                    "category": "DevOps",
+                    "years": 5,
+                    "proficiency": 85
+                },
+                {
+                    "name": "Kubernetes",
+                    "icon": "devicon:kubernetes",
+                    "category": "DevOps",
+                    "years": 3,
+                    "proficiency": 70
+                },
+                {
+                    "name": "GitHub Actions",
+                    "icon": "devicon:githubactions",
+                    "category": "DevOps",
+                    "years": 4,
+                    "proficiency": 85
+                },
+                {
+                    "name": "Terraform",
+                    "icon": "devicon:terraform",
+                    "category": "DevOps",
+                    "years": 2,
+                    "proficiency": 65
+                },
+                {
+                    "name": "PostgreSQL",
+                    "icon": "devicon:postgresql",
+                    "category": "Data",
+                    "years": 7,
+                    "proficiency": 88
+                },
+                {
+                    "name": "MongoDB",
+                    "icon": "devicon:mongodb",
+                    "category": "Data",
+                    "years": 4,
+                    "proficiency": 75
+                },
+                {
+                    "name": "Redis",
+                    "icon": "devicon:redis",
+                    "category": "Data",
+                    "years": 4,
+                    "proficiency": 78
+                },
+                {
+                    "name": "SQL Server",
+                    "icon": "devicon:microsoftsqlserver",
+                    "category": "Data",
+                    "years": 10,
+                    "proficiency": 90
+                },
+                {
+                    "name": "OWASP",
+                    "icon": "tabler:shield-check",
+                    "category": "Security",
+                    "years": 5,
+                    "proficiency": 85
+                },
+                {
+                    "name": "Penetration Testing",
+                    "icon": "tabler:bug",
+                    "category": "Security",
+                    "years": 4,
+                    "proficiency": 75
+                },
+                {
+                    "name": "Security+",
+                    "icon": "tabler:certificate",
+                    "category": "Security",
+                    "years": 3,
+                    "proficiency": 80
+                }
+            ]
+        },
+        "TestimonialsSection": {
+            "Header": "Testimonials",
+            "At": "at",
+            "Items": [
+                {
+                    "Quote": "Dalton is an exceptional developer who brings both technical expertise and creative problem-solving to every project.",
+                    "Author": "Jane Smith",
+                    "Role": "CTO",
+                    "Company": "TechCorp Inc.",
+                    "avatar": "JS"
+                },
+                {
+                    "Quote": "Working with Dalton was a pleasure. His attention to security and code quality is unmatched.",
+                    "Author": "Michael Chen",
+                    "Role": "Engineering Manager",
+                    "Company": "SecureStart",
+                    "avatar": "MC"
+                },
+                {
+                    "Quote": "Dalton delivered our project ahead of schedule with exceptional quality. Highly recommended.",
+                    "Author": "Sarah Johnson",
+                    "Role": "Product Lead",
+                    "Company": "InnovateCo",
+                    "avatar": "SJ"
+                }
+            ]
+        }
+    },
+    "About": {
+        "Eras": [
+            {
+                "title": "Senior Solutions Architect",
+                "emoji": "🏗️",
+                "description": "Leading enterprise architecture and security initiatives.",
+                "side": "left",
+                "current": true
+            },
+            {
+                "title": "Full Stack Lead",
+                "emoji": "⚡",
+                "description": "Driving development of scalable cloud-native applications.",
+                "side": "right"
+            },
+            {
+                "title": "Software Engineer",
+                "emoji": "💻",
+                "description": "Building foundational expertise in .NET and web technologies.",
+                "side": "left"
+            }
+        ]
+    },
+    "Credentials": {
+        "Hero": {
+            "Header": "My Credentials",
+            "SubHeader": "A timeline of my professional journey and qualifications."
+        },
+        "Stats": {
+            "Years Exp": "Years Experience",
+            "Certs": "Certifications",
+            "Degree": "Degree"
+        },
+        "WorkExperience": {
+            "Header": "Work Experience",
+            "List": [
+                {
+                    "title": "Senior Full Stack Engineer",
+                    "company": "Enterprise Solutions Co.",
+                    "dates": "2020 - Present",
+                    "current": true,
+                    "bullets": [
+                        "Lead architect for secure cloud-native applications",
+                        "Mentored team of 5 junior developers",
+                        "Reduced improved system performance by 40%"
+                    ]
+                },
+                {
+                    "title": "Software Developer",
+                    "company": "TechStart Inc.",
+                    "dates": "2016 - 2020",
+                    "current": false,
+                    "bullets": [
+                        "Developed and maintained core product features",
+                        "Implemented CI/CD pipelines",
+                        "Collaborated with product team on roadmap"
+                    ]
+                }
+            ]
+        },
+        "Certifications": {
+            "Header": "Certifications",
+            "List": [
+                {
+                    "name": "Certified Kubernetes Administrator",
+                    "issuer": "CNCF",
+                    "year": "2023",
+                    "icon": "devicon:kubernetes"
+                },
+                {
+                    "name": "AWS Certified Solutions Architect",
+                    "issuer": "Amazon Web Services",
+                    "year": "2022",
+                    "icon": "devicon:amazonwebservices-wordmark"
+                },
+                {
+                    "name": "CompTIA Security+",
+                    "issuer": "CompTIA",
+                    "year": "2021",
+                    "icon": "tabler:certificate"
+                }
+            ]
+        },
+        "Education": {
+            "Header": "Education",
+            "Degree": "Bachelor of Science in Computer Science",
+            "University": "State University",
+            "Year": "2015",
+            "Coursework": [
+                "Data Structures",
+                "Algorithms",
+                "Database Design",
+                "Network Security"
+            ]
+        },
+        "CTA": {
+            "Download": "Download Resume",
+            "Contact": "Contact Me"
+        }
+    },
+    "Contact": {
+        "Hero": {
+            "Header": "Get In Touch",
+            "SubHeader": "Have a project in mind? Let's discuss how we can work together to build something great."
+        },
+        "Availability": {
+            "Header": "Current Status",
+            "Options": [
+                {
+                    "label": "Freelance",
+                    "available": true
+                },
+                {
+                    "label": "Full-Time",
+                    "available": false
+                },
+                {
+                    "label": "Consulting",
+                    "available": true
+                }
+            ],
+            "ResponseTime": "Response time: < 24 hours"
+        },
+        "Direct": {
+            "EmailHeader": "Email",
+            "EmailDetail": "Best for detailed inquiries",
+            "SocialHeader": "Socials",
+            "LocationHeader": "Location",
+            "LocationDetail": "Available Worldwide"
+        },
+        "Email": "hello@daltonponder.com",
+        "Location": {
+            "Country": "Missouri, USA"
+        },
+        "Signature": "Because every local business deserves a great website."
+    },
+    "Footer": {
+        "Copyright": "© {year} Dalton Ponder. All rights reserved.",
+        "Links": {
+            "Privacy": "Privacy Policy",
+            "Terms": "Terms of Service"
+        },
+        "Tagline": "Built with passion in Missouri."
+    },
+    "Metadata": {
+        "Home": {
+            "Title": "Dalton Ponder | Full-Stack Developer & Cybersecurity Expert",
+            "Description": "Portfolio of Dalton Ponder - Full-stack developer and cybersecurity expert crafting secure, scalable solutions."
+        },
+        "About": {
+            "Title": "About | Dalton Ponder",
+            "Description": "Learn more about Dalton Ponder's background, experience, and what drives his passion for technology."
+        },
+        "Skills": {
+            "Title": "Skills | Dalton Ponder",
+            "Description": "Explore Dalton Ponder's technical skills, languages, frameworks, and tools."
+        },
+        "Credentials": {
+            "Title": "Credentials | Dalton Ponder",
+            "Description": "View Dalton Ponder's education, certifications, and professional credentials."
+        },
+        "Contact": {
+            "Title": "Contact | Dalton Ponder",
+            "Description": "Get in touch with Dalton Ponder for projects, collaborations, or opportunities."
+        }
+    }
+}

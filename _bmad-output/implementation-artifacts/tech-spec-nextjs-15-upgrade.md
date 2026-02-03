@@ -2,7 +2,7 @@ title: 'Professional Portfolio Upgrade to Next.js 15 & React 19'
 slug: 'nextjs-15-upgrade'
 created: '2026-02-01'
 status: 'ready-for-dev'
-stepsCompleted: [1, 2, 3, 4]
+stepsCompleted: [1, 2, 3, 4, 5]
 tech_stack: ['Next.js 15', 'React 19', 'TypeScript', 'Tailwind CSS', 'next-intl', 'next-themes', 'Motion for React', 'Iconify']
 files_to_modify: ['package.json', 'next.config.mjs', 'app/**/*']
 code_patterns: ['React 19 Actions', 'Async Request APIs', 'React Compiler', 'Server Components']
@@ -465,10 +465,10 @@ const plexSerif = IBM_Plex_Serif({
 - [x] Verify start `npm run start`
 
 ### Phase 5: Content Population & i18n Feature Flag
-- [ ] **Feature Flag i18n**: Disable `next-intl` routing/middleware (restrict to 'en' only, disable locale switching) while preserving implementation for future use.
-- [ ] **Data Retrieval**: Retrieve legacy content from `DivineStudio/com.daltonponder_nuxt`, specifically `i18n/locales/en.json` (using available tools/GitHub).
-- [ ] **Content Mapping**: Auto-map legacy content keys to new site components where structure permits.
-- [ ] **Documentation**: Create `content-mapping-report.md` documenting the source-to-destination mapping of migrated content.
+- [x] **Feature Flag i18n**: Disable `next-intl` routing/middleware (restrict to 'en' only, disable locale switching) while preserving implementation for future use.
+- [x] **Data Retrieval**: Retrieve legacy content from `DivineStudio/com.daltonponder_nuxt`, specifically `i18n/locales/en.json` (using available tools/GitHub).
+- [x] **Content Mapping**: Auto-map legacy content keys to new site components where structure permits.
+- [x] **Documentation**: Create `content-mapping-report.md` documenting the source-to-destination mapping of migrated content.
 
 ---
 
@@ -580,5 +580,5 @@ All content should be migrated from the existing `DivineStudio/com.daltonponder_
 1. ~~**UX Designer Agent** → Create wireframes based on this spec~~ ✅
 2. ~~**User Review** → Approve wireframes~~ ✅
 3. ~~**Quick Flow Solo Dev** → Implement the site~~ ✅
-4. **Content Migration** → Populate from legacy site & disable i18n
+4. ~~**Content Migration** → Populate from legacy site & disable i18n~~ ✅
 5. **Deploy** → Launch!

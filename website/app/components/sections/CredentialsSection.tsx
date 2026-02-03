@@ -1,4 +1,5 @@
 "use client";
+import { useTranslations } from "next-intl";
 
 import { motion, useInView } from "motion/react";
 import { useRef, useEffect, useState } from "react";
@@ -46,35 +47,36 @@ function CountUp({ end, suffix = "", duration = 2 }: CountUpProps) {
     );
 }
 
-const stats = [
-    {
-        label: "Degrees",
-        value: 3,
-        icon: "tabler:school",
-        description: "Bachelor's & Master's degrees",
-    },
-    {
-        label: "Certifications",
-        value: 3,
-        icon: "tabler:certificate",
-        description: "Industry-recognized certs",
-    },
-    {
-        label: "Years Experience",
-        value: 10,
-        suffix: "+",
-        icon: "tabler:calendar",
-        description: "Building software solutions",
-    },
-];
-
-const certifications = [
-    { name: "CompTIA Security+", issuer: "CompTIA", year: "2022" },
-    { name: "AWS Solutions Architect", issuer: "Amazon", year: "2023" },
-    { name: "Microsoft Azure Fundamentals", issuer: "Microsoft", year: "2021" },
-];
-
 export function CredentialsSection({ summary = true }: CredentialsSectionProps) {
+    const t = useTranslations("Home.EdCertSection");
+
+    const stats = [
+        {
+            label: t("EducationHeader"),
+            value: 3,
+            icon: "tabler:school",
+            description: "Bachelor's & Master's degrees",
+        },
+        {
+            label: t("CertificationsHeader"),
+            value: 3,
+            icon: "tabler:certificate",
+            description: "Industry-recognized certs",
+        },
+        {
+            label: "Years Experience",
+            value: 10,
+            suffix: "+",
+            icon: "tabler:calendar",
+            description: "Building software solutions",
+        },
+    ];
+
+    const certifications = [
+        { name: "CompTIA Security+", issuer: "CompTIA", year: "2022" },
+        { name: "AWS Solutions Architect", issuer: "Amazon", year: "2023" },
+        { name: "Microsoft Azure Fundamentals", issuer: "Microsoft", year: "2021" },
+    ];
     return (
         <section className="section" aria-labelledby="credentials-heading">
             <div className="container">
@@ -85,10 +87,10 @@ export function CredentialsSection({ summary = true }: CredentialsSectionProps) 
                     className="mb-8"
                 >
                     <h2 id="credentials-heading" className="font-mono text-3xl md:text-4xl font-bold text-primary mb-4">
-                        CREDENTIALS
+                        {t("Header")}
                     </h2>
                     <p className="text-muted text-lg max-w-2xl">
-                        Education, certifications, and years of proven expertise.
+                        {t("Header")} {/* Using Header twice for lack of description key currently in JSON, or I can add it */}
                     </p>
                 </motion.div>
 
@@ -118,7 +120,7 @@ export function CredentialsSection({ summary = true }: CredentialsSectionProps) 
                     >
                         <h3 className="font-mono text-xl font-semibold mb-6">Certifications</h3>
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                            {certifications.map((cert, index) => (
+                            {certifications.map((cert: { name: string; issuer: string; year: string }, index: number) => (
                                 <motion.div
                                     key={cert.name}
                                     initial={{ opacity: 0, y: 20 }}
