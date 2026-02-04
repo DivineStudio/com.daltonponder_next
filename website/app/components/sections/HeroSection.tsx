@@ -40,10 +40,10 @@ export function HeroSection() {
             bgColor: "#F5E8E8",
         },
         {
-            icon: "tabler:infinity",
-            title: t("Skills.DevOps"),
-            color: "var(--color-accent)",
-            bgColor: "#E8F4F8",
+            icon: "simple-icons:progress",
+            title: t("Skills.Sitefinity"),
+            color: "#5ce500",
+            bgColor: "#1A4200",
         },
     ];
 
@@ -90,7 +90,17 @@ export function HeroSection() {
                                     className="w-12 h-12 rounded-full flex items-center justify-center"
                                     style={{ backgroundColor: skill.bgColor }}
                                 >
-                                    <Icon icon={skill.icon} width={24} height={24} style={{ color: skill.color }} />
+                                    {skill.imageSrc ? (
+                                        <img
+                                            src={skill.imageSrc}
+                                            alt={skill.title}
+                                            width={24}
+                                            height={24}
+                                            className="object-contain"
+                                        />
+                                    ) : (
+                                        <Icon icon={skill.icon} width={24} height={24} style={{ color: skill.color }} />
+                                    )}
                                 </div>
                                 <p className="font-mono font-semibold">{skill.title}</p>
                             </motion.div>
@@ -151,7 +161,17 @@ export function HeroSection() {
                                     className="w-12 h-12 rounded-full flex items-center justify-center"
                                     style={{ backgroundColor: skill.bgColor }}
                                 >
-                                    <Icon icon={skill.icon} width={24} height={24} style={{ color: skill.color }} />
+                                    {skill.imageSrc ? (
+                                        <img
+                                            src={skill.imageSrc}
+                                            alt={skill.title}
+                                            width={24}
+                                            height={24}
+                                            className="object-contain"
+                                        />
+                                    ) : (
+                                        <Icon icon={skill.icon} width={24} height={24} style={{ color: skill.color }} />
+                                    )}
                                 </div>
                                 <p className="font-mono font-semibold">{skill.title}</p>
                             </motion.div>

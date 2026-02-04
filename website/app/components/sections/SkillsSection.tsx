@@ -21,12 +21,13 @@ interface SkillsSectionProps {
 }
 
 const primarySkills = [
-    { name: "C#", icon: "devicon:csharp", color: "#9B4F96" },
-    { name: "JavaScript", icon: "devicon:javascript", color: "#F0DB4F" },
-    { name: "TypeScript", icon: "devicon:typescript", color: "#3178C6" },
-    { name: "React", icon: "devicon:react", color: "#61DAFB" },
-    { name: "Next.js", icon: "devicon:nextjs", color: "#000000" },
-    { name: ".NET", icon: "devicon:dotnetcore", color: "#512BD4" },
+    { name: "C#", icon: "devicon:csharp" },
+    { name: ".NET Full-Stack", icon: "devicon:dotnetcore" },
+    { name: "Sitefinity", icon: "logos:progress" },
+    { name: "Vue", icon: "devicon:vuejs" },
+    { name: "Nuxt.js", icon: "devicon:nuxtjs" },
+    { name: "React", icon: "devicon:react" },
+    { name: "Next.js", icon: "devicon:nextjs" },
 ];
 
 const secondarySkillsRow1 = [
@@ -81,14 +82,24 @@ export function SkillsSection({ summary = true }: SkillsSectionProps) {
                     </BentoCard>
 
                     {/* Skill Badges */}
-                    {primarySkills.slice(0, summary ? 3 : 6).map((skill, index) => (
+                    {primarySkills.map((skill, index) => (
                         <BentoCard key={skill.name} delay={0.1 + index * 0.05}>
                             <motion.div
                                 className="flex items-center gap-3"
                                 whileHover={{ scale: 1.05 }}
                                 transition={{ type: "spring", stiffness: 300 }}
                             >
-                                <Icon icon={skill.icon} width={32} height={32} />
+                                {skill.imageSrc ? (
+                                    <img
+                                        src={skill.imageSrc}
+                                        alt={skill.name}
+                                        width={32}
+                                        height={32}
+                                        className="object-contain"
+                                    />
+                                ) : (
+                                    <Icon icon={skill.icon!} width={32} height={32} />
+                                )}
                                 <span className="font-mono font-semibold">{skill.name}</span>
                             </motion.div>
                         </BentoCard>

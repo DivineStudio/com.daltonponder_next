@@ -30,11 +30,11 @@
             "CTA": "Get in Touch",
             "Skills": {
                 "FullStack": "Full-Stack Development",
-                "Security": "Cybersecurity Expert",
+                "Security": "Secure Software Development",
                 "Cloud": "Cloud Architecture & DevOps",
-                "CloudDetails": "AWS \u2022 Azure \u2022 Docker \u2022 Kubernetes",
+                "CloudDetails": "Azure \u2022 Vercel",
                 "AI": "AI Integration",
-                "DevOps": "DevOps Engineering"
+                "Sitefinity": "Sitefinity Development"
             },
             "QuickLinks": "Quick Links",
             "Location": {

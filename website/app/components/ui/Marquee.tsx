@@ -41,7 +41,7 @@ export function Marquee({
                 style={{ width: "max-content" }}
             >
                 <div
-                    className={`flex items-center gap-8 ${animationClass} ${speedClasses[speed]}`}
+                    className={`flex items-center gap-8 pr-8 ${animationClass} ${speedClasses[speed]}`}
                     style={{
                         animationPlayState: pauseOnHover ? undefined : "running",
                     }}
