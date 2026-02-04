@@ -239,6 +239,20 @@
                     "proficiency": 85
                 },
                 {
+                    "name": "Sitefinity",
+                    "icon": "logos:progress",
+                    "category": "Backend",
+                    "years": 5,
+                    "proficiency": 85
+                },
+                {
+                    "name": "Wix",
+                    "icon": "logos:wix",
+                    "category": "Backend",
+                    "years": 5,
+                    "proficiency": 85
+                },
+                {
                     "name": "Express",
                     "icon": "devicon:express",
                     "category": "Backend",
@@ -494,13 +508,6 @@
                     "name": "Visual Studio",
                     "icon": "tabler:circle-check",
                     "category": "DevOps",
-                    "years": 1,
-                    "proficiency": 50
-                },
-                {
-                    "name": "Sitefinity",
-                    "icon": "tabler:circle-check",
-                    "category": "Backend",
                     "years": 1,
                     "proficiency": 50
                 },
