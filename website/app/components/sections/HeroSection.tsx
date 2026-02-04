@@ -80,9 +80,9 @@ export function HeroSection() {
 
                     {/* Skill Cards */}
                     {skills.slice(0, 2).map((skill, index) => (
-                        <BentoCard key={skill.title} delay={0.1 + index * 0.1}>
+                        <BentoCard key={skill.title} delay={0.1 + index * 0.1} className="flex flex-col items-center justify-center">
                             <motion.div
-                                className="flex flex-col gap-4"
+                                className="flex flex-col gap-4 items-center text-center"
                                 whileHover={{ scale: 1.02 }}
                                 transition={{ type: "spring", stiffness: 300 }}
                             >
@@ -98,9 +98,9 @@ export function HeroSection() {
                     ))}
 
                     {/* Cloud Architecture Card - Row 2 Right */}
-                    <BentoCard colSpan={2} delay={0.3}>
+                    <BentoCard colSpan={2} delay={0.3} className="flex flex-col items-center justify-center">
                         <motion.div
-                            className="flex flex-col md:flex-row items-start md:items-center gap-4"
+                            className="flex flex-col md:flex-row items-center gap-4 text-center md:text-left"
                             whileHover={{ scale: 1.01 }}
                             transition={{ type: "spring", stiffness: 300 }}
                         >
@@ -120,9 +120,9 @@ export function HeroSection() {
                     </BentoCard>
 
                     {/* Quick Links Card - Row 3 Left */}
-                    <BentoCard colSpan={2} delay={0.4}>
-                        <p className="font-mono font-semibold mb-4">{t("QuickLinks")}</p>
-                        <div className="flex flex-wrap gap-2">
+                    <BentoCard colSpan={2} delay={0.4} className="flex flex-col items-center justify-center">
+                        <p className="font-mono font-semibold mb-4 text-center">{t("QuickLinks")}</p>
+                        <div className="flex flex-wrap gap-2 justify-center">
                             {quickLinks.map((link) => (
                                 <a
                                     key={link.href}
@@ -141,9 +141,9 @@ export function HeroSection() {
 
                     {/* Additional Skills - Row 3 Right */}
                     {skills.slice(3, 5).map((skill, index) => (
-                        <BentoCard key={skill.title} delay={0.5 + index * 0.1}>
+                        <BentoCard key={skill.title} delay={0.5 + index * 0.1} className="flex flex-col items-center justify-center">
                             <motion.div
-                                className="flex flex-col gap-4"
+                                className="flex flex-col gap-4 items-center text-center"
                                 whileHover={{ scale: 1.02 }}
                                 transition={{ type: "spring", stiffness: 300 }}
                             >

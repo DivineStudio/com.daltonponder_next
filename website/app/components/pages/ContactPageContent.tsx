@@ -1,6 +1,7 @@
 "use client";
-import { useTranslations } from "next-intl";
-import { useState } from "react";
+import { useTranslations, useLocale } from "next-intl";
+import { useState, useRef } from "react";
+import HCaptcha from "@hcaptcha/react-hcaptcha";
 import { motion } from "motion/react";
 import { Icon } from "@iconify/react";
 import { useForm, ValidationError } from "@formspree/react";
@@ -32,9 +33,15 @@ export function ContactPageContent() {
         message: "",
     });
 
+    const [captchaToken, setCaptchaToken] = useState<string | null>(null);
+    const captchaRef = useRef<HCaptcha>(null);
+    const locale = useLocale();
+
     const handleReset = () => {
         reset();
         setFormData({ name: "", email: "", message: "" });
+        captchaRef.current?.resetCaptcha();
+        setCaptchaToken(null);
     };
 
     return (
@@ -183,9 +190,20 @@ export function ContactPageContent() {
                                         <ValidationError prefix="Message" field="message" errors={state.errors} />
                                     </div>
 
+                                    <div className="min-h-[78px] flex justify-center my-4">
+                                        <HCaptcha
+                                            sitekey={process.env.NEXT_PUBLIC_HCAPTCHA_SITE_KEY || ""}
+                                            onVerify={setCaptchaToken}
+                                            onExpire={() => setCaptchaToken(null)}
+                                            ref={captchaRef}
+                                            languageOverride={locale}
+                                            theme="dark"
+                                        />
+                                    </div>
+
                                     <button
                                         type="submit"
-                                        disabled={state.submitting}
+                                        disabled={state.submitting || !captchaToken}
                                         className="w-full btn-primary flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
                                     >
                                         {state.submitting ? (
