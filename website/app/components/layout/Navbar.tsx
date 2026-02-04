@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Icon } from "@iconify/react";
 import Link from "next/link";
+import Image from "next/image";
 import { ThemeToggler } from "../ui/ThemeToggler";
 // import { LanguageToggler } from "../ui/LanguageToggler";
 
@@ -44,10 +45,13 @@ export function Navbar() {
                 <nav className="container flex items-center justify-between h-16 md:h-20">
                     {/* Logo */}
                     <Link href="/" className="flex items-center gap-2">
-                        <img
+                        <Image
                             src="/logos/DP Logo.svg"
                             alt={tImg("DaltonPonderLogoAlt")}
+                            width={40}
+                            height={40}
                             className="h-8 md:h-10 w-auto object-contain"
+                            priority
                         />
                     </Link>
 

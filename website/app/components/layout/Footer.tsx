@@ -3,6 +3,7 @@ import { useTranslations } from "next-intl";
 
 import { Icon } from "@iconify/react";
 import Link from "next/link";
+import Image from "next/image";
 
 
 
@@ -40,9 +41,11 @@ export function Footer() {
                     {/* Brand */}
                     <div className="space-y-4">
                         <Link href="/" className="flex items-center gap-2">
-                            <img
+                            <Image
                                 src="/logos/DP Logo.svg"
                                 alt={tImg("DaltonPonderLogoAlt")}
+                                width={40}
+                                height={40}
                                 className="h-10 w-auto object-contain"
                             />
                         </Link>

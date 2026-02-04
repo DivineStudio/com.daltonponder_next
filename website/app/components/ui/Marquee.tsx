@@ -1,5 +1,3 @@
-"use client";
-
 import { ReactNode } from "react";
 
 interface MarqueeProps {
@@ -41,14 +39,17 @@ export function Marquee({
                 style={{ width: "max-content" }}
             >
                 <div
-                    className={`flex items-center gap-8 pr-8 ${animationClass} ${speedClasses[speed]}`}
+                    className={`flex ${animationClass} ${speedClasses[speed]}`}
                     style={{
                         animationPlayState: pauseOnHover ? undefined : "running",
                     }}
                 >
-                    {children}
-                    {/* Duplicate for seamless loop */}
-                    {children}
+                    <div className="flex items-center gap-8 pr-8 shrink-0">
+                        {children}
+                    </div>
+                    <div className="flex items-center gap-8 pr-8 shrink-0">
+                        {children}
+                    </div>
                 </div>
             </div>
         </div>

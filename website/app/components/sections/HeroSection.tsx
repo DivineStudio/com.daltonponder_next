@@ -3,9 +3,9 @@
 import { motion } from "motion/react";
 import { Icon } from "@iconify/react";
 import Link from "next/link";
+import Image from "next/image";
 import { BentoCard, BentoGrid } from "../ui/BentoGrid";
 import { TerminalTyping } from "../ui/TerminalTyping";
-import Image from "next/image";
 import { useTranslations } from "next-intl";
 
 export function HeroSection() {
@@ -13,7 +13,16 @@ export function HeroSection() {
     const tSocial = useTranslations("Contact.Social");
     const tNav = useTranslations("Navigation");
 
-    const skills = [
+    interface Skill {
+        icon: string;
+        title: string;
+        color: string;
+        bgColor: string;
+        details?: string[];
+        imageSrc?: string;
+    }
+
+    const skills: Skill[] = [
         {
             icon: "tabler:code",
             title: t("Skills.FullStack"),
@@ -91,7 +100,7 @@ export function HeroSection() {
                                     style={{ backgroundColor: skill.bgColor }}
                                 >
                                     {skill.imageSrc ? (
-                                        <img
+                                        <Image
                                             src={skill.imageSrc}
                                             alt={skill.title}
                                             width={24}

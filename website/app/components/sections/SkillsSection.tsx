@@ -4,6 +4,7 @@ import { useTranslations } from "next-intl";
 import { motion } from "motion/react";
 import { Icon } from "@iconify/react";
 import Link from "next/link";
+import Image from "next/image";
 import { BentoCard, BentoGrid } from "../ui/BentoGrid";
 import { Marquee, MarqueeItem } from "../ui/Marquee";
 
@@ -20,7 +21,13 @@ interface SkillsSectionProps {
     summary?: boolean;
 }
 
-const primarySkills = [
+interface Skill {
+    name: string;
+    icon?: string;
+    imageSrc?: string;
+}
+
+const primarySkills: Skill[] = [
     { name: "C#", icon: "devicon:csharp" },
     { name: ".NET Full-Stack", icon: "devicon:dotnetcore" },
     { name: "Sitefinity", icon: "logos:progress" },
@@ -70,14 +77,14 @@ export function SkillsSection({ summary = true }: SkillsSectionProps) {
                 </motion.div>
 
                 {/* Primary Skills - Bento Grid */}
-                <BentoGrid columns={4} gap="md" className="mb-8">
+                <BentoGrid columns={4} gap="md" className="mb-8 auto-rows-fr">
                     {/* Label Card */}
                     <BentoCard variant="secondary" delay={0}>
                         <h3 className="font-mono text-lg font-semibold text-primary mb-2">
-                            PRIMARY
+                            {t("Search.Primary")}
                         </h3>
                         <p className="text-sm text-muted">
-                            Languages and frameworks I work with daily
+                            {t("Search.PrimaryDescription")}
                         </p>
                     </BentoCard>
 
@@ -90,7 +97,7 @@ export function SkillsSection({ summary = true }: SkillsSectionProps) {
                                 transition={{ type: "spring", stiffness: 300 }}
                             >
                                 {skill.imageSrc ? (
-                                    <img
+                                    <Image
                                         src={skill.imageSrc}
                                         alt={skill.name}
                                         width={32}
@@ -113,7 +120,7 @@ export function SkillsSection({ summary = true }: SkillsSectionProps) {
                     viewport={{ once: true }}
                     className="space-y-8"
                 >
-                    <p className="text-muted">And many more...</p>
+                    <p className="text-muted">{t("Search.More")}</p>
 
                     <Marquee speed="normal" pauseOnHover={true}>
                         {secondarySkillsRow1.map((skill) => (
@@ -149,7 +156,7 @@ export function SkillsSection({ summary = true }: SkillsSectionProps) {
                             href="/skills"
                             className="inline-flex items-center gap-2 text-accent hover:underline font-medium"
                         >
-                            View All Skills
+                            {t("Search.ViewAll")}
                             <Icon icon="tabler:arrow-right" width={16} height={16} />
                         </Link>
                     </motion.div>

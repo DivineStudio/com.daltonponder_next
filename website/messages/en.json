@@ -138,7 +138,11 @@
                 "Placeholder": "Search skills...",
                 "NoResults": "No skills found matching your search.",
                 "ClearFilters": "Clear filters",
-                "Showing": "Showing {count} of {total} skills"
+                "Showing": "Showing {count} of {total} skills",
+                "Primary": "PRIMARY",
+                "PrimaryDescription": "Languages and frameworks I work with daily",
+                "More": "And many more...",
+                "ViewAll": "View All Skills"
             },
             "Card": {
                 "YearsPlus": "+ years",
