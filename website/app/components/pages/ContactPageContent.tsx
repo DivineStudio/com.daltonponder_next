@@ -1,15 +1,12 @@
 "use client";
-import { useTranslations, useLocale } from "next-intl";
-import { useState, useRef } from "react";
-import HCaptcha from "@hcaptcha/react-hcaptcha";
+import { useTranslations } from "next-intl";
 import { motion } from "motion/react";
 import { Icon } from "@iconify/react";
-import { useForm, ValidationError } from "@formspree/react";
+import { ContactForm } from "../ui/ContactForm";
 
 export function ContactPageContent() {
     const t = useTranslations("Contact");
     const tHome = useTranslations("Home.ContactSection");
-    const tNav = useTranslations("Navigation");
 
     // Availability status defined in code (logic), labels from translations
     const availabilityStatus = [
@@ -23,26 +20,6 @@ export function ContactPageContent() {
         { name: t("Social.GitHub"), icon: "tabler:brand-github", url: "https://github.com/DivineStudio" },
         { name: t("Social.LinkedIn"), icon: "tabler:brand-linkedin", url: "https://www.linkedin.com/in/dalton-ponder-99a96a131" },
     ];
-
-    // Formspree hook
-    const [state, handleSubmit, reset] = useForm(process.env.NEXT_PUBLIC_FORMSPREE_ID || "");
-
-    const [formData, setFormData] = useState({
-        name: "",
-        email: "",
-        message: "",
-    });
-
-    const [captchaToken, setCaptchaToken] = useState<string | null>(null);
-    const captchaRef = useRef<HCaptcha>(null);
-    const locale = useLocale();
-
-    const handleReset = () => {
-        reset();
-        setFormData({ name: "", email: "", message: "" });
-        captchaRef.current?.resetCaptcha();
-        setCaptchaToken(null);
-    };
 
     return (
         <>
@@ -119,107 +96,7 @@ export function ContactPageContent() {
                                 {tHome("Main.Header")}
                             </h2>
 
-                            {state.succeeded ? (
-                                <motion.div
-                                    initial={{ opacity: 0, scale: 0.9 }}
-                                    animate={{ opacity: 1, scale: 1 }}
-                                    className="bento-card text-center py-12"
-                                >
-                                    <div className="w-16 h-16 rounded-full bg-green-500/20 flex items-center justify-center mx-auto mb-4">
-                                        <Icon icon="tabler:check" width={32} height={32} className="text-green-500" />
-                                    </div>
-                                    <h3 className="font-mono text-xl font-semibold mb-2">{tHome("Form.SuccessHeader")}</h3>
-                                    <p className="text-muted mb-6">{tHome("Form.SuccessMessage")}</p>
-                                    <button
-                                        onClick={handleReset}
-                                        className="btn-secondary text-sm"
-                                    >
-                                        Send Another Message
-                                    </button>
-                                </motion.div>
-                            ) : (
-                                <form onSubmit={handleSubmit} className="space-y-6">
-                                    <div>
-                                        <label htmlFor="name" className="block text-sm font-medium mb-2">
-                                            {t("Form.NameLabel")}
-                                        </label>
-                                        <input
-                                            type="text"
-                                            id="name"
-                                            name="name"
-                                            required
-                                            value={formData.name}
-                                            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                                            className="w-full px-4 py-3 rounded-xl bg-[var(--card-bg)] border border-[var(--card-border)] focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] transition-all"
-                                            placeholder={t("Form.NamePlaceholder")}
-                                        />
-                                        <ValidationError prefix="Name" field="name" errors={state.errors} />
-                                    </div>
-
-                                    <div>
-                                        <label htmlFor="email" className="block text-sm font-medium mb-2">
-                                            {t("Form.EmailLabel")}
-                                        </label>
-                                        <input
-                                            type="email"
-                                            id="email"
-                                            name="email"
-                                            required
-                                            value={formData.email}
-                                            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                                            className="w-full px-4 py-3 rounded-xl bg-[var(--card-bg)] border border-[var(--card-border)] focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] transition-all"
-                                            placeholder={t("Form.EmailPlaceholder")}
-                                        />
-                                        <ValidationError prefix="Email" field="email" errors={state.errors} />
-                                    </div>
-
-                                    <div>
-                                        <label htmlFor="message" className="block text-sm font-medium mb-2">
-                                            {t("Form.MessageLabel")}
-                                        </label>
-                                        <textarea
-                                            id="message"
-                                            name="message"
-                                            required
-                                            rows={5}
-                                            value={formData.message}
-                                            onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                                            className="w-full px-4 py-3 rounded-xl bg-[var(--card-bg)] border border-[var(--card-border)] focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] transition-all resize-none"
-                                            placeholder={t("Form.MessagePlaceholder")}
-                                        />
-                                        <ValidationError prefix="Message" field="message" errors={state.errors} />
-                                    </div>
-
-                                    <div className="min-h-[78px] flex justify-center my-4">
-                                        <HCaptcha
-                                            sitekey={process.env.NEXT_PUBLIC_HCAPTCHA_SITE_KEY || ""}
-                                            onVerify={setCaptchaToken}
-                                            onExpire={() => setCaptchaToken(null)}
-                                            ref={captchaRef}
-                                            languageOverride={locale}
-                                            theme="dark"
-                                        />
-                                    </div>
-
-                                    <button
-                                        type="submit"
-                                        disabled={state.submitting || !captchaToken}
-                                        className="w-full btn-primary flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
-                                    >
-                                        {state.submitting ? (
-                                            <>
-                                                <Icon icon="tabler:loader-2" width={20} height={20} className="animate-spin" />
-                                                {tHome("Form.Sending")}
-                                            </>
-                                        ) : (
-                                            <>
-                                                {tHome("Form.Send")}
-                                                <Icon icon="tabler:send" width={20} height={20} />
-                                            </>
-                                        )}
-                                    </button>
-                                </form>
-                            )}
+                            <ContactForm useCaptcha={true} />
                         </motion.div>
 
                         {/* Direct Contact & Social */}

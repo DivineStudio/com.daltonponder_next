@@ -1,28 +1,17 @@
 "use client";
 
 import { motion } from "motion/react";
-import { useState } from "react";
 import { Icon } from "@iconify/react";
 import { BentoCard, BentoGrid } from "../ui/BentoGrid";
 import { useTranslations } from "next-intl";
+import { ContactForm, contactSubjectKeys } from "../ui/ContactForm";
 
 interface ContactSectionProps {
     summary?: boolean;
 }
 
-const contactSubjectKeys = [
-    "Freelance",
-    "FullTime",
-    "PartTime",
-    "Startup",
-    "Consultation",
-    "Maintenance",
-    "Speaking",
-    "Collaboration",
-    "Media",
-    "Networking",
-    "Other",
-];
+// Re-export for backwards compatibility
+export { contactSubjectKeys };
 
 const socialLinks = [
     { href: "https://www.linkedin.com/in/dalton-ponder-99a96a131", icon: "tabler:brand-linkedin", label: "LinkedIn" },
@@ -31,47 +20,6 @@ const socialLinks = [
 
 export function ContactSection({ summary = true }: ContactSectionProps) {
     const t = useTranslations("Home.ContactSection");
-    const [formState, setFormState] = useState({
-        name: "",
-        email: "",
-        subject: "",
-        message: "",
-    });
-    const [isSubmitting, setIsSubmitting] = useState(false);
-    const [isSubmitted, setIsSubmitted] = useState(false);
-
-    const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();
-        setIsSubmitting(true);
-
-        try {
-            const response = await fetch("https://formspree.io/f/xnnvpeoj", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(formState),
-            });
-
-            if (response.ok) {
-                setIsSubmitted(true);
-                setFormState({ name: "", email: "", subject: "", message: "" });
-            }
-        } catch (error) {
-            console.error("Form submission error:", error);
-        } finally {
-            setIsSubmitting(false);
-        }
-    };
-
-    const handleChange = (
-        e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
-    ) => {
-        setFormState((prev) => ({
-            ...prev,
-            [e.target.name]: e.target.value,
-        }));
-    };
 
     if (summary) {
         return (
@@ -158,117 +106,7 @@ export function ContactSection({ summary = true }: ContactSectionProps) {
 
                     {/* Contact Form */}
                     <BentoCard colSpan={2} delay={0.1}>
-                        {isSubmitted ? (
-                            <motion.div
-                                initial={{ opacity: 0, scale: 0.9 }}
-                                animate={{ opacity: 1, scale: 1 }}
-                                className="h-full flex flex-col items-center justify-center text-center py-12"
-                            >
-                                <motion.div
-                                    initial={{ scale: 0 }}
-                                    animate={{ scale: 1 }}
-                                    transition={{ type: "spring", stiffness: 200, delay: 0.2 }}
-                                    className="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center mb-4"
-                                >
-                                    <Icon icon="tabler:check" width={32} height={32} className="text-green-600" />
-                                </motion.div>
-                                <h3 className="font-mono text-xl font-semibold mb-2">
-                                    {t("Form.SuccessHeader")}
-                                </h3>
-                                <p className="text-muted">
-                                    {t("Form.SuccessMessage")}
-                                </p>
-                            </motion.div>
-                        ) : (
-                            <form onSubmit={handleSubmit} className="space-y-4">
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                    <div>
-                                        <label htmlFor="name" className="block text-sm font-medium mb-1">
-                                            {t("Form.Name")}
-                                        </label>
-                                        <input
-                                            type="text"
-                                            id="name"
-                                            name="name"
-                                            value={formState.name}
-                                            onChange={handleChange}
-                                            required
-                                            className="w-full px-4 py-2 rounded-lg border border-[var(--card-border)] bg-[var(--background)] focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] transition-all"
-                                        />
-                                    </div>
-                                    <div>
-                                        <label htmlFor="email" className="block text-sm font-medium mb-1">
-                                            {t("Form.Email")}
-                                        </label>
-                                        <input
-                                            type="email"
-                                            id="email"
-                                            name="email"
-                                            value={formState.email}
-                                            onChange={handleChange}
-                                            required
-                                            className="w-full px-4 py-2 rounded-lg border border-[var(--card-border)] bg-[var(--background)] focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] transition-all"
-                                        />
-                                    </div>
-                                </div>
-
-                                <div>
-                                    <label htmlFor="subject" className="block text-sm font-medium mb-1">
-                                        {t("Form.Subject")}
-                                    </label>
-                                    <select
-                                        id="subject"
-                                        name="subject"
-                                        value={formState.subject}
-                                        onChange={handleChange}
-                                        required
-                                        className="w-full px-4 py-2 rounded-lg border border-[var(--card-border)] bg-[var(--background)] focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] transition-all"
-                                    >
-                                        <option value="">{t("Form.SelectSubject")}</option>
-                                        {contactSubjectKeys.map((key) => (
-                                            <option key={key} value={t(`Form.Subjects.${key}`)}>
-                                                {t(`Form.Subjects.${key}`)}
-                                            </option>
-                                        ))}
-                                    </select>
-                                </div>
-
-                                <div>
-                                    <label htmlFor="message" className="block text-sm font-medium mb-1">
-                                        {t("Form.Message")}
-                                    </label>
-                                    <textarea
-                                        id="message"
-                                        name="message"
-                                        value={formState.message}
-                                        onChange={handleChange}
-                                        required
-                                        rows={5}
-                                        className="w-full px-4 py-2 rounded-lg border border-[var(--card-border)] bg-[var(--background)] focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] transition-all resize-none"
-                                    />
-                                </div>
-
-                                <motion.button
-                                    type="submit"
-                                    disabled={isSubmitting}
-                                    className="btn-primary w-full flex items-center justify-center gap-2 disabled:opacity-50"
-                                    whileHover={{ scale: 1.02 }}
-                                    whileTap={{ scale: 0.98 }}
-                                >
-                                    {isSubmitting ? (
-                                        <>
-                                            <Icon icon="tabler:loader-2" width={20} height={20} className="animate-spin" />
-                                            {t("Form.Sending")}
-                                        </>
-                                    ) : (
-                                        <>
-                                            <Icon icon="tabler:send" width={20} height={20} />
-                                            {t("Form.Send")}
-                                        </>
-                                    )}
-                                </motion.button>
-                            </form>
-                        )}
+                        <ContactForm useCaptcha={false} />
                     </BentoCard>
                 </BentoGrid>
             </div>
