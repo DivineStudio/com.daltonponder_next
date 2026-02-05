@@ -25,8 +25,8 @@ const contactSubjectKeys = [
 ];
 
 const socialLinks = [
-    { href: "https://linkedin.com/in/daltonponder", icon: "tabler:brand-linkedin", label: "LinkedIn" },
-    { href: "https://github.com/daltonponder", icon: "tabler:brand-github", label: "GitHub" },
+    { href: "https://www.linkedin.com/in/dalton-ponder-99a96a131", icon: "tabler:brand-linkedin", label: "LinkedIn" },
+    { href: "https://github.com/DivineStudio", icon: "tabler:brand-github", label: "GitHub" },
 ];
 
 export function ContactSection({ summary = true }: ContactSectionProps) {

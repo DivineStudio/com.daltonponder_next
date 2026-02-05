@@ -38,22 +38,22 @@ const primarySkills: Skill[] = [
 ];
 
 const secondarySkillsRow1 = [
-    { name: "Docker", icon: "devicon:docker" },
-    { name: "AWS", icon: "devicon:amazonwebservices-wordmark" },
-    { name: "Azure", icon: "devicon:azure" },
-    { name: "Python", icon: "devicon:python" },
+    { name: "Wix", icon: "devicon:wix" },
+    { name: "Agentic AI", icon: "ri:code-ai-fill" },
+    { name: "Azure DevOps", icon: "devicon:azuredevops" },
+    { name: "Alpine.js", icon: "devicon:alpinejs" },
     { name: "Node.js", icon: "devicon:nodejs" },
     { name: "PostgreSQL", icon: "devicon:postgresql" },
-    { name: "MongoDB", icon: "devicon:mongodb" },
+    { name: "MSSQL", icon: "devicon:azuresqldatabase" },
 ];
 
 const secondarySkillsRow2 = [
-    { name: "Kubernetes", icon: "devicon:kubernetes" },
+    { name: "Agile", icon: "iconoir:agile" },
     { name: "Git", icon: "devicon:git" },
-    { name: "GitHub Actions", icon: "devicon:githubactions" },
-    { name: "Terraform", icon: "devicon:terraform" },
-    { name: "GraphQL", icon: "devicon:graphql" },
-    { name: "Redis", icon: "devicon:redis" },
+    { name: "SSMS", imageSrc: "/skillLogos/ssms_21.webp" },
+    { name: "REST API" },
+    { name: "TypeScript", icon: "devicon:typescript" },
+    { name: "BMAD" },
     { name: "Tailwind", icon: "devicon:tailwindcss" },
 ];
 
@@ -72,7 +72,7 @@ export function SkillsSection({ summary = true }: SkillsSectionProps) {
                         {t("Header")}
                     </h2>
                     <p className="text-muted text-lg max-w-2xl">
-                        {t("Header")}
+                        {t("SubHeader")}
                     </p>
                 </motion.div>
 
@@ -137,7 +137,17 @@ export function SkillsSection({ summary = true }: SkillsSectionProps) {
                         {secondarySkillsRow2.map((skill) => (
                             <MarqueeItem key={skill.name}>
                                 <div className="flex items-center gap-2">
-                                    <Icon icon={skill.icon} width={24} height={24} />
+                                    {skill.imageSrc ? (
+                                        <Image
+                                            src={skill.imageSrc}
+                                            alt={skill.name}
+                                            width={24}
+                                            height={24}
+                                            className="object-contain"
+                                        />
+                                    ) : (
+                                        <Icon icon={skill.icon} width={24} height={24} />
+                                    )}
                                     <span className="font-mono text-sm">{skill.name}</span>
                                 </div>
                             </MarqueeItem>

@@ -65,7 +65,7 @@ export function CredentialsSection({ summary = true }: CredentialsSectionProps) 
         },
         {
             label: "Years Experience",
-            value: 10,
+            value: 8,
             suffix: "+",
             icon: "tabler:calendar",
             description: "Building software solutions",
@@ -73,9 +73,9 @@ export function CredentialsSection({ summary = true }: CredentialsSectionProps) 
     ];
 
     const certifications = [
-        { name: "CompTIA Security+", issuer: "CompTIA", year: "2022" },
-        { name: "AWS Solutions Architect", issuer: "Amazon", year: "2023" },
-        { name: "Microsoft Azure Fundamentals", issuer: "Microsoft", year: "2021" },
+        { name: "Certified Ethical Hacker", issuer: "EC-Council", year: "2023" },
+        { name: "Certified Sitefinity Developer ", issuer: "Progress", year: "2024" },
+        { name: "Certified Sitefinity .NET Core Developer", issuer: "Progress", year: "2023" },
     ];
     return (
         <section className="section" aria-labelledby="credentials-heading">
@@ -90,7 +90,7 @@ export function CredentialsSection({ summary = true }: CredentialsSectionProps) 
                         {t("Header")}
                     </h2>
                     <p className="text-muted text-lg max-w-2xl">
-                        {t("Header")} {/* Using Header twice for lack of description key currently in JSON, or I can add it */}
+                        {t("SubHeader")}
                     </p>
                 </motion.div>
 

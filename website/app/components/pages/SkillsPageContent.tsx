@@ -5,6 +5,7 @@ import { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Icon } from "@iconify/react";
 import Link from "next/link";
+import Image from "next/image";
 
 // Full skills data with categories, years, and proficiency
 
@@ -15,8 +16,9 @@ interface Skill {
     name: string;
     icon: string;
     category: string;
-    years: number;
-    proficiency: number;
+    year: string;
+    imageSrc?: string;
+
 }
 
 interface SkillCardProps {
@@ -25,13 +27,15 @@ interface SkillCardProps {
     cardTranslations: {
         yearsPlus: string;
         yearsExperience: string;
-        proficiency: string;
-        hoverToFlip: string;
+
+
     };
 }
 
 function SkillCard({ skill, index, cardTranslations }: SkillCardProps) {
-    const [isFlipped, setIsFlipped] = useState(false);
+
+    const currentYear = new Date().getFullYear();
+    const experienceYears = currentYear - parseInt(skill.year);
 
     return (
         <motion.div
@@ -40,78 +44,45 @@ function SkillCard({ skill, index, cardTranslations }: SkillCardProps) {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9 }}
             transition={{ duration: 0.3, delay: index * 0.03 }}
-            className="perspective-1000 h-[180px]"
-            onMouseEnter={() => setIsFlipped(true)}
-            onMouseLeave={() => setIsFlipped(false)}
+            className="min-h-[140px] h-full"
         >
-            <motion.div
-                className="relative w-full h-full"
-                animate={{ rotateY: isFlipped ? 180 : 0 }}
-                transition={{ duration: 0.5, type: "spring", stiffness: 200, damping: 25 }}
-                style={{ transformStyle: "preserve-3d" }}
-            >
-                {/* Front of card */}
-                <div
-                    className="absolute inset-0 bento-card backface-hidden"
-                    style={{ backfaceVisibility: "hidden" }}
-                >
-                    <div className="flex items-start justify-between mb-4">
-                        <div className="flex items-center gap-3">
+            <div className="relative w-full h-full bento-card flex flex-col">
+                <div className="flex items-start justify-between mb-4">
+                    <div className="flex items-start gap-3">
+                        <div className="flex-shrink-0">
                             <motion.div
-                                className="w-12 h-12 rounded-lg bg-[var(--color-base-200)] flex items-center justify-center"
+                                className="w-12 h-12 rounded-lg bg-[var(--color-base-200)] flex items-center justify-center overflow-hidden"
                             >
-                                <Icon icon={skill.icon} width={32} height={32} />
+                                {skill.imageSrc ? (
+                                    <Image
+                                        src={skill.imageSrc}
+                                        alt={skill.name}
+                                        width={32}
+                                        height={32}
+                                        className="object-contain"
+                                    />
+                                ) : (
+                                    <Icon icon={skill.icon} width={32} height={32} />
+                                )}
                             </motion.div>
-                            <div>
-                                <h3 className="font-mono font-semibold text-lg">{skill.name}</h3>
-                                <span className="text-xs px-2 py-0.5 rounded-full bg-[var(--color-base-200)] text-muted">
-                                    {skill.category}
-                                </span>
-                            </div>
                         </div>
-                    </div>
-
-                    {/* Progress Bar */}
-                    <div className="mb-2">
-                        <div className="h-2 w-full bg-[var(--color-base-200)] rounded-full overflow-hidden">
-                            <motion.div
-                                initial={{ width: 0 }}
-                                whileInView={{ width: `${skill.proficiency}%` }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.8, delay: 0.2 }}
-                                className="h-full rounded-full"
-                                style={{ background: "var(--color-accent)" }}
-                            />
+                        <div>
+                            <h3 className="font-mono font-semibold text-lg">{skill.name}</h3>
+                            <span className="text-xs px-2 py-0.5 rounded-full bg-[var(--color-base-200)] text-muted">
+                                {skill.category}
+                            </span>
                         </div>
-                    </div>
-
-                    <div className="flex justify-between text-sm text-muted">
-                        <span>{skill.years}{cardTranslations.yearsPlus}</span>
-                        <span className="font-mono">{skill.proficiency}%</span>
-                    </div>
-
-                    {/* Flip hint */}
-                    <div className="absolute bottom-2 right-2 text-xs text-muted opacity-50 flex items-center gap-1">
-                        <Icon icon="tabler:rotate-3d" width={12} height={12} />
-                        {cardTranslations.hoverToFlip}
                     </div>
                 </div>
 
-                {/* Back of card */}
-                <div
-                    className="absolute inset-0 bento-card backface-hidden bg-gradient-to-br from-[var(--color-accent)] to-[var(--color-primary)] text-white flex flex-col justify-center items-center"
-                    style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
-                >
-                    <Icon icon={skill.icon} width={48} height={48} className="mb-3 opacity-90" />
-                    <h3 className="font-mono font-bold text-2xl mb-1">{skill.name}</h3>
-                    <p className="text-4xl font-bold font-mono mb-1">{skill.years}+</p>
-                    <p className="text-sm opacity-80">{cardTranslations.yearsExperience}</p>
-                    <div className="mt-3 px-3 py-1 rounded-full bg-white/20 text-xs font-mono">
-                        {skill.proficiency}% {cardTranslations.proficiency}
-                    </div>
+
+
+                <div className="flex justify-between text-sm text-muted mt-auto">
+                    <span>{experienceYears}{cardTranslations.yearsPlus}</span>
                 </div>
-            </motion.div>
+            </div>
         </motion.div>
+
     );
 }
 
@@ -125,8 +96,8 @@ export function SkillsPageContent() {
     const cardTranslations = {
         yearsPlus: t("Card.YearsPlus"),
         yearsExperience: t("Card.YearsExperience"),
-        proficiency: t("Card.Proficiency"),
-        hoverToFlip: t("Card.HoverToFlip"),
+
+
     };
 
     const filteredSkills = useMemo(() => {

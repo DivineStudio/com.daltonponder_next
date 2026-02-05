@@ -79,7 +79,7 @@ export function TestimonialsSection({ summary = true }: TestimonialsSectionProps
                         {t("Header")}
                     </h2>
                     <p className="text-muted text-lg max-w-2xl">
-                        {t("Header")}
+                        {t("SubHeader")}
                     </p>
                 </motion.div>
 
