@@ -58,8 +58,8 @@ export function HeroSection() {
     ];
 
     const quickLinks = [
-        { href: "https://linkedin.com/in/daltonponder", label: tSocial("LinkedIn"), icon: "tabler:brand-linkedin" },
-        { href: "https://github.com/daltonponder", label: tSocial("GitHub"), icon: "tabler:brand-github" },
+        { href: "https://www.linkedin.com/in/dalton-ponder-99a96a131", label: tSocial("LinkedIn"), icon: "tabler:brand-linkedin" },
+        { href: "https://github.com/DivineStudio", label: tSocial("GitHub"), icon: "tabler:brand-github" },
     ];
 
     const terminalLines = [
