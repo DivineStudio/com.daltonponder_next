@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { IBM_Plex_Mono, IBM_Plex_Sans, IBM_Plex_Serif } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 import { EasterEggOverlay } from "../components/ui/EasterEgg";
+import GradientBackground from "../components/ui/GradientBackground";
 import "../globals.css";
 
 const plexMono = IBM_Plex_Mono({
@@ -93,6 +94,7 @@ export default async function RootLayout({
         </a>
         <NextIntlClientProvider messages={messages}>
           <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+            <GradientBackground />
             <EasterEggOverlay />
             {children}
           </ThemeProvider>
