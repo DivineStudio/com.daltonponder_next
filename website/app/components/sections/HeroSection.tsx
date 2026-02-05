@@ -6,6 +6,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { BentoCard, BentoGrid } from "../ui/BentoGrid";
 import { TerminalTyping } from "../ui/TerminalTyping";
+import { TextScramble } from "../ui/TextScramble";
 import { useTranslations } from "next-intl";
 
 export function HeroSection() {
@@ -75,7 +76,7 @@ export function HeroSection() {
                     <BentoCard colSpan={2} rowSpan={2} delay={0} className="flex flex-col justify-center">
                         <p className="text-muted text-lg mb-2">{t("Greeting")}</p>
                         <h1 id="hero-heading" className="font-mono text-4xl md:text-5xl lg:text-6xl font-bold text-primary mb-4">
-                            {t("Name")}
+                            <TextScramble text={t("Name")} />
                         </h1>
                         <TerminalTyping lines={terminalLines} className="mb-6" />
                         <p className="text-lg md:text-xl leading-relaxed mb-8 max-w-lg">
@@ -171,7 +172,7 @@ export function HeroSection() {
                                     style={{ backgroundColor: skill.bgColor }}
                                 >
                                     {skill.imageSrc ? (
-                                        <img
+                                        <Image
                                             src={skill.imageSrc}
                                             alt={skill.title}
                                             width={24}
