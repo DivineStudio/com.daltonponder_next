@@ -145,9 +145,9 @@ export function SkillsSection({ summary = true }: SkillsSectionProps) {
                                             height={24}
                                             className="object-contain"
                                         />
-                                    ) : (
+                                    ) : skill.icon ? (
                                         <Icon icon={skill.icon} width={24} height={24} />
-                                    )}
+                                    ) : null}
                                     <span className="font-mono text-sm">{skill.name}</span>
                                 </div>
                             </MarqueeItem>
