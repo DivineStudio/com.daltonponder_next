@@ -22,7 +22,7 @@
             "Greeting": "Hi, I'm",
             "Name": "DALTON PONDER",
             "Terminal": {
-                "Line1": "Dalton.Init(\"Fullstack\", \"Security\", \"AI\")",
+                "Line1": "Dalton.Init(\"Full-Stack\", \"Security\", \"AI\")",
                 "Line2": "Loading expertise... ████████ 100%",
                 "Line3": "Ready to build."
             },
@@ -41,7 +41,7 @@
         "ProAboutSection": {
             "HeaderLine1": "I BUILD SECURE, SCALABLE SOFTWARE",
             "HeaderLine2": "THAT SOLVES REAL PROBLEMS.",
-            "Paragraph": "With over a decade of experience in software and web development, I specialize in building robust applications that prioritize security without compromising on user experience. From enterprise solutions to startup MVPs, I bring a methodical approach to solving complex technical challenges.",
+            "Paragraph": "With almost a decade of experience in software and web development, I specialize in building robust applications that prioritize security without compromising on user experience. From enterprise solutions to startup MVPs, I bring a methodical approach to solving complex technical challenges.",
             "LinkedIn": "LinkedIn",
             "GitHub": "GitHub",
             "LearnMore": "Learn More About Me"

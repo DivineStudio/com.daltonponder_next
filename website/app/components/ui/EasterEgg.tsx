@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Icon } from "@iconify/react";
 
@@ -18,21 +18,16 @@ const KONAMI_CODE = [
 ];
 
 export function useKonamiCode() {
-    const [inputSequence, setInputSequence] = useState<string[]>([]);
+    const inputSequenceRef = useRef<string[]>([]);
     const [isActivated, setIsActivated] = useState(false);
-
-    const resetSequence = useCallback(() => {
-        setInputSequence([]);
-    }, []);
 
     useEffect(() => {
         const handleKeyDown = (e: KeyboardEvent) => {
-            const newSequence = [...inputSequence, e.code].slice(-KONAMI_CODE.length);
-            setInputSequence(newSequence);
+            inputSequenceRef.current = [...inputSequenceRef.current, e.code].slice(-KONAMI_CODE.length);
 
-            if (newSequence.join(",") === KONAMI_CODE.join(",")) {
+            if (inputSequenceRef.current.join(",") === KONAMI_CODE.join(",")) {
                 setIsActivated(true);
-                resetSequence();
+                inputSequenceRef.current = [];
                 // Auto-hide after 5 seconds
                 setTimeout(() => setIsActivated(false), 5000);
             }
@@ -40,13 +35,23 @@ export function useKonamiCode() {
 
         window.addEventListener("keydown", handleKeyDown);
         return () => window.removeEventListener("keydown", handleKeyDown);
-    }, [inputSequence, resetSequence]);
+    }, []);
 
     return { isActivated, setIsActivated };
 }
 
 export function EasterEggOverlay() {
     const { isActivated, setIsActivated } = useKonamiCode();
+
+    // Add Escape key handler for accessibility
+    useEffect(() => {
+        if (!isActivated) return;
+        const handleEscape = (e: KeyboardEvent) => {
+            if (e.key === 'Escape') setIsActivated(false);
+        };
+        window.addEventListener('keydown', handleEscape);
+        return () => window.removeEventListener('keydown', handleEscape);
+    }, [isActivated, setIsActivated]);
 
     return (
         <AnimatePresence>

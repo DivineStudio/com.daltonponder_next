@@ -39,6 +39,19 @@
   --card-border: #e0e0e0;
   --navbar-bg: transparent;
   --navbar-bg-solid: var(--color-secondary);
+
+  /* Skill Badge Backgrounds - Light Mode */
+  --color-skill-bg-accent: #E8F4F8;
+  --color-skill-bg-primary: #F5E8E8;
+  --color-skill-bg-sitefinity: #1A4200;
+
+  /* Terminal Colors - Light Mode */
+  --color-terminal-bg: #1a1a2e;
+  --color-terminal-border: #2a2a4a;
+  --color-terminal-text: #e8e8e8;
+
+  /* Semantic Colors */
+  --color-success: #22c55e;
 }
 
 /* -----------------------------------------------------------------------------
@@ -67,6 +80,19 @@
   --card-bg: oklch(28% 0.016 252.42);
   --card-border: oklch(35% 0.016 252.42);
   --navbar-bg-solid: oklch(20% 0.016 252.42);
+
+  /* Skill Badge Backgrounds - Dark Mode */
+  --color-skill-bg-accent: #1a3344;
+  --color-skill-bg-primary: #3d2626;
+  --color-skill-bg-sitefinity: #0d2100;
+
+  /* Terminal Colors - Dark Mode */
+  --color-terminal-bg: #0d0d14;
+  --color-terminal-border: #1a1a2e;
+  --color-terminal-text: #e8e8e8;
+
+  /* Semantic Colors - Dark Mode */
+  --color-success: #4ade80;
 }
 
 /* -----------------------------------------------------------------------------
@@ -155,6 +181,10 @@ body {
 
 .text-muted {
   color: var(--color-base-muted);
+}
+
+.text-success {
+  color: var(--color-success);
 }
 
 .link-underline {

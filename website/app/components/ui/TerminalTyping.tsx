@@ -63,16 +63,16 @@ export function TerminalTyping({
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3 }}
-            className={`font-mono text-sm md:text-base bg-[#1a1a2e] dark:bg-[#0d0d14] rounded-lg p-4 border border-[#2a2a4a] ${className}`}
+            className={`font-mono text-sm md:text-base bg-[var(--color-terminal-bg)] rounded-lg p-4 border border-[var(--color-terminal-border)] ${className}`}
         >
             {displayedLines.map((line, index) => (
                 <div key={index} className="flex items-center gap-2">
-                    <span className="text-[#40798C] select-none">&gt;</span>
-                    <span className="text-[#e8e8e8]">
+                    <span className="text-accent select-none">&gt;</span>
+                    <span className="text-[var(--color-terminal-text)]">
                         {line}
                         {index === currentLineIndex && !isTypingComplete && (
                             <span
-                                className={`inline-block w-2 h-4 ml-0.5 bg-[#40798C] ${showCursor ? "opacity-100" : "opacity-0"
+                                className={`inline-block w-2 h-4 ml-0.5 bg-accent ${showCursor ? "opacity-100" : "opacity-0"
                                     }`}
                             />
                         )}
@@ -81,9 +81,9 @@ export function TerminalTyping({
             ))}
             {isTypingComplete && (
                 <div className="flex items-center gap-2">
-                    <span className="text-[#40798C] select-none">&gt;</span>
+                    <span className="text-accent select-none">&gt;</span>
                     <span
-                        className={`inline-block w-2 h-4 bg-[#40798C] ${showCursor ? "opacity-100" : "opacity-0"
+                        className={`inline-block w-2 h-4 bg-accent ${showCursor ? "opacity-100" : "opacity-0"
                             }`}
                     />
                 </div>

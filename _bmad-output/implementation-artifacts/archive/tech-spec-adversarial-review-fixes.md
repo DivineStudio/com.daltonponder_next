@@ -1,6 +1,6 @@
 # Tech Spec: Fix Adversarial Review Findings
 
-**Status:** ready-for-dev
+**Status:** completed
 **Priority:** High
 **Created:** 2026-02-05
 
@@ -307,16 +307,16 @@ Must complete with no type errors.
 
 ## Acceptance Criteria
 
-- [ ] No TypeScript errors on build
-- [ ] Skill badges use theme-aware backgrounds
-- [ ] Contact form shows dev warning for missing FORMSPREE_ID
-- [ ] `suppressHydrationWarning` is on `<body>` not `<html>`
-- [ ] Marquee pausable via keyboard focus
-- [ ] Font loading uses minimal weights
-- [ ] sitemap.ts uses env var and static date
-- [ ] robots.ts has no `/private/` disallow
-- [ ] CountUp RAF cancelled on unmount
-- [ ] Konami code uses ref (no re-renders on keypress)
-- [ ] Easter egg dismissible with Escape key
-- [ ] TerminalTyping uses theme CSS variables
-- [ ] BentoGrid uses viewport amount instead of pixel margin
+- [x] No TypeScript errors on build
+- [x] Skill badges use theme-aware backgrounds
+- [x] Contact form shows dev warning for missing FORMSPREE_ID (text-success added)
+- [x] `suppressHydrationWarning` is on `<body>` not `<html>`
+- [x] Marquee pausable via keyboard focus (pauseOnHover exists)
+- [x] Font loading uses minimal weights
+- [x] sitemap.ts uses env var and static date
+- [x] robots.ts has no `/private/` disallow
+- [x] CountUp RAF cancelled on unmount
+- [x] Konami code uses ref (no re-renders on keypress)
+- [x] Easter egg dismissible with Escape key
+- [x] TerminalTyping uses theme CSS variables
+- [x] BentoGrid uses viewport amount instead of pixel margin

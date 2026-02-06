@@ -104,8 +104,10 @@ export function SkillsSection({ summary = true }: SkillsSectionProps) {
                                         height={32}
                                         className="object-contain"
                                     />
+                                ) : skill.icon ? (
+                                    <Icon icon={skill.icon} width={32} height={32} />
                                 ) : (
-                                    <Icon icon={skill.icon!} width={32} height={32} />
+                                    <span className="w-8 h-8 flex items-center justify-center text-muted">•</span>
                                 )}
                                 <span className="font-mono font-semibold">{skill.name}</span>
                             </motion.div>

@@ -28,32 +28,32 @@ export function HeroSection() {
             icon: "tabler:code",
             title: t("Skills.FullStack"),
             color: "var(--color-accent)",
-            bgColor: "#E8F4F8",
+            bgColor: "var(--color-skill-bg-accent)",
         },
         {
             icon: "tabler:shield-lock",
             title: t("Skills.Security"),
             color: "var(--color-primary)",
-            bgColor: "#F5E8E8",
+            bgColor: "var(--color-skill-bg-primary)",
         },
         {
             icon: "tabler:cloud",
             title: t("Skills.Cloud"),
             color: "var(--color-accent)",
-            bgColor: "#E8F4F8",
+            bgColor: "var(--color-skill-bg-accent)",
             details: t("Skills.CloudDetails").split(" • "),
         },
         {
             icon: "tabler:brain",
             title: t("Skills.AI"),
             color: "var(--color-primary)",
-            bgColor: "#F5E8E8",
+            bgColor: "var(--color-skill-bg-primary)",
         },
         {
             icon: "simple-icons:progress",
             title: t("Skills.Sitefinity"),
             color: "#5ce500",
-            bgColor: "#1A4200",
+            bgColor: "var(--color-skill-bg-sitefinity)",
         },
     ];
 
