@@ -550,25 +550,60 @@
             "At": "at",
             "Items": [
                 {
-                    "Quote": "Dalton is an exceptional developer who brings both technical expertise and creative problem-solving to every project.",
-                    "Author": "Jane Smith",
-                    "Role": "CTO",
-                    "Company": "TechCorp Inc.",
-                    "avatar": "JS"
+                    "Quote": "Dalton is one of the best developers I’ve had the pleasure to work with. Regardless of what I throw at him, I can expect the output to be thorough, explicit, and well-executed. He has made me better at my job by helping me understand nuances I had not considered as a project manager with over a decade of experience.",
+                    "Author": "Joe Robillard",
+                    "Role": "Project Manager",
+                    "Company": "Smooth Fusion",
+                    "avatar": "JR",
+                    "Headliner": false
                 },
                 {
-                    "Quote": "Working with Dalton was a pleasure. His attention to security and code quality is unmatched.",
-                    "Author": "Michael Chen",
-                    "Role": "Engineering Manager",
-                    "Company": "SecureStart",
-                    "avatar": "MC"
+                    "Quote": "Dalton’s dedication to providing elegant solutions is evident in all he does. His eye for detail, ability to problem-solve, and communication skills are valuable assets to any team.",
+                    "Author": "Janae Allen",
+                    "Role": "Senior Vice President of Technology",
+                    "Company": "Smooth Fusion",
+                    "avatar": "JA",
+                    "Headliner": false
                 },
                 {
-                    "Quote": "Dalton delivered our project ahead of schedule with exceptional quality. Highly recommended.",
-                    "Author": "Sarah Johnson",
-                    "Role": "Product Lead",
-                    "Company": "InnovateCo",
-                    "avatar": "SJ"
+                    "Quote": "I have enjoyed working with Dalton. He's incredibly sharp and learns new things quickly. His willingness to jump into the unknown and figure it out is admirable. What sets him apart is his combination of strong technical skills and excellent soft skills. He's as effective in client-facing discussions as he is in the codebase. Plus, his proactive communication ensures everyone is always on the same page. A real asset to any team.",
+                    "Author": "Braden Mason",
+                    "Role": "Vice President of Delivery",
+                    "Company": "Smooth Fusion",
+                    "avatar": "BM",
+                    "Headliner": false
+                },
+                {
+                    "Quote": "I’ve had the pleasure of working with Dalton for several years, primarily in my role as a QA specialist on projects he developed. Dalton is a highly skilled Sitefinity developer—knowledgeable, approachable, and consistently supportive of the team. He’s always willing to collaborate, answer questions, and ensure the final product meets high standards.",
+                    "Author": "Jenni Roemisch",
+                    "Role": "Director of Quality Assurance",
+                    "Company": "Smooth Fusion",
+                    "avatar": "JR",
+                    "Headliner": false
+                },
+                {
+                    "Quote": "I’ve always admired Dalton’s strong desire to dig in to a hard task, learn all about it, and put in the hard work to get it done right. He’s always willing to step outside the box and thoroughly think through the task in front of him.",
+                    "Author": "Gary Evans",
+                    "Role": "Vice President of Information Technology",
+                    "Company": "Smooth Fusion",
+                    "avatar": "GE",
+                    "Headliner": false
+                },
+                {
+                    "Quote": "Working with Dalton on our projects at Smooth Fusion is an incredibly productive experience. His ability to break down complex problems and communicate clearly helped our team deliver clean, maintainable code under tight deadlines. I always appreciated his willingness to review code thoughtfully, collaborate on difficult issues and work to streamline processes.",
+                    "Author": "Joshua Stephens",
+                    "Role": "Senior Software Developer",
+                    "Company": "Smooth Fusion",
+                    "avatar": "JS",
+                    "Headliner": false
+                },
+                {
+                    "Quote": "Dalton is a standout Senior Web Developer on my team. He consistently engineers thoughtful, scalable full-stack solutions across a wide range of projects and technologies. What sets Dalton apart isn’t just his technical ability—it’s his mindset. He brings an entrepreneurial perspective to everything he does, always looking beyond the task at hand to consider the broader vision and long-term impact.\n\nDalton is ethical, intelligent, and incredibly reliable. He’s the kind of team member you can trust with anything—especially the projects that fall outside the typical scope. He handles each challenge with care, clarity, and excellence. He also communicates effectively with both technical and non-technical stakeholders, making him a valuable bridge across departments.\n\nI’m proud to work with Dalton. He brings integrity, initiative, and sharp insight to every engagement and consistently adds value across the organization.",
+                    "Author": "Justin Bubel",
+                    "Role": "Vice President of Software Solutions",
+                    "Company": "Smooth Fusion",
+                    "avatar": "JB",
+                    "Headliner": true
                 }
             ]
         }

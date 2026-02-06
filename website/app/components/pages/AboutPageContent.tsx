@@ -1,4 +1,5 @@
 "use client";
+import { useState, useRef, useEffect } from "react";
 import { useTranslations } from "next-intl";
 
 import { motion } from "motion/react";
@@ -7,6 +8,49 @@ import Link from "next/link";
 import Image from "next/image";
 import { PhilosophyQuote } from "../ui/PhilosophyQuote";
 import { Carousel } from "../ui/Carousel";
+
+// Expandable testimonial card for the carousel
+function TestimonialCard({ testimonial }: { testimonial: { quote: string; author: string; role: string; avatar: string } }) {
+    const [isExpanded, setIsExpanded] = useState(false);
+    const [isTruncated, setIsTruncated] = useState(false);
+    const textRef = useRef<HTMLParagraphElement>(null);
+
+    useEffect(() => {
+        const el = textRef.current;
+        if (el) {
+            // Check if text is actually truncated (scrollHeight > clientHeight)
+            setIsTruncated(el.scrollHeight > el.clientHeight);
+        }
+    }, [testimonial.quote]);
+
+    return (
+        <div className="bento-card h-full flex flex-col">
+            <p
+                ref={textRef}
+                className={`text-muted italic mb-2 whitespace-pre-line ${!isExpanded ? 'line-clamp-4' : ''}`}
+            >
+                &ldquo;{testimonial.quote}&rdquo;
+            </p>
+            {isTruncated && (
+                <button
+                    onClick={() => setIsExpanded(!isExpanded)}
+                    className="text-accent text-sm font-medium hover:underline mb-4 self-start"
+                >
+                    {isExpanded ? 'Read less' : 'Read more'}
+                </button>
+            )}
+            <div className="flex items-center gap-3 mt-auto">
+                <div className="w-10 h-10 rounded-full bg-[var(--color-base-200)] flex items-center justify-center font-mono text-sm shrink-0">
+                    {testimonial.avatar}
+                </div>
+                <div>
+                    <p className="font-medium text-sm">{testimonial.author}</p>
+                    <p className="text-xs text-muted">{testimonial.role}</p>
+                </div>
+            </div>
+        </div>
+    );
+}
 
 export function AboutPageContent() {
     const t = useTranslations("Home.ProAboutSection");
@@ -26,9 +70,14 @@ export function AboutPageContent() {
             author: t.Author,
             role: t.Role,
             company: t.Company,
-            avatar: t.avatar
+            avatar: t.avatar,
+            headliner: t.Headliner === true
         }))
         : [];
+
+    // Find the headliner testimonial (first with Headliner=true, or fallback to first item)
+    const headlinerTestimonial = testimonials.find(t => t.headliner) || testimonials[0];
+    const otherTestimonials = testimonials.filter(t => t !== headlinerTestimonial);
     return (
         <>
             {/* Hero Section - Theme Aware */}
@@ -224,21 +273,21 @@ export function AboutPageContent() {
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="bento-card max-w-4xl mx-auto mb-8"
+                        className="bento-card max-w-3xl mx-auto mb-8"
                     >
                         <div className="text-6xl md:text-8xl font-serif text-[var(--color-primary)] opacity-30 leading-none mb-4">
                             &ldquo;
                         </div>
-                        <blockquote className="text-xl md:text-2xl font-serif mb-6 -mt-8">
-                            {testimonials[0].quote}
+                        <blockquote className="text-lg md:text-xl font-serif mb-6 -mt-8 whitespace-pre-line leading-relaxed text-[var(--foreground)]/90">
+                            {headlinerTestimonial?.quote}
                         </blockquote>
                         <div className="flex items-center gap-4">
                             <div className="w-12 h-12 rounded-full bg-[#1a1a2e] flex items-center justify-center text-white font-mono text-sm">
-                                {testimonials[0].avatar}
+                                {headlinerTestimonial?.avatar}
                             </div>
                             <div>
-                                <p className="font-semibold">{testimonials[0].author}</p>
-                                <p className="text-sm text-muted">{testimonials[0].role}</p>
+                                <p className="font-semibold">{headlinerTestimonial?.author}</p>
+                                <p className="text-sm text-muted">{headlinerTestimonial?.role}</p>
                             </div>
                         </div>
                     </motion.div>
@@ -249,23 +298,10 @@ export function AboutPageContent() {
                         options={{ loop: true, align: "start", dragFree: false }}
                         className="-mx-4 md:mx-0 px-4 md:px-0"
                         slideClassName="w-full md:w-1/2 lg:w-1/2 pr-4"
+                        showDots={true}
                     >
-                        {testimonials.slice(1).map((testimonial: { quote: string; author: string; role: string; avatar: string }, index: number) => (
-                            <div
-                                key={testimonial.author}
-                                className="bento-card h-full"
-                            >
-                                <p className="text-muted italic mb-4 line-clamp-4">&ldquo;{testimonial.quote}&rdquo;</p>
-                                <div className="flex items-center gap-3 mt-auto">
-                                    <div className="w-10 h-10 rounded-full bg-[var(--color-base-200)] flex items-center justify-center font-mono text-sm shrink-0">
-                                        {testimonial.avatar}
-                                    </div>
-                                    <div>
-                                        <p className="font-medium text-sm">{testimonial.author}</p>
-                                        <p className="text-xs text-muted">{testimonial.role}</p>
-                                    </div>
-                                </div>
-                            </div>
+                        {otherTestimonials.map((testimonial: { quote: string; author: string; role: string; avatar: string }) => (
+                            <TestimonialCard key={testimonial.author} testimonial={testimonial} />
                         ))}
                     </Carousel>
                 </div>

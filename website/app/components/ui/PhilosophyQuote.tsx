@@ -1,8 +1,10 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "motion/react";
+import { useState, useEffect, useRef, useCallback } from "react";
+import { motion } from "motion/react";
 import { Icon } from "@iconify/react";
+import Autoplay from "embla-carousel-autoplay";
+import useEmblaCarousel from "embla-carousel-react";
 
 const philosophyQuotes = [
     {
@@ -31,20 +33,24 @@ interface PhilosophyQuoteProps {
     className?: string;
 }
 
-import Autoplay from "embla-carousel-autoplay";
-import useEmblaCarousel from "embla-carousel-react";
-
-// ... (keep philosophyQuotes array)
-
-interface PhilosophyQuoteProps {
-    className?: string;
-}
-
 export function PhilosophyQuote({ className = "" }: PhilosophyQuoteProps) {
-    const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, [
+    // Use ref for stable autoplay plugin reference
+    const autoplayPluginRef = useRef(
         Autoplay({ delay: 10000, stopOnInteraction: false, stopOnMouseEnter: true })
-    ]);
+    );
+
+    const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, [autoplayPluginRef.current]);
     const [currentIndex, setCurrentIndex] = useState(0);
+    const [isPlaying, setIsPlaying] = useState(true);
+
+    // Sync isPlaying state with actual Autoplay plugin state
+    const onAutoplayPlay = useCallback(() => {
+        setIsPlaying(true);
+    }, []);
+
+    const onAutoplayStop = useCallback(() => {
+        setIsPlaying(false);
+    }, []);
 
     useEffect(() => {
         if (!emblaApi) return;
@@ -54,20 +60,32 @@ export function PhilosophyQuote({ className = "" }: PhilosophyQuoteProps) {
         };
 
         emblaApi.on("select", onSelect);
+        emblaApi.on("autoplay:play" as any, onAutoplayPlay);
+        emblaApi.on("autoplay:stop" as any, onAutoplayStop);
+
+        // Cleanup on unmount
         return () => {
             emblaApi.off("select", onSelect);
+            emblaApi.off("autoplay:play" as any, onAutoplayPlay);
+            emblaApi.off("autoplay:stop" as any, onAutoplayStop);
         };
-    }, [emblaApi]);
+    }, [emblaApi, onAutoplayPlay, onAutoplayStop]);
 
     const scrollTo = (index: number) => {
         if (emblaApi) emblaApi.scrollTo(index);
     };
 
-    const current = philosophyQuotes[currentIndex]; // For "My take" rendering outside carousel if desired, OR we render everything inside.
-    // The previous design had "My take" changing with the quote.
-    // If we use a Carousel, the entire card content ideally slides, OR just the quote part.
-    // "Carousel on the Philosophy section".
-    // I will make the *content area* (Quote + Author + Take) slide.
+    const toggleAutoplay = useCallback(() => {
+        const autoplayPlugin = autoplayPluginRef.current;
+        if (!autoplayPlugin) return;
+
+        // Use the plugin's isPlaying method for accurate state
+        if (autoplayPlugin.isPlaying()) {
+            autoplayPlugin.stop();
+        } else {
+            autoplayPlugin.play();
+        }
+    }, []);
 
     return (
         <motion.div
@@ -108,20 +126,34 @@ export function PhilosophyQuote({ className = "" }: PhilosophyQuoteProps) {
                 </div>
             </div>
 
-            {/* Progress dots */}
-            <div className="flex gap-2 mt-4 relative z-10">
+            {/* Progress dots with play/pause button */}
+            <div className="flex gap-2 items-center mt-4 relative z-10">
                 {philosophyQuotes.map((_, index) => (
                     <button
                         key={index}
                         onClick={() => scrollTo(index)}
-                        className={`w-2 h-2 rounded-full transition-all ${index === currentIndex
+                        className={`w-2 h-2 rounded-full transition-all focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 ${index === currentIndex
                             ? "bg-accent w-4"
                             : "bg-[var(--color-base-200)]"
                             }`}
                         aria-label={`Go to quote ${index + 1}`}
                     />
                 ))}
+                <button
+                    onClick={toggleAutoplay}
+                    className="ml-2 p-1 rounded-full hover:bg-[var(--color-base-200)] transition-colors focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2"
+                    aria-label={isPlaying ? "Pause autoplay" : "Resume autoplay"}
+                    title={isPlaying ? "Pause autoplay" : "Resume autoplay"}
+                >
+                    <Icon
+                        icon={isPlaying ? "tabler:player-pause" : "tabler:player-play"}
+                        width={16}
+                        height={16}
+                        className="text-muted"
+                    />
+                </button>
             </div>
         </motion.div>
     );
 }
+

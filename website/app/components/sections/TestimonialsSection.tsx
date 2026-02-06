@@ -52,6 +52,7 @@ export function TestimonialsSection({ summary = true }: TestimonialsSectionProps
         Role: string;
         Company: string;
         Context?: string;
+        avatar?: string;
     }>;
 
     // Map to internal format if needed, though we can use them directly
@@ -62,6 +63,7 @@ export function TestimonialsSection({ summary = true }: TestimonialsSectionProps
         title: t.Role,
         company: t.Company,
         context: t.Context,
+        avatar: t.avatar,
     }));
 
     const displayTestimonials = summary ? formattedTestimonials.slice(0, 4) : formattedTestimonials;
@@ -111,13 +113,13 @@ export function TestimonialsSection({ summary = true }: TestimonialsSectionProps
                         >
                             {displayTestimonials.map((testimonial) => (
                                 <div key={testimonial.id} className="py-8 px-4 md:px-8 w-full">
-                                    <blockquote className="font-serif text-xl md:text-2xl leading-relaxed mb-6 italic">
+                                    <blockquote className="font-serif text-xl md:text-2xl leading-relaxed mb-6 italic whitespace-pre-line">
                                         <TypewriterText text={testimonial.quote} />
                                     </blockquote>
 
                                     <div className="flex items-center gap-4">
-                                        <div className="w-12 h-12 rounded-full bg-[var(--color-primary)] flex items-center justify-center shrink-0">
-                                            <Icon icon="tabler:user" width={24} height={24} className="text-white" />
+                                        <div className="w-12 h-12 rounded-full bg-[var(--color-primary)] flex items-center justify-center shrink-0 text-white font-mono text-sm">
+                                            {testimonial.avatar || testimonial.author.split(' ').map(n => n[0]).join('')}
                                         </div>
                                         <div>
                                             <p className="font-semibold">{testimonial.author}</p>
