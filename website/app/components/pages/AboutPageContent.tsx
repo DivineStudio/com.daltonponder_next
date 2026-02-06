@@ -10,7 +10,7 @@ import { PhilosophyQuote } from "../ui/PhilosophyQuote";
 import { Carousel } from "../ui/Carousel";
 
 // Expandable testimonial card for the carousel
-function TestimonialCard({ testimonial }: { testimonial: { quote: string; author: string; role: string; avatar: string } }) {
+function TestimonialCard({ testimonial }: { testimonial: { quote: string; author: string; role: string; company: string; avatar: string } }) {
     const [isExpanded, setIsExpanded] = useState(false);
     const [isTruncated, setIsTruncated] = useState(false);
     const textRef = useRef<HTMLParagraphElement>(null);
@@ -45,7 +45,7 @@ function TestimonialCard({ testimonial }: { testimonial: { quote: string; author
                 </div>
                 <div>
                     <p className="font-medium text-sm">{testimonial.author}</p>
-                    <p className="text-xs text-muted">{testimonial.role}</p>
+                    <p className="text-xs text-muted">{testimonial.role}, {testimonial.company}</p>
                 </div>
             </div>
         </div>
@@ -287,7 +287,7 @@ export function AboutPageContent() {
                             </div>
                             <div>
                                 <p className="font-semibold">{headlinerTestimonial?.author}</p>
-                                <p className="text-sm text-muted">{headlinerTestimonial?.role}</p>
+                                <p className="text-sm text-muted">{headlinerTestimonial?.role}, {headlinerTestimonial?.company}</p>
                             </div>
                         </div>
                     </motion.div>
@@ -300,7 +300,7 @@ export function AboutPageContent() {
                         slideClassName="w-full md:w-1/2 lg:w-1/2 pr-4"
                         showDots={true}
                     >
-                        {otherTestimonials.map((testimonial: { quote: string; author: string; role: string; avatar: string }) => (
+                        {otherTestimonials.map((testimonial: { quote: string; author: string; role: string; company: string; avatar: string }) => (
                             <TestimonialCard key={testimonial.author} testimonial={testimonial} />
                         ))}
                     </Carousel>
