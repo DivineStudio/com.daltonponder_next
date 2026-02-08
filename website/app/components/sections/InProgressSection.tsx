@@ -269,7 +269,7 @@ export function InProgressSection() {
                     >
                         <div className="text-center">
                             <div className="text-3xl md:text-4xl font-bold text-[var(--color-accent)]">
-                                {mounted && <AnimatedCounter value={42} suffix="%" duration={2.5} />}
+                                {mounted && <AnimatedCounter value={98} suffix="%" duration={2.5} />}
                             </div>
                             <div className="text-sm text-muted mt-1">Complete</div>
                         </div>
@@ -295,7 +295,7 @@ export function InProgressSection() {
                         className="flex justify-center gap-4"
                     >
                         <a
-                            href="https://github.com/daltonponder"
+                            href="https://github.com/DivineStudio"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="group flex items-center gap-2 px-6 py-3 rounded-xl bg-[var(--card-bg)] border border-[var(--card-border)] hover:border-[var(--color-accent)] transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
@@ -304,7 +304,7 @@ export function InProgressSection() {
                             <span className="font-medium">GitHub</span>
                         </a>
                         <a
-                            href="https://linkedin.com/in/daltonponder"
+                            href="https://www.linkedin.com/in/dalton-ponder-99a96a131"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="group flex items-center gap-2 px-6 py-3 rounded-xl bg-[var(--card-bg)] border border-[var(--card-border)] hover:border-[var(--color-accent)] transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
