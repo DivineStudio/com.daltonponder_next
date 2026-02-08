@@ -118,7 +118,7 @@ export function InProgressSection() {
     }));
 
     return (
-        <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-[var(--background)] via-[var(--background)] to-[var(--color-base-200)]">
+        <section className="relative min-h-screen flex items-center justify-center overflow-x-hidden bg-gradient-to-br from-[var(--background)] via-[var(--background)] to-[var(--color-base-200)]">
             {/* Floating Particles */}
             {mounted && (
                 <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -159,14 +159,14 @@ export function InProgressSection() {
             </div>
 
             {/* Main Content */}
-            <div className="relative z-10 container mx-auto px-6 py-20">
+            <div className="relative z-10 container mx-auto px-4 md:px-6 py-10 md:py-20">
                 <div className="max-w-4xl mx-auto text-center">
                     {/* Status Badge */}
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6 }}
-                        className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--color-accent)]/10 border border-[var(--color-accent)]/30 mb-8"
+                        className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--color-accent)]/10 border border-[var(--color-accent)]/30 mb-4 md:mb-8"
                     >
                         <motion.span
                             className="w-2 h-2 rounded-full bg-[var(--color-success)]"
@@ -197,7 +197,7 @@ export function InProgressSection() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6, delay: 0.4 }}
-                        className="text-lg md:text-xl text-muted mb-12 max-w-2xl mx-auto"
+                        className="text-base md:text-xl text-muted mb-6 md:mb-12 max-w-2xl mx-auto px-2"
                     >
                         I'm rebuilding my portfolio from the ground up with modern tech,
                         stunning animations, and a fresh perspective. Stay tuned!
@@ -208,7 +208,7 @@ export function InProgressSection() {
                         initial={{ opacity: 0, scale: 0.95 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.8, delay: 0.6 }}
-                        className="bg-[var(--color-terminal-bg)] border border-[var(--color-terminal-border)] rounded-2xl p-6 md:p-8 shadow-2xl text-left mb-12"
+                        className="bg-[var(--color-terminal-bg)] border border-[var(--color-terminal-border)] rounded-xl md:rounded-2xl p-4 md:p-8 shadow-2xl text-left mb-6 md:mb-12"
                     >
                         {/* Terminal Header */}
                         <div className="flex items-center gap-2 mb-6 pb-4 border-b border-[var(--color-terminal-border)]/50">
@@ -230,7 +230,7 @@ export function InProgressSection() {
                             <motion.div
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
-                                transition={{ delay: 2.5 }}
+                                transition={{ delay: 3 }}
                                 className="space-y-2 text-[var(--color-terminal-text)]/70"
                             >
                                 <div className="flex items-center gap-2">
@@ -265,23 +265,23 @@ export function InProgressSection() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6, delay: 1 }}
-                        className="grid grid-cols-3 gap-8 max-w-md mx-auto mb-12"
+                        className="grid grid-cols-3 gap-4 md:gap-8 max-w-md mx-auto mb-6 md:mb-12"
                     >
                         <div className="text-center">
                             <div className="text-3xl md:text-4xl font-bold text-[var(--color-accent)]">
-                                {mounted && <AnimatedCounter value={98} suffix="%" duration={2.5} />}
+                                {mounted && <AnimatedCounter value={98} suffix="%" duration={10} />}
                             </div>
                             <div className="text-sm text-muted mt-1">Complete</div>
                         </div>
                         <div className="text-center">
                             <div className="text-3xl md:text-4xl font-bold text-[var(--color-primary)]">
-                                {mounted && <AnimatedCounter value={7} duration={2} />}
+                                {mounted && <AnimatedCounter value={7} duration={8} />}
                             </div>
                             <div className="text-sm text-muted mt-1">Features</div>
                         </div>
                         <div className="text-center">
                             <div className="text-3xl md:text-4xl font-bold text-[var(--foreground)]">
-                                {mounted && <AnimatedCounter value={1} duration={1.5} />}
+                                {mounted && <AnimatedCounter value={1} duration={6} />}
                             </div>
                             <div className="text-sm text-muted mt-1">Dreamer</div>
                         </div>
@@ -292,7 +292,7 @@ export function InProgressSection() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6, delay: 1.2 }}
-                        className="flex justify-center gap-4"
+                        className="flex flex-col sm:flex-row justify-center gap-3 md:gap-4 px-4"
                     >
                         <a
                             href="https://github.com/DivineStudio"
@@ -319,7 +319,7 @@ export function InProgressSection() {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ duration: 0.6, delay: 1.5 }}
-                        className="mt-16 text-sm text-muted/50"
+                        className="mt-8 md:mt-16 text-sm text-muted/50 pb-4"
                     >
                         Crafted with ❤️ using Next.js, TypeScript, and far too much coffee
                     </motion.p>
