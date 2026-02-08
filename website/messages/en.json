@@ -41,7 +41,7 @@
         "ProAboutSection": {
             "HeaderLine1": "I BUILD SECURE, SCALABLE SOFTWARE",
             "HeaderLine2": "THAT SOLVES REAL PROBLEMS.",
-            "Paragraph": "With almost a decade of experience in software and web development, I specialize in building robust applications that prioritize security without compromising on user experience. From enterprise solutions to startup MVPs, I bring a methodical approach to solving complex technical challenges.",
+            "Paragraph": "With almost a decade of experience in software and web development, I specialize in building robust applications that prioritize security without compromising on user experience. From enterprise solutions to small-business MVPs, I bring a methodical approach to solving complex technical challenges.",
             "LinkedIn": "LinkedIn",
             "GitHub": "GitHub",
             "LearnMore": "Learn More About Me"
@@ -62,16 +62,18 @@
                 "Lead": {
                     "Category": "How I Lead",
                     "Stoic": "Stoic Principles",
-                    "StoicDesc": "I draw on Stoic philosophy for leadership and decision-making"
+                    "StoicDesc": "I draw on Stoic philosophy for leadership and decision-making",
+                    "Leadership": "Cultivating Boundless Potential",
+                    "LeadershipDesc": "I lead with the conviction that every individual is capable of mastering any challenge through dedicated persistence and a growth mindset. By reframing failures as essential milestones toward success, I empower teams to evolve continuously and exceed their own expectations."
                 },
                 "Beyond": {
                     "Category": "Beyond Work",
                     "Spanish": "Spanish",
-                    "SpanishDesc": "Bilingual in English and Spanish",
+                    "SpanishDesc": "Studying Spanish, learning to connect",
                     "Gaming": "Gaming",
-                    "GamingDesc": "Strategy and RPG enthusiast",
+                    "GamingDesc": "Strategy, FPS, and RPG enthusiast",
                     "Boxing": "Boxing",
-                    "BoxingDesc": "Staying fit through boxing"
+                    "BoxingDesc": "Staying fit and disciplined through boxing"
                 }
             },
             "Quote": {
@@ -619,10 +621,10 @@
                 "Title": "PROFESSIONAL",
                 "Intro": "Senior Full Stack Developer with 8+ years building scalable web applications.",
                 "Points": [
-                    "Specialized in React, Next.js, .NET",
-                    "System architecture & cloud solutions",
-                    "Team leadership & mentorship",
-                    "Performance optimization expert"
+                    "Specialized in .NET Full-Stack Development",
+                    "Certified Sitefinity developer",
+                    "Expanding into React, Next.js, and AI-driven Solutions",
+                    "Security-first mindset, fundamental to my development process"
                 ]
             },
             "Personal": {
@@ -632,13 +634,13 @@
                     "Family time is my greatest joy",
                     "Music offers daily solace",
                     "Stoic philosophy guides my approach",
-                    "Learning Spanish fluently"
+                    "Continuing my academic journey with a focus on AI"
                 ],
                 "Icons": [
                     "tabler:users",
                     "tabler:music",
                     "tabler:brain",
-                    "tabler:language"
+                    "ri:code-ai-fill"
                 ]
             }
         },
@@ -646,23 +648,29 @@
             "Header": "My Eras",
             "Items": [
                 {
-                    "title": "Senior Solutions Architect",
-                    "icon": "tabler:building-skyscraper",
-                    "description": "Leading enterprise architecture and security initiatives.",
+                    "title": "Senior Developer",
+                    "icon": "ri:code-ai-fill",
+                    "description": "Continuing to grow and develop, currently exploring AI and how it can be used to enhance web applications.",
                     "side": "left",
                     "current": true
                 },
                 {
-                    "title": "Full Stack Lead",
+                    "title": "Web Developer",
                     "icon": "tabler:server-bolt",
-                    "description": "Driving development of scalable cloud-native applications.",
+                    "description": "Developing secure and scalable web and Sitefinity applications.",
                     "side": "right"
                 },
                 {
                     "title": "Software Engineer",
                     "icon": "tabler:code",
-                    "description": "Building foundational expertise in .NET and web technologies.",
+                    "description": "Finding my place and learning to develop secure and scalable .NET applications.",
                     "side": "left"
+                },
+                {
+                    "title": "Jr. Web Developer",
+                    "icon": "tabler:player-play",
+                    "description": "Building on early experience in .NET and web technologies.",
+                    "side": "right"
                 }
             ]
         },
@@ -804,8 +812,8 @@
     },
     "Metadata": {
         "Home": {
-            "Title": "Dalton Ponder | Full-Stack Developer & Cybersecurity Expert",
-            "Description": "Portfolio of Dalton Ponder - Full-stack developer and cybersecurity expert crafting secure, scalable solutions."
+            "Title": "Dalton Ponder | Full-Stack Developer & Sitefinity Development Expert",
+            "Description": "Portfolio of Dalton Ponder - Full-stack developer and Sitefinity development expert crafting secure, scalable solutions."
         },
         "About": {
             "Title": "About | Dalton Ponder",

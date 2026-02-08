@@ -44,7 +44,7 @@ export function HeroSection() {
             details: t("Skills.CloudDetails").split(" • "),
         },
         {
-            icon: "tabler:brain",
+            icon: "ri:code-ai-fill",
             title: t("Skills.AI"),
             color: "var(--color-primary)",
             bgColor: "var(--color-skill-bg-primary)",

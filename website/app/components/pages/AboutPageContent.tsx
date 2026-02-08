@@ -131,15 +131,6 @@ export function AboutPageContent() {
             {/* Bio Section */}
             <section className="section">
                 <div className="container">
-                    <motion.h2
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="font-mono text-2xl md:text-3xl font-bold mb-8"
-                    >
-                        {tp("Header")}
-                    </motion.h2>
-
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                         {/* Professional Card */}
                         <motion.div
