@@ -611,13 +611,13 @@
     "About": {
         "Hero": {
             "Header": "THE JOURNEY",
-            "SubLine1": "From curious tinkerer to full-stack architect —",
-            "SubLine2": "a decade of building what matters"
+            "SubLine1": "From curious academic to full-stack architect.",
+            "SubLine2": "Close to a decade of building what matters."
         },
         "Bio": {
             "Professional": {
                 "Title": "PROFESSIONAL",
-                "Intro": "Senior Full Stack Developer with 10+ years building scalable web applications.",
+                "Intro": "Senior Full Stack Developer with 8+ years building scalable web applications.",
                 "Points": [
                     "Specialized in React, Next.js, .NET",
                     "System architecture & cloud solutions",
