@@ -95,8 +95,8 @@ export default async function RootLayout({
               "jobTitle": "Full-Stack Developer",
               "description": "Senior full-stack developer and cybersecurity expert crafting secure, scalable solutions.",
               "sameAs": [
-                "https://linkedin.com/in/daltonponder",
-                "https://github.com/daltonponder"
+                "https://www.linkedin.com/in/dalton-ponder-99a96a131",
+                "https://github.com/DivineStudio"
               ]
             },
             {
