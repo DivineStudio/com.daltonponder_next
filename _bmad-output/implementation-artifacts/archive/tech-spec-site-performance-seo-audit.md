@@ -2,7 +2,7 @@
 title: 'Site Performance & SEO Audit'
 slug: 'site-performance-seo-audit'
 created: '2026-02-04'
-status: 'ready-for-dev'
+status: 'completed'
 stepsCompleted: [1, 2, 3, 4]
 tech_stack: ['Next.js 16', 'Tailwind CSS', 'TypeScript', 'next-intl', 'Framer Motion', 'Embla Carousel']
 files_to_modify: ['website/app/[locale]/layout.tsx', 'website/app/[locale]/page.tsx', 'website/app/components/**/*.tsx', 'website/app/globals.css', 'website/app/robots.ts', 'website/app/sitemap.ts']
@@ -99,21 +99,30 @@ Conduct a unified, deep-dive manual audit using Lighthouse on both Mobile and De
   - File: `website/app/components/ui/Marquee.tsx`, `website/app/components/ui/Carousel.tsx`
   - Action: Verify Framer Motion animations do not cause layout shifts (use `layout` prop carefully). Ensure `Embla Carousel` implementation is accessible (keyboard navigable) and doesn't cause CLS on load.
 
-- [ ] Task 7: Final Verification & Polish
+- [x] Task 7: Final Verification & Polish
   - File: `website/app/globals.css`
   - Action: Address any global contrast issues found during audit.
   - Action: Run final Lighthouse audit. Fix any remaining issues to hit >90% target.
 
+- [x] Task 8: Structured Data Implementation (JSON-LD)
+  - File: `website/app/components/seo/StructuredData.tsx` (NEW)
+  - Action: Create reusable `StructuredData` component for rendering JSON-LD scripts.
+  - File: `website/app/[locale]/layout.tsx`
+  - Action: Add `Person` and `WebSite` schemas to root layout `<head>`.
+  - File: `website/app/[locale]/page.tsx`, `about/page.tsx`, `contact/page.tsx`, `credentials/page.tsx`, `skills/page.tsx`
+  - Action: Add page-specific schemas (`WebPage`, `AboutPage`, `ContactPage`) to each page.
+
 ### Acceptance Criteria
 
-- [ ] AC 1: Lighthouse Performance Score is >90% (Green) for both Mobile and Desktop.
-- [ ] AC 2: Lighthouse Accessibility Score is >90% (Green); zero automated WCAG 2.2 AA errors detected.
-- [ ] AC 3: Lighthouse Best Practices and SEO Scores are >90% (Green).
-- [ ] AC 4: Document Outline (Headings) is strictly hierarchical with no skipped levels (e.g., h1 -> h2 -> h3, not h1 -> h3).
-- [ ] AC 5: LCP (Largest Contentful Paint) is < 2.5s on mobile simulation.
-- [ ] AC 6: CLS (Cumulative Layout Shift) is < 0.1.
-- [ ] AC 7: Keyboard navigation is functional for all interactive elements (Focus visible, logical tab order).
+- [x] AC 1: Lighthouse Performance Score is >90% (Green) for both Mobile and Desktop.
+- [x] AC 2: Lighthouse Accessibility Score is >90% (Green); zero automated WCAG 2.2 AA errors detected.
+- [x] AC 3: Lighthouse Best Practices and SEO Scores are >90% (Green).
+- [x] AC 4: Document Outline (Headings) is strictly hierarchical with no skipped levels (e.g., h1 -> h2 -> h3, not h1 -> h3).
+- [x] AC 5: LCP (Largest Contentful Paint) is < 2.5s on mobile simulation.
+- [x] AC 6: CLS (Cumulative Layout Shift) is < 0.1.
+- [x] AC 7: Keyboard navigation is functional for all interactive elements (Focus visible, logical tab order).
 - [x] AC 8: `robots.txt` and `sitemap.xml` are valid and accessible.
+- [x] AC 9: Structured data (JSON-LD) is present on all pages with valid Person, WebSite, and page-specific schemas.
 
 ## Additional Context
 

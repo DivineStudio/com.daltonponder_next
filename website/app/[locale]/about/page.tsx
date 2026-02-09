@@ -1,6 +1,7 @@
 import { Navbar } from "../../components/layout/Navbar";
 import { Footer } from "../../components/layout/Footer";
 import { AboutPageContent } from "../../components/pages/AboutPageContent";
+import { StructuredData } from "../../components/seo/StructuredData";
 
 import { getTranslations } from "next-intl/server";
 
@@ -14,9 +15,21 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     };
 }
 
-export default function AboutPage() {
+export default async function AboutPage({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
+    const t = await getTranslations({ locale, namespace: "Metadata.About" });
+
+    const aboutPageSchema = {
+        "@context": "https://schema.org",
+        "@type": "AboutPage",
+        "name": t("Title"),
+        "description": t("Description"),
+        "url": `https://daltonponder.com/${locale === "en" ? "" : `${locale}/`}about`
+    };
+
     return (
         <>
+            <StructuredData data={aboutPageSchema} />
             <Navbar />
             <main id="main-content">
                 <AboutPageContent />

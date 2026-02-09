@@ -2,7 +2,7 @@
 title: 'UAT Feedback Remediation'
 slug: 'uat-remediation'
 created: '2026-02-03'
-status: 'done'
+status: 'completed'
 stepsCompleted: [1, 2, 3, 4]
 tech_stack: ['Next.js', 'React', 'Tailwind CSS', 'Framer Motion', 'Iconify', 'Embla Carousel', 'Formspree']
 files_to_modify: [

@@ -3,7 +3,7 @@ title: 'UAT Remediation Fixes'
 slug: 'uat-remediation-fixes'
 created: '2026-02-03'
 stepsCompleted: [1, 2, 3, 4]
-status: 'done'
+status: 'completed'
 tech_stack: ['Next.js', 'React', 'Embla Carousel', 'Tailwind CSS', 'Formspree', 'Framer Motion']
 files_to_modify: [
   'website/package.json',

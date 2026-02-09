@@ -3,6 +3,7 @@ import { IBM_Plex_Mono, IBM_Plex_Sans, IBM_Plex_Serif } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 import { EasterEggOverlay } from "../components/ui/EasterEgg";
 import GradientBackground from "../components/ui/GradientBackground";
+import { StructuredData } from "../components/seo/StructuredData";
 import "../globals.css";
 
 const plexMono = IBM_Plex_Mono({
@@ -83,6 +84,30 @@ export default async function RootLayout({
 
   return (
     <html lang={locale} suppressHydrationWarning>
+      <head>
+        <StructuredData
+          data={[
+            {
+              "@context": "https://schema.org",
+              "@type": "Person",
+              "name": "Dalton Ponder",
+              "url": "https://daltonponder.com",
+              "jobTitle": "Full-Stack Developer",
+              "description": "Senior full-stack developer and cybersecurity expert crafting secure, scalable solutions.",
+              "sameAs": [
+                "https://linkedin.com/in/daltonponder",
+                "https://github.com/daltonponder"
+              ]
+            },
+            {
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              "name": "Dalton Ponder Portfolio",
+              "url": "https://daltonponder.com"
+            }
+          ]}
+        />
+      </head>
       <body
         className={`${plexMono.variable} ${plexSans.variable} ${plexSerif.variable} antialiased`}
       >

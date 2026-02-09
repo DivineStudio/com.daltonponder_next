@@ -7,6 +7,7 @@ import { TestimonialsSection } from "../components/sections/TestimonialsSection"
 import { ProAboutSection } from "../components/sections/ProAboutSection";
 import { PersonalAboutSection } from "../components/sections/PersonalAboutSection";
 import { ContactSection } from "../components/sections/ContactSection";
+import { StructuredData } from "../components/seo/StructuredData";
 import { getTranslations } from "next-intl/server";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
@@ -19,9 +20,21 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   };
 }
 
-export default function Home() {
+export default async function Home({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "Metadata.Home" });
+
+  const webPageSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": t("Title"),
+    "description": t("Description"),
+    "url": `https://daltonponder.com/${locale === "en" ? "" : locale}`
+  };
+
   return (
     <>
+      <StructuredData data={webPageSchema} />
       <Navbar />
       <main id="main-content">
         <HeroSection />
