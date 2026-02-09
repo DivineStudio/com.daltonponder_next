@@ -111,7 +111,7 @@ export function CredentialsPageContent() {
                                                 <h3 className={`font-mono text-xl font-semibold ${job.current ? "" : "text-muted"}`}>
                                                     {job.title}
                                                 </h3>
-                                                <p className="text-[var(--color-primary)] font-medium">
+                                                <p className="text-[var(--color-accent)] font-medium">
                                                     {job.company}
                                                 </p>
                                             </div>
@@ -176,13 +176,13 @@ export function CredentialsPageContent() {
                                         {edu.Specialization && (
                                             <p className="text-sm text-muted mb-1">Specialization: <strong>{edu.Specialization}</strong></p>
                                         )}
-                                        <p className="text-[var(--color-primary)] font-medium mb-2">{edu.University}</p>
+                                        <p className="text-[var(--color-accent)] font-medium mb-2">{edu.University}</p>
                                         <p className="text-muted text-sm mb-4">{edu.YearLabel || "Graduated"} {edu.Year}</p>
                                         <div className="flex flex-wrap gap-2">
                                             {edu.Coursework && edu.Coursework.map((course: string) => (
                                                 <span
                                                     key={course}
-                                                    className="px-3 py-1 rounded-full bg-[var(--color-base-200)] text-sm text-muted"
+                                                    className="px-4 py-1.5 rounded-full bg-[var(--color-base-200)] text-sm text-muted"
                                                 >
                                                     {course}
                                                 </span>
@@ -240,7 +240,7 @@ export function CredentialsPageContent() {
                                     <div>
                                         <h3 className="font-mono font-semibold mb-1">{cert.name}</h3>
                                         <p className="text-sm text-muted">{cert.issuer}</p>
-                                        <p className="text-xs text-accent">{cert.year}</p>
+                                        <p className="text-xs text-accent font-bold">{cert.year}</p>
                                     </div>
                                 </div>
                             </motion.div>

@@ -38,7 +38,7 @@ const primarySkills: Skill[] = [
 ];
 
 const secondarySkillsRow1 = [
-    { name: "Wix", icon: "devicon:wix" },
+    { name: "Supabase", icon: "devicon:supabase" },
     { name: "Agentic AI", icon: "ri:code-ai-fill" },
     { name: "Azure DevOps", icon: "devicon:azuredevops" },
     { name: "Alpine.js", icon: "devicon:alpinejs" },

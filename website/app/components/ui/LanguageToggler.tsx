@@ -21,7 +21,7 @@ export function LanguageToggler({ onLanguageChange }: LanguageTogglerProps) {
     return (
         <motion.button
             onClick={handleToggle}
-            className="px-3 py-1.5 rounded-lg border-2 border-[var(--color-accent)] text-sm font-mono font-medium hover:bg-[var(--color-accent)] hover:text-white transition-colors"
+            className="px-3 py-1.5 rounded-lg border-2 border-[var(--color-accent)] text-sm font-mono font-medium hover:bg-[var(--color-accent)] hover:text-[#1a1a2e] transition-colors"
             aria-label={`Language: ${language === "en" ? "English" : "Spanish"}. Switch to ${language === "en" ? "Spanish" : "English"}`}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}

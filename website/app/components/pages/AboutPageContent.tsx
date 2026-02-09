@@ -45,7 +45,7 @@ function TestimonialCard({ testimonial }: { testimonial: { quote: string; author
                 </div>
                 <div>
                     <p className="font-medium text-sm">{testimonial.author}</p>
-                    <p className="text-xs text-muted">{testimonial.role}, {testimonial.company}</p>
+                    <p className="text-xs text-muted font-bold">{testimonial.role}, {testimonial.company}</p>
                 </div>
             </div>
         </div>
@@ -151,7 +151,7 @@ export function AboutPageContent() {
                                 </p>
                                 <ul className="space-y-2 text-muted">
                                     {(tAb.raw("Bio.Professional.Points") as string[]).map((point, idx) => (
-                                        <li key={idx} className="flex items-center gap-2">
+                                        <li key={idx} className="flex items-start gap-2">
                                             <Icon icon="tabler:check" className="text-accent" width={18} />
                                             {point}
                                         </li>
@@ -181,7 +181,7 @@ export function AboutPageContent() {
                                     {(tAb.raw("Bio.Personal.Points") as string[]).map((point, idx) => {
                                         const icons = tAb.raw("Bio.Personal.Icons") as string[];
                                         return (
-                                            <li key={idx} className="flex items-center gap-2">
+                                            <li key={idx} className="flex items-start gap-2">
                                                 <Icon icon={icons[idx]} className="text-accent" width={18} />
                                                 {point}
                                             </li>

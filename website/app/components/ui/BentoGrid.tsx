@@ -50,7 +50,7 @@ const rowSpanClasses = {
 const variantClasses = {
     default: "bento-card",
     secondary: "bento-card bg-secondary text-[#2D3748]",
-    accent: "bento-card bg-accent text-white",
+    accent: "bento-card bg-accent text-[#1a1a2e]",
 };
 
 export function BentoGrid({
@@ -102,9 +102,9 @@ export function BentoCard({
                 delay: delay,
                 ease: "easeOut",
             }}
-            className={cn(colSpanClasses[colSpan], rowSpanClasses[rowSpan])}
+            className={cn(colSpanClasses[colSpan], rowSpanClasses[rowSpan], className.split(' ').filter(c => c.includes('order')).join(' '))}
         >
-            <div className={cn(variantClasses[variant], "h-full", className)}>
+            <div className={cn(variantClasses[variant], "h-full", className.split(' ').filter(c => !c.includes('order')).join(' '))}>
                 {children}
             </div>
         </motion.div>

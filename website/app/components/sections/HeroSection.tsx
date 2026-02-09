@@ -140,7 +140,7 @@ export function HeroSection() {
                     </BentoCard>
 
                     {/* Quick Links Card - Row 3 Left */}
-                    <BentoCard colSpan={2} delay={0.4} className="flex flex-col items-center justify-center">
+                    <BentoCard colSpan={2} delay={0.4} className="flex flex-col items-center justify-center order-last lg:order-none">
                         <p className="font-mono font-semibold mb-4 text-center">{t("QuickLinks")}</p>
                         <div className="flex flex-wrap gap-2 justify-center">
                             {quickLinks.map((link) => (

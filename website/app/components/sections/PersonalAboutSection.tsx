@@ -89,7 +89,7 @@ export function PersonalAboutSection({ summary = true }: PersonalAboutSectionPro
                                         </div>
                                         <div>
                                             <p className="font-medium text-sm">{item.label}</p>
-                                            <p className="text-xs text-muted">{item.description}</p>
+                                            <p className="text-xs text-muted font-bold">{item.description}</p>
                                         </div>
                                     </div>
                                 ))}

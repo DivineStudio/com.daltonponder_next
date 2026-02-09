@@ -127,7 +127,7 @@ export function TestimonialsSection({ summary = true }: TestimonialsSectionProps
                                                 {testimonial.title}, {testimonial.company}
                                             </p>
                                             {testimonial.context && (
-                                                <div className="flex items-center gap-1 text-xs text-accent mt-1 font-mono">
+                                                <div className="flex items-center gap-1 text-xs font-bold text-accent mt-1 font-mono">
                                                     <Icon icon="tabler:clipboard-text" width={14} height={14} />
                                                     {testimonial.context}
                                                 </div>

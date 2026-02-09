@@ -68,7 +68,7 @@ function SkillCard({ skill, index, cardTranslations }: SkillCardProps) {
                         </div>
                         <div>
                             <h3 className="font-mono font-semibold text-lg">{skill.name}</h3>
-                            <span className="text-xs px-2 py-0.5 rounded-full bg-[var(--color-base-200)] text-muted">
+                            <span className="text-xs font-bold px-2 py-0.5 rounded-full bg-[var(--color-base-200)] text-muted">
                                 {skill.category}
                             </span>
                         </div>
