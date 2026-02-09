@@ -3,6 +3,7 @@ import { useTranslations } from "next-intl";
 
 import { motion } from "motion/react";
 import { Icon } from "@iconify/react";
+import Image from "next/image";
 import Link from "next/link";
 
 export function CredentialsPageContent() {
@@ -11,7 +12,7 @@ export function CredentialsPageContent() {
 
     const workExperience = t.raw("WorkExperience.List");
     const certifications = t.raw("Certifications.List");
-    const education = t.raw("Education");
+    const education = t.raw("Education.List");
     return (
         <>
             {/* Hero Section - Theme Aware */}
@@ -19,8 +20,6 @@ export function CredentialsPageContent() {
                 <div className="container relative z-10">
                     <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
                         <motion.div
-                            initial={{ opacity: 0, y: 30 }}
-                            animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6 }}
                         >
                             <h1 className="font-mono text-4xl md:text-5xl lg:text-6xl font-bold text-[var(--color-hero-text)] mb-4">
@@ -40,8 +39,8 @@ export function CredentialsPageContent() {
                         {/* Stats Cards */}
                         <div className="flex gap-4">
                             {[
-                                { value: "10+", id: "Years Exp" },
-                                { value: "5", id: "Certs" },
+                                { value: "8+", id: "Years Exp" },
+                                { value: "3", id: "Certs" },
                                 { value: "MS", id: "Degree" },
                             ].map((stat, index) => (
                                 <motion.div
@@ -110,7 +109,7 @@ export function CredentialsPageContent() {
                                                 <h3 className={`font-mono text-xl font-semibold ${job.current ? "" : "text-muted"}`}>
                                                     {job.title}
                                                 </h3>
-                                                <p className="text-[var(--color-primary)] font-medium">
+                                                <p className="text-[var(--color-accent)] font-medium">
                                                     {job.company}
                                                 </p>
                                             </div>
@@ -141,38 +140,57 @@ export function CredentialsPageContent() {
                         viewport={{ once: true }}
                         className="font-mono text-2xl md:text-3xl font-bold mb-8"
                     >
-                        {t("Education.Header") || "Education"}
+                        {t("Education.Header")}
                     </motion.h2>
 
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="bento-card max-w-3xl"
-                    >
-                        <div className="flex items-start gap-6">
-                            <div className="w-20 h-20 rounded-xl bg-[#1a1a2e] flex items-center justify-center shrink-0">
-                                <Icon icon="tabler:school" width={40} height={40} className="text-white" />
-                            </div>
-                            <div>
-                                <h3 className="font-mono text-xl font-semibold mb-1">
-                                    {education.Degree}
-                                </h3>
-                                <p className="text-[var(--color-primary)] font-medium mb-2">{education.University}</p>
-                                <p className="text-muted text-sm mb-4">Graduated {education.Year}</p>
-                                <div className="flex flex-wrap gap-2">
-                                    {education.Coursework.map((course: string) => (
-                                        <span
-                                            key={course}
-                                            className="px-3 py-1 rounded-full bg-[var(--color-base-200)] text-sm text-muted"
-                                        >
-                                            {course}
-                                        </span>
-                                    ))}
+                    <div className="space-y-6 max-w-3xl">
+                        {education.map((edu: any, index: number) => (
+                            <motion.div
+                                key={index}
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: index * 0.1 }}
+                                className="bento-card"
+                            >
+                                <div className="flex items-start gap-6">
+                                    <div className={`w-20 h-20 rounded-xl flex items-center justify-center shrink-0 overflow-hidden ${edu.bgTheme === "Light" ? "bg-[#f5f5f5]" : "bg-[#1a1a2e]"}`}>
+                                        {edu.imageSrc ? (
+                                            <Image
+                                                src={edu.imageSrc}
+                                                alt={edu.imageAlt || edu.University}
+                                                width={80}
+                                                height={80}
+                                                className="object-contain p-2"
+                                            />
+                                        ) : (
+                                            <Icon icon={edu.icon || "tabler:school"} width={40} height={40} className={edu.bgTheme === "Light" ? "text-gray-800" : "text-white"} />
+                                        )}
+                                    </div>
+                                    <div>
+                                        <h3 className="font-mono text-xl font-semibold mb-1">
+                                            {edu.Degree}
+                                        </h3>
+                                        {edu.Specialization && (
+                                            <p className="text-sm text-muted mb-1">Specialization: <strong>{edu.Specialization}</strong></p>
+                                        )}
+                                        <p className="text-[var(--color-accent)] font-medium mb-2">{edu.University}</p>
+                                        <p className="text-muted text-sm mb-4">{edu.YearLabel || "Graduated"} {edu.Year}</p>
+                                        <div className="flex flex-wrap gap-2">
+                                            {edu.Coursework && edu.Coursework.map((course: string) => (
+                                                <span
+                                                    key={course}
+                                                    className="px-4 py-1.5 rounded-full bg-[var(--color-base-200)] text-sm text-muted"
+                                                >
+                                                    {course}
+                                                </span>
+                                            ))}
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                    </motion.div>
+                            </motion.div>
+                        ))}
+                    </div>
                 </div>
             </section>
 
@@ -189,7 +207,7 @@ export function CredentialsPageContent() {
                     </motion.h2>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {certifications.map((cert: { name: string; issuer: string; year: string; icon: string }, index: number) => (
+                        {certifications.map((cert: { name: string; issuer: string; year: string; icon?: string; imageSrc?: string; imageAlt?: string; bgTheme?: string }, index: number) => (
                             <motion.div
                                 key={cert.name}
                                 initial={{ opacity: 0, y: 20 }}
@@ -201,14 +219,26 @@ export function CredentialsPageContent() {
                                 <div className="flex items-start gap-4">
                                     <motion.div
                                         whileHover={{ scale: 1.1, rotate: 5 }}
-                                        className="w-12 h-12 rounded-lg bg-[var(--color-primary)] flex items-center justify-center shrink-0"
+                                        className={`w-12 h-12 rounded-lg flex items-center justify-center shrink-0 overflow-hidden ${cert.bgTheme === "Light" ? "bg-[#f5f5f5]" : "bg-[#1a1a2e]"}`}
                                     >
-                                        <Icon icon={cert.icon} width={24} height={24} className="text-white" />
+                                        {cert.imageSrc ? (
+                                            <Image
+                                                src={cert.imageSrc}
+                                                alt={cert.imageAlt || cert.name}
+                                                width={48}
+                                                height={48}
+                                                className="object-contain p-2"
+                                            />
+                                        ) : cert.icon ? (
+                                            <Icon icon={cert.icon} width={24} height={24} className={cert.bgTheme === "Light" ? "text-gray-800" : "text-white"} />
+                                        ) : (
+                                            <Icon icon="tabler:certificate" width={24} height={24} className={cert.bgTheme === "Light" ? "text-gray-800" : "text-white"} />
+                                        )}
                                     </motion.div>
                                     <div>
                                         <h3 className="font-mono font-semibold mb-1">{cert.name}</h3>
                                         <p className="text-sm text-muted">{cert.issuer}</p>
-                                        <p className="text-xs text-accent">{cert.year}</p>
+                                        <p className="text-xs text-accent font-bold">{cert.year}</p>
                                     </div>
                                 </div>
                             </motion.div>

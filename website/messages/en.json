@@ -41,7 +41,7 @@
         "ProAboutSection": {
             "HeaderLine1": "I BUILD SECURE, SCALABLE SOFTWARE",
             "HeaderLine2": "THAT SOLVES REAL PROBLEMS.",
-            "Paragraph": "With almost a decade of experience in software and web development, I specialize in building robust applications that prioritize security without compromising on user experience. From enterprise solutions to startup MVPs, I bring a methodical approach to solving complex technical challenges.",
+            "Paragraph": "With almost a decade of experience in software and web development, I specialize in building robust applications that prioritize security without compromising on user experience. From enterprise solutions to small-business MVPs, I bring a methodical approach to solving complex technical challenges.",
             "LinkedIn": "LinkedIn",
             "GitHub": "GitHub",
             "LearnMore": "Learn More About Me"
@@ -62,16 +62,18 @@
                 "Lead": {
                     "Category": "How I Lead",
                     "Stoic": "Stoic Principles",
-                    "StoicDesc": "I draw on Stoic philosophy for leadership and decision-making"
+                    "StoicDesc": "I draw on Stoic philosophy for leadership and decision-making",
+                    "Leadership": "Cultivating Boundless Potential",
+                    "LeadershipDesc": "I lead with the conviction that every individual is capable of mastering any challenge through dedicated persistence and a growth mindset. By reframing failures as essential milestones toward success, I empower teams to evolve continuously and exceed their own expectations."
                 },
                 "Beyond": {
                     "Category": "Beyond Work",
                     "Spanish": "Spanish",
-                    "SpanishDesc": "Bilingual in English and Spanish",
+                    "SpanishDesc": "Studying Spanish, learning to connect",
                     "Gaming": "Gaming",
-                    "GamingDesc": "Strategy and RPG enthusiast",
+                    "GamingDesc": "Strategy, FPS, and RPG enthusiast",
                     "Boxing": "Boxing",
-                    "BoxingDesc": "Staying fit through boxing"
+                    "BoxingDesc": "Staying fit and disciplined through boxing"
                 }
             },
             "Quote": {
@@ -129,7 +131,7 @@
         },
         "SkillsSection": {
             "Header": "Tech Stack and Skills",
-            "SubHeader": "Engineering robust digital solutions using a diverse toolkit focused on modularity, high availability, and clean code principles.",
+            "SubHeader": "Engineering robust digital solutions using a diverse toolkit focused on modularity, security, and clean code principles.",
             "Search": {
                 "Placeholder": "Search skills...",
                 "NoResults": "No skills found matching your search.",
@@ -219,6 +221,12 @@
                     "year": "2025"
                 },
                 {
+                    "name": "Supabase",
+                    "icon": "devicon:supabase",
+                    "category": "Database",
+                    "year": "2025"
+                },
+                {
                     "name": ".NET",
                     "icon": "skill-icons:dotnet",
                     "category": "Backend",
@@ -239,7 +247,7 @@
                 {
                     "name": "Wix",
                     "icon": "simple-icons:wix",
-                    "category": "Other",
+                    "category": "Frontend",
                     "year": "2025"
                 },
                 {
@@ -400,7 +408,7 @@
                 },
                 {
                     "name": "Anthropic Claude",
-                    "icon": "tabler:circle-check",
+                    "icon": "logos:claude-icon",
                     "category": "AI",
                     "year": "2025"
                 },
@@ -619,10 +627,10 @@
                 "Title": "PROFESSIONAL",
                 "Intro": "Senior Full Stack Developer with 8+ years building scalable web applications.",
                 "Points": [
-                    "Specialized in React, Next.js, .NET",
-                    "System architecture & cloud solutions",
-                    "Team leadership & mentorship",
-                    "Performance optimization expert"
+                    "Specialized in .NET Full-Stack Development",
+                    "Certified Sitefinity developer",
+                    "Expanding into React, Next.js, and AI-driven Solutions",
+                    "Security-first mindset, fundamental to my development process"
                 ]
             },
             "Personal": {
@@ -632,13 +640,13 @@
                     "Family time is my greatest joy",
                     "Music offers daily solace",
                     "Stoic philosophy guides my approach",
-                    "Learning Spanish fluently"
+                    "Continuing my academic journey with a focus on AI"
                 ],
                 "Icons": [
                     "tabler:users",
                     "tabler:music",
                     "tabler:brain",
-                    "tabler:language"
+                    "ri:code-ai-fill"
                 ]
             }
         },
@@ -646,23 +654,29 @@
             "Header": "My Eras",
             "Items": [
                 {
-                    "title": "Senior Solutions Architect",
-                    "icon": "tabler:building-skyscraper",
-                    "description": "Leading enterprise architecture and security initiatives.",
+                    "title": "Senior Developer",
+                    "icon": "ri:code-ai-fill",
+                    "description": "Continuing to grow and develop, currently exploring AI and how it can be used to enhance web applications.",
                     "side": "left",
                     "current": true
                 },
                 {
-                    "title": "Full Stack Lead",
+                    "title": "Web Developer",
                     "icon": "tabler:server-bolt",
-                    "description": "Driving development of scalable cloud-native applications.",
+                    "description": "Developing secure and scalable web and Sitefinity applications.",
                     "side": "right"
                 },
                 {
                     "title": "Software Engineer",
                     "icon": "tabler:code",
-                    "description": "Building foundational expertise in .NET and web technologies.",
+                    "description": "Finding my place and learning to develop secure and scalable .NET applications.",
                     "side": "left"
+                },
+                {
+                    "title": "Jr. Web Developer",
+                    "icon": "tabler:player-play",
+                    "description": "Building on early experience in .NET and web technologies.",
+                    "side": "right"
                 }
             ]
         },
@@ -689,25 +703,71 @@
             "Header": "Work Experience",
             "List": [
                 {
-                    "title": "Senior Full Stack Engineer",
-                    "company": "Enterprise Solutions Co.",
-                    "dates": "2020 - Present",
+                    "title": "Senior Developer",
+                    "company": "Spinutech",
+                    "dates": "Nov. 2025 - Present",
                     "current": true,
                     "bullets": [
-                        "Lead architect for secure cloud-native applications",
-                        "Mentored team of 5 junior developers",
-                        "Reduced improved system performance by 40%"
+                        "Collaborate with cross-functional teams (PMs, designers, SEO) to build robust web applications using Progress Sitefinity",
+                        "Architect and configure CI/CD integrations using Azure DevOps Build and Release Pipelines",
+                        "Develop full-stack solutions utilizing C#, .NET Core, MVC, and front-end technologies including Alpine.js and SCSS",
+                        "Perform database investigations and optimizations using Transact-SQL and SSMS"
                     ]
                 },
                 {
-                    "title": "Software Developer",
-                    "company": "TechStart Inc.",
-                    "dates": "2016 - 2020",
+                    "title": "Senior Web Developer",
+                    "company": "Smooth Fusion",
+                    "dates": "2024 - Nov. 2025",
                     "current": false,
                     "bullets": [
-                        "Developed and maintained core product features",
-                        "Implemented CI/CD pipelines",
-                        "Collaborated with product team on roadmap"
+                        "Led development on Progress Sitefinity web applications, coordinating with customer success managers and designers",
+                        "Implemented front-end solutions using Vue.js, Alpine.js, and TypeScript integrated with .NET backends",
+                        "Managed version control via Git and BitBucket and performed data analysis using SQL",
+                        "Created internal tools and processes to improve development efficiency"
+                    ]
+                },
+                {
+                    "title": "Web Developer",
+                    "company": "Smooth Fusion",
+                    "dates": "July 2022 - 2024",
+                    "current": false,
+                    "bullets": [
+                        "Led development on Progress Sitefinity web applications, coordinating with customer success managers and designers",
+                        "Implemented front-end solutions using Vue.js, Alpine.js, and TypeScript integrated with .NET backends",
+                        "Managed version control via Git and BitBucket and performed data analysis using SQL",
+                        "Created internal tools and processes to improve development efficiency"
+                    ]
+                },
+                {
+                    "title": "Software Engineer",
+                    "company": "Computer Service Professionals, Inc.",
+                    "dates": "Aug. 2021 - July 2022",
+                    "current": false,
+                    "bullets": [
+                        "Designed and maintained FinTech web applications for small-to-medium banking institutions",
+                        "Built modern UIs using ASP.NET Core Blazor (Server & WebAssembly) and Razor Pages",
+                        "Architected relational database storage systems using MS SQL Server"
+                    ]
+                },
+                {
+                    "title": "Veterans United Home Loans",
+                    "company": "Computer Service Professionals, Inc.",
+                    "dates": "April 2021 - Aug. 2021",
+                    "current": false,
+                    "bullets": [
+                        "Developed ASP.NET Core APIs and microservices integrating with RabbitMQ and Azure Service Bus",
+                        "Maintained Angular + TypeScript web UIs and managed data in ElasticSearch and MS SQL"
+                    ]
+                },
+                {
+                    "title": "Junior Software Developer",
+                    "company": "ECI Software Solutions",
+                    "dates": "Dec. 2019 - April 2021",
+                    "current": false,
+                    "bullets": [
+                        "Maintained cloud data collection websites and device agents using C# & ASP.NET MVC",
+                        "Wrote and optimized SQL stored procedures and functions",
+                        "Worked within an Agile/Sprint methodology using VersionOne and Git"
                     ]
                 }
             ]
@@ -716,39 +776,85 @@
             "Header": "Certifications",
             "List": [
                 {
-                    "name": "Certified Kubernetes Administrator",
-                    "issuer": "CNCF",
+                    "name": "Certified Ethical Hacker",
+                    "issuer": "EC-Council",
                     "year": "2023",
-                    "icon": "devicon:kubernetes"
+                    "imageSrc": "/logos/CEHLogo.webp",
+                    "imageAlt": "Certified Ethical Hacker",
+                    "bgTheme": "Light"
                 },
                 {
-                    "name": "AWS Certified Solutions Architect",
-                    "issuer": "Amazon Web Services",
-                    "year": "2022",
-                    "icon": "devicon:amazonwebservices-wordmark"
+                    "name": "Certified Sitefinity Developer",
+                    "issuer": "Progress",
+                    "year": "2024",
+                    "icon": "logos:progress",
+                    "bgTheme": "Dark"
                 },
                 {
-                    "name": "CompTIA Security+",
-                    "issuer": "CompTIA",
-                    "year": "2021",
-                    "icon": "tabler:certificate"
+                    "name": "Certified .NET Core Sitefinity Developer",
+                    "issuer": "Progress",
+                    "year": "2023",
+                    "icon": "logos:progress",
+                    "bgTheme": "Dark"
                 }
             ]
         },
         "Education": {
             "Header": "Education",
-            "Degree": "Bachelor of Science in Computer Science",
-            "University": "State University",
-            "Year": "2015",
-            "Coursework": [
-                "Data Structures",
-                "Algorithms",
-                "Database Design",
-                "Network Security"
+            "List": [
+                {
+                    "Degree": "Master of Science in Computer Science",
+                    "Specialization": "Artificial Intelligence",
+                    "University": "Southern New Hampshire University",
+                    "Year": "2027",
+                    "YearLabel": "Graduating",
+                    "imageSrc": "/logos/SNHULogo.webp",
+                    "imageAlt": "Southern New Hampshire University",
+                    "bgTheme": "Light",
+                    "Coursework": [
+                        "Database Design and Development",
+                        "Advanced Algorithms",
+                        "Advanced Programming Language Theory",
+                        "Natural Language Processing",
+                        "Deep Learning",
+                        "Machine Learning",
+                        "Applied Artificial Intelligence and Machine Learning"
+                    ]
+                },
+                {
+                    "Degree": "Master of Science in Cybersecurity and Information Assurance",
+                    "University": "Western Governors University",
+                    "Year": "2023",
+                    "YearLabel": "Graduated",
+                    "imageSrc": "/logos/WGULogo.webp",
+                    "imageAlt": "Western Governors University",
+                    "bgTheme": "Light",
+                    "Coursework": [
+                        "Secure Network Design",
+                        "Secure Software Design",
+                        "Governance, Risk, and Compliance",
+                        "Penetration Testing",
+                        "Cybersecurity Architecture and Engineering"
+                    ]
+                },
+                {
+                    "Degree": "Bachelor of Science in Computer Information Systems",
+                    "University": "Columbia College",
+                    "Year": "2020",
+                    "YearLabel": "Graduated",
+                    "imageSrc": "/logos/CCLogo.webp",
+                    "imageAlt": "Columbia College",
+                    "bgTheme": "Light",
+                    "Coursework": [
+                        "Database Systems",
+                        "Advanced Algorithms and Data Structures",
+                        "Computer Systems and Assembly Language",
+                        "Systems Analysis and Design"
+                    ]
+                }
             ]
         },
         "CTA": {
-            "Download": "Download Resume",
             "Contact": "Contact Me"
         }
     },
@@ -804,8 +910,8 @@
     },
     "Metadata": {
         "Home": {
-            "Title": "Dalton Ponder | Full-Stack Developer & Cybersecurity Expert",
-            "Description": "Portfolio of Dalton Ponder - Full-stack developer and cybersecurity expert crafting secure, scalable solutions."
+            "Title": "Dalton Ponder | Full-Stack Developer & Sitefinity Development Expert",
+            "Description": "Portfolio of Dalton Ponder - Full-stack developer and Sitefinity development expert crafting secure, scalable solutions."
         },
         "About": {
             "Title": "About | Dalton Ponder",

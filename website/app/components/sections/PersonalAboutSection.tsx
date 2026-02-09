@@ -29,19 +29,24 @@ export function PersonalAboutSection({ summary = true }: PersonalAboutSectionPro
                     label: t("Interests.Lead.Stoic"),
                     description: t("Interests.Lead.StoicDesc"),
                 },
+                {
+                    icon: "tabler:trophy",
+                    label: t("Interests.Lead.Leadership"),
+                    description: t("Interests.Lead.LeadershipDesc"),
+                },
             ],
         },
         {
             category: t("Interests.Beyond.Category"),
             items: [
                 { icon: "tabler:language", label: t("Interests.Beyond.Spanish"), description: t("Interests.Beyond.SpanishDesc") },
-                { icon: "tabler:device-gamepad-2", label: t("Interests.Beyond.Gaming"), description: t("Interests.Beyond.GamingDesc") },
-                { icon: "tabler:boxing-glove", label: t("Interests.Beyond.Boxing"), description: t("Interests.Beyond.BoxingDesc") },
+                { icon: "tabler:keyboard", label: t("Interests.Beyond.Gaming"), description: t("Interests.Beyond.GamingDesc") },
+                { icon: "ph:boxing-glove", label: t("Interests.Beyond.Boxing"), description: t("Interests.Beyond.BoxingDesc") },
             ],
         },
     ];
 
-    const displayInterests = summary ? interests.slice(0, 2) : interests;
+    const displayInterests = interests;
 
     return (
         <section className="section">
@@ -64,7 +69,7 @@ export function PersonalAboutSection({ summary = true }: PersonalAboutSectionPro
                     {displayInterests.map((interestGroup, groupIndex) => (
                         <BentoCard
                             key={interestGroup.category}
-                            colSpan={groupIndex === 1 ? 1 : 1}
+                            colSpan={1}
                             delay={groupIndex * 0.1}
                             variant={groupIndex === 0 ? "secondary" : "default"}
                         >
@@ -84,7 +89,7 @@ export function PersonalAboutSection({ summary = true }: PersonalAboutSectionPro
                                         </div>
                                         <div>
                                             <p className="font-medium text-sm">{item.label}</p>
-                                            <p className="text-xs text-muted">{item.description}</p>
+                                            <p className="text-xs text-muted font-bold">{item.description}</p>
                                         </div>
                                     </div>
                                 ))}
@@ -93,7 +98,7 @@ export function PersonalAboutSection({ summary = true }: PersonalAboutSectionPro
                     ))}
 
                     {/* Quote Card */}
-                    <BentoCard delay={0.3}>
+                    <BentoCard delay={0.3} colSpan={3}>
                         <div className="h-full flex flex-col justify-center">
                             <Icon
                                 icon="tabler:quote"

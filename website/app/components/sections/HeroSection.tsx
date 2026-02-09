@@ -44,7 +44,7 @@ export function HeroSection() {
             details: t("Skills.CloudDetails").split(" • "),
         },
         {
-            icon: "tabler:brain",
+            icon: "ri:code-ai-fill",
             title: t("Skills.AI"),
             color: "var(--color-primary)",
             bgColor: "var(--color-skill-bg-primary)",
@@ -73,7 +73,7 @@ export function HeroSection() {
             <div className="container">
                 <BentoGrid columns={4} gap="md" className="auto-rows-auto">
                     {/* Main Intro Card - 2 cols, 2 rows */}
-                    <BentoCard colSpan={2} rowSpan={2} delay={0} className="flex flex-col justify-center">
+                    <BentoCard colSpan={2} rowSpan={2} delay={0} animate={false} className="flex flex-col justify-center">
                         <p className="text-muted text-lg mb-2">{t("Greeting")}</p>
                         <h1 id="hero-heading" className="font-mono text-4xl md:text-5xl lg:text-6xl font-bold text-primary mb-4">
                             <TextScramble text={t("Name")} />
@@ -140,7 +140,7 @@ export function HeroSection() {
                     </BentoCard>
 
                     {/* Quick Links Card - Row 3 Left */}
-                    <BentoCard colSpan={2} delay={0.4} className="flex flex-col items-center justify-center">
+                    <BentoCard colSpan={2} delay={0.4} className="flex flex-col items-center justify-center order-last lg:order-none">
                         <p className="font-mono font-semibold mb-4 text-center">{t("QuickLinks")}</p>
                         <div className="flex flex-wrap gap-2 justify-center">
                             {quickLinks.map((link) => (

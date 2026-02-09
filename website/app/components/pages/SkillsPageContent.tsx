@@ -10,7 +10,7 @@ import Image from "next/image";
 // Full skills data with categories, years, and proficiency
 
 
-const categories = ["All", "Languages", "Frontend", "Backend", "Cloud", "DevOps", "Data", "Security", "Practices", "Soft Skills"];
+const categories = ["All", "Languages", "Frontend", "Backend", "DevOps", "Data", "AI", "Practices", "Soft Skills"];
 
 interface Skill {
     name: string;
@@ -37,52 +37,66 @@ function SkillCard({ skill, index, cardTranslations }: SkillCardProps) {
     const currentYear = new Date().getFullYear();
     const experienceYears = currentYear - parseInt(skill.year);
 
+    // Skip entry animation for first 6 cards (above-the-fold) to improve LCP
+    const shouldAnimate = index >= 6;
+
+    const cardContent = (
+        <div className="relative w-full h-full bento-card flex flex-col">
+            <div className="flex items-start justify-between mb-4">
+                <div className="flex items-start gap-3">
+                    <div className="flex-shrink-0">
+                        <div
+                            className="w-12 h-12 rounded-lg bg-[var(--color-base-200)] flex items-center justify-center overflow-hidden"
+                        >
+                            {skill.imageSrc ? (
+                                <Image
+                                    src={skill.imageSrc}
+                                    alt={skill.name}
+                                    width={32}
+                                    height={32}
+                                    className="object-contain"
+                                />
+                            ) : (
+                                <Icon icon={skill.icon} width={32} height={32} />
+                            )}
+                        </div>
+                    </div>
+                    <div>
+                        <h3 className="font-mono font-semibold text-lg">{skill.name}</h3>
+                        <span className="text-xs font-bold px-2 py-0.5 rounded-full bg-[var(--color-base-200)] text-muted">
+                            {skill.category}
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div className="flex justify-between text-sm text-muted mt-auto">
+                <span>{experienceYears}{cardTranslations.yearsPlus}</span>
+            </div>
+        </div>
+    );
+
+    // Above-the-fold cards render immediately without animation
+    if (!shouldAnimate) {
+        return (
+            <div className="min-h-[140px] h-full">
+                {cardContent}
+            </div>
+        );
+    }
+
+    // Below-the-fold cards animate on scroll
     return (
         <motion.div
             layout
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9 }}
-            transition={{ duration: 0.3, delay: index * 0.03 }}
+            transition={{ duration: 0.3, delay: (index - 6) * 0.03 }}
             className="min-h-[140px] h-full"
         >
-            <div className="relative w-full h-full bento-card flex flex-col">
-                <div className="flex items-start justify-between mb-4">
-                    <div className="flex items-start gap-3">
-                        <div className="flex-shrink-0">
-                            <motion.div
-                                className="w-12 h-12 rounded-lg bg-[var(--color-base-200)] flex items-center justify-center overflow-hidden"
-                            >
-                                {skill.imageSrc ? (
-                                    <Image
-                                        src={skill.imageSrc}
-                                        alt={skill.name}
-                                        width={32}
-                                        height={32}
-                                        className="object-contain"
-                                    />
-                                ) : (
-                                    <Icon icon={skill.icon} width={32} height={32} />
-                                )}
-                            </motion.div>
-                        </div>
-                        <div>
-                            <h3 className="font-mono font-semibold text-lg">{skill.name}</h3>
-                            <span className="text-xs px-2 py-0.5 rounded-full bg-[var(--color-base-200)] text-muted">
-                                {skill.category}
-                            </span>
-                        </div>
-                    </div>
-                </div>
-
-
-
-                <div className="flex justify-between text-sm text-muted mt-auto">
-                    <span>{experienceYears}{cardTranslations.yearsPlus}</span>
-                </div>
-            </div>
+            {cardContent}
         </motion.div>
-
     );
 }
 
@@ -121,8 +135,6 @@ export function SkillsPageContent() {
 
                 <div className="container relative z-10">
                     <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6 }}
                     >
                         <h1 className="font-mono text-4xl md:text-5xl lg:text-6xl font-bold text-[var(--color-hero-text)] mb-4">

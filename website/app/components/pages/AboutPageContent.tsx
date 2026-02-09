@@ -45,7 +45,7 @@ function TestimonialCard({ testimonial }: { testimonial: { quote: string; author
                 </div>
                 <div>
                     <p className="font-medium text-sm">{testimonial.author}</p>
-                    <p className="text-xs text-muted">{testimonial.role}, {testimonial.company}</p>
+                    <p className="text-xs text-muted font-bold">{testimonial.role}, {testimonial.company}</p>
                 </div>
             </div>
         </div>
@@ -85,8 +85,6 @@ export function AboutPageContent() {
                 <div className="container relative z-10">
                     <div className="flex flex-col lg:flex-row items-center gap-12">
                         <motion.div
-                            initial={{ opacity: 0, y: 30 }}
-                            animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6 }}
                             className="flex-1"
                         >
@@ -105,11 +103,8 @@ export function AboutPageContent() {
                             />
                         </motion.div>
 
-                        {/* Avatar Placeholder */}
-                        <motion.div
-                            initial={{ opacity: 0, scale: 0.8 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ duration: 0.6, delay: 0.2 }}
+                        {/* Avatar - No animation on container to improve LCP */}
+                        <div
                             className="w-44 h-44 rounded-full bg-[var(--card-bg)] border-4 border-[var(--color-hero-accent)] flex items-center justify-center overflow-hidden"
                         >
                             <Image
@@ -120,7 +115,7 @@ export function AboutPageContent() {
                                 className="w-full h-full object-cover"
                                 priority
                             />
-                        </motion.div>
+                        </div>
                     </div>
                 </div>
 
@@ -131,15 +126,6 @@ export function AboutPageContent() {
             {/* Bio Section */}
             <section className="section">
                 <div className="container">
-                    <motion.h2
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="font-mono text-2xl md:text-3xl font-bold mb-8"
-                    >
-                        {tp("Header")}
-                    </motion.h2>
-
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                         {/* Professional Card */}
                         <motion.div
@@ -160,7 +146,7 @@ export function AboutPageContent() {
                                 </p>
                                 <ul className="space-y-2 text-muted">
                                     {(tAb.raw("Bio.Professional.Points") as string[]).map((point, idx) => (
-                                        <li key={idx} className="flex items-center gap-2">
+                                        <li key={idx} className="flex items-start gap-2">
                                             <Icon icon="tabler:check" className="text-accent" width={18} />
                                             {point}
                                         </li>
@@ -190,7 +176,7 @@ export function AboutPageContent() {
                                     {(tAb.raw("Bio.Personal.Points") as string[]).map((point, idx) => {
                                         const icons = tAb.raw("Bio.Personal.Icons") as string[];
                                         return (
-                                            <li key={idx} className="flex items-center gap-2">
+                                            <li key={idx} className="flex items-start gap-2">
                                                 <Icon icon={icons[idx]} className="text-accent" width={18} />
                                                 {point}
                                             </li>
