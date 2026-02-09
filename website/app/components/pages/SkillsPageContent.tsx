@@ -10,7 +10,7 @@ import Image from "next/image";
 // Full skills data with categories, years, and proficiency
 
 
-const categories = ["All", "Languages", "Frontend", "Backend", "Cloud", "DevOps", "Data", "Security", "Practices", "Soft Skills"];
+const categories = ["All", "Languages", "Frontend", "Backend", "DevOps", "Data", "AI", "Practices", "Soft Skills"];
 
 interface Skill {
     name: string;

@@ -131,7 +131,7 @@
         },
         "SkillsSection": {
             "Header": "Tech Stack and Skills",
-            "SubHeader": "Engineering robust digital solutions using a diverse toolkit focused on modularity, high availability, and clean code principles.",
+            "SubHeader": "Engineering robust digital solutions using a diverse toolkit focused on modularity, security, and clean code principles.",
             "Search": {
                 "Placeholder": "Search skills...",
                 "NoResults": "No skills found matching your search.",
@@ -221,6 +221,12 @@
                     "year": "2025"
                 },
                 {
+                    "name": "Supabase",
+                    "icon": "devicon:supabase",
+                    "category": "Database",
+                    "year": "2025"
+                },
+                {
                     "name": ".NET",
                     "icon": "skill-icons:dotnet",
                     "category": "Backend",
@@ -241,7 +247,7 @@
                 {
                     "name": "Wix",
                     "icon": "simple-icons:wix",
-                    "category": "Other",
+                    "category": "Frontend",
                     "year": "2025"
                 },
                 {
@@ -402,7 +408,7 @@
                 },
                 {
                     "name": "Anthropic Claude",
-                    "icon": "tabler:circle-check",
+                    "icon": "logos:claude-icon",
                     "category": "AI",
                     "year": "2025"
                 },
@@ -697,25 +703,71 @@
             "Header": "Work Experience",
             "List": [
                 {
-                    "title": "Senior Full Stack Engineer",
-                    "company": "Enterprise Solutions Co.",
-                    "dates": "2020 - Present",
+                    "title": "Senior Developer",
+                    "company": "Spinutech",
+                    "dates": "Nov. 2025 - Present",
                     "current": true,
                     "bullets": [
-                        "Lead architect for secure cloud-native applications",
-                        "Mentored team of 5 junior developers",
-                        "Reduced improved system performance by 40%"
+                        "Collaborate with cross-functional teams (PMs, designers, SEO) to build robust web applications using Progress Sitefinity",
+                        "Architect and configure CI/CD integrations using Azure DevOps Build and Release Pipelines",
+                        "Develop full-stack solutions utilizing C#, .NET Core, MVC, and front-end technologies including Alpine.js and SCSS",
+                        "Perform database investigations and optimizations using Transact-SQL and SSMS"
                     ]
                 },
                 {
-                    "title": "Software Developer",
-                    "company": "TechStart Inc.",
-                    "dates": "2016 - 2020",
+                    "title": "Senior Web Developer",
+                    "company": "Smooth Fusion",
+                    "dates": "2024 - Nov. 2025",
                     "current": false,
                     "bullets": [
-                        "Developed and maintained core product features",
-                        "Implemented CI/CD pipelines",
-                        "Collaborated with product team on roadmap"
+                        "Led development on Progress Sitefinity web applications, coordinating with customer success managers and designers",
+                        "Implemented front-end solutions using Vue.js, Alpine.js, and TypeScript integrated with .NET backends",
+                        "Managed version control via Git and BitBucket and performed data analysis using SQL",
+                        "Created internal tools and processes to improve development efficiency"
+                    ]
+                },
+                {
+                    "title": "Web Developer",
+                    "company": "Smooth Fusion",
+                    "dates": "July 2022 - 2024",
+                    "current": false,
+                    "bullets": [
+                        "Led development on Progress Sitefinity web applications, coordinating with customer success managers and designers",
+                        "Implemented front-end solutions using Vue.js, Alpine.js, and TypeScript integrated with .NET backends",
+                        "Managed version control via Git and BitBucket and performed data analysis using SQL",
+                        "Created internal tools and processes to improve development efficiency"
+                    ]
+                },
+                {
+                    "title": "Software Engineer",
+                    "company": "Computer Service Professionals, Inc.",
+                    "dates": "Aug. 2021 - July 2022",
+                    "current": false,
+                    "bullets": [
+                        "Designed and maintained FinTech web applications for small-to-medium banking institutions",
+                        "Built modern UIs using ASP.NET Core Blazor (Server & WebAssembly) and Razor Pages",
+                        "Architected relational database storage systems using MS SQL Server"
+                    ]
+                },
+                {
+                    "title": "Veterans United Home Loans",
+                    "company": "Computer Service Professionals, Inc.",
+                    "dates": "April 2021 - Aug. 2021",
+                    "current": false,
+                    "bullets": [
+                        "Developed ASP.NET Core APIs and microservices integrating with RabbitMQ and Azure Service Bus",
+                        "Maintained Angular + TypeScript web UIs and managed data in ElasticSearch and MS SQL"
+                    ]
+                },
+                {
+                    "title": "Junior Software Developer",
+                    "company": "ECI Software Solutions",
+                    "dates": "Dec. 2019 - April 2021",
+                    "current": false,
+                    "bullets": [
+                        "Maintained cloud data collection websites and device agents using C# & ASP.NET MVC",
+                        "Wrote and optimized SQL stored procedures and functions",
+                        "Worked within an Agile/Sprint methodology using VersionOne and Git"
                     ]
                 }
             ]
@@ -724,39 +776,85 @@
             "Header": "Certifications",
             "List": [
                 {
-                    "name": "Certified Kubernetes Administrator",
-                    "issuer": "CNCF",
+                    "name": "Certified Ethical Hacker",
+                    "issuer": "EC-Council",
                     "year": "2023",
-                    "icon": "devicon:kubernetes"
+                    "imageSrc": "/logos/CEHLogo.webp",
+                    "imageAlt": "Certified Ethical Hacker",
+                    "bgTheme": "Light"
                 },
                 {
-                    "name": "AWS Certified Solutions Architect",
-                    "issuer": "Amazon Web Services",
-                    "year": "2022",
-                    "icon": "devicon:amazonwebservices-wordmark"
+                    "name": "Certified Sitefinity Developer",
+                    "issuer": "Progress",
+                    "year": "2024",
+                    "icon": "logos:progress",
+                    "bgTheme": "Dark"
                 },
                 {
-                    "name": "CompTIA Security+",
-                    "issuer": "CompTIA",
-                    "year": "2021",
-                    "icon": "tabler:certificate"
+                    "name": "Certified .NET Core Sitefinity Developer",
+                    "issuer": "Progress",
+                    "year": "2023",
+                    "icon": "logos:progress",
+                    "bgTheme": "Dark"
                 }
             ]
         },
         "Education": {
             "Header": "Education",
-            "Degree": "Bachelor of Science in Computer Science",
-            "University": "State University",
-            "Year": "2015",
-            "Coursework": [
-                "Data Structures",
-                "Algorithms",
-                "Database Design",
-                "Network Security"
+            "List": [
+                {
+                    "Degree": "Master of Science in Computer Science",
+                    "Specialization": "Artificial Intelligence",
+                    "University": "Southern New Hampshire University",
+                    "Year": "2027",
+                    "YearLabel": "Graduating",
+                    "imageSrc": "/logos/SNHULogo.webp",
+                    "imageAlt": "Southern New Hampshire University",
+                    "bgTheme": "Light",
+                    "Coursework": [
+                        "Database Design and Development",
+                        "Advanced Algorithms",
+                        "Advanced Programming Language Theory",
+                        "Natural Language Processing",
+                        "Deep Learning",
+                        "Machine Learning",
+                        "Applied Artificial Intelligence and Machine Learning"
+                    ]
+                },
+                {
+                    "Degree": "Master of Science in Cybersecurity and Information Assurance",
+                    "University": "Western Governors University",
+                    "Year": "2023",
+                    "YearLabel": "Graduated",
+                    "imageSrc": "/logos/WGULogo.webp",
+                    "imageAlt": "Western Governors University",
+                    "bgTheme": "Light",
+                    "Coursework": [
+                        "Secure Network Design",
+                        "Secure Software Design",
+                        "Governance, Risk, and Compliance",
+                        "Penetration Testing",
+                        "Cybersecurity Architecture and Engineering"
+                    ]
+                },
+                {
+                    "Degree": "Bachelor of Science in Computer Information Systems",
+                    "University": "Columbia College",
+                    "Year": "2020",
+                    "YearLabel": "Graduated",
+                    "imageSrc": "/logos/CCLogo.webp",
+                    "imageAlt": "Columbia College",
+                    "bgTheme": "Light",
+                    "Coursework": [
+                        "Database Systems",
+                        "Advanced Algorithms and Data Structures",
+                        "Computer Systems and Assembly Language",
+                        "Systems Analysis and Design"
+                    ]
+                }
             ]
         },
         "CTA": {
-            "Download": "Download Resume",
             "Contact": "Contact Me"
         }
     },
