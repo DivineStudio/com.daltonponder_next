@@ -22,7 +22,7 @@
             "Greeting": "Hi, I'm",
             "Name": "DALTON PONDER",
             "Terminal": {
-                "Line1": "Dalton.Init(\"Fullstack\", \"JS\", \"AI\")",
+                "Line1": "Dalton.Init(\"Fullstack\", \"Security\", \"AI\")",
                 "Line2": "Loading expertise... ████████ 100%",
                 "Line3": "Ready to build."
             },
