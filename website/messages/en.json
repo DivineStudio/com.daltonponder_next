@@ -22,7 +22,7 @@
             "Greeting": "Hi, I'm",
             "Name": "DALTON PONDER",
             "Terminal": {
-                "Line1": "Dalton.Init(\"Full-Stack\", \"Security\", \"AI\")",
+                "Line1": "Dalton.Init(\"Fullstack\", \"Security\", \"AI\")",
                 "Line2": "Loading expertise... ████████ 100%",
                 "Line3": "Ready to build."
             },
@@ -910,23 +910,23 @@
     },
     "Metadata": {
         "Home": {
-            "Title": "Dalton Ponder | Full-Stack Developer & Sitefinity Development Expert",
+            "Title": "Dalton Ponder | Fullstack & AI-Driven Solutions Expert",
             "Description": "Portfolio of Dalton Ponder - Full-stack developer and Sitefinity development expert crafting secure, scalable solutions."
         },
         "About": {
-            "Title": "About | Dalton Ponder",
+            "Title": "About Dalton Ponder | Fullstack Developer & AI Enthusiast",
             "Description": "Learn more about Dalton Ponder's background, experience, and what drives his passion for technology."
         },
         "Skills": {
-            "Title": "Skills | Dalton Ponder",
+            "Title": "Technical Skills | .NET, JavaScript, & AI Technologies",
             "Description": "Explore Dalton Ponder's technical skills, languages, frameworks, and tools."
         },
         "Credentials": {
-            "Title": "Credentials | Dalton Ponder",
+            "Title": "Credentials & Experience | Fullstack & AI Engineering",
             "Description": "View Dalton Ponder's education, certifications, and professional credentials."
         },
         "Contact": {
-            "Title": "Contact | Dalton Ponder",
+            "Title": "Contact | Fullstack & AI Development Services",
             "Description": "Get in touch with Dalton Ponder for projects, collaborations, or opportunities."
         }
     }
