@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
-import { ReactNode } from "react";
+import { ReactNode, useMemo } from "react";
 import { cn } from "@/lib/utils";
 
 interface BentoGridProps {
@@ -75,21 +75,39 @@ export function BentoCard({
     animate = true,
     delay = 0,
 }: BentoCardProps) {
-    const cardContent = (
-        <div
-            className={cn(
-                variantClasses[variant],
-                colSpanClasses[colSpan],
-                rowSpanClasses[rowSpan],
-                className
-            )}
-        >
-            {children}
-        </div>
-    );
+    const { orderClasses, nonOrderClasses } = useMemo(() => {
+        const classes = className.split(" ");
+        const order = [];
+        const nonOrder = [];
+
+        for (const c of classes) {
+            if (c.includes("order")) {
+                order.push(c);
+            } else {
+                nonOrder.push(c);
+            }
+        }
+
+        return {
+            orderClasses: order.join(" "),
+            nonOrderClasses: nonOrder.join(" "),
+        };
+    }, [className]);
 
     if (!animate) {
-        return cardContent;
+        return (
+            <div
+                className={cn(
+                    variantClasses[variant],
+                    colSpanClasses[colSpan],
+                    rowSpanClasses[rowSpan],
+                    orderClasses,
+                    nonOrderClasses
+                )}
+            >
+                {children}
+            </div>
+        );
     }
 
     return (
@@ -102,9 +120,19 @@ export function BentoCard({
                 delay: delay,
                 ease: "easeOut",
             }}
-            className={cn(colSpanClasses[colSpan], rowSpanClasses[rowSpan], className.split(' ').filter(c => c.includes('order')).join(' '))}
+            className={cn(
+                colSpanClasses[colSpan],
+                rowSpanClasses[rowSpan],
+                orderClasses
+            )}
         >
-            <div className={cn(variantClasses[variant], "h-full", className.split(' ').filter(c => !c.includes('order')).join(' '))}>
+            <div
+                className={cn(
+                    variantClasses[variant],
+                    "h-full",
+                    nonOrderClasses
+                )}
+            >
                 {children}
             </div>
         </motion.div>
