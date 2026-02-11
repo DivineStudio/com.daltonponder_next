@@ -78,7 +78,7 @@ export function PersonalAboutSection({ summary = true }: PersonalAboutSectionPro
                             </h3>
                             <div className="space-y-4">
                                 {interestGroup.items.map((item) => (
-                                    <div key={item.label} className="flex items-baseline gap-3">
+                                    <div key={item.label} className="flex items-start gap-3">
                                         <div className="w-10 h-10 rounded-lg bg-[var(--color-base-200)] flex items-center justify-center shrink-0">
                                             <Icon
                                                 icon={item.icon}

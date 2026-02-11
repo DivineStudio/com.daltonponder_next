@@ -43,7 +43,7 @@ function SkillCard({ skill, index, cardTranslations }: SkillCardProps) {
     const cardContent = (
         <div className="relative w-full h-full bento-card flex flex-col">
             <div className="flex items-start justify-between mb-4">
-                <div className="flex items-baseline gap-3">
+                <div className="flex items-start gap-3">
                     <div className="flex-shrink-0">
                         <div
                             className="w-12 h-12 rounded-lg bg-[var(--color-base-200)] flex items-center justify-center overflow-hidden"
