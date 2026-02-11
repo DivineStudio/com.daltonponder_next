@@ -2,8 +2,8 @@
 
 import React, { ReactNode } from "react";
 import useEmblaCarousel from "embla-carousel-react";
-import Autoplay from "embla-carousel-autoplay";
-import { EmblaOptionsType, EmblaCarouselType } from "embla-carousel";
+import Autoplay, { AutoplayType } from "embla-carousel-autoplay";
+import { EmblaOptionsType, EmblaCarouselType, EmblaPluginType } from "embla-carousel";
 import { Icon } from "@iconify/react";
 
 interface CarouselProps {
@@ -13,7 +13,7 @@ interface CarouselProps {
     autoplayDelay?: number;
     className?: string;
     slideClassName?: string;
-    plugins?: unknown[];
+    plugins?: EmblaPluginType[];
     showDots?: boolean;
 }
 
@@ -30,15 +30,18 @@ export function Carousel({
     const [isPlaying, setIsPlaying] = React.useState(autoplay);
 
     // Use ref for stable autoplay plugin reference
-    const autoplayPluginRef = React.useRef(
-        autoplay
+    const autoplayPluginRef = React.useRef<AutoplayType | null | undefined>(undefined);
+
+    // Lazily initialize the autoplay plugin
+    if (autoplayPluginRef.current === undefined) {
+        autoplayPluginRef.current = autoplay
             ? Autoplay({
                 delay: autoplayDelay,
                 stopOnInteraction: false,
                 stopOnMouseEnter: true
             })
-            : null
-    );
+            : null;
+    }
 
     const internalPlugins = React.useMemo(() => {
         const p = [...plugins];
@@ -48,7 +51,7 @@ export function Carousel({
         return p;
     }, [plugins]);
 
-    const [emblaRef, emblaApi] = useEmblaCarousel(options, internalPlugins as any[]);
+    const [emblaRef, emblaApi] = useEmblaCarousel(options, internalPlugins);
     const [selectedIndex, setSelectedIndex] = React.useState(0);
     const [scrollSnaps, setScrollSnaps] = React.useState<number[]>([]);
 
@@ -83,8 +86,8 @@ export function Carousel({
         // Add Autoplay plugin event listeners to sync state
         const autoplayPlugin = autoplayPluginRef.current;
         if (autoplayPlugin) {
-            emblaApi.on("autoplay:play" as any, onAutoplayPlay);
-            emblaApi.on("autoplay:stop" as any, onAutoplayStop);
+            emblaApi.on("autoplay:play", onAutoplayPlay);
+            emblaApi.on("autoplay:stop", onAutoplayStop);
         }
 
         // Cleanup on unmount
@@ -93,8 +96,8 @@ export function Carousel({
             emblaApi.off("reInit", onSelect);
             emblaApi.off("select", onSelect);
             if (autoplayPlugin) {
-                emblaApi.off("autoplay:play" as any, onAutoplayPlay);
-                emblaApi.off("autoplay:stop" as any, onAutoplayStop);
+                emblaApi.off("autoplay:play", onAutoplayPlay);
+                emblaApi.off("autoplay:stop", onAutoplayStop);
             }
         };
     }, [emblaApi, onInit, onSelect, onAutoplayPlay, onAutoplayStop]);
