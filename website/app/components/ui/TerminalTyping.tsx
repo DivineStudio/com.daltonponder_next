@@ -99,7 +99,7 @@ export function TerminalTyping({
                             {displayedLines[index] || ""}
                             {index === currentLineIndex && !isTypingComplete && (
                                 <span
-                                    className={`inline-block w-2 h-4 ml-0.5 bg-accent ${showCursor ? "opacity-100" : "opacity-0"
+                                    className={`inline-block w-2 h-[1.1em] ml-0.5 bg-accent align-baseline ${showCursor ? "opacity-100" : "opacity-0"
                                         }`}
                                 />
                             )}
@@ -110,17 +110,17 @@ export function TerminalTyping({
 
             {/* Final active prompt line */}
             <div className="grid">
-                <div className="invisible col-start-1 row-start-1 flex items-center gap-2" aria-hidden="true">
+                <div className="invisible col-start-1 row-start-1 flex items-baseline gap-2" aria-hidden="true">
                     <span className="select-none shrink-0">&gt;</span>
-                    <span className="inline-block w-2 h-4" />
+                    <span className="inline-block w-2 h-[1.1em] align-baseline" />
                 </div>
                 <div
-                    className={`col-start-1 row-start-1 flex items-center gap-2 ${!isTypingComplete ? "hidden" : "flex"
+                    className={`col-start-1 row-start-1 flex items-baseline gap-2 ${!isTypingComplete ? "hidden" : "flex"
                         }`}
                 >
                     <span className="text-accent select-none shrink-0">&gt;</span>
                     <span
-                        className={`inline-block w-2 h-4 bg-accent ${showCursor ? "opacity-100" : "opacity-0"
+                        className={`inline-block w-2 h-[1.1em] bg-accent align-baseline ${showCursor ? "opacity-100" : "opacity-0"
                             }`}
                     />
                 </div>
