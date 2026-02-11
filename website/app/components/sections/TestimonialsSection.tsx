@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "motion/react";
 import { useState, useEffect } from "react";
 import { Icon } from "@iconify/react";
 import Link from "next/link";
-import { Carousel } from "../ui/Carousel";
+import { Carousel, TESTIMONIAL_CAROUSEL_OPTIONS } from "../ui/Carousel";
 
 interface TestimonialsSectionProps {
     summary?: boolean;
@@ -106,7 +106,7 @@ export function TestimonialsSection({ summary = true }: TestimonialsSectionProps
                         <Carousel
                             autoplay={true}
                             autoplayDelay={8000}
-                            options={{ loop: true, align: "start", dragFree: false }}
+                            options={TESTIMONIAL_CAROUSEL_OPTIONS}
                             showDots={true}
                             className="w-full"
                             slideClassName="w-full"

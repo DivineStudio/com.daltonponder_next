@@ -17,14 +17,24 @@ interface CarouselProps {
     showDots?: boolean;
 }
 
+const DEFAULT_OPTIONS: EmblaOptionsType = { loop: true, align: "start", dragFree: true };
+const DEFAULT_PLUGINS: unknown[] = [];
+
+// Common options for testimonials carousels
+export const TESTIMONIAL_CAROUSEL_OPTIONS: EmblaOptionsType = {
+    loop: true,
+    align: "start",
+    dragFree: false
+};
+
 export function Carousel({
     children,
-    options = { loop: true, align: "start", dragFree: true },
+    options = DEFAULT_OPTIONS,
     autoplay = true,
     autoplayDelay = 4000,
     className = "",
     slideClassName = "",
-    plugins = [],
+    plugins = DEFAULT_PLUGINS,
     showDots = false,
 }: CarouselProps) {
     const [isPlaying, setIsPlaying] = React.useState(autoplay);

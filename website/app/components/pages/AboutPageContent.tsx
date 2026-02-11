@@ -7,7 +7,7 @@ import { Icon } from "@iconify/react";
 import Link from "next/link";
 import Image from "next/image";
 import { PhilosophyQuote } from "../ui/PhilosophyQuote";
-import { Carousel } from "../ui/Carousel";
+import { Carousel, TESTIMONIAL_CAROUSEL_OPTIONS } from "../ui/Carousel";
 
 // Expandable testimonial card for the carousel
 function TestimonialCard({ testimonial }: { testimonial: { quote: string; author: string; role: string; company: string; avatar: string } }) {
@@ -281,7 +281,7 @@ export function AboutPageContent() {
                     {/* Other Testimonials */}
                     <Carousel
                         autoplayDelay={5000}
-                        options={{ loop: true, align: "start", dragFree: false }}
+                        options={TESTIMONIAL_CAROUSEL_OPTIONS}
                         className="-mx-4 md:mx-0 px-4 md:px-0"
                         slideClassName="w-full md:w-1/2 lg:w-1/2 pr-4"
                         showDots={true}
