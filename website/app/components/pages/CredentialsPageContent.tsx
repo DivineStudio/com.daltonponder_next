@@ -117,8 +117,8 @@ export function CredentialsPageContent() {
                                         </div>
                                         <ul className="space-y-1 text-muted text-sm">
                                             {job.bullets.map((bullet: string, i: number) => (
-                                                <li key={i} className="flex items-start gap-2">
-                                                    <span className="mt-1.5">•</span>
+                                                <li key={i} className="flex items-baseline gap-2">
+                                                    <span className="shrink-0">•</span>
                                                     {bullet}
                                                 </li>
                                             ))}
@@ -216,7 +216,7 @@ export function CredentialsPageContent() {
                                 transition={{ delay: index * 0.05 }}
                                 className="bento-card group"
                             >
-                                <div className="flex items-start gap-4">
+                                <div className="flex items-baseline gap-4">
                                     <motion.div
                                         whileHover={{ scale: 1.1, rotate: 5 }}
                                         className={`w-12 h-12 rounded-lg flex items-center justify-center shrink-0 overflow-hidden ${cert.bgTheme === "Light" ? "bg-[#f5f5f5]" : "bg-[#1a1a2e]"}`}

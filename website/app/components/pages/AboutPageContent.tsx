@@ -146,8 +146,8 @@ export function AboutPageContent() {
                                 </p>
                                 <ul className="space-y-2 text-muted">
                                     {(tAb.raw("Bio.Professional.Points") as string[]).map((point, idx) => (
-                                        <li key={idx} className="flex items-start gap-2">
-                                            <Icon icon="tabler:check" className="text-accent" width={18} />
+                                        <li key={idx} className="flex items-baseline gap-2">
+                                            <Icon icon="tabler:check" className="text-accent shrink-0" width={18} />
                                             {point}
                                         </li>
                                     ))}
@@ -176,8 +176,8 @@ export function AboutPageContent() {
                                     {(tAb.raw("Bio.Personal.Points") as string[]).map((point, idx) => {
                                         const icons = tAb.raw("Bio.Personal.Icons") as string[];
                                         return (
-                                            <li key={idx} className="flex items-start gap-2">
-                                                <Icon icon={icons[idx]} className="text-accent" width={18} />
+                                            <li key={idx} className="flex items-baseline gap-2">
+                                                <Icon icon={icons[idx]} className="text-accent shrink-0" width={18} />
                                                 {point}
                                             </li>
                                         );

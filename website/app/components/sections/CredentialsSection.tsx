@@ -133,7 +133,7 @@ export function CredentialsSection({ summary = true }: CredentialsSectionProps) 
                                     transition={{ delay: index * 0.1 }}
                                     className="bento-card"
                                 >
-                                    <div className="flex items-start gap-3">
+                                    <div className="flex items-baseline gap-3">
                                         <Icon icon="tabler:certificate" width={24} height={24} className="text-accent shrink-0" />
                                         <div>
                                             <h4 className="font-semibold">{cert.name}</h4>
