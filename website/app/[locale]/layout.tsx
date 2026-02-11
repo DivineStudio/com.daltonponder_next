@@ -130,7 +130,9 @@ export default async function RootLayout({
         </NextIntlClientProvider>
         <Analytics />
         <SpeedInsights />
-        <VercelToolbar />
+        {process.env.NODE_ENV === "development" || process.env.VERCEL_ENV === "preview" ? (
+          <VercelToolbar />
+        ) : null}
       </body>
     </html>
   );
