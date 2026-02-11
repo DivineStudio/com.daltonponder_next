@@ -18,7 +18,6 @@ export function TerminalTyping({
 }: TerminalTypingProps) {
     const [displayedLines, setDisplayedLines] = useState<string[]>([]);
     const [currentLineIndex, setCurrentLineIndex] = useState(0);
-    const [currentCharIndex, setCurrentCharIndex] = useState(0);
     const [showCursor, setShowCursor] = useState(true);
 
     // Blinking cursor effect
@@ -34,27 +33,44 @@ export function TerminalTyping({
         if (currentLineIndex >= lines.length) return;
 
         const currentLine = lines[currentLineIndex];
+        let charIdx = 0;
+        let isCancelled = false;
+        let timeoutId: ReturnType<typeof setTimeout>;
 
-        if (currentCharIndex < currentLine.length) {
-            const timeout = setTimeout(() => {
+        const type = () => {
+            if (isCancelled) return;
+            if (charIdx < currentLine.length) {
                 setDisplayedLines((prev) => {
                     const newLines = [...prev];
-                    newLines[currentLineIndex] = currentLine.slice(0, currentCharIndex + 1);
+                    // Ensure the array is large enough
+                    while (newLines.length <= currentLineIndex) {
+                        newLines.push("");
+                    }
+                    newLines[currentLineIndex] = currentLine.slice(0, charIdx + 1);
                     return newLines;
                 });
-                setCurrentCharIndex((prev) => prev + 1);
-            }, typingSpeed);
-            return () => clearTimeout(timeout);
-        } else {
-            // Line complete, move to next line
-            const timeout = setTimeout(() => {
-                setCurrentLineIndex((prev) => prev + 1);
-                setCurrentCharIndex(0);
-                setDisplayedLines((prev) => [...prev, ""]);
-            }, lineDelay);
-            return () => clearTimeout(timeout);
-        }
-    }, [currentLineIndex, currentCharIndex, lines, typingSpeed, lineDelay]);
+                charIdx++;
+                timeoutId = setTimeout(type, typingSpeed);
+            } else {
+                // Line complete, move to next line
+                timeoutId = setTimeout(() => {
+                    if (isCancelled) return;
+                    setDisplayedLines((prev) => [...prev, ""]);
+                    setCurrentLineIndex((prev) => prev + 1);
+                }, lineDelay);
+            }
+        };
+
+        // Initialize first line if empty
+        setDisplayedLines((prev) => (prev.length === 0 ? [""] : prev));
+
+        timeoutId = setTimeout(type, typingSpeed);
+
+        return () => {
+            isCancelled = true;
+            clearTimeout(timeoutId);
+        };
+    }, [currentLineIndex, lines, typingSpeed, lineDelay]);
 
     const isTypingComplete = currentLineIndex >= lines.length;
 
