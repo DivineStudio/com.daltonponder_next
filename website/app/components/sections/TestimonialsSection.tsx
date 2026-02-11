@@ -11,7 +11,7 @@ interface TestimonialsSectionProps {
     summary?: boolean;
 }
 
-function TypewriterText({ text }: { text: string }) {
+function TypewriterText({ text, isActive }: { text: string; isActive: boolean }) {
     const [displayedText, setDisplayedText] = useState("");
     const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -21,14 +21,14 @@ function TypewriterText({ text }: { text: string }) {
     }, [text]);
 
     useEffect(() => {
-        if (currentIndex < text.length) {
+        if (isActive && currentIndex < text.length) {
             const timer = setTimeout(() => {
                 setDisplayedText(text.slice(0, currentIndex + 1));
                 setCurrentIndex(currentIndex + 1);
             }, 30);
             return () => clearTimeout(timer);
         }
-    }, [currentIndex, text]);
+    }, [currentIndex, text, isActive]);
 
     return (
         <>
@@ -44,6 +44,7 @@ function TypewriterText({ text }: { text: string }) {
 }
 
 export function TestimonialsSection({ summary = true }: TestimonialsSectionProps) {
+    const [activeIndex, setActiveIndex] = useState(0);
     const t = useTranslations("Home.TestimonialsSection");
 
     const testimonials = t.raw("Items") as Array<{
@@ -110,11 +111,12 @@ export function TestimonialsSection({ summary = true }: TestimonialsSectionProps
                             showDots={true}
                             className="w-full"
                             slideClassName="w-full"
+                            onSlideChange={setActiveIndex}
                         >
-                            {displayTestimonials.map((testimonial) => (
+                            {displayTestimonials.map((testimonial, idx) => (
                                 <div key={testimonial.id} className="py-8 px-4 md:px-8 w-full">
                                     <blockquote className="font-serif text-xl md:text-2xl leading-relaxed mb-6 italic whitespace-pre-line">
-                                        <TypewriterText text={testimonial.quote} />
+                                        <TypewriterText text={testimonial.quote} isActive={idx === activeIndex} />
                                     </blockquote>
 
                                     <div className="flex items-center gap-4">

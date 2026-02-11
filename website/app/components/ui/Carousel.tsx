@@ -15,6 +15,7 @@ interface CarouselProps {
     slideClassName?: string;
     plugins?: unknown[];
     showDots?: boolean;
+    onSlideChange?: (index: number) => void;
 }
 
 export function Carousel({
@@ -26,6 +27,7 @@ export function Carousel({
     slideClassName = "",
     plugins = [],
     showDots = false,
+    onSlideChange,
 }: CarouselProps) {
     const [isPlaying, setIsPlaying] = React.useState(autoplay);
 
@@ -57,8 +59,10 @@ export function Carousel({
     }, []);
 
     const onSelect = React.useCallback((emblaApi: EmblaCarouselType) => {
-        setSelectedIndex(emblaApi.selectedScrollSnap());
-    }, []);
+        const index = emblaApi.selectedScrollSnap();
+        setSelectedIndex(index);
+        onSlideChange?.(index);
+    }, [onSlideChange]);
 
     // Sync isPlaying state with actual Autoplay plugin state
     const onAutoplayPlay = React.useCallback(() => {
