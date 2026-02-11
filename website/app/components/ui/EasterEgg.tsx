@@ -43,6 +43,16 @@ export function useKonamiCode() {
 export function EasterEggOverlay() {
     const { isActivated, setIsActivated } = useKonamiCode();
 
+    const [particles] = useState(() => {
+        return [...Array(20)].map(() => ({
+            x: `${Math.random() * 100}vw`,
+            y: `${Math.random() * 100}vh`,
+            rotate: Math.random() * 360,
+            delay: Math.random() * 0.5,
+            icon: ["tabler:star", "tabler:device-gamepad-2", "tabler:device-laptop", "tabler:rocket", "tabler:sparkles"][Math.floor(Math.random() * 5)]
+        }));
+    });
+
     // Add Escape key handler for accessibility
     useEffect(() => {
         if (!isActivated) return;
@@ -100,7 +110,7 @@ export function EasterEggOverlay() {
                     </motion.div>
 
                     {/* Confetti-like particles */}
-                    {[...Array(20)].map((_, i) => (
+                    {particles.map((particle, i) => (
                         <motion.div
                             key={i}
                             initial={{
@@ -111,20 +121,20 @@ export function EasterEggOverlay() {
                             }}
                             animate={{
                                 opacity: 0,
-                                x: `${Math.random() * 100}vw`,
-                                y: `${Math.random() * 100}vh`,
+                                x: particle.x,
+                                y: particle.y,
                                 scale: [0, 1, 0],
-                                rotate: Math.random() * 360,
+                                rotate: particle.rotate,
                             }}
                             transition={{
                                 duration: 2,
-                                delay: Math.random() * 0.5,
+                                delay: particle.delay,
                                 ease: "easeOut",
                             }}
                             className="fixed text-2xl pointer-events-none text-accent"
                         >
                             <Icon
-                                icon={["tabler:star", "tabler:device-gamepad-2", "tabler:device-laptop", "tabler:rocket", "tabler:sparkles"][Math.floor(Math.random() * 5)]}
+                                icon={particle.icon}
                                 width={24}
                                 height={24}
                             />

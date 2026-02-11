@@ -18,7 +18,7 @@ interface CarouselProps {
 }
 
 const DEFAULT_OPTIONS: EmblaOptionsType = { loop: true, align: "start", dragFree: true };
-const DEFAULT_PLUGINS: unknown[] = [];
+const DEFAULT_PLUGINS: EmblaPluginType[] = [];
 
 // Common options for testimonials carousels
 export const TESTIMONIAL_CAROUSEL_OPTIONS: EmblaOptionsType = {
