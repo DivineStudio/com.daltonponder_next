@@ -1,6 +1,13 @@
 import type { Metadata } from "next";
 import { IBM_Plex_Mono, IBM_Plex_Sans, IBM_Plex_Serif } from "next/font/google";
+import { notFound } from "next/navigation";
+import { NextIntlClientProvider } from "next-intl";
+import { getMessages } from "next-intl/server";
 import { ThemeProvider } from "next-themes";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+
+import { routing } from "../../i18n/routing";
 import { EasterEggOverlay } from "../components/ui/EasterEgg";
 import GradientBackground from "../components/ui/GradientBackground";
 import { StructuredData } from "../components/seo/StructuredData";
@@ -62,13 +69,6 @@ export const metadata: Metadata = {
   },
 };
 
-import { NextIntlClientProvider } from 'next-intl';
-import { getMessages } from 'next-intl/server';
-import { notFound } from 'next/navigation';
-import { routing } from '../../i18n/routing';
-import { Analytics } from '@vercel/analytics/next';
-import { SpeedInsights } from '@vercel/speed-insights/next';
-
 export default async function RootLayout({
   children,
   params,
@@ -78,7 +78,7 @@ export default async function RootLayout({
 }>) {
   const { locale } = await params;
 
-  if (!routing.locales.includes(locale as any)) {
+  if (!routing.locales.includes(locale as (typeof routing.locales)[number])) {
     notFound();
   }
 
