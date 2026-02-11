@@ -1,58 +1,16 @@
-"use client";
-import { useTranslations } from "next-intl";
-
-import { motion, useInView } from "motion/react";
-import { useRef, useEffect, useState } from "react";
 import { Icon } from "@iconify/react";
 import Link from "next/link";
 import { BentoCard, BentoGrid } from "../ui/BentoGrid";
+import { getTranslations } from "next-intl/server";
+import { CountUp } from "../ui/CountUp";
+import { ClientMotionDiv } from "../ui/ClientMotionDiv";
 
 interface CredentialsSectionProps {
     summary?: boolean;
 }
 
-interface CountUpProps {
-    end: number;
-    suffix?: string;
-    duration?: number;
-}
-
-function CountUp({ end, suffix = "", duration = 2 }: CountUpProps) {
-    const [count, setCount] = useState(0);
-    const ref = useRef<HTMLSpanElement>(null);
-    const isInView = useInView(ref, { once: true });
-
-    useEffect(() => {
-        if (!isInView) return;
-
-        let startTime: number;
-        let animationFrameId: number;
-
-        const animate = (currentTime: number) => {
-            if (!startTime) startTime = currentTime;
-            const progress = Math.min((currentTime - startTime) / (duration * 1000), 1);
-            setCount(Math.floor(progress * end));
-
-            if (progress < 1) {
-                animationFrameId = requestAnimationFrame(animate);
-            }
-        };
-
-        animationFrameId = requestAnimationFrame(animate);
-
-        return () => cancelAnimationFrame(animationFrameId);
-    }, [isInView, end, duration]);
-
-    return (
-        <span ref={ref}>
-            <span aria-hidden="true">{count}{suffix}</span>
-            <span className="sr-only">{end}{suffix}</span>
-        </span>
-    );
-}
-
-export function CredentialsSection({ summary = true }: CredentialsSectionProps) {
-    const t = useTranslations("Home.EdCertSection");
+export async function CredentialsSection({ summary = true }: CredentialsSectionProps) {
+    const t = await getTranslations("Home.EdCertSection");
 
     const stats = [
         {
@@ -84,7 +42,7 @@ export function CredentialsSection({ summary = true }: CredentialsSectionProps) 
     return (
         <section className="section" aria-labelledby="credentials-heading">
             <div className="container">
-                <motion.div
+                <ClientMotionDiv
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
@@ -96,7 +54,7 @@ export function CredentialsSection({ summary = true }: CredentialsSectionProps) 
                     <p className="text-muted text-lg max-w-2xl">
                         {t("SubHeader")}
                     </p>
-                </motion.div>
+                </ClientMotionDiv>
 
                 <BentoGrid columns={3} gap="md">
                     {stats.map((stat, index) => (
@@ -116,7 +74,7 @@ export function CredentialsSection({ summary = true }: CredentialsSectionProps) 
                 </BentoGrid>
 
                 {!summary && (
-                    <motion.div
+                    <ClientMotionDiv
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
@@ -125,7 +83,7 @@ export function CredentialsSection({ summary = true }: CredentialsSectionProps) 
                         <h3 className="font-mono text-xl font-semibold mb-6">Certifications</h3>
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                             {certifications.map((cert: { name: string; issuer: string; year: string }, index: number) => (
-                                <motion.div
+                                <ClientMotionDiv
                                     key={cert.name}
                                     initial={{ opacity: 0, y: 20 }}
                                     whileInView={{ opacity: 1, y: 0 }}
@@ -140,14 +98,14 @@ export function CredentialsSection({ summary = true }: CredentialsSectionProps) 
                                             <p className="text-sm text-muted">{cert.issuer} • {cert.year}</p>
                                         </div>
                                     </div>
-                                </motion.div>
+                                </ClientMotionDiv>
                             ))}
                         </div>
-                    </motion.div>
+                    </ClientMotionDiv>
                 )}
 
                 {summary && (
-                    <motion.div
+                    <ClientMotionDiv
                         initial={{ opacity: 0 }}
                         whileInView={{ opacity: 1 }}
                         viewport={{ once: true }}
@@ -160,7 +118,7 @@ export function CredentialsSection({ summary = true }: CredentialsSectionProps) 
                             View All Credentials
                             <Icon icon="tabler:arrow-right" width={16} height={16} />
                         </Link>
-                    </motion.div>
+                    </ClientMotionDiv>
                 )}
             </div>
         </section>

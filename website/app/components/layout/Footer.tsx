@@ -1,17 +1,13 @@
-"use client";
-import { useTranslations } from "next-intl";
-
 import { Icon } from "@iconify/react";
 import Link from "next/link";
 import Image from "next/image";
+import { getTranslations } from "next-intl/server";
 
-
-
-export function Footer() {
-    const t = useTranslations("Footer");
-    const tNav = useTranslations("Navigation");
-    const tImg = useTranslations("Image");
-    const tSocial = useTranslations("Contact.Social");
+export async function Footer() {
+    const t = await getTranslations("Footer");
+    const tNav = await getTranslations("Navigation");
+    const tImg = await getTranslations("Image");
+    const tSocial = await getTranslations("Contact.Social");
     const currentYear = new Date().getFullYear();
 
     const socialLinks = [

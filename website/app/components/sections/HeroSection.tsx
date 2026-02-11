@@ -1,19 +1,16 @@
-"use client";
-
-import { motion } from "motion/react";
 import { Icon } from "@iconify/react";
 import Link from "next/link";
 import Image from "next/image";
 import { BentoCard, BentoGrid } from "../ui/BentoGrid";
 import { TerminalTyping } from "../ui/TerminalTyping";
 import { TextScramble } from "../ui/TextScramble";
-import { useTranslations } from "next-intl";
-import { useMemo } from "react";
+import { getTranslations } from "next-intl/server";
+import { ClientMotionDiv } from "../ui/ClientMotionDiv";
 
-export function HeroSection() {
-    const t = useTranslations("Home.Hero");
-    const tSocial = useTranslations("Contact.Social");
-    const tNav = useTranslations("Navigation");
+export async function HeroSection() {
+    const t = await getTranslations("Home.Hero");
+    const tSocial = await getTranslations("Contact.Social");
+    const tNav = await getTranslations("Navigation");
 
     interface Skill {
         icon: string;
@@ -24,7 +21,7 @@ export function HeroSection() {
         imageSrc?: string;
     }
 
-    const skills: Skill[] = useMemo(() => [
+    const skills: Skill[] = [
         {
             icon: "tabler:code",
             title: t("Skills.FullStack"),
@@ -56,18 +53,18 @@ export function HeroSection() {
             color: "#5ce500",
             bgColor: "var(--color-skill-bg-sitefinity)",
         },
-    ], [t]);
+    ];
 
-    const quickLinks = useMemo(() => [
+    const quickLinks = [
         { href: "https://www.linkedin.com/in/dalton-ponder-99a96a131", label: tSocial("LinkedIn"), icon: "tabler:brand-linkedin" },
         { href: "https://github.com/DivineStudio", label: tSocial("GitHub"), icon: "tabler:brand-github" },
-    ], [tSocial]);
+    ];
 
-    const terminalLines = useMemo(() => [
+    const terminalLines = [
         t("Terminal.Line1"),
         t("Terminal.Line2"),
         t("Terminal.Line3"),
-    ], [t]);
+    ];
 
     return (
         <section className="section min-h-screen flex items-center pt-24 md:pt-32" aria-labelledby="hero-heading">
@@ -84,7 +81,7 @@ export function HeroSection() {
                             {t("Description")}
                         </p>
                         <Link href="/contact" className="btn-primary inline-flex items-center gap-2 w-fit">
-                            <Icon icon="tabler:mail" width={20} height={20} />
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
                             {t("CTA")}
                         </Link>
                     </BentoCard>
@@ -92,7 +89,7 @@ export function HeroSection() {
                     {/* Skill Cards */}
                     {skills.slice(0, 2).map((skill, index) => (
                         <BentoCard key={skill.title} delay={0.1 + index * 0.1} className="flex flex-col items-center justify-center">
-                            <motion.div
+                            <ClientMotionDiv
                                 className="flex flex-col gap-4 items-center text-center"
                                 whileHover={{ scale: 1.02 }}
                                 transition={{ type: "spring", stiffness: 300 }}
@@ -107,20 +104,20 @@ export function HeroSection() {
                                             alt={skill.title}
                                             width={24}
                                             height={24}
-                                            className="object-contain"
+                                            className="h-6 w-6 object-contain"
                                         />
                                     ) : (
                                         <Icon icon={skill.icon} width={24} height={24} style={{ color: skill.color }} />
                                     )}
                                 </div>
                                 <p className="font-mono font-semibold">{skill.title}</p>
-                            </motion.div>
+                            </ClientMotionDiv>
                         </BentoCard>
                     ))}
 
                     {/* Cloud Architecture Card - Row 2 Right */}
                     <BentoCard colSpan={2} delay={0.3} className="flex flex-col items-center justify-center">
-                        <motion.div
+                        <ClientMotionDiv
                             className="flex flex-col md:flex-row items-center gap-4 text-center md:text-left"
                             whileHover={{ scale: 1.01 }}
                             transition={{ type: "spring", stiffness: 300 }}
@@ -137,7 +134,7 @@ export function HeroSection() {
                                     {skills[2].details?.join(" • ")}
                                 </p>
                             </div>
-                        </motion.div>
+                        </ClientMotionDiv>
                     </BentoCard>
 
                     {/* Quick Links Card - Row 3 Left */}
@@ -163,7 +160,7 @@ export function HeroSection() {
                     {/* Additional Skills - Row 3 Right */}
                     {skills.slice(3, 5).map((skill, index) => (
                         <BentoCard key={skill.title} delay={0.5 + index * 0.1} className="flex flex-col items-center justify-center">
-                            <motion.div
+                            <ClientMotionDiv
                                 className="flex flex-col gap-4 items-center text-center"
                                 whileHover={{ scale: 1.02 }}
                                 transition={{ type: "spring", stiffness: 300 }}
@@ -178,14 +175,14 @@ export function HeroSection() {
                                             alt={skill.title}
                                             width={24}
                                             height={24}
-                                            className="object-contain"
+                                            className="h-6 w-6 object-contain"
                                         />
                                     ) : (
                                         <Icon icon={skill.icon} width={24} height={24} style={{ color: skill.color }} />
                                     )}
                                 </div>
                                 <p className="font-mono font-semibold">{skill.title}</p>
-                            </motion.div>
+                            </ClientMotionDiv>
                         </BentoCard>
                     ))}
 

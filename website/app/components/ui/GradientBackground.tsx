@@ -29,9 +29,9 @@ function random(min: number, max: number): number {
 function generateOrbs(): OrbConfig[] {
     const orbs: OrbConfig[] = [];
 
-    // Grid layout: 3 columns x 4 rows = 12 cells for 12 orbs
-    const cols = 3;
-    const rows = 4;
+    // Grid layout: 2 columns x 3 rows = 6 cells for 6 orbs
+    const cols = 2;
+    const rows = 3;
     const cellWidth = 80 / cols;  // 80% width (leaving margins)
     const cellHeight = 180 / rows; // 180% height (leaving margins in 200vh container)
 
@@ -97,15 +97,14 @@ export default function GradientBackground() {
         setMounted(true);
     }, []);
 
-    if (!mounted) return null;
-
     return (
-        <div className="fixed inset-0 z-[-1] overflow-hidden pointer-events-none select-none">
-            {/* 
-                Container is double height (200%) to accommodate the parallax shift 
-                and ensure orbs exist "below the fold" that scroll into view.
-            */}
-            <motion.div style={{ y }} className="relative w-full h-[200vh]">
+        <div className="fixed inset-0 z-[-1] overflow-hidden pointer-events-none select-none bg-[radial-gradient(circle_at_50%_50%,rgba(64,121,140,0.05),transparent_50%)]">
+            {!mounted ? null : (
+                <motion.div style={{ y }} className="relative w-full h-[200vh]">
+                    {/*
+                        Container is double height (200%) to accommodate the parallax shift
+                        and ensure orbs exist "below the fold" that scroll into view.
+                    */}
                 {orbs.map((orb) => (
                     <motion.div
                         key={orb.id}
@@ -133,6 +132,7 @@ export default function GradientBackground() {
                     />
                 ))}
             </motion.div>
+            )}
         </div>
     );
 }

@@ -1,21 +1,10 @@
-"use client";
-import { useTranslations } from "next-intl";
-
-import { motion } from "motion/react";
 import { Icon } from "@iconify/react";
 import Link from "next/link";
 import Image from "next/image";
 import { BentoCard, BentoGrid } from "../ui/BentoGrid";
 import { Marquee, MarqueeItem } from "../ui/Marquee";
-
-function SkillBadge({ skill }: { skill: { name: string; icon: string } }) {
-    return (
-        <div className="flex items-center gap-2 px-4 py-2 rounded-lg bg-[var(--card-bg)] border border-[var(--card-border)] transition-transform hover:scale-105 whitespace-nowrap">
-            <Icon icon={skill.icon} width={24} height={24} />
-            <span className="font-mono text-sm">{skill.name}</span>
-        </div>
-    );
-}
+import { getTranslations } from "next-intl/server";
+import { ClientMotionDiv } from "../ui/ClientMotionDiv";
 
 interface SkillsSectionProps {
     summary?: boolean;
@@ -57,12 +46,12 @@ const secondarySkillsRow2 = [
     { name: "Tailwind", icon: "devicon:tailwindcss" },
 ];
 
-export function SkillsSection({ summary = true }: SkillsSectionProps) {
-    const t = useTranslations("Home.SkillsSection");
+export async function SkillsSection({ summary = true }: SkillsSectionProps) {
+    const t = await getTranslations("Home.SkillsSection");
     return (
         <section className="section bg-[var(--color-base-200)]" aria-labelledby="skills-heading">
             <div className="container">
-                <motion.div
+                <ClientMotionDiv
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
@@ -74,7 +63,7 @@ export function SkillsSection({ summary = true }: SkillsSectionProps) {
                     <p className="text-muted text-lg max-w-2xl">
                         {t("SubHeader")}
                     </p>
-                </motion.div>
+                </ClientMotionDiv>
 
                 {/* Primary Skills - Bento Grid */}
                 <BentoGrid columns={4} gap="md" className="mb-8 auto-rows-fr">
@@ -91,7 +80,7 @@ export function SkillsSection({ summary = true }: SkillsSectionProps) {
                     {/* Skill Badges */}
                     {primarySkills.map((skill, index) => (
                         <BentoCard key={skill.name} delay={0.1 + index * 0.05}>
-                            <motion.div
+                            <ClientMotionDiv
                                 className="flex items-center gap-3"
                                 whileHover={{ scale: 1.05 }}
                                 transition={{ type: "spring", stiffness: 300 }}
@@ -102,7 +91,7 @@ export function SkillsSection({ summary = true }: SkillsSectionProps) {
                                         alt={skill.name}
                                         width={32}
                                         height={32}
-                                        className="object-contain"
+                                        className="h-8 w-8 object-contain"
                                     />
                                 ) : skill.icon ? (
                                     <Icon icon={skill.icon} width={32} height={32} />
@@ -110,13 +99,13 @@ export function SkillsSection({ summary = true }: SkillsSectionProps) {
                                     <span className="w-8 h-8 flex items-center justify-center text-muted">•</span>
                                 )}
                                 <span className="font-mono font-semibold">{skill.name}</span>
-                            </motion.div>
+                            </ClientMotionDiv>
                         </BentoCard>
                     ))}
                 </BentoGrid>
 
                 {/* Secondary Skills - Carousel */}
-                <motion.div
+                <ClientMotionDiv
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}
@@ -145,7 +134,7 @@ export function SkillsSection({ summary = true }: SkillsSectionProps) {
                                             alt={skill.name}
                                             width={24}
                                             height={24}
-                                            className="object-contain"
+                                            className="h-6 w-6 object-contain"
                                         />
                                     ) : skill.icon ? (
                                         <Icon icon={skill.icon} width={24} height={24} />
@@ -155,10 +144,10 @@ export function SkillsSection({ summary = true }: SkillsSectionProps) {
                             </MarqueeItem>
                         ))}
                     </Marquee>
-                </motion.div>
+                </ClientMotionDiv>
 
                 {summary && (
-                    <motion.div
+                    <ClientMotionDiv
                         initial={{ opacity: 0 }}
                         whileInView={{ opacity: 1 }}
                         viewport={{ once: true }}
@@ -171,7 +160,7 @@ export function SkillsSection({ summary = true }: SkillsSectionProps) {
                             {t("Search.ViewAll")}
                             <Icon icon="tabler:arrow-right" width={16} height={16} />
                         </Link>
-                    </motion.div>
+                    </ClientMotionDiv>
                 )}
             </div>
         </section>

@@ -1,8 +1,6 @@
-"use client";
-
-import { motion } from "motion/react";
-import { ReactNode, useMemo } from "react";
+import { ReactNode } from "react";
 import { cn } from "@/lib/utils";
+import { ClientMotionDiv } from "./ClientMotionDiv";
 
 interface BentoGridProps {
     children: ReactNode;
@@ -75,48 +73,31 @@ export function BentoCard({
     animate = true,
     delay = 0,
 }: BentoCardProps) {
-    const { orderClasses, nonOrderClasses } = useMemo(() => {
-        const classes = className.trim().split(/\s+/);
-        const order = [];
-        const nonOrder = [];
+    const classes = className.trim().split(/\s+/);
+    const order = [];
+    const nonOrder = [];
 
-        for (const c of classes) {
-            // Check for Tailwind order classes (e.g., order-1, md:order-last)
-            // We use includes("order-") to avoid matching "border"
-            if (c.includes("order-")) {
-                order.push(c);
-            } else {
-                nonOrder.push(c);
-            }
+    for (const c of classes) {
+        // Check for Tailwind order classes (e.g., order-1, md:order-last)
+        // We use includes("order-") to avoid matching "border"
+        if (c.includes("order-")) {
+            order.push(c);
+        } else {
+            nonOrder.push(c);
         }
+    }
 
-        return {
-            orderClasses: order.join(" "),
-            nonOrderClasses: nonOrder.join(" "),
-        };
-    }, [className]);
+    const orderClasses = order.join(" ");
+    const nonOrderClasses = nonOrder.join(" ");
 
-    const containerClasses = useMemo(
-        () =>
-            cn(colSpanClasses[colSpan], rowSpanClasses[rowSpan], orderClasses),
-        [colSpan, rowSpan, orderClasses]
-    );
-
-    const innerClasses = useMemo(
-        () => cn(variantClasses[variant], "h-full", nonOrderClasses),
-        [variant, nonOrderClasses]
-    );
-
-    const staticClasses = useMemo(
-        () =>
-            cn(
-                variantClasses[variant],
-                colSpanClasses[colSpan],
-                rowSpanClasses[rowSpan],
-                orderClasses,
-                nonOrderClasses
-            ),
-        [variant, colSpan, rowSpan, orderClasses, nonOrderClasses]
+    const containerClasses = cn(colSpanClasses[colSpan], rowSpanClasses[rowSpan], orderClasses);
+    const innerClasses = cn(variantClasses[variant], "h-full", nonOrderClasses);
+    const staticClasses = cn(
+        variantClasses[variant],
+        colSpanClasses[colSpan],
+        rowSpanClasses[rowSpan],
+        orderClasses,
+        nonOrderClasses
     );
 
     if (!animate) {
@@ -124,7 +105,7 @@ export function BentoCard({
     }
 
     return (
-        <motion.div
+        <ClientMotionDiv
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
@@ -136,6 +117,6 @@ export function BentoCard({
             className={containerClasses}
         >
             <div className={innerClasses}>{children}</div>
-        </motion.div>
+        </ClientMotionDiv>
     );
 }
