@@ -7,7 +7,6 @@ import { Icon } from "@iconify/react";
 import Link from "next/link";
 import Image from "next/image";
 import { ThemeToggler } from "../ui/ThemeToggler";
-// import { LanguageToggler } from "../ui/LanguageToggler";
 
 export function Navbar() {
     const t = useTranslations("Navigation");
@@ -72,7 +71,6 @@ export function Navbar() {
 
                         <div className="flex items-center gap-3">
                             <ThemeToggler />
-                            {/* <LanguageToggler /> */}
                         </div>
                     </div>
 
@@ -134,7 +132,6 @@ export function Navbar() {
 
                             <div className="flex items-center gap-4 mt-8">
                                 <ThemeToggler />
-                                {/* <LanguageToggler /> */}
                             </div>
                         </div>
                     </motion.div>
