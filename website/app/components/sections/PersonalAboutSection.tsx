@@ -2,12 +2,13 @@ import { Icon } from "@iconify/react";
 import { BentoCard, BentoGrid } from "../ui/BentoGrid";
 import { getTranslations } from "next-intl/server";
 import { ClientMotionDiv } from "../ui/ClientMotionDiv";
+import Link from "next/link";
 
 interface PersonalAboutSectionProps {
     summary?: boolean;
 }
 
-export async function PersonalAboutSection({ summary = true }: PersonalAboutSectionProps) {
+export async function PersonalAboutSection({ summary = false }: PersonalAboutSectionProps) {
     const t = await getTranslations("Home.PersonalAboutSection");
 
     const interests = [
@@ -111,6 +112,14 @@ export async function PersonalAboutSection({ summary = true }: PersonalAboutSect
                         </div>
                     </BentoCard>
                 </BentoGrid>
+
+                {summary && (
+                    <div className="mt-12 text-center">
+                        <Link href="/about" className="btn-secondary">
+                            {t("LearnMore")}
+                        </Link>
+                    </div>
+                )}
             </div>
         </section>
     );

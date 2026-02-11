@@ -1,7 +1,9 @@
 'use client';
 
 import { motion, useScroll, useTransform } from 'motion/react';
-import { useEffect, useMemo, useState } from 'react';
+import { useMemo, useSyncExternalStore } from 'react';
+
+const emptySubscribe = () => () => { };
 
 // Orb configuration type
 interface OrbConfig {
@@ -83,7 +85,11 @@ function generateOrbs(): OrbConfig[] {
 }
 
 export default function GradientBackground() {
-    const [mounted, setMounted] = useState(false);
+    const isClient = useSyncExternalStore(
+        emptySubscribe,
+        () => true,
+        () => false
+    );
     const { scrollY } = useScroll();
 
     // Parallax effect: Moves background UP as you scroll DOWN.
@@ -93,13 +99,9 @@ export default function GradientBackground() {
     // Generate orbs once on mount (useMemo with empty deps runs once)
     const orbs = useMemo(() => generateOrbs(), []);
 
-    useEffect(() => {
-        setMounted(true);
-    }, []);
-
     return (
         <div className="fixed inset-0 z-[-1] overflow-hidden pointer-events-none select-none bg-[radial-gradient(circle_at_50%_50%,rgba(64,121,140,0.05),transparent_50%)]">
-            {!mounted ? null : (
+            {!isClient ? null : (
                 <motion.div style={{ y }} className="relative w-full h-[200vh]">
                     {/*
                         Container is double height (200%) to accommodate the parallax shift

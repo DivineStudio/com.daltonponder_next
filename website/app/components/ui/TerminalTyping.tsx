@@ -81,11 +81,11 @@ export function TerminalTyping({
             transition={{ duration: 0.3 }}
             className={`font-mono text-sm md:text-base bg-[var(--color-terminal-bg)] rounded-lg p-4 border border-[var(--color-terminal-border)] ${className}`}
         >
-            {displayedLines.map((line, index) => (
+            {lines.map((_, index) => (
                 <div key={index} className="flex items-baseline gap-2">
                     <span className="text-accent select-none shrink-0">&gt;</span>
                     <span className="text-[var(--color-terminal-text)]">
-                        {line}
+                        {displayedLines[index] || ""}
                         {index === currentLineIndex && !isTypingComplete && (
                             <span
                                 className={`inline-block w-2 h-4 ml-0.5 bg-accent ${showCursor ? "opacity-100" : "opacity-0"
@@ -95,15 +95,16 @@ export function TerminalTyping({
                     </span>
                 </div>
             ))}
-            {isTypingComplete && (
-                <div className="flex items-baseline gap-2">
-                    <span className="text-accent select-none shrink-0">&gt;</span>
+            {/* Stable final prompt line to prevent layout shift */}
+            <div className="flex items-baseline gap-2">
+                <span className={`text-accent select-none shrink-0 transition-opacity duration-300 ${isTypingComplete ? "opacity-100" : "opacity-0"}`}>&gt;</span>
+                {isTypingComplete && (
                     <span
                         className={`inline-block w-2 h-4 bg-accent ${showCursor ? "opacity-100" : "opacity-0"
                             }`}
                     />
-                </div>
-            )}
+                )}
+            </div>
         </motion.div>
     );
 }

@@ -3,7 +3,6 @@ import { useTranslations } from "next-intl";
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { Icon } from "@iconify/react";
 import Link from "next/link";
 import Image from "next/image";
 import { ThemeToggler } from "../ui/ThemeToggler";
