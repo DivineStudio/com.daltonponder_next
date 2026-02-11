@@ -76,12 +76,14 @@ export function BentoCard({
     delay = 0,
 }: BentoCardProps) {
     const { orderClasses, nonOrderClasses } = useMemo(() => {
-        const classes = className.split(" ");
+        const classes = className.trim().split(/\s+/);
         const order = [];
         const nonOrder = [];
 
         for (const c of classes) {
-            if (c.includes("order")) {
+            // Check for Tailwind order classes (e.g., order-1, md:order-last)
+            // We use includes("order-") to avoid matching "border"
+            if (c.includes("order-")) {
                 order.push(c);
             } else {
                 nonOrder.push(c);
@@ -94,20 +96,31 @@ export function BentoCard({
         };
     }, [className]);
 
+    const containerClasses = useMemo(
+        () =>
+            cn(colSpanClasses[colSpan], rowSpanClasses[rowSpan], orderClasses),
+        [colSpan, rowSpan, orderClasses]
+    );
+
+    const innerClasses = useMemo(
+        () => cn(variantClasses[variant], "h-full", nonOrderClasses),
+        [variant, nonOrderClasses]
+    );
+
+    const staticClasses = useMemo(
+        () =>
+            cn(
+                variantClasses[variant],
+                colSpanClasses[colSpan],
+                rowSpanClasses[rowSpan],
+                orderClasses,
+                nonOrderClasses
+            ),
+        [variant, colSpan, rowSpan, orderClasses, nonOrderClasses]
+    );
+
     if (!animate) {
-        return (
-            <div
-                className={cn(
-                    variantClasses[variant],
-                    colSpanClasses[colSpan],
-                    rowSpanClasses[rowSpan],
-                    orderClasses,
-                    nonOrderClasses
-                )}
-            >
-                {children}
-            </div>
-        );
+        return <div className={staticClasses}>{children}</div>;
     }
 
     return (
@@ -120,21 +133,9 @@ export function BentoCard({
                 delay: delay,
                 ease: "easeOut",
             }}
-            className={cn(
-                colSpanClasses[colSpan],
-                rowSpanClasses[rowSpan],
-                orderClasses
-            )}
+            className={containerClasses}
         >
-            <div
-                className={cn(
-                    variantClasses[variant],
-                    "h-full",
-                    nonOrderClasses
-                )}
-            >
-                {children}
-            </div>
+            <div className={innerClasses}>{children}</div>
         </motion.div>
     );
 }
