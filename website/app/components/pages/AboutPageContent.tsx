@@ -147,7 +147,7 @@ export function AboutPageContent() {
                                 <ul className="space-y-2 text-muted">
                                     {(tAb.raw("Bio.Professional.Points") as string[]).map((point, idx) => (
                                         <li key={idx} className="flex items-start gap-2">
-                                            <Icon icon="tabler:check" className="text-accent" width={18} />
+                                            <Icon icon="tabler:check" className="text-accent shrink-0 mt-1" width={18} />
                                             {point}
                                         </li>
                                     ))}
@@ -177,7 +177,7 @@ export function AboutPageContent() {
                                         const icons = tAb.raw("Bio.Personal.Icons") as string[];
                                         return (
                                             <li key={idx} className="flex items-start gap-2">
-                                                <Icon icon={icons[idx]} className="text-accent" width={18} />
+                                                <Icon icon={icons[idx]} className="text-accent shrink-0 mt-1" width={18} />
                                                 {point}
                                             </li>
                                         );
@@ -227,8 +227,8 @@ export function AboutPageContent() {
                                     />
 
                                     <div className={`bento-card ${era.current ? "border-[var(--color-primary)] border-2" : ""}`}>
-                                        <div className="flex items-center gap-2 mb-2">
-                                            <Icon icon={era.icon} width={24} height={24} className={era.current ? "text-[var(--color-primary)]" : "text-muted"} />
+                                        <div className="flex items-start gap-2 mb-2">
+                                            <Icon icon={era.icon} width={24} height={24} className={`shrink-0 mt-0.5 ${era.current ? "text-[var(--color-primary)]" : "text-muted"}`} />
                                             <h3 className={`font-mono text-xl font-semibold ${era.current ? "text-[var(--color-primary)]" : ""}`}>
                                                 {era.title}
                                             </h3>

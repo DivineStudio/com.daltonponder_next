@@ -82,8 +82,8 @@ export function TerminalTyping({
             className={`font-mono text-sm md:text-base bg-[var(--color-terminal-bg)] rounded-lg p-4 border border-[var(--color-terminal-border)] ${className}`}
         >
             {displayedLines.map((line, index) => (
-                <div key={index} className="flex items-start gap-2">
-                    <span className="text-accent select-none">&gt;</span>
+                <div key={index} className="flex items-baseline gap-2">
+                    <span className="text-accent select-none shrink-0">&gt;</span>
                     <span className="text-[var(--color-terminal-text)]">
                         {line}
                         {index === currentLineIndex && !isTypingComplete && (
@@ -96,8 +96,8 @@ export function TerminalTyping({
                 </div>
             ))}
             {isTypingComplete && (
-                <div className="flex items-start gap-2">
-                    <span className="text-accent select-none">&gt;</span>
+                <div className="flex items-baseline gap-2">
+                    <span className="text-accent select-none shrink-0">&gt;</span>
                     <span
                         className={`inline-block w-2 h-4 bg-accent ${showCursor ? "opacity-100" : "opacity-0"
                             }`}

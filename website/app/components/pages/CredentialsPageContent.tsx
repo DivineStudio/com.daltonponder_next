@@ -117,8 +117,8 @@ export function CredentialsPageContent() {
                                         </div>
                                         <ul className="space-y-1 text-muted text-sm">
                                             {job.bullets.map((bullet: string, i: number) => (
-                                                <li key={i} className="flex items-start gap-2">
-                                                    <span className="mt-1.5">•</span>
+                                                <li key={i} className="flex items-baseline gap-2">
+                                                    <span className="shrink-0">•</span>
                                                     {bullet}
                                                 </li>
                                             ))}

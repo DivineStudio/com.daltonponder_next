@@ -134,7 +134,7 @@ export function CredentialsSection({ summary = true }: CredentialsSectionProps) 
                                     className="bento-card"
                                 >
                                     <div className="flex items-start gap-3">
-                                        <Icon icon="tabler:certificate" width={24} height={24} className="text-accent shrink-0" />
+                                        <Icon icon="tabler:certificate" width={24} height={24} className="text-accent shrink-0 mt-1" />
                                         <div>
                                             <h4 className="font-semibold">{cert.name}</h4>
                                             <p className="text-sm text-muted">{cert.issuer} • {cert.year}</p>
