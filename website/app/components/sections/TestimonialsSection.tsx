@@ -1,46 +1,13 @@
 "use client";
 import { useTranslations } from "next-intl";
 
-import { motion, AnimatePresence } from "motion/react";
-import { useState, useEffect } from "react";
+import { motion } from "motion/react";
 import { Icon } from "@iconify/react";
 import Link from "next/link";
 import { Carousel, TESTIMONIAL_CAROUSEL_OPTIONS } from "../ui/Carousel";
 
 interface TestimonialsSectionProps {
     summary?: boolean;
-}
-
-function TypewriterText({ text }: { text: string }) {
-    const [displayedText, setDisplayedText] = useState("");
-    const [currentIndex, setCurrentIndex] = useState(0);
-
-    useEffect(() => {
-        setDisplayedText("");
-        setCurrentIndex(0);
-    }, [text]);
-
-    useEffect(() => {
-        if (currentIndex < text.length) {
-            const timer = setTimeout(() => {
-                setDisplayedText(text.slice(0, currentIndex + 1));
-                setCurrentIndex(currentIndex + 1);
-            }, 30);
-            return () => clearTimeout(timer);
-        }
-    }, [currentIndex, text]);
-
-    return (
-        <>
-            <span aria-hidden="true">
-                {displayedText}
-                {currentIndex < text.length && (
-                    <span className="animate-pulse">|</span>
-                )}
-            </span>
-            <span className="sr-only">{text}</span>
-        </>
-    );
 }
 
 export function TestimonialsSection({ summary = true }: TestimonialsSectionProps) {
@@ -114,7 +81,7 @@ export function TestimonialsSection({ summary = true }: TestimonialsSectionProps
                             {displayTestimonials.map((testimonial) => (
                                 <div key={testimonial.id} className="py-8 px-4 md:px-8 w-full">
                                     <blockquote className="font-serif text-xl md:text-2xl leading-relaxed mb-6 italic whitespace-pre-line">
-                                        <TypewriterText text={testimonial.quote} />
+                                        {testimonial.quote}
                                     </blockquote>
 
                                     <div className="flex items-center gap-4">
