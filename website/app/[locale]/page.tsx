@@ -10,6 +10,7 @@ import { ContactSection } from "../components/sections/ContactSection";
 import { StructuredData } from "../components/seo/StructuredData";
 import { RedirectHandler } from "../components/RedirectHandler";
 import { getTranslations } from "next-intl/server";
+import { Suspense } from "react";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -40,14 +41,18 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
       <Navbar />
       <main id="main-content">
         <HeroSection />
-        <CredentialsSection summary={true} />
-        <SkillsSection summary={true} />
-        <TestimonialsSection summary={true} />
-        <ProAboutSection summary={true} />
-        <PersonalAboutSection summary={true} />
-        <ContactSection summary={true} />
+        <Suspense fallback={<div className="min-h-screen animate-pulse bg-[var(--color-base-200)]/20" />}>
+          <CredentialsSection summary={true} />
+          <SkillsSection summary={true} />
+          <TestimonialsSection summary={true} />
+          <ProAboutSection summary={true} />
+          <PersonalAboutSection summary={true} />
+          <ContactSection summary={true} />
+        </Suspense>
       </main>
-      <Footer />
+      <Suspense fallback={<div className="h-40 animate-pulse bg-[var(--card-bg)]" />}>
+        <Footer />
+      </Suspense>
     </>
   );
 }

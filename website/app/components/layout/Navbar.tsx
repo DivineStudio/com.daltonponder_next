@@ -3,7 +3,6 @@ import { useTranslations } from "next-intl";
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { Icon } from "@iconify/react";
 import Link from "next/link";
 import Image from "next/image";
 import { ThemeToggler } from "../ui/ThemeToggler";
@@ -81,11 +80,11 @@ export function Navbar() {
                         aria-label={t("Aria.ToggleMobileMenu")}
                         aria-expanded={isMobileMenuOpen}
                     >
-                        <Icon
-                            icon={isMobileMenuOpen ? "tabler:x" : "tabler:menu-2"}
-                            width={24}
-                            height={24}
-                        />
+                        {isMobileMenuOpen ? (
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 6l-12 12"></path><path d="M6 6l12 12"></path></svg>
+                        ) : (
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                        )}
                     </button>
                 </nav>
             </motion.header>

@@ -1,22 +1,29 @@
-"use client";
-
-import { motion } from "motion/react";
-import { Icon } from "@iconify/react";
 import Link from "next/link";
 import Image from "next/image";
 import { BentoCard, BentoGrid } from "../ui/BentoGrid";
 import { TerminalTyping } from "../ui/TerminalTyping";
 import { TextScramble } from "../ui/TextScramble";
-import { useTranslations } from "next-intl";
-import { useMemo } from "react";
+import { getTranslations } from "next-intl/server";
+import { ClientMotionDiv } from "../ui/ClientMotionDiv";
+import { Icon } from "@iconify/react";
 
-export function HeroSection() {
-    const t = useTranslations("Home.Hero");
-    const tSocial = useTranslations("Contact.Social");
-    const tNav = useTranslations("Navigation");
+const HERO_ICONS = {
+    code: "tabler:code",
+    security: "tabler:shield-lock",
+    cloud: "tabler:cloud",
+    ai: "tabler:brain",
+    sitefinity: "logos:progress",
+    linkedin: "tabler:brand-linkedin",
+    github: "tabler:brand-github",
+};
+
+export async function HeroSection() {
+    const t = await getTranslations("Home.Hero");
+    const tSocial = await getTranslations("Contact.Social");
+    const tNav = await getTranslations("Navigation");
 
     interface Skill {
-        icon: string;
+        icon: keyof typeof HERO_ICONS;
         title: string;
         color: string;
         bgColor: string;
@@ -24,50 +31,50 @@ export function HeroSection() {
         imageSrc?: string;
     }
 
-    const skills: Skill[] = useMemo(() => [
+    const skills: Skill[] = [
         {
-            icon: "tabler:code",
+            icon: "code",
             title: t("Skills.FullStack"),
             color: "var(--color-accent)",
             bgColor: "var(--color-skill-bg-accent)",
         },
         {
-            icon: "tabler:shield-lock",
+            icon: "security",
             title: t("Skills.Security"),
             color: "var(--color-primary)",
             bgColor: "var(--color-skill-bg-primary)",
         },
         {
-            icon: "tabler:cloud",
+            icon: "cloud",
             title: t("Skills.Cloud"),
             color: "var(--color-accent)",
             bgColor: "var(--color-skill-bg-accent)",
             details: t("Skills.CloudDetails").split(" • "),
         },
         {
-            icon: "ri:code-ai-fill",
+            icon: "ai",
             title: t("Skills.AI"),
             color: "var(--color-primary)",
             bgColor: "var(--color-skill-bg-primary)",
         },
         {
-            icon: "simple-icons:progress",
+            icon: "sitefinity",
             title: t("Skills.Sitefinity"),
             color: "#5ce500",
             bgColor: "var(--color-skill-bg-sitefinity)",
         },
-    ], [t]);
+    ];
 
-    const quickLinks = useMemo(() => [
-        { href: "https://www.linkedin.com/in/dalton-ponder-99a96a131", label: tSocial("LinkedIn"), icon: "tabler:brand-linkedin" },
-        { href: "https://github.com/DivineStudio", label: tSocial("GitHub"), icon: "tabler:brand-github" },
-    ], [tSocial]);
+    const quickLinks = [
+        { href: "https://www.linkedin.com/in/dalton-ponder-99a96a131", label: tSocial("LinkedIn"), icon: "linkedin" as keyof typeof HERO_ICONS },
+        { href: "https://github.com/DivineStudio", label: tSocial("GitHub"), icon: "github" as keyof typeof HERO_ICONS },
+    ];
 
-    const terminalLines = useMemo(() => [
+    const terminalLines = [
         t("Terminal.Line1"),
         t("Terminal.Line2"),
         t("Terminal.Line3"),
-    ], [t]);
+    ];
 
     return (
         <section className="section min-h-screen flex items-center pt-24 md:pt-32" aria-labelledby="hero-heading">
@@ -84,7 +91,7 @@ export function HeroSection() {
                             {t("Description")}
                         </p>
                         <Link href="/contact" className="btn-primary inline-flex items-center gap-2 w-fit">
-                            <Icon icon="tabler:mail" width={20} height={20} />
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
                             {t("CTA")}
                         </Link>
                     </BentoCard>
@@ -92,7 +99,7 @@ export function HeroSection() {
                     {/* Skill Cards */}
                     {skills.slice(0, 2).map((skill, index) => (
                         <BentoCard key={skill.title} delay={0.1 + index * 0.1} className="flex flex-col items-center justify-center">
-                            <motion.div
+                            <ClientMotionDiv
                                 className="flex flex-col gap-4 items-center text-center"
                                 whileHover={{ scale: 1.02 }}
                                 transition={{ type: "spring", stiffness: 300 }}
@@ -107,20 +114,20 @@ export function HeroSection() {
                                             alt={skill.title}
                                             width={24}
                                             height={24}
-                                            className="object-contain"
+                                            className="h-6 w-6 object-contain"
                                         />
                                     ) : (
-                                        <Icon icon={skill.icon} width={24} height={24} style={{ color: skill.color }} />
+                                        <Icon icon={HERO_ICONS[skill.icon]} width={24} height={24} style={{ color: skill.color }} />
                                     )}
                                 </div>
                                 <p className="font-mono font-semibold">{skill.title}</p>
-                            </motion.div>
+                            </ClientMotionDiv>
                         </BentoCard>
                     ))}
 
                     {/* Cloud Architecture Card - Row 2 Right */}
                     <BentoCard colSpan={2} delay={0.3} className="flex flex-col items-center justify-center">
-                        <motion.div
+                        <ClientMotionDiv
                             className="flex flex-col md:flex-row items-center gap-4 text-center md:text-left"
                             whileHover={{ scale: 1.01 }}
                             transition={{ type: "spring", stiffness: 300 }}
@@ -129,7 +136,7 @@ export function HeroSection() {
                                 className="w-12 h-12 rounded-full flex items-center justify-center shrink-0"
                                 style={{ backgroundColor: skills[2].bgColor }}
                             >
-                                <Icon icon={skills[2].icon} width={24} height={24} style={{ color: skills[2].color }} />
+                                <Icon icon={HERO_ICONS[skills[2].icon]} width={24} height={24} style={{ color: skills[2].color }} />
                             </div>
                             <div>
                                 <p className="font-mono font-semibold mb-2">{skills[2].title}</p>
@@ -137,7 +144,7 @@ export function HeroSection() {
                                     {skills[2].details?.join(" • ")}
                                 </p>
                             </div>
-                        </motion.div>
+                        </ClientMotionDiv>
                     </BentoCard>
 
                     {/* Quick Links Card - Row 3 Left */}
@@ -153,7 +160,7 @@ export function HeroSection() {
                                     className="btn-outline text-sm flex items-center gap-2"
                                     aria-label={`${link.label} ${tNav("Aria.OpensNewTab")}`}
                                 >
-                                    <Icon icon={link.icon} width={16} height={16} />
+                                    <Icon icon={HERO_ICONS[link.icon]} width={16} height={16} />
                                     {link.label}
                                 </a>
                             ))}
@@ -163,7 +170,7 @@ export function HeroSection() {
                     {/* Additional Skills - Row 3 Right */}
                     {skills.slice(3, 5).map((skill, index) => (
                         <BentoCard key={skill.title} delay={0.5 + index * 0.1} className="flex flex-col items-center justify-center">
-                            <motion.div
+                            <ClientMotionDiv
                                 className="flex flex-col gap-4 items-center text-center"
                                 whileHover={{ scale: 1.02 }}
                                 transition={{ type: "spring", stiffness: 300 }}
@@ -178,14 +185,14 @@ export function HeroSection() {
                                             alt={skill.title}
                                             width={24}
                                             height={24}
-                                            className="object-contain"
+                                            className="h-6 w-6 object-contain"
                                         />
                                     ) : (
-                                        <Icon icon={skill.icon} width={24} height={24} style={{ color: skill.color }} />
+                                        <Icon icon={HERO_ICONS[skill.icon]} width={24} height={24} style={{ color: skill.color }} />
                                     )}
                                 </div>
                                 <p className="font-mono font-semibold">{skill.title}</p>
-                            </motion.div>
+                            </ClientMotionDiv>
                         </BentoCard>
                     ))}
 

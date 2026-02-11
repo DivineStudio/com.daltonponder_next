@@ -1,10 +1,9 @@
-"use client";
-
-import { motion } from "motion/react";
 import { Icon } from "@iconify/react";
 import { BentoCard, BentoGrid } from "../ui/BentoGrid";
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 import { ContactForm, contactSubjectKeys } from "../ui/ContactForm";
+import { ClientMotionDiv } from "../ui/ClientMotionDiv";
+import { ClientMotionA } from "../ui/ClientMotionA";
 
 interface ContactSectionProps {
     summary?: boolean;
@@ -18,14 +17,14 @@ const socialLinks = [
     { href: "https://github.com/DivineStudio", icon: "tabler:brand-github", label: "GitHub" },
 ];
 
-export function ContactSection({ summary = true }: ContactSectionProps) {
-    const t = useTranslations("Home.ContactSection");
+export async function ContactSection({ summary = true }: ContactSectionProps) {
+    const t = await getTranslations("Home.ContactSection");
 
     if (summary) {
         return (
             <section className="section bg-[var(--color-base-200)]" aria-labelledby="contact-heading-summary">
                 <div className="container">
-                    <motion.div
+                    <ClientMotionDiv
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
@@ -37,7 +36,7 @@ export function ContactSection({ summary = true }: ContactSectionProps) {
                         <p className="text-muted text-lg mb-8">
                             {t("Summary.SubHeader")}
                         </p>
-                        <motion.a
+                        <ClientMotionA
                             href="/contact"
                             className="btn-primary inline-flex items-center gap-2"
                             whileHover={{ scale: 1.05 }}
@@ -45,8 +44,8 @@ export function ContactSection({ summary = true }: ContactSectionProps) {
                         >
                             <Icon icon="tabler:mail" width={20} height={20} />
                             {t("Summary.CTA")}
-                        </motion.a>
-                    </motion.div>
+                        </ClientMotionA>
+                    </ClientMotionDiv>
                 </div>
             </section>
         );
@@ -55,7 +54,7 @@ export function ContactSection({ summary = true }: ContactSectionProps) {
     return (
         <section className="section" aria-labelledby="contact-heading">
             <div className="container">
-                <motion.div
+                <ClientMotionDiv
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
@@ -67,7 +66,7 @@ export function ContactSection({ summary = true }: ContactSectionProps) {
                     <p className="text-muted text-lg max-w-2xl">
                         {t("Main.SubHeader")}
                     </p>
-                </motion.div>
+                </ClientMotionDiv>
 
                 <BentoGrid columns={3} gap="md">
                     {/* Contact Info Card */}

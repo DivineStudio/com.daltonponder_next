@@ -1,21 +1,19 @@
-"use client";
-
-import { motion } from "motion/react";
 import { Icon } from "@iconify/react";
 import Link from "next/link";
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
+import { ClientMotionDiv } from "../ui/ClientMotionDiv";
 
 interface ProAboutSectionProps {
     summary?: boolean;
 }
 
-export function ProAboutSection({ summary = true }: ProAboutSectionProps) {
-    const t = useTranslations("Home.ProAboutSection");
+export async function ProAboutSection({ summary = true }: ProAboutSectionProps) {
+    const t = await getTranslations("Home.ProAboutSection");
 
     return (
         <section className="section p-0 overflow-hidden">
             {/* Maroon Accent Break */}
-            <motion.div
+            <ClientMotionDiv
                 initial={{ x: "-100%" }}
                 whileInView={{ x: 0 }}
                 viewport={{ once: true }}
@@ -23,7 +21,7 @@ export function ProAboutSection({ summary = true }: ProAboutSectionProps) {
                 className="bg-primary py-16 md:py-24"
             >
                 <div className="container">
-                    <motion.h2
+                    <ClientMotionDiv
                         initial={{ opacity: 0 }}
                         whileInView={{ opacity: 1 }}
                         viewport={{ once: true }}
@@ -35,12 +33,12 @@ export function ProAboutSection({ summary = true }: ProAboutSectionProps) {
                         <span className="text-[var(--color-secondary)]">
                             {t("HeaderLine2")}
                         </span>
-                    </motion.h2>
+                    </ClientMotionDiv>
                 </div>
-            </motion.div>
+            </ClientMotionDiv>
 
             {/* Supporting Content */}
-            <motion.div
+            <ClientMotionDiv
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -74,7 +72,7 @@ export function ProAboutSection({ summary = true }: ProAboutSectionProps) {
                     </div>
 
                     {summary && (
-                        <motion.div
+                        <ClientMotionDiv
                             initial={{ opacity: 0 }}
                             whileInView={{ opacity: 1 }}
                             viewport={{ once: true }}
@@ -88,10 +86,10 @@ export function ProAboutSection({ summary = true }: ProAboutSectionProps) {
                                 {t("LearnMore")}
                                 <Icon icon="tabler:arrow-right" width={16} height={16} />
                             </Link>
-                        </motion.div>
+                        </ClientMotionDiv>
                     )}
                 </div>
-            </motion.div>
+            </ClientMotionDiv>
         </section>
     );
 }

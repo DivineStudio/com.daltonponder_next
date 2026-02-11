@@ -1,17 +1,16 @@
-"use client";
-import { useTranslations } from "next-intl";
-
-import { motion } from "motion/react";
 import { Icon } from "@iconify/react";
 import Link from "next/link";
 import { Carousel, TESTIMONIAL_CAROUSEL_OPTIONS } from "../ui/Carousel";
+import { getTranslations } from "next-intl/server";
+import { ClientMotionDiv } from "../ui/ClientMotionDiv";
+import { ClientMotionSpan } from "../ui/ClientMotionSpan";
 
 interface TestimonialsSectionProps {
     summary?: boolean;
 }
 
-export function TestimonialsSection({ summary = true }: TestimonialsSectionProps) {
-    const t = useTranslations("Home.TestimonialsSection");
+export async function TestimonialsSection({ summary = true }: TestimonialsSectionProps) {
+    const t = await getTranslations("Home.TestimonialsSection");
 
     const testimonials = t.raw("Items") as Array<{
         Quote: string;
@@ -38,7 +37,7 @@ export function TestimonialsSection({ summary = true }: TestimonialsSectionProps
     return (
         <section className="section" aria-labelledby="testimonials-heading">
             <div className="container">
-                <motion.div
+                <ClientMotionDiv
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
@@ -50,16 +49,16 @@ export function TestimonialsSection({ summary = true }: TestimonialsSectionProps
                     <p className="text-muted text-lg max-w-2xl">
                         {t("SubHeader")}
                     </p>
-                </motion.div>
+                </ClientMotionDiv>
 
                 {/* Featured Quote Carousel */}
-                <motion.div
+                <ClientMotionDiv
                     initial={{ opacity: 0, scale: 0.95 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
                     className="bento-card bg-[var(--color-secondary)] mb-8 relative overflow-hidden p-0"
                 >
-                    <motion.span
+                    <ClientMotionSpan
                         initial={{ rotate: -10, scale: 0 }}
                         whileInView={{ rotate: 0, scale: 1 }}
                         viewport={{ once: true }}
@@ -67,7 +66,7 @@ export function TestimonialsSection({ summary = true }: TestimonialsSectionProps
                         className="absolute top-8 left-8 text-[var(--color-primary)] opacity-30 z-0"
                     >
                         <Icon icon="tabler:quote" width={80} height={80} />
-                    </motion.span>
+                    </ClientMotionSpan>
 
                     <div className="relative z-10">
                         <Carousel
@@ -105,10 +104,10 @@ export function TestimonialsSection({ summary = true }: TestimonialsSectionProps
                             ))}
                         </Carousel>
                     </div>
-                </motion.div>
+                </ClientMotionDiv>
 
                 {summary && (
-                    <motion.div
+                    <ClientMotionDiv
                         initial={{ opacity: 0 }}
                         whileInView={{ opacity: 1 }}
                         viewport={{ once: true }}
@@ -121,7 +120,7 @@ export function TestimonialsSection({ summary = true }: TestimonialsSectionProps
                             View All Testimonials
                             <Icon icon="tabler:arrow-right" width={16} height={16} />
                         </Link>
-                    </motion.div>
+                    </ClientMotionDiv>
                 )}
             </div>
         </section>

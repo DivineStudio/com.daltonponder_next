@@ -81,29 +81,50 @@ export function TerminalTyping({
             transition={{ duration: 0.3 }}
             className={`font-mono text-sm md:text-base bg-[var(--color-terminal-bg)] rounded-lg p-4 border border-[var(--color-terminal-border)] ${className}`}
         >
-            {displayedLines.map((line, index) => (
-                <div key={index} className="flex items-baseline gap-2">
-                    <span className="text-accent select-none shrink-0">&gt;</span>
-                    <span className="text-[var(--color-terminal-text)]">
-                        {line}
-                        {index === currentLineIndex && !isTypingComplete && (
-                            <span
-                                className={`inline-block w-2 h-4 ml-0.5 bg-accent ${showCursor ? "opacity-100" : "opacity-0"
-                                    }`}
-                            />
-                        )}
-                    </span>
+            {lines.map((line, index) => (
+                <div key={index} className="grid">
+                    {/* Ghost line to reserve space and precalculate height */}
+                    <div className="invisible col-start-1 row-start-1 flex items-baseline gap-2" aria-hidden="true">
+                        <span className="select-none shrink-0">&gt;</span>
+                        <span className="break-words w-full">{line}</span>
+                    </div>
+
+                    {/* Actual animated line */}
+                    <div
+                        className={`col-start-1 row-start-1 flex items-baseline gap-2 ${index > currentLineIndex ? "hidden" : "flex"
+                            }`}
+                    >
+                        <span className="text-accent select-none shrink-0">&gt;</span>
+                        <span className="text-[var(--color-terminal-text)] break-words w-full">
+                            {displayedLines[index] || ""}
+                            {index === currentLineIndex && !isTypingComplete && (
+                                <span
+                                    className={`inline-block w-2 h-4 ml-0.5 bg-accent ${showCursor ? "opacity-100" : "opacity-0"
+                                        }`}
+                                />
+                            )}
+                        </span>
+                    </div>
                 </div>
             ))}
-            {isTypingComplete && (
-                <div className="flex items-baseline gap-2">
+
+            {/* Final active prompt line */}
+            <div className="grid">
+                <div className="invisible col-start-1 row-start-1 flex items-center gap-2" aria-hidden="true">
+                    <span className="select-none shrink-0">&gt;</span>
+                    <span className="inline-block w-2 h-4" />
+                </div>
+                <div
+                    className={`col-start-1 row-start-1 flex items-center gap-2 ${!isTypingComplete ? "hidden" : "flex"
+                        }`}
+                >
                     <span className="text-accent select-none shrink-0">&gt;</span>
                     <span
                         className={`inline-block w-2 h-4 bg-accent ${showCursor ? "opacity-100" : "opacity-0"
                             }`}
                     />
                 </div>
-            )}
+            </div>
         </motion.div>
     );
 }

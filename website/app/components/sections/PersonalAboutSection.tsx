@@ -1,16 +1,15 @@
-"use client";
-
-import { motion } from "motion/react";
 import { Icon } from "@iconify/react";
 import { BentoCard, BentoGrid } from "../ui/BentoGrid";
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
+import { ClientMotionDiv } from "../ui/ClientMotionDiv";
+import Link from "next/link";
 
 interface PersonalAboutSectionProps {
     summary?: boolean;
 }
 
-export function PersonalAboutSection({ summary = true }: PersonalAboutSectionProps) {
-    const t = useTranslations("Home.PersonalAboutSection");
+export async function PersonalAboutSection({ summary = false }: PersonalAboutSectionProps) {
+    const t = await getTranslations("Home.PersonalAboutSection");
 
     const interests = [
         {
@@ -51,7 +50,7 @@ export function PersonalAboutSection({ summary = true }: PersonalAboutSectionPro
     return (
         <section className="section">
             <div className="container">
-                <motion.div
+                <ClientMotionDiv
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
@@ -63,7 +62,7 @@ export function PersonalAboutSection({ summary = true }: PersonalAboutSectionPro
                     <p className="text-muted text-lg max-w-2xl">
                         {t("SubHeader")}
                     </p>
-                </motion.div>
+                </ClientMotionDiv>
 
                 <BentoGrid columns={3} gap="md">
                     {displayInterests.map((interestGroup, groupIndex) => (
@@ -113,6 +112,14 @@ export function PersonalAboutSection({ summary = true }: PersonalAboutSectionPro
                         </div>
                     </BentoCard>
                 </BentoGrid>
+
+                {summary && (
+                    <div className="mt-12 text-center">
+                        <Link href="/about" className="btn-secondary">
+                            {t("LearnMore")}
+                        </Link>
+                    </div>
+                )}
             </div>
         </section>
     );

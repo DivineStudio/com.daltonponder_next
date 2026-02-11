@@ -1,20 +1,21 @@
 "use client";
 
 import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
 import { motion } from "motion/react";
 import { Icon } from "@iconify/react";
 
+const emptySubscribe = () => () => { };
+
 export function ThemeToggler() {
-    const { theme, setTheme, resolvedTheme } = useTheme();
-    const [mounted, setMounted] = useState(false);
+    const { setTheme, resolvedTheme } = useTheme();
+    const isClient = useSyncExternalStore(
+        emptySubscribe,
+        () => true,
+        () => false
+    );
 
-    // Avoid hydration mismatch
-    useEffect(() => {
-        setMounted(true);
-    }, []);
-
-    if (!mounted) {
+    if (!isClient) {
         return (
             <button
                 className="w-10 h-10 rounded-full flex items-center justify-center border-2 border-[var(--color-accent)]"
