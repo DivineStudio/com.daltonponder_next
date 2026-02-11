@@ -8,6 +8,7 @@ import { BentoCard, BentoGrid } from "../ui/BentoGrid";
 import { TerminalTyping } from "../ui/TerminalTyping";
 import { TextScramble } from "../ui/TextScramble";
 import { useTranslations } from "next-intl";
+import { useMemo } from "react";
 
 export function HeroSection() {
     const t = useTranslations("Home.Hero");
@@ -23,7 +24,7 @@ export function HeroSection() {
         imageSrc?: string;
     }
 
-    const skills: Skill[] = [
+    const skills: Skill[] = useMemo(() => [
         {
             icon: "tabler:code",
             title: t("Skills.FullStack"),
@@ -55,18 +56,18 @@ export function HeroSection() {
             color: "#5ce500",
             bgColor: "var(--color-skill-bg-sitefinity)",
         },
-    ];
+    ], [t]);
 
-    const quickLinks = [
+    const quickLinks = useMemo(() => [
         { href: "https://www.linkedin.com/in/dalton-ponder-99a96a131", label: tSocial("LinkedIn"), icon: "tabler:brand-linkedin" },
         { href: "https://github.com/DivineStudio", label: tSocial("GitHub"), icon: "tabler:brand-github" },
-    ];
+    ], [tSocial]);
 
-    const terminalLines = [
+    const terminalLines = useMemo(() => [
         t("Terminal.Line1"),
         t("Terminal.Line2"),
         t("Terminal.Line3"),
-    ];
+    ], [t]);
 
     return (
         <section className="section min-h-screen flex items-center pt-24 md:pt-32" aria-labelledby="hero-heading">
