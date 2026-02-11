@@ -74,14 +74,13 @@ export function ContactPageContent() {
                             </div>
                         </motion.div>
                     </div>
-                </div >
+                </div>
 
                 {/* Gradient fade */}
-                < div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-[var(--background)] to-transparent" />
-            </section >
-
+                <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-[var(--background)] to-transparent" />
+            </section>
             {/* Contact Section */}
-            < section className="section" >
+            <section className="section">
                 <div className="container">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
                         {/* Contact Form */}
@@ -185,7 +184,7 @@ export function ContactPageContent() {
                         </div>
                     </motion.div>
                 </div>
-            </section >
+            </section>
         </>
     );
 }
