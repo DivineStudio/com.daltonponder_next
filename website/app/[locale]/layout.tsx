@@ -68,6 +68,7 @@ import { notFound } from 'next/navigation';
 import { routing } from '../../i18n/routing';
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
+import { VercelToolbar } from '@vercel/toolbar/next';
 
 export default async function RootLayout({
   children,
@@ -129,6 +130,7 @@ export default async function RootLayout({
         </NextIntlClientProvider>
         <Analytics />
         <SpeedInsights />
+        <VercelToolbar />
       </body>
     </html>
   );
