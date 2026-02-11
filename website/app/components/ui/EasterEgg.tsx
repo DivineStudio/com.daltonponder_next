@@ -22,19 +22,32 @@ export function useKonamiCode() {
     const [isActivated, setIsActivated] = useState(false);
 
     useEffect(() => {
-        const handleKeyDown = (e: KeyboardEvent) => {
-            inputSequenceRef.current = [...inputSequenceRef.current, e.code].slice(-KONAMI_CODE.length);
+        let timeoutId: NodeJS.Timeout;
 
-            if (inputSequenceRef.current.join(",") === KONAMI_CODE.join(",")) {
+        const handleKeyDown = (e: KeyboardEvent) => {
+            const sequence = inputSequenceRef.current;
+            sequence.push(e.code);
+
+            if (sequence.length > KONAMI_CODE.length) {
+                sequence.shift();
+            }
+
+            if (
+                sequence.length === KONAMI_CODE.length &&
+                sequence.every((code, i) => code === KONAMI_CODE[i])
+            ) {
                 setIsActivated(true);
-                inputSequenceRef.current = [];
+                sequence.length = 0;
                 // Auto-hide after 5 seconds
-                setTimeout(() => setIsActivated(false), 5000);
+                timeoutId = setTimeout(() => setIsActivated(false), 5000);
             }
         };
 
         window.addEventListener("keydown", handleKeyDown);
-        return () => window.removeEventListener("keydown", handleKeyDown);
+        return () => {
+            window.removeEventListener("keydown", handleKeyDown);
+            if (timeoutId) clearTimeout(timeoutId);
+        };
     }, []);
 
     return { isActivated, setIsActivated };
