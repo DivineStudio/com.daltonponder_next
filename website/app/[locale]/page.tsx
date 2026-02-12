@@ -7,6 +7,7 @@ import { TestimonialsSection } from "../components/sections/TestimonialsSection"
 import { ProAboutSection } from "../components/sections/ProAboutSection";
 import { PersonalAboutSection } from "../components/sections/PersonalAboutSection";
 import { ContactSection } from "../components/sections/ContactSection";
+import { SITE_URL } from "@/lib/constants";
 import { StructuredData } from "../components/seo/StructuredData";
 import { RedirectHandler } from "../components/RedirectHandler";
 import { getTranslations } from "next-intl/server";
@@ -31,7 +32,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
     "@type": "WebPage",
     "name": t("Title"),
     "description": t("Description"),
-    "url": `https://daltonponder.com/${locale === "en" ? "" : locale}`
+    "url": `${SITE_URL}/${locale === "en" ? "" : locale}`
   };
 
   return (

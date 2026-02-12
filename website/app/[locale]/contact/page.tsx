@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/constants";
 import { Navbar } from "../../components/layout/Navbar";
 import { Footer } from "../../components/layout/Footer";
 import { ContactPageContent } from "../../components/pages/ContactPageContent";
@@ -24,7 +25,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
         "@type": "ContactPage",
         "name": t("Title"),
         "description": t("Description"),
-        "url": `https://daltonponder.com/${locale === "en" ? "" : `${locale}/`}contact`
+        "url": `${SITE_URL}/${locale === "en" ? "" : `${locale}/`}contact`
     };
 
     return (

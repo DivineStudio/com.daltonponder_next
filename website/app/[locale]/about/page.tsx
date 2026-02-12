@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/constants";
 import { Navbar } from "../../components/layout/Navbar";
 import { Footer } from "../../components/layout/Footer";
 import { AboutPageContent } from "../../components/pages/AboutPageContent";
@@ -24,7 +25,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
         "@type": "AboutPage",
         "name": t("Title"),
         "description": t("Description"),
-        "url": `https://daltonponder.com/${locale === "en" ? "" : `${locale}/`}about`
+        "url": `${SITE_URL}/${locale === "en" ? "" : `${locale}/`}about`
     };
 
     return (

@@ -1,6 +1,14 @@
 import type { Metadata } from "next";
 import { IBM_Plex_Mono, IBM_Plex_Sans, IBM_Plex_Serif } from "next/font/google";
+import { NextIntlClientProvider } from "next-intl";
+import { getMessages } from "next-intl/server";
+import { notFound } from "next/navigation";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { VercelToolbar } from "@vercel/toolbar/next";
 import { ThemeProvider } from "next-themes";
+import { routing } from "../../i18n/routing";
+import { SITE_URL } from "@/lib/constants";
 import { EasterEggOverlay } from "../components/ui/EasterEgg";
 import GradientBackground from "../components/ui/GradientBackground";
 import { StructuredData } from "../components/seo/StructuredData";
@@ -41,7 +49,7 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Dalton Ponder" }],
   creator: "Dalton Ponder",
-  metadataBase: new URL("https://daltonponder.com"),
+  metadataBase: new URL(SITE_URL),
   openGraph: {
     title: "Dalton Ponder | Full-Stack Developer & Cybersecurity Expert",
     description:
@@ -61,14 +69,6 @@ export const metadata: Metadata = {
     follow: true,
   },
 };
-
-import { NextIntlClientProvider } from 'next-intl';
-import { getMessages } from 'next-intl/server';
-import { notFound } from 'next/navigation';
-import { routing } from '../../i18n/routing';
-import { Analytics } from '@vercel/analytics/next';
-import { SpeedInsights } from '@vercel/speed-insights/next';
-import { VercelToolbar } from '@vercel/toolbar/next';
 
 export default async function RootLayout({
   children,
@@ -95,7 +95,7 @@ export default async function RootLayout({
               "@context": "https://schema.org",
               "@type": "Person",
               "name": "Dalton Ponder",
-              "url": "https://daltonponder.com",
+              "url": SITE_URL,
               "jobTitle": "Full-Stack Developer",
               "description": "Senior full-stack developer and cybersecurity expert crafting secure, scalable solutions.",
               "sameAs": [
@@ -107,7 +107,7 @@ export default async function RootLayout({
               "@context": "https://schema.org",
               "@type": "WebSite",
               "name": "Dalton Ponder Portfolio",
-              "url": "https://daltonponder.com"
+              "url": SITE_URL
             }
           ]}
         />
