@@ -36,5 +36,8 @@
     "eslint-config-next": "16.1.6",
     "tailwindcss": "^4",
     "typescript": "^5"
+  },
+  "overrides": {
+    "path-to-regexp": "6.3.0"
   }
 }
