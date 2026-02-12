@@ -2,6 +2,7 @@ import { Icon } from "@iconify/react";
 import Link from "next/link";
 import { getTranslations } from "next-intl/server";
 import { ClientMotionDiv } from "../ui/ClientMotionDiv";
+import { SOCIAL_LINKS } from "@/lib/constants";
 
 interface ProAboutSectionProps {
     summary?: boolean;
@@ -52,7 +53,7 @@ export async function ProAboutSection({ summary = true }: ProAboutSectionProps) 
 
                     <div className="flex flex-wrap items-center justify-center gap-4">
                         <a
-                            href="https://linkedin.com/in/daltonponder"
+                            href={SOCIAL_LINKS.linkedin}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="btn-outline flex items-center gap-2"
@@ -61,7 +62,7 @@ export async function ProAboutSection({ summary = true }: ProAboutSectionProps) 
                             {t("LinkedIn")}
                         </a>
                         <a
-                            href="https://github.com/daltonponder"
+                            href={SOCIAL_LINKS.github}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="btn-outline flex items-center gap-2"

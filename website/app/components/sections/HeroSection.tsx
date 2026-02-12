@@ -6,6 +6,7 @@ import { TextScramble } from "../ui/TextScramble";
 import { getTranslations } from "next-intl/server";
 import { ClientMotionDiv } from "../ui/ClientMotionDiv";
 import { Icon } from "@iconify/react";
+import { SOCIAL_LINKS } from "@/lib/constants";
 
 const HERO_ICONS = {
     code: "tabler:code",
@@ -66,8 +67,8 @@ export async function HeroSection() {
     ];
 
     const quickLinks = [
-        { href: "https://www.linkedin.com/in/dalton-ponder-99a96a131", label: tSocial("LinkedIn"), icon: "linkedin" as keyof typeof HERO_ICONS },
-        { href: "https://github.com/DivineStudio", label: tSocial("GitHub"), icon: "github" as keyof typeof HERO_ICONS },
+        { href: SOCIAL_LINKS.linkedin, label: tSocial("LinkedIn"), icon: "linkedin" as keyof typeof HERO_ICONS },
+        { href: SOCIAL_LINKS.github, label: tSocial("GitHub"), icon: "github" as keyof typeof HERO_ICONS },
     ];
 
     const terminalLines = [

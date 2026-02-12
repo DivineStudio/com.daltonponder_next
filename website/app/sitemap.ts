@@ -1,7 +1,8 @@
 import { MetadataRoute } from 'next';
+import { SITE_URL } from '@/lib/constants';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://daltonponder.com';
+    const baseUrl = SITE_URL;
     const lastUpdated = new Date('2026-02-05'); // Update manually when content changes
     const routes = ['', '/about', '/skills', '/credentials', '/contact'];
 
