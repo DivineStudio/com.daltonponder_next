@@ -2,6 +2,7 @@ import { Navbar } from "../../components/layout/Navbar";
 import { Footer } from "../../components/layout/Footer";
 import { SkillsPageContent } from "../../components/pages/SkillsPageContent";
 import { StructuredData } from "../../components/seo/StructuredData";
+import { SITE_URL } from "@/lib/constants";
 
 import { getTranslations } from "next-intl/server";
 
@@ -24,7 +25,7 @@ export default async function SkillsPage({ params }: { params: Promise<{ locale:
         "@type": "WebPage",
         "name": t("Title"),
         "description": t("Description"),
-        "url": `https://daltonponder.com/${locale === "en" ? "" : `${locale}/`}skills`
+        "url": `${SITE_URL}/${locale === "en" ? "" : `${locale}/`}skills`
     };
 
     return (

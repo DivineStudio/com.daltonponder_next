@@ -3,6 +3,7 @@ import { useTranslations } from "next-intl";
 import { motion } from "motion/react";
 import { Icon } from "@iconify/react";
 import { ContactForm } from "../ui/ContactForm";
+import { EMAIL, SOCIAL_LINKS } from "@/lib/constants";
 
 export function ContactPageContent() {
     const t = useTranslations("Contact");
@@ -17,8 +18,8 @@ export function ContactPageContent() {
 
     // Social links using i18n
     const socialLinks = [
-        { name: t("Social.GitHub"), icon: "tabler:brand-github", url: "https://github.com/DivineStudio" },
-        { name: t("Social.LinkedIn"), icon: "tabler:brand-linkedin", url: "https://www.linkedin.com/in/dalton-ponder-99a96a131" },
+        { name: t("Social.GitHub"), icon: "tabler:brand-github", url: SOCIAL_LINKS.github },
+        { name: t("Social.LinkedIn"), icon: "tabler:brand-linkedin", url: SOCIAL_LINKS.linkedin },
     ];
 
     return (
@@ -109,7 +110,7 @@ export function ContactPageContent() {
                                     {t("Direct.EmailHeader")}
                                 </h3>
                                 <a
-                                    href="mailto:hello@daltonponder.com"
+                                    href={`mailto:${EMAIL}`}
                                     className="flex items-center gap-4 group"
                                 >
                                     <div className="w-14 h-14 rounded-xl bg-[var(--color-primary)] flex items-center justify-center group-hover:scale-105 transition-transform">

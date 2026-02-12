@@ -4,6 +4,7 @@ import { ThemeProvider } from "next-themes";
 import { EasterEggOverlay } from "../components/ui/EasterEgg";
 import GradientBackground from "../components/ui/GradientBackground";
 import { StructuredData } from "../components/seo/StructuredData";
+import { SITE_URL, SOCIAL_LINKS } from "@/lib/constants";
 import "../globals.css";
 
 const plexMono = IBM_Plex_Mono({
@@ -41,7 +42,7 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Dalton Ponder" }],
   creator: "Dalton Ponder",
-  metadataBase: new URL("https://daltonponder.com"),
+  metadataBase: new URL(SITE_URL),
   openGraph: {
     title: "Dalton Ponder | Full-Stack Developer & Cybersecurity Expert",
     description:
@@ -95,19 +96,19 @@ export default async function RootLayout({
               "@context": "https://schema.org",
               "@type": "Person",
               "name": "Dalton Ponder",
-              "url": "https://daltonponder.com",
+              "url": SITE_URL,
               "jobTitle": "Full-Stack Developer",
               "description": "Senior full-stack developer and cybersecurity expert crafting secure, scalable solutions.",
               "sameAs": [
-                "https://www.linkedin.com/in/dalton-ponder-99a96a131",
-                "https://github.com/DivineStudio"
+                SOCIAL_LINKS.linkedin,
+                SOCIAL_LINKS.github
               ]
             },
             {
               "@context": "https://schema.org",
               "@type": "WebSite",
               "name": "Dalton Ponder Portfolio",
-              "url": "https://daltonponder.com"
+              "url": SITE_URL
             }
           ]}
         />

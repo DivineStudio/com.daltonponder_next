@@ -2,6 +2,7 @@ import { Icon } from "@iconify/react";
 import Link from "next/link";
 import Image from "next/image";
 import { getTranslations } from "next-intl/server";
+import { SOCIAL_LINKS } from "@/lib/constants";
 
 export async function Footer() {
     const t = await getTranslations("Footer");
@@ -12,12 +13,12 @@ export async function Footer() {
 
     const socialLinks = [
         {
-            href: "https://www.linkedin.com/in/dalton-ponder-99a96a131",
+            href: SOCIAL_LINKS.linkedin,
             icon: "tabler:brand-linkedin",
             label: tSocial("LinkedIn"),
         },
         {
-            href: "https://github.com/DivineStudio",
+            href: SOCIAL_LINKS.github,
             icon: "tabler:brand-github",
             label: tSocial("GitHub"),
         },

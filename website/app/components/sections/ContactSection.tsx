@@ -4,6 +4,7 @@ import { getTranslations } from "next-intl/server";
 import { ContactForm, contactSubjectKeys } from "../ui/ContactForm";
 import { ClientMotionDiv } from "../ui/ClientMotionDiv";
 import { ClientMotionA } from "../ui/ClientMotionA";
+import { SOCIAL_LINKS } from "@/lib/constants";
 
 interface ContactSectionProps {
     summary?: boolean;
@@ -13,8 +14,8 @@ interface ContactSectionProps {
 export { contactSubjectKeys };
 
 const socialLinks = [
-    { href: "https://www.linkedin.com/in/dalton-ponder-99a96a131", icon: "tabler:brand-linkedin", label: "LinkedIn" },
-    { href: "https://github.com/DivineStudio", icon: "tabler:brand-github", label: "GitHub" },
+    { href: SOCIAL_LINKS.linkedin, icon: "tabler:brand-linkedin", label: "LinkedIn" },
+    { href: SOCIAL_LINKS.github, icon: "tabler:brand-github", label: "GitHub" },
 ];
 
 export async function ContactSection({ summary = true }: ContactSectionProps) {
