@@ -20,6 +20,7 @@ const cspHeader = `
 `;
 
 const nextConfig: NextConfig = {
+  poweredByHeader: false,
   async headers() {
     return [
       {
