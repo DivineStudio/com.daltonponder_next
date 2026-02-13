@@ -39,27 +39,24 @@ export function Carousel({
 }: CarouselProps) {
     const [isPlaying, setIsPlaying] = React.useState(autoplay);
 
-    // Use ref for stable autoplay plugin reference
-    const autoplayPluginRef = React.useRef<AutoplayType | null | undefined>(undefined);
-
-    // Lazily initialize the autoplay plugin
-    if (autoplayPluginRef.current === undefined) {
-        autoplayPluginRef.current = autoplay
+    // Initialize the autoplay plugin using useMemo
+    const autoplayPlugin = React.useMemo<AutoplayType | null>(() => {
+        return autoplay
             ? Autoplay({
                 delay: autoplayDelay,
                 stopOnInteraction: false,
                 stopOnMouseEnter: true
             })
             : null;
-    }
+    }, [autoplay, autoplayDelay]);
 
     const internalPlugins = React.useMemo(() => {
         const p = [...plugins];
-        if (autoplayPluginRef.current) {
-            p.push(autoplayPluginRef.current);
+        if (autoplayPlugin) {
+            p.push(autoplayPlugin);
         }
         return p;
-    }, [plugins]);
+    }, [plugins, autoplayPlugin]);
 
     const [emblaRef, emblaApi] = useEmblaCarousel(options, internalPlugins);
     const [selectedIndex, setSelectedIndex] = React.useState(0);
@@ -94,7 +91,6 @@ export function Carousel({
         emblaApi.on("select", onSelect);
 
         // Add Autoplay plugin event listeners to sync state
-        const autoplayPlugin = autoplayPluginRef.current;
         if (autoplayPlugin) {
             emblaApi.on("autoplay:play", onAutoplayPlay);
             emblaApi.on("autoplay:stop", onAutoplayStop);
@@ -110,7 +106,7 @@ export function Carousel({
                 emblaApi.off("autoplay:stop", onAutoplayStop);
             }
         };
-    }, [emblaApi, onInit, onSelect, onAutoplayPlay, onAutoplayStop]);
+    }, [emblaApi, onInit, onSelect, onAutoplayPlay, onAutoplayStop, autoplayPlugin]);
 
     const scrollTo = React.useCallback(
         (index: number) => {
@@ -120,7 +116,6 @@ export function Carousel({
     );
 
     const toggleAutoplay = React.useCallback(() => {
-        const autoplayPlugin = autoplayPluginRef.current;
         if (!autoplayPlugin) return;
 
         // Use the plugin's isPlaying method for accurate state
@@ -129,7 +124,7 @@ export function Carousel({
         } else {
             autoplayPlugin.play();
         }
-    }, []);
+    }, [autoplayPlugin]);
 
     return (
         <div className={`relative ${className}`}>
