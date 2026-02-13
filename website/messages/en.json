@@ -104,6 +104,7 @@
                 "Message": "Message",
                 "Send": "Send Message",
                 "Sending": "Sending...",
+                "RateLimitError": "You're sending messages too fast. Please wait a moment.",
                 "SuccessHeader": "Message Sent!",
                 "SuccessMessage": "Thank you for reaching out. I'll get back to you soon.",
                 "Subjects": {
