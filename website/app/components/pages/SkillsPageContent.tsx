@@ -10,7 +10,7 @@ import Image from "next/image";
 // Full skills data with categories, years, and proficiency
 
 
-const categories = ["All", "Languages", "Frontend", "Backend", "DevOps", "Data", "AI", "Practices", "Soft Skills"];
+const categories = ["All", "Languages", "Frontend", "Backend", "DevOps", "Data", "AI & ML", "Practices", "Soft Skills"];
 
 interface Skill {
     name: string;
@@ -120,7 +120,7 @@ export function SkillsPageContent() {
             const matchesCategory = activeCategory === "All" || skill.category === activeCategory;
             return matchesSearch && matchesCategory;
         });
-    }, [searchQuery, activeCategory]);
+    }, [searchQuery, activeCategory, allSkills]);
 
     return (
         <>
