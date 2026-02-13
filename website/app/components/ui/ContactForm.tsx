@@ -1,11 +1,12 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import { useTranslations, useLocale } from "next-intl";
 import { motion } from "motion/react";
 import { Icon } from "@iconify/react";
 import { useForm, ValidationError } from "@formspree/react";
 import HCaptcha from "@hcaptcha/react-hcaptcha";
+import { CONTACT_FORM_COOLDOWN } from "@/lib/constants";
 
 // Contact subject keys for the dropdown
 export const contactSubjectKeys = [
@@ -44,8 +45,45 @@ export function ContactForm({ useCaptcha = true, className = "" }: ContactFormPr
     });
 
     const [captchaToken, setCaptchaToken] = useState<string | null>(null);
+    const [isCooldownActive, setIsCooldownActive] = useState(false);
+    const [remainingTime, setRemainingTime] = useState(0);
     const captchaRef = useRef<HCaptcha>(null);
     const locale = useLocale();
+
+    const checkCooldown = useCallback(() => {
+        if (typeof window === "undefined") return;
+        const lastSubmission = localStorage.getItem("contact_form_last_submission");
+        if (lastSubmission) {
+            const now = Date.now();
+            const diff = now - parseInt(lastSubmission, 10);
+            if (diff < CONTACT_FORM_COOLDOWN) {
+                setIsCooldownActive(true);
+                setRemainingTime(Math.ceil((CONTACT_FORM_COOLDOWN - diff) / 1000));
+                return;
+            }
+        }
+        setIsCooldownActive(false);
+        setRemainingTime(0);
+    }, []);
+
+    // Check for cooldown on mount and every second
+    useEffect(() => {
+        const interval = setInterval(checkCooldown, 1000);
+        // Initial check deferred to next tick to avoid synchronous setState in effect lint error
+        const timeout = setTimeout(checkCooldown, 0);
+
+        return () => {
+            clearInterval(interval);
+            clearTimeout(timeout);
+        };
+    }, [checkCooldown]);
+
+    // Set cooldown in localStorage when form succeeds
+    useEffect(() => {
+        if (state.succeeded) {
+            localStorage.setItem("contact_form_last_submission", Date.now().toString());
+        }
+    }, [state.succeeded]);
 
     const handleReset = () => {
         reset();
@@ -54,6 +92,8 @@ export function ContactForm({ useCaptcha = true, className = "" }: ContactFormPr
             captchaRef.current?.resetCaptcha();
             setCaptchaToken(null);
         }
+        // Manual check when resetting the form
+        checkCooldown();
     };
 
     const handleChange = (
@@ -65,9 +105,15 @@ export function ContactForm({ useCaptcha = true, className = "" }: ContactFormPr
         }));
     };
 
+    const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        if (isCooldownActive) return;
+        await handleSubmit(e);
+    };
+
     const isSubmitDisabled = useCaptcha
-        ? state.submitting || !captchaToken
-        : state.submitting;
+        ? state.submitting || !captchaToken || isCooldownActive
+        : state.submitting || isCooldownActive;
 
     if (state.succeeded) {
         return (
@@ -92,7 +138,7 @@ export function ContactForm({ useCaptcha = true, className = "" }: ContactFormPr
     }
 
     return (
-        <form onSubmit={handleSubmit} className={`space-y-6 ${className}`}>
+        <form onSubmit={handleFormSubmit} className={`space-y-6 ${className}`}>
             {/* Name Field */}
             <div>
                 <label htmlFor="name" className="block text-sm font-medium mb-2">
@@ -184,6 +230,16 @@ export function ContactForm({ useCaptcha = true, className = "" }: ContactFormPr
                 </div>
             )}
 
+            {/* Rate Limit Message */}
+            {isCooldownActive && !state.succeeded && (
+                <div className="flex items-center gap-2 text-amber-500 text-sm justify-center bg-amber-500/10 py-2 px-4 rounded-lg border border-amber-500/20">
+                    <Icon icon="tabler:clock-bolt" width={18} height={18} />
+                    <p>
+                        {t("Form.RateLimitError")} ({remainingTime}s)
+                    </p>
+                </div>
+            )}
+
             {/* Submit Button */}
             <button
                 type="submit"
@@ -194,6 +250,11 @@ export function ContactForm({ useCaptcha = true, className = "" }: ContactFormPr
                     <>
                         <Icon icon="tabler:loader-2" width={20} height={20} className="animate-spin" />
                         {t("Form.Sending")}
+                    </>
+                ) : isCooldownActive && !state.succeeded ? (
+                    <>
+                        {t("Form.Send")}
+                        <Icon icon="tabler:clock-pause" width={20} height={20} />
                     </>
                 ) : (
                     <>

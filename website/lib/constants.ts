@@ -14,3 +14,9 @@ export const SOCIAL_LINKS = {
     github: GITHUB_URL,
     linkedin: LINKEDIN_URL,
 } as const;
+
+/**
+ * Cooldown period for contact form submissions in milliseconds.
+ * 60 seconds = 60000ms
+ */
+export const CONTACT_FORM_COOLDOWN = 60000;
