@@ -1,10 +1,20 @@
 import type { Metadata } from "next";
 import { IBM_Plex_Mono, IBM_Plex_Sans, IBM_Plex_Serif } from "next/font/google";
+import { notFound } from "next/navigation";
+
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { VercelToolbar } from "@vercel/toolbar/next";
+import { NextIntlClientProvider } from "next-intl";
+import { getMessages } from "next-intl/server";
 import { ThemeProvider } from "next-themes";
+
+import { routing } from "../../i18n/routing";
+import { SITE_URL, SOCIAL_LINKS } from "@/lib/constants";
+import { StructuredData } from "../components/seo/StructuredData";
 import { EasterEggOverlay } from "../components/ui/EasterEgg";
 import GradientBackground from "../components/ui/GradientBackground";
-import { StructuredData } from "../components/seo/StructuredData";
-import { SITE_URL, SOCIAL_LINKS } from "@/lib/constants";
+
 import "../globals.css";
 
 const plexMono = IBM_Plex_Mono({
@@ -63,13 +73,6 @@ export const metadata: Metadata = {
   },
 };
 
-import { NextIntlClientProvider } from 'next-intl';
-import { getMessages } from 'next-intl/server';
-import { notFound } from 'next/navigation';
-import { routing } from '../../i18n/routing';
-import { Analytics } from '@vercel/analytics/next';
-import { SpeedInsights } from '@vercel/speed-insights/next';
-import { VercelToolbar } from '@vercel/toolbar/next';
 
 export default async function RootLayout({
   children,
