@@ -12,7 +12,7 @@ const HERO_ICONS = {
     code: "tabler:code",
     security: "tabler:shield-lock",
     cloud: "tabler:cloud",
-    ai: "tabler:brain",
+    ai: "ri:code-ai-fill",
     sitefinity: "logos:progress",
     linkedin: "tabler:brand-linkedin",
     github: "tabler:brand-github",
