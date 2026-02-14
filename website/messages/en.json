@@ -22,7 +22,7 @@
             "Greeting": "Hi, I'm",
             "Name": "DALTON PONDER",
             "Terminal": {
-                "Line1": "Dalton.Init(\"Fullstack\", \"Security\", \"AI\")",
+                "Line1": "Dalton.Init(\"Fullstack\", \"Security\", \"ML\")",
                 "Line2": "Loading expertise... ████████ 100%",
                 "Line3": "Ready to build."
             },
@@ -33,7 +33,7 @@
                 "Security": "Secure Software Development",
                 "Cloud": "Cloud Architecture & DevOps",
                 "CloudDetails": "Azure • Vercel",
-                "AI": "AI-Driven Solutions",
+                "AI": "Intelligent Systems Architecture",
                 "Sitefinity": "Sitefinity Developer"
             },
             "QuickLinks": "Quick Links"
@@ -411,25 +411,25 @@
                 {
                     "name": "Anthropic Claude",
                     "icon": "logos:claude-icon",
-                    "category": "AI",
+                    "category": "AI & ML",
                     "year": "2025"
                 },
                 {
                     "name": "OpenAI Codex",
                     "icon": "tabler:brand-openai",
-                    "category": "AI",
+                    "category": "AI & ML",
                     "year": "2025"
                 },
                 {
                     "name": "OpenAI ChatGPT",
                     "icon": "tabler:brand-openai",
-                    "category": "AI",
+                    "category": "AI & ML",
                     "year": "2023"
                 },
                 {
                     "name": "Google Gemini",
                     "icon": "vscode-icons:file-type-gemini",
-                    "category": "AI",
+                    "category": "AI & ML",
                     "year": "2025"
                 },
                 {
@@ -631,7 +631,7 @@
                 "Points": [
                     "Specialized in .NET Full-Stack Development",
                     "Certified Sitefinity developer",
-                    "Expanding into React, Next.js, and AI-driven Solutions",
+                    "Expanding into React, Next.js, and Intelligent Systems",
                     "Security-first mindset, fundamental to my development process"
                 ]
             },
@@ -642,7 +642,7 @@
                     "Family time is my greatest joy",
                     "Music offers daily solace",
                     "Stoic philosophy guides my approach",
-                    "Continuing my academic journey with a focus on AI"
+                    "Continuing my academic journey with a focus on Artificial Intelligence & Machine Learning"
                 ],
                 "Icons": [
                     "tabler:users",
@@ -658,7 +658,7 @@
                 {
                     "title": "Senior Developer",
                     "icon": "ri:code-ai-fill",
-                    "description": "Continuing to grow and develop, currently exploring AI and how it can be used to enhance web applications.",
+                    "description": "Continuing to grow and develop, currently exploring Artificial Intelligence, Machine Learning, and Intelligent Systems architecture.",
                     "side": "left",
                     "current": true
                 },
@@ -912,23 +912,23 @@
     },
     "Metadata": {
         "Home": {
-            "Title": "Dalton Ponder | Fullstack & AI-Driven Solutions Expert",
+            "Title": "Dalton Ponder | Fullstack & Intelligent Systems Expert",
             "Description": "Portfolio of Dalton Ponder - Full-stack developer and Sitefinity development expert crafting secure, scalable solutions."
         },
         "About": {
-            "Title": "About Dalton Ponder | Fullstack Developer & AI Enthusiast",
+            "Title": "About Dalton Ponder | Fullstack Developer & AI/ML Enthusiast",
             "Description": "Learn more about Dalton Ponder's background, experience, and what drives his passion for technology."
         },
         "Skills": {
-            "Title": "Technical Skills | .NET, JavaScript, & AI Technologies",
+            "Title": "Technical Skills | .NET, JavaScript, & Intelligent Systems",
             "Description": "Explore Dalton Ponder's technical skills, languages, frameworks, and tools."
         },
         "Credentials": {
-            "Title": "Credentials & Experience | Fullstack & AI Engineering",
+            "Title": "Credentials & Experience | Fullstack & AI/ML Engineering",
             "Description": "View Dalton Ponder's education, certifications, and professional credentials."
         },
         "Contact": {
-            "Title": "Contact | Fullstack & AI Development Services",
+            "Title": "Contact | Fullstack & Intelligent Systems Development",
             "Description": "Get in touch with Dalton Ponder for projects, collaborations, or opportunities."
         }
     }
