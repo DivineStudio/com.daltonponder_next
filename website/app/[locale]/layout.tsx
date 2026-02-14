@@ -7,8 +7,8 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { VercelToolbar } from "@vercel/toolbar/next";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
-import { ThemeProvider } from "next-themes";
 
+import { Providers } from "@/app/providers";
 import { routing } from "../../i18n/routing";
 import { SITE_URL, SOCIAL_LINKS } from "@/lib/constants";
 import { StructuredData } from "../components/seo/StructuredData";
@@ -126,11 +126,11 @@ export default async function RootLayout({
           Skip to main content
         </a>
         <NextIntlClientProvider messages={messages}>
-          <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+          <Providers>
             <GradientBackground />
             <EasterEggOverlay />
             {children}
-          </ThemeProvider>
+          </Providers>
         </NextIntlClientProvider>
         <Analytics />
         <SpeedInsights />
