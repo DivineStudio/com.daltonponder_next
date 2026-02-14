@@ -22,7 +22,7 @@
             "Greeting": "Hi, I'm",
             "Name": "DALTON PONDER",
             "Terminal": {
-                "Line1": "Dalton.Init(\"Fullstack\", \"Security\", \"AI & ML\")",
+                "Line1": "Dalton.Init(\"Fullstack\", \"Security\", \"ML\")",
                 "Line2": "Loading expertise... ████████ 100%",
                 "Line3": "Ready to build."
             },
@@ -642,7 +642,7 @@
                     "Family time is my greatest joy",
                     "Music offers daily solace",
                     "Stoic philosophy guides my approach",
-                    "Continuing my academic journey with a focus on Machine Learning"
+                    "Continuing my academic journey with a focus on Artificial Intelligence & Machine Learning"
                 ],
                 "Icons": [
                     "tabler:users",
@@ -658,7 +658,7 @@
                 {
                     "title": "Senior Developer",
                     "icon": "ri:code-ai-fill",
-                    "description": "Continuing to grow and develop, currently exploring Machine Learning and Intelligent Systems architecture.",
+                    "description": "Continuing to grow and develop, currently exploring Artificial Intelligence, Machine Learning, and Intelligent Systems architecture.",
                     "side": "left",
                     "current": true
                 },
@@ -916,7 +916,7 @@
             "Description": "Portfolio of Dalton Ponder - Full-stack developer and Sitefinity development expert crafting secure, scalable solutions."
         },
         "About": {
-            "Title": "About Dalton Ponder | Fullstack Developer & ML Enthusiast",
+            "Title": "About Dalton Ponder | Fullstack Developer & AI/ML Enthusiast",
             "Description": "Learn more about Dalton Ponder's background, experience, and what drives his passion for technology."
         },
         "Skills": {
@@ -924,7 +924,7 @@
             "Description": "Explore Dalton Ponder's technical skills, languages, frameworks, and tools."
         },
         "Credentials": {
-            "Title": "Credentials & Experience | Fullstack & ML Engineering",
+            "Title": "Credentials & Experience | Fullstack & AI/ML Engineering",
             "Description": "View Dalton Ponder's education, certifications, and professional credentials."
         },
         "Contact": {
