@@ -39,12 +39,12 @@ const plexSerif = IBM_Plex_Serif({
 });
 
 export const metadata: Metadata = {
-  title: "Dalton Ponder | Full-Stack Developer & Cybersecurity Expert",
+  title: "Dalton Ponder | Full-Stack Developer & AI-Integrated Software Engineer",
   description:
-    "Professional portfolio of Dalton Ponder - Full-stack developer and cybersecurity expert crafting secure, scalable solutions.",
+    "Professional portfolio of Dalton Ponder - Full-stack developer and AI-Integrated Software Engineer crafting secure, scalable solutions.",
   keywords: [
     "Full-Stack Developer",
-    "Cybersecurity",
+    "AI-Integrated Software Engineering",
     "React",
     "Next.js",
     "TypeScript",
@@ -54,18 +54,18 @@ export const metadata: Metadata = {
   creator: "Dalton Ponder",
   metadataBase: new URL(SITE_URL),
   openGraph: {
-    title: "Dalton Ponder | Full-Stack Developer & Cybersecurity Expert",
+    title: "Dalton Ponder | Full-Stack Developer & AI-Integrated Software Engineer",
     description:
-      "Professional portfolio of Dalton Ponder - Full-stack developer and cybersecurity expert crafting secure, scalable solutions.",
+      "Professional portfolio of Dalton Ponder - Full-stack developer and AI-Integrated Software Engineer crafting secure, scalable solutions.",
     type: "website",
     locale: "en_US",
     siteName: "Dalton Ponder Portfolio",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Dalton Ponder | Full-Stack Developer & Cybersecurity Expert",
+    title: "Dalton Ponder | Full-Stack Developer & AI-Integrated Software Engineer",
     description:
-      "Professional portfolio of Dalton Ponder - Full-stack developer and cybersecurity expert crafting secure, scalable solutions.",
+      "Professional portfolio of Dalton Ponder - Full-stack developer and AI-Integrated Software Engineer crafting secure, scalable solutions.",
   },
   robots: {
     index: true,
@@ -101,7 +101,7 @@ export default async function RootLayout({
               "name": "Dalton Ponder",
               "url": SITE_URL,
               "jobTitle": "Full-Stack Developer",
-              "description": "Senior full-stack developer and cybersecurity expert crafting secure, scalable solutions.",
+              "description": "Senior full-stack developer and AI-Integrated Software Engineer crafting secure, scalable solutions.",
               "sameAs": [
                 SOCIAL_LINKS.linkedin,
                 SOCIAL_LINKS.github

@@ -33,7 +33,7 @@
                 "Security": "Secure Software Development",
                 "Cloud": "Cloud Architecture & DevOps",
                 "CloudDetails": "Azure • Vercel",
-                "AI": "AI-Integrated Software Engineering",
+                "AI": "AI-Integrated Software Engineer",
                 "Sitefinity": "Sitefinity Developer"
             },
             "QuickLinks": "Quick Links"
@@ -912,7 +912,7 @@
     },
     "Metadata": {
         "Home": {
-            "Title": "Dalton Ponder | Fullstack & AI-Integrated Software Engineering",
+            "Title": "Dalton Ponder | Fullstack & AI-Integrated Software Engineer",
             "Description": "Portfolio of Dalton Ponder - Full-stack developer and Sitefinity development expert crafting secure, scalable solutions."
         },
         "About": {
@@ -920,15 +920,15 @@
             "Description": "Learn more about Dalton Ponder's background, experience, and what drives his passion for technology."
         },
         "Skills": {
-            "Title": "Technical Skills | .NET, JavaScript, & AI-Integrated Software Engineering",
+            "Title": "Technical Skills | .NET, JavaScript, & AI-Integrated Software Engineer",
             "Description": "Explore Dalton Ponder's technical skills, languages, frameworks, and tools."
         },
         "Credentials": {
-            "Title": "Credentials & Experience | Fullstack & AI/ML Engineering",
+            "Title": "Credentials & Experience | Fullstack & AI-Integrated Software Engineer",
             "Description": "View Dalton Ponder's education, certifications, and professional credentials."
         },
         "Contact": {
-            "Title": "Contact | Fullstack & AI-Integrated Software Engineering",
+            "Title": "Contact | Fullstack & AI-Integrated Software Engineer",
             "Description": "Get in touch with Dalton Ponder for projects, collaborations, or opportunities."
         }
     }
