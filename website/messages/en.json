@@ -33,7 +33,7 @@
                 "Security": "Secure Software Development",
                 "Cloud": "Cloud Architecture & DevOps",
                 "CloudDetails": "Azure • Vercel",
-                "AI": "Intelligent Systems Architecture",
+                "AI": "AI-Integrated Software Engineering",
                 "Sitefinity": "Sitefinity Developer"
             },
             "QuickLinks": "Quick Links"
@@ -631,7 +631,7 @@
                 "Points": [
                     "Specialized in .NET Full-Stack Development",
                     "Certified Sitefinity developer",
-                    "Expanding into React, Next.js, and Intelligent Systems",
+                    "Expanding into React, Next.js, and AI-Integrated Software Engineering",
                     "Security-first mindset, fundamental to my development process"
                 ]
             },
@@ -658,7 +658,7 @@
                 {
                     "title": "Senior Developer",
                     "icon": "ri:code-ai-fill",
-                    "description": "Continuing to grow and develop, currently exploring Artificial Intelligence, Machine Learning, and Intelligent Systems architecture.",
+                    "description": "Continuing to grow and develop, currently exploring Artificial Intelligence, Machine Learning, and AI-integrated software engineering.",
                     "side": "left",
                     "current": true
                 },
@@ -912,7 +912,7 @@
     },
     "Metadata": {
         "Home": {
-            "Title": "Dalton Ponder | Fullstack & Intelligent Systems Expert",
+            "Title": "Dalton Ponder | Fullstack & AI-Integrated Software Engineering",
             "Description": "Portfolio of Dalton Ponder - Full-stack developer and Sitefinity development expert crafting secure, scalable solutions."
         },
         "About": {
@@ -920,7 +920,7 @@
             "Description": "Learn more about Dalton Ponder's background, experience, and what drives his passion for technology."
         },
         "Skills": {
-            "Title": "Technical Skills | .NET, JavaScript, & Intelligent Systems",
+            "Title": "Technical Skills | .NET, JavaScript, & AI-Integrated Software Engineering",
             "Description": "Explore Dalton Ponder's technical skills, languages, frameworks, and tools."
         },
         "Credentials": {
@@ -928,7 +928,7 @@
             "Description": "View Dalton Ponder's education, certifications, and professional credentials."
         },
         "Contact": {
-            "Title": "Contact | Fullstack & Intelligent Systems Development",
+            "Title": "Contact | Fullstack & AI-Integrated Software Engineering",
             "Description": "Get in touch with Dalton Ponder for projects, collaborations, or opportunities."
         }
     }
