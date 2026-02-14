@@ -4,7 +4,6 @@ import { notFound } from "next/navigation";
 
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import { VercelToolbar } from "@vercel/toolbar/next";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import { ThemeProvider } from "next-themes";
@@ -134,9 +133,6 @@ export default async function RootLayout({
         </NextIntlClientProvider>
         <Analytics />
         <SpeedInsights />
-        {process.env.NODE_ENV === "development" || process.env.VERCEL_ENV === "preview" ? (
-          <VercelToolbar />
-        ) : null}
       </body>
     </html>
   );
