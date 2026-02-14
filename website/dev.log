@@ -8,48 +8,14 @@
 - Network:       http://192.168.0.2:3000
 
 ✓ Starting...
-Attention: Next.js now collects completely anonymous telemetry regarding usage.
-This information is used to shape Next.js' roadmap and prioritize features.
-You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
-https://nextjs.org/telemetry
-
 ⚠ The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
-✓ Ready in 2.3s
-○ Compiling /[locale] ...
+✓ Ready in 3.5s
 You are rendering the Vercel Toolbar in development, but the configuration is missing.
 Make sure the plugin is added to the Next.js config and the project has been linked using `vercel link`.
 For more details, visit https://vercel.com/docs/workflow-collaboration/vercel-toolbar/in-production-and-localhost/add-to-localhost
 You are rendering the Vercel Toolbar in development, but the configuration is missing.
 Make sure the plugin is added to the Next.js config and the project has been linked using `vercel link`.
 For more details, visit https://vercel.com/docs/workflow-collaboration/vercel-toolbar/in-production-and-localhost/add-to-localhost
- GET / 200 in 12.4s (compile: 8.7s, proxy.ts: 8ms, render: 3.7s)
-You are rendering the Vercel Toolbar in development, but the configuration is missing.
-Make sure the plugin is added to the Next.js config and the project has been linked using `vercel link`.
-For more details, visit https://vercel.com/docs/workflow-collaboration/vercel-toolbar/in-production-and-localhost/add-to-localhost
- GET / 200 in 672ms (compile: 41ms, proxy.ts: 6ms, render: 625ms)
- GET / 200 in 561ms (compile: 35ms, proxy.ts: 5ms, render: 521ms)
-You are rendering the Vercel Toolbar in development, but the configuration is missing.
-Make sure the plugin is added to the Next.js config and the project has been linked using `vercel link`.
-For more details, visit https://vercel.com/docs/workflow-collaboration/vercel-toolbar/in-production-and-localhost/add-to-localhost
- GET / 200 in 1035ms (compile: 58ms, proxy.ts: 9ms, render: 968ms)
-You are rendering the Vercel Toolbar in development, but the configuration is missing.
-Make sure the plugin is added to the Next.js config and the project has been linked using `vercel link`.
-For more details, visit https://vercel.com/docs/workflow-collaboration/vercel-toolbar/in-production-and-localhost/add-to-localhost
- GET / 200 in 511ms (compile: 38ms, proxy.ts: 4ms, render: 468ms)
-You are rendering the Vercel Toolbar in development, but the configuration is missing.
-Make sure the plugin is added to the Next.js config and the project has been linked using `vercel link`.
-For more details, visit https://vercel.com/docs/workflow-collaboration/vercel-toolbar/in-production-and-localhost/add-to-localhost
- GET / 200 in 619ms (compile: 35ms, proxy.ts: 4ms, render: 581ms)
-You are rendering the Vercel Toolbar in development, but the configuration is missing.
-Make sure the plugin is added to the Next.js config and the project has been linked using `vercel link`.
-For more details, visit https://vercel.com/docs/workflow-collaboration/vercel-toolbar/in-production-and-localhost/add-to-localhost
-✓ Compiled in 895ms
-You are rendering the Vercel Toolbar in development, but the configuration is missing.
-Make sure the plugin is added to the Next.js config and the project has been linked using `vercel link`.
-For more details, visit https://vercel.com/docs/workflow-collaboration/vercel-toolbar/in-production-and-localhost/add-to-localhost
-You are rendering the Vercel Toolbar in development, but the configuration is missing.
-Make sure the plugin is added to the Next.js config and the project has been linked using `vercel link`.
-For more details, visit https://vercel.com/docs/workflow-collaboration/vercel-toolbar/in-production-and-localhost/add-to-localhost
- GET / 200 in 3.0s (compile: 893ms, proxy.ts: 13ms, render: 2.0s)
+ GET / 200 in 6.3s (compile: 4.1s, proxy.ts: 8ms, render: 2.1s)
 [vercel-toolbar] No project info found. Make sure you run `vc link` in your project directory.
 [?25h
