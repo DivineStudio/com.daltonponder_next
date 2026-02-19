@@ -641,14 +641,12 @@
                 "Points": [
                     "Family time is my greatest joy",
                     "Music offers daily solace",
-                    "Stoic philosophy guides my approach",
-                    "Continuing my academic journey with a focus on Artificial Intelligence & Machine Learning"
+                    "Stoic philosophy guides my approach"
                 ],
                 "Icons": [
                     "tabler:users",
                     "tabler:music",
-                    "tabler:brain",
-                    "ri:code-ai-fill"
+                    "tabler:brain"
                 ]
             }
         },
@@ -699,7 +697,7 @@
         "Stats": {
             "Years Exp": "Years Experience",
             "Certs": "Certifications",
-            "Degree": "Degree"
+            "Degree": "Degrees"
         },
         "WorkExperience": {
             "Header": "Work Experience",
@@ -804,25 +802,6 @@
         "Education": {
             "Header": "Education",
             "List": [
-                {
-                    "Degree": "Master of Science in Computer Science",
-                    "Specialization": "Artificial Intelligence",
-                    "University": "Southern New Hampshire University",
-                    "Year": "2027",
-                    "YearLabel": "Graduating",
-                    "imageSrc": "/logos/SNHULogo.webp",
-                    "imageAlt": "Southern New Hampshire University",
-                    "bgTheme": "Light",
-                    "Coursework": [
-                        "Database Design and Development",
-                        "Advanced Algorithms",
-                        "Advanced Programming Language Theory",
-                        "Natural Language Processing",
-                        "Deep Learning",
-                        "Machine Learning",
-                        "Applied Artificial Intelligence and Machine Learning"
-                    ]
-                },
                 {
                     "Degree": "Master of Science in Cybersecurity and Information Assurance",
                     "University": "Western Governors University",

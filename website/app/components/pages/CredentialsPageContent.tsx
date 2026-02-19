@@ -41,7 +41,7 @@ export function CredentialsPageContent() {
                             {[
                                 { value: "8+", id: "Years Exp" },
                                 { value: "3", id: "Certs" },
-                                { value: "MS", id: "Degree" },
+                                { value: "2", id: "Degree" },
                             ].map((stat, index) => (
                                 <motion.div
                                     key={stat.id}
