@@ -641,12 +641,14 @@
                 "Points": [
                     "Family time is my greatest joy",
                     "Music offers daily solace",
-                    "Stoic philosophy guides my approach"
+                    "Stoic philosophy guides my approach",
+                    "Continuing my professional journey focusing on Artificial Intelligence"
                 ],
                 "Icons": [
                     "tabler:users",
                     "tabler:music",
-                    "tabler:brain"
+                    "tabler:brain",
+                    "ri:code-ai-fill"
                 ]
             }
         },
