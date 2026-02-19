@@ -4,9 +4,10 @@ import { useState, useRef, useEffect, useCallback } from "react";
 import { useTranslations, useLocale } from "next-intl";
 import { motion } from "motion/react";
 import { Icon } from "@iconify/react";
-import { useForm, ValidationError } from "@formspree/react";
+import { ValidationError } from "@formspree/react";
 import HCaptcha from "@hcaptcha/react-hcaptcha";
 import { CONTACT_FORM_COOLDOWN } from "@/lib/constants";
+import { submitContactForm } from "@/app/actions/contact";
 
 // Contact subject keys for the dropdown
 export const contactSubjectKeys = [
@@ -34,8 +35,16 @@ export function ContactForm({ useCaptcha = true, className = "" }: ContactFormPr
     const t = useTranslations("Home.ContactSection");
     const tContact = useTranslations("Contact");
 
-    // Formspree hook
-    const [state, handleSubmit, reset] = useForm(process.env.NEXT_PUBLIC_FORMSPREE_ID || "");
+    // Custom state management to replace @formspree/react useForm
+    const [state, setState] = useState({
+        submitting: false,
+        succeeded: false,
+        errors: [] as any[],
+    });
+
+    const reset = useCallback(() => {
+        setState({ submitting: false, succeeded: false, errors: [] });
+    }, []);
 
     const [formData, setFormData] = useState({
         name: "",
@@ -108,7 +117,35 @@ export function ContactForm({ useCaptcha = true, className = "" }: ContactFormPr
     const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         if (isCooldownActive) return;
-        await handleSubmit(e);
+
+        setState((prev) => ({ ...prev, submitting: true, errors: [] }));
+
+        const form = e.currentTarget;
+        const data = {
+            name: formData.name,
+            email: formData.email,
+            subject: formData.subject,
+            message: formData.message,
+            ...(useCaptcha && captchaToken ? { "h-captcha-response": captchaToken } : {}),
+        };
+
+        const result = await submitContactForm(data);
+
+        if (result.success) {
+            setState({ submitting: false, succeeded: true, errors: [] });
+        } else {
+            setState({
+                submitting: false,
+                succeeded: false,
+                errors: result.errors || [],
+            });
+
+            if (result.error === "rate-limit") {
+                setIsCooldownActive(true);
+                // Sync localStorage to maintain UI cooldown if it was bypassed/cleared
+                localStorage.setItem("contact_form_last_submission", Date.now().toString());
+            }
+        }
     };
 
     const isSubmitDisabled = useCaptcha
