@@ -1,10 +1,13 @@
 "use client";
 
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useCallback, useMemo } from "react";
 import { motion } from "motion/react";
 import { Icon } from "@iconify/react";
 import Autoplay from "embla-carousel-autoplay";
 import useEmblaCarousel from "embla-carousel-react";
+import { EmblaOptionsType } from "embla-carousel";
+
+const EMBLA_OPTIONS: EmblaOptionsType = { loop: true };
 
 const philosophyQuotes = [
     {
@@ -34,12 +37,15 @@ interface PhilosophyQuoteProps {
 }
 
 export function PhilosophyQuote({ className = "" }: PhilosophyQuoteProps) {
-    // Use ref for stable autoplay plugin reference
-    const autoplayPluginRef = useRef(
-        Autoplay({ delay: 10000, stopOnInteraction: false, stopOnMouseEnter: true })
+    // Use useMemo for stable autoplay plugin reference
+    const autoplayPlugin = useMemo(
+        () => Autoplay({ delay: 10000, stopOnInteraction: false, stopOnMouseEnter: true }),
+        []
     );
 
-    const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, [autoplayPluginRef.current]);
+    const plugins = useMemo(() => [autoplayPlugin], [autoplayPlugin]);
+
+    const [emblaRef, emblaApi] = useEmblaCarousel(EMBLA_OPTIONS, plugins);
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isPlaying, setIsPlaying] = useState(true);
 
@@ -76,7 +82,6 @@ export function PhilosophyQuote({ className = "" }: PhilosophyQuoteProps) {
     };
 
     const toggleAutoplay = useCallback(() => {
-        const autoplayPlugin = autoplayPluginRef.current;
         if (!autoplayPlugin) return;
 
         // Use the plugin's isPlaying method for accurate state
@@ -85,7 +90,7 @@ export function PhilosophyQuote({ className = "" }: PhilosophyQuoteProps) {
         } else {
             autoplayPlugin.play();
         }
-    }, []);
+    }, [autoplayPlugin]);
 
     return (
         <motion.div
