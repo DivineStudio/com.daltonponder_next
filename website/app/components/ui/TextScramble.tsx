@@ -21,7 +21,8 @@ export const TextScramble = ({
     scrambleSpeed = 50, // Default: Update random chars every 50ms (approx 20fps)
 }: TextScrambleProps) => {
     const [display, setDisplay] = useState(text);
-    const ref = useRef(null);
+    const ref = useRef<HTMLSpanElement>(null);
+    const bufferRef = useRef<string[]>([]);
     const isInView = useInView(ref, { once: true, margin: "-100px" });
 
     useEffect(() => {
@@ -50,17 +51,26 @@ export const TextScramble = ({
 
                     // Calculate how many characters should be revealed based on progress
                     const revealIndex = Math.floor(text.length * progress);
+                    const textLen = text.length;
+                    const charSetLen = characterSet.length;
 
-                    const scrambled = text
-                        .split('')
-                        .map((char, index) => {
-                            if (char === ' ') return ' ';
-                            if (index < revealIndex) return text[index];
-                            return characterSet[Math.floor(Math.random() * characterSet.length)];
-                        })
-                        .join('');
+                    // Initialize or resize buffer if needed
+                    if (bufferRef.current.length !== textLen) {
+                        bufferRef.current = new Array(textLen);
+                    }
 
-                    setDisplay(scrambled);
+                    for (let i = 0; i < textLen; i++) {
+                        const char = text[i];
+                        if (char === ' ') {
+                            bufferRef.current[i] = ' ';
+                        } else if (i < revealIndex) {
+                            bufferRef.current[i] = char;
+                        } else {
+                            bufferRef.current[i] = characterSet[Math.floor(Math.random() * charSetLen)];
+                        }
+                    }
+
+                    setDisplay(bufferRef.current.join(''));
                 }
 
                 frameId = requestAnimationFrame(animate);
