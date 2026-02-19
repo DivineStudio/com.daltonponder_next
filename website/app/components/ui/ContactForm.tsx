@@ -4,7 +4,6 @@ import { useState, useRef, useEffect, useCallback } from "react";
 import { useTranslations, useLocale } from "next-intl";
 import { motion } from "motion/react";
 import { Icon } from "@iconify/react";
-import { ValidationError } from "@formspree/react";
 import HCaptcha from "@hcaptcha/react-hcaptcha";
 import { CONTACT_FORM_COOLDOWN } from "@/lib/constants";
 import { submitContactForm } from "@/app/actions/contact";
@@ -29,6 +28,26 @@ interface ContactFormProps {
     useCaptcha?: boolean;
     /** Custom class name for the form wrapper */
     className?: string;
+}
+
+/**
+ * Custom validation error component to replace @formspree/react ValidationError.
+ * It works with the raw error array returned by our Server Action.
+ */
+function LocalValidationError({ prefix, field, errors }: { prefix: string; field: string; errors: any[] }) {
+    const error = errors.find((e) => e.field === field || (e.code === "EMPTY" && e.field === undefined && field === "message"));
+    // Note: Formspree sometimes doesn't provide a field for general errors, but here we only care about field-specific ones.
+    if (!error) return null;
+
+    return (
+        <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            className="text-red-500 text-xs mt-1"
+        >
+            {prefix} {error.message}
+        </motion.div>
+    );
 }
 
 export function ContactForm({ useCaptcha = true, className = "" }: ContactFormProps) {
@@ -191,7 +210,7 @@ export function ContactForm({ useCaptcha = true, className = "" }: ContactFormPr
                     className="w-full px-4 py-3 rounded-xl bg-[var(--card-bg)] border border-[var(--card-border)] focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] transition-all"
                     placeholder={tContact("Form.NamePlaceholder")}
                 />
-                <ValidationError prefix="Name" field="name" errors={state.errors} />
+                <LocalValidationError prefix="Name" field="name" errors={state.errors} />
             </div>
 
             {/* Email Field */}
@@ -209,7 +228,7 @@ export function ContactForm({ useCaptcha = true, className = "" }: ContactFormPr
                     className="w-full px-4 py-3 rounded-xl bg-[var(--card-bg)] border border-[var(--card-border)] focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] transition-all"
                     placeholder={tContact("Form.EmailPlaceholder")}
                 />
-                <ValidationError prefix="Email" field="email" errors={state.errors} />
+                <LocalValidationError prefix="Email" field="email" errors={state.errors} />
             </div>
 
             {/* Subject Dropdown */}
@@ -232,7 +251,7 @@ export function ContactForm({ useCaptcha = true, className = "" }: ContactFormPr
                         </option>
                     ))}
                 </select>
-                <ValidationError prefix="Subject" field="subject" errors={state.errors} />
+                <LocalValidationError prefix="Subject" field="subject" errors={state.errors} />
             </div>
 
             {/* Message Field */}
@@ -250,7 +269,7 @@ export function ContactForm({ useCaptcha = true, className = "" }: ContactFormPr
                     className="w-full px-4 py-3 rounded-xl bg-[var(--card-bg)] border border-[var(--card-border)] focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] transition-all resize-none"
                     placeholder={tContact("Form.MessagePlaceholder")}
                 />
-                <ValidationError prefix="Message" field="message" errors={state.errors} />
+                <LocalValidationError prefix="Message" field="message" errors={state.errors} />
             </div>
 
             {/* hCaptcha (conditional) */}
