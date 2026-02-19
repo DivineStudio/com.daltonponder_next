@@ -2,6 +2,7 @@
 
 import { motion, useScroll, useTransform } from 'motion/react';
 import { useMemo, useSyncExternalStore } from 'react';
+import { shuffle } from '@/lib/utils';
 
 const emptySubscribe = () => () => { };
 
@@ -81,7 +82,7 @@ function generateOrbs(): OrbConfig[] {
     }
 
     // Shuffle array to randomize render order (so colors aren't in predictable pattern)
-    return orbs.sort(() => Math.random() - 0.5);
+    return shuffle(orbs);
 }
 
 export default function GradientBackground() {
