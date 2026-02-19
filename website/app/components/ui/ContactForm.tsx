@@ -4,9 +4,10 @@ import { useState, useRef, useEffect, useCallback } from "react";
 import { useTranslations, useLocale } from "next-intl";
 import { motion } from "motion/react";
 import { Icon } from "@iconify/react";
-import { useForm, ValidationError } from "@formspree/react";
 import HCaptcha from "@hcaptcha/react-hcaptcha";
 import { CONTACT_FORM_COOLDOWN } from "@/lib/constants";
+import { submitContactForm } from "@/app/actions/contact";
+import { ContactFormSchema } from "@/lib/validations";
 
 // Contact subject keys for the dropdown
 export const contactSubjectKeys = [
@@ -34,8 +35,11 @@ export function ContactForm({ useCaptcha = true, className = "" }: ContactFormPr
     const t = useTranslations("Home.ContactSection");
     const tContact = useTranslations("Contact");
 
-    // Formspree hook
-    const [state, handleSubmit, reset] = useForm(process.env.NEXT_PUBLIC_FORMSPREE_ID || "");
+    // Form state
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [isSucceeded, setIsSucceeded] = useState(false);
+    const [serverError, setServerError] = useState<string | null>(null);
+    const [fieldErrors, setFieldErrors] = useState<Record<string, string[]>>({});
 
     const [formData, setFormData] = useState({
         name: "",
@@ -80,13 +84,15 @@ export function ContactForm({ useCaptcha = true, className = "" }: ContactFormPr
 
     // Set cooldown in localStorage when form succeeds
     useEffect(() => {
-        if (state.succeeded) {
+        if (isSucceeded) {
             localStorage.setItem("contact_form_last_submission", Date.now().toString());
         }
-    }, [state.succeeded]);
+    }, [isSucceeded]);
 
     const handleReset = () => {
-        reset();
+        setIsSucceeded(false);
+        setServerError(null);
+        setFieldErrors({});
         setFormData({ name: "", email: "", subject: "", message: "" });
         if (useCaptcha) {
             captchaRef.current?.resetCaptcha();
@@ -107,15 +113,57 @@ export function ContactForm({ useCaptcha = true, className = "" }: ContactFormPr
 
     const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        if (isCooldownActive) return;
-        await handleSubmit(e);
+        if (isCooldownActive || isSubmitting) return;
+
+        setServerError(null);
+        setFieldErrors({});
+
+        // Client-side validation
+        const result = ContactFormSchema.safeParse({
+            ...formData,
+            "h-captcha-response": captchaToken || undefined,
+        });
+
+        if (!result.success) {
+            const errors = result.error.flatten().fieldErrors;
+            setFieldErrors(errors as Record<string, string[]>);
+            return;
+        }
+
+        setIsSubmitting(true);
+
+        try {
+            const form = new FormData();
+            Object.entries(formData).forEach(([key, value]) => {
+                form.append(key, value);
+            });
+            if (captchaToken) {
+                form.append("h-captcha-response", captchaToken);
+            }
+
+            const response = await submitContactForm(form);
+
+            if (response.success) {
+                setIsSucceeded(true);
+            } else {
+                setServerError(response.error || "An error occurred");
+                if (response.type === "validation" && response.errors) {
+                    setFieldErrors(response.errors);
+                }
+            }
+        } catch (err) {
+            setServerError("A network error occurred. Please try again.");
+            console.error(err);
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     const isSubmitDisabled = useCaptcha
-        ? state.submitting || !captchaToken || isCooldownActive
-        : state.submitting || isCooldownActive;
+        ? isSubmitting || !captchaToken || isCooldownActive
+        : isSubmitting || isCooldownActive;
 
-    if (state.succeeded) {
+    if (isSucceeded) {
         return (
             <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
@@ -151,10 +199,14 @@ export function ContactForm({ useCaptcha = true, className = "" }: ContactFormPr
                     required
                     value={formData.name}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-xl bg-[var(--card-bg)] border border-[var(--card-border)] focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] transition-all"
+                    className={`w-full px-4 py-3 rounded-xl bg-[var(--card-bg)] border ${
+                        fieldErrors.name ? "border-red-500" : "border-[var(--card-border)]"
+                    } focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] transition-all`}
                     placeholder={tContact("Form.NamePlaceholder")}
                 />
-                <ValidationError prefix="Name" field="name" errors={state.errors} />
+                {fieldErrors.name && (
+                    <p className="mt-1 text-sm text-red-500 font-mono">{fieldErrors.name[0]}</p>
+                )}
             </div>
 
             {/* Email Field */}
@@ -169,10 +221,14 @@ export function ContactForm({ useCaptcha = true, className = "" }: ContactFormPr
                     required
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-xl bg-[var(--card-bg)] border border-[var(--card-border)] focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] transition-all"
+                    className={`w-full px-4 py-3 rounded-xl bg-[var(--card-bg)] border ${
+                        fieldErrors.email ? "border-red-500" : "border-[var(--card-border)]"
+                    } focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] transition-all`}
                     placeholder={tContact("Form.EmailPlaceholder")}
                 />
-                <ValidationError prefix="Email" field="email" errors={state.errors} />
+                {fieldErrors.email && (
+                    <p className="mt-1 text-sm text-red-500 font-mono">{fieldErrors.email[0]}</p>
+                )}
             </div>
 
             {/* Subject Dropdown */}
@@ -186,7 +242,9 @@ export function ContactForm({ useCaptcha = true, className = "" }: ContactFormPr
                     value={formData.subject}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 rounded-xl bg-[var(--card-bg)] border border-[var(--card-border)] focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] transition-all cursor-pointer"
+                    className={`w-full px-4 py-3 rounded-xl bg-[var(--card-bg)] border ${
+                        fieldErrors.subject ? "border-red-500" : "border-[var(--card-border)]"
+                    } focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] transition-all cursor-pointer`}
                 >
                     <option value="">{t("Form.SelectSubject")}</option>
                     {contactSubjectKeys.map((key) => (
@@ -195,7 +253,9 @@ export function ContactForm({ useCaptcha = true, className = "" }: ContactFormPr
                         </option>
                     ))}
                 </select>
-                <ValidationError prefix="Subject" field="subject" errors={state.errors} />
+                {fieldErrors.subject && (
+                    <p className="mt-1 text-sm text-red-500 font-mono">{fieldErrors.subject[0]}</p>
+                )}
             </div>
 
             {/* Message Field */}
@@ -210,10 +270,14 @@ export function ContactForm({ useCaptcha = true, className = "" }: ContactFormPr
                     rows={5}
                     value={formData.message}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-xl bg-[var(--card-bg)] border border-[var(--card-border)] focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] transition-all resize-none"
+                    className={`w-full px-4 py-3 rounded-xl bg-[var(--card-bg)] border ${
+                        fieldErrors.message ? "border-red-500" : "border-[var(--card-border)]"
+                    } focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] transition-all resize-none`}
                     placeholder={tContact("Form.MessagePlaceholder")}
                 />
-                <ValidationError prefix="Message" field="message" errors={state.errors} />
+                {fieldErrors.message && (
+                    <p className="mt-1 text-sm text-red-500 font-mono">{fieldErrors.message[0]}</p>
+                )}
             </div>
 
             {/* hCaptcha (conditional) */}
@@ -230,9 +294,17 @@ export function ContactForm({ useCaptcha = true, className = "" }: ContactFormPr
                 </div>
             )}
 
+            {/* Global Error Message */}
+            {serverError && (
+                <div className="flex items-center gap-2 text-red-500 text-sm justify-center bg-red-500/10 py-2 px-4 rounded-lg border border-red-500/20 font-mono">
+                    <Icon icon="tabler:alert-circle" width={18} height={18} />
+                    <p>{serverError}</p>
+                </div>
+            )}
+
             {/* Rate Limit Message */}
-            {isCooldownActive && !state.succeeded && (
-                <div className="flex items-center gap-2 text-amber-500 text-sm justify-center bg-amber-500/10 py-2 px-4 rounded-lg border border-amber-500/20">
+            {isCooldownActive && !isSucceeded && (
+                <div className="flex items-center gap-2 text-amber-500 text-sm justify-center bg-amber-500/10 py-2 px-4 rounded-lg border border-amber-500/20 font-mono">
                     <Icon icon="tabler:clock-bolt" width={18} height={18} />
                     <p>
                         {t("Form.RateLimitError")} ({remainingTime}s)
@@ -246,12 +318,12 @@ export function ContactForm({ useCaptcha = true, className = "" }: ContactFormPr
                 disabled={isSubmitDisabled}
                 className="w-full btn-primary flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
             >
-                {state.submitting ? (
+                {isSubmitting ? (
                     <>
                         <Icon icon="tabler:loader-2" width={20} height={20} className="animate-spin" />
                         {t("Form.Sending")}
                     </>
-                ) : isCooldownActive && !state.succeeded ? (
+                ) : isCooldownActive && !isSucceeded ? (
                     <>
                         {t("Form.Send")}
                         <Icon icon="tabler:clock-pause" width={20} height={20} />
