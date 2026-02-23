@@ -217,6 +217,12 @@
                     "year": "2023"
                 },
                 {
+                    "name": "Docker",
+                    "icon": "devicon:docker",
+                    "category": "Tools",
+                    "year": "2025"
+                },
+                {
                     "name": "Framer Motion",
                     "icon": "tabler:brand-framer-motion",
                     "category": "Frontend",

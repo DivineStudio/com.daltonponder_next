@@ -40,9 +40,9 @@ const secondarySkillsRow2 = [
     { name: "Agile", icon: "iconoir:agile" },
     { name: "Git", icon: "devicon:git" },
     { name: "SSMS", imageSrc: "/skillLogos/ssms_21.webp" },
-    { name: "REST API" },
+    { name: "REST API", icon: "tabler:api" },
     { name: "TypeScript", icon: "devicon:typescript" },
-    { name: "BMAD" },
+    { name: "Docker", icon: "devicon:docker" },
     { name: "Tailwind", icon: "devicon:tailwindcss" },
 ];
 
