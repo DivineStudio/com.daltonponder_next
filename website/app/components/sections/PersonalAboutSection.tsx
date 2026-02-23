@@ -114,11 +114,21 @@ export async function PersonalAboutSection({ summary = false }: PersonalAboutSec
                 </BentoGrid>
 
                 {summary && (
-                    <div className="mt-12 text-center">
-                        <Link href="/about" className="btn-secondary">
+                    <ClientMotionDiv
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.7 }}
+                        className="mt-8 text-center"
+                    >
+                        <Link
+                            href="/about"
+                            className="inline-flex items-center gap-2 text-accent hover:underline font-medium"
+                        >
                             {t("LearnMore")}
+                            <Icon icon="tabler:arrow-right" width={16} height={16} />
                         </Link>
-                    </div>
+                    </ClientMotionDiv>
                 )}
             </div>
         </section>
