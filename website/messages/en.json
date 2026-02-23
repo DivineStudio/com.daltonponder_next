@@ -476,7 +476,7 @@
                 },
                 {
                     "name": "RESTful APIs",
-                    "icon": "tabler:circle-check",
+                    "icon": "dashicons:rest-api",
                     "category": "Practices",
                     "year": "2021"
                 },

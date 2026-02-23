@@ -68,9 +68,6 @@ export function Navbar() {
                             ))}
                         </ul>
 
-                        <div className="flex items-center gap-3">
-                            <ThemeToggler />
-                        </div>
                     </div>
 
                     {/* Mobile Menu Button */}
@@ -128,10 +125,6 @@ export function Navbar() {
                                     </motion.li>
                                 ))}
                             </ul>
-
-                            <div className="flex items-center gap-4 mt-8">
-                                <ThemeToggler />
-                            </div>
                         </div>
                     </motion.div>
                 )}
