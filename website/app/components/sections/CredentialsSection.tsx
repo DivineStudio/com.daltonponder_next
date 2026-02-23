@@ -15,9 +15,9 @@ export async function CredentialsSection({ summary = true }: CredentialsSectionP
     const stats = [
         {
             label: t("EducationHeader"),
-            value: 3,
+            value: 2,
             icon: "tabler:school",
-            description: "Bachelor's & Master's degrees",
+            description: "Bachelor's & Master's",
         },
         {
             label: t("CertificationsHeader"),

@@ -29,7 +29,7 @@ test("safeJsonStringify vulnerability with line separators", () => {
     paraSep: "\u2029",
   };
   const result = safeJsonStringify(data);
-  // Current implementation does NOT escape these, but a secure one should
+  // Implementation should escape these to be safe in JS contexts
   assert.strictEqual(result.includes("\u2028"), false, "Should not contain raw line separator");
   assert.strictEqual(result.includes("\u2029"), false, "Should not contain raw paragraph separator");
   assert.strictEqual(result.includes("\\u2028"), true, "Should contain escaped line separator");
