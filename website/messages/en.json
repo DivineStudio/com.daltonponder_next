@@ -4,6 +4,7 @@
         "About": "About",
         "Skills": "Skills",
         "Credentials": "Credentials",
+        "Freelance": "Freelance",
         "Contact": "Contact",
         "Aria": {
             "ToggleMobileMenu": "Toggle mobile menu",
@@ -917,6 +918,10 @@
         "Contact": {
             "Title": "Contact | Fullstack & AI-Integrated Software Engineer",
             "Description": "Get in touch with Dalton Ponder for projects, collaborations, or opportunities."
+        },
+        "Freelance": {
+            "Title": "Freelance Services | Bespoke Web Development & Managed Hosting",
+            "Description": "Explore Dalton Ponder's freelance web development services. $0 upfront bespoke builds with managed hosting and infrastructure contracts."
         }
     }
 }
